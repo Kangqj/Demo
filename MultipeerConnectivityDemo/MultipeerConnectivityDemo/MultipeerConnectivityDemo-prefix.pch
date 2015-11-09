@@ -1,0 +1,20 @@
+//
+//  MultipeerConnectivityDemo-prefix.pch
+//  MultipeerConnectivityDemo
+//
+//  Created by Kangqj on 15/11/6.
+//  Copyright (c) 2015年 康起军. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
+#import "UIColor_RandomColor.h"
+#import "UIImage_Colorful.h"
+#import "Manager.h"
+
+#define RGBColor(r, g, b)  [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+
+#endif
