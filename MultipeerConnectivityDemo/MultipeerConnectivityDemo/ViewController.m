@@ -46,7 +46,6 @@
 {
     peerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     peerBtn.frame = CGRectMake(120, 210, 100, 100);
-    [peerBtn setTitle:@"chat" forState:UIControlStateNormal];
     [peerBtn addTarget:self action:@selector(goToChat) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:peerBtn];
     UIImage *image = [UIImage imageWithColor:[UIColor randomColor]];
@@ -74,7 +73,6 @@
     animation.removedOnCompletion = YES;
     
     NSMutableArray *values = [NSMutableArray array];
-    NSString *keyStr;
     
     if (isFind)
     {
@@ -101,7 +99,7 @@
     }
     
     animation.values = values;
-    [peerBtn.layer addAnimation:animation forKey:keyStr];
+    [peerBtn.layer addAnimation:animation forKey:nil];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag

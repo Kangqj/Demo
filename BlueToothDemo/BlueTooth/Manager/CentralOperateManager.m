@@ -10,7 +10,7 @@
 
 @interface CentralOperateManager ()
 {
-    BOOL isNear;
+    
 }
 
 @property(nonatomic, strong) CBCentralManager *centralManager;
@@ -45,33 +45,22 @@
         
         self.peripheralArr = [NSMutableArray array];
         self.dataDicArr = [NSMutableArray array];
-        
-        isNear = NO;
     }
     
     return self;
 }
 
-- (void)reflashScan
-{
-    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-}
-
-- (void)startScanWithFinish:(ScanFinishBlock)completion
+- (void)scanPeripheralSignal:(FindSignalBlock)block;
 {
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    
-    //开始扫描寻找制定的服务（根据UUID寻找），若为nil，则是寻找周边所有的服务
-    //[self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:kServiceUUID]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@YES}];
     
     [self.peripheralArr removeAllObjects];
     [self.dataDicArr removeAllObjects];
     
-    self.scanFinishBlock = completion;
-    self.scanFinishBlock();
+    self.findSignalBlock = block;
 }
 
-- (void)stopScan
+- (void)stopScanSign
 {
     [self.centralManager stopScan];
     
@@ -92,18 +81,7 @@
     {
         case CBCentralManagerStatePoweredOn:
             
-            [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-            
-            if (self.scanTimer == nil)
-            {
-                self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                              target:self
-                                                            selector:@selector(reScan)
-                                                            userInfo:nil
-                                                             repeats:YES];
-                [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-            }
-            
+            [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:ServiceUUID]] options:nil];
             
             break;
             
@@ -119,50 +97,8 @@
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    BOOL hasSame = NO;
+    self.findSignalBlock(peripheral);
     
-    for (CBPeripheral *per in self.peripheralArr)
-    {
-        if ([per.name isEqualToString:peripheral.name])
-        {
-            hasSame = YES;
-        }
-    }
-    
-    if (hasSame == NO)
-    {
-        [self.peripheralArr addObject:peripheral];
-        
-        NSArray *arr = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
-        
-        if (arr.count != 0 && [RSSI intValue] != 0)
-        {
-            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:peripheral.name,@"name",arr,@"UUIDs",RSSI,@"RSSI", nil];
-            [self.dataDicArr addObject:dic];
-        }
-    }
-    
-    self.scanFinishBlock();
-    
-    //根据RSSI值来识别碰撞行为
-    int value = [RSSI intValue];
-    NSLog(@"RSSI   %d",value);
-    float distance = [self calcDistByRSSI:value];
-    NSLog(@"distance---%f米",distance);
-    
-    self.rssieBlock([RSSI intValue]);
-    
-    if (value > -30 && isNear == NO)
-    {
-        isNear = YES;
-        [self.centralManager connectPeripheral:peripheral options:nil];
-        [self.scanTimer invalidate];
-        self.scanTimer = nil;
-    }
-    else if (value < -50)
-    {
-        isNear = NO;
-    }
 }
 
 - (float)calcDistByRSSI:(int)rssi
@@ -172,11 +108,6 @@
     return pow(10, power);
 }
 
-//不断扫描
-- (void)reScan
-{
-    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-}
 
 - (void)connectPeripheral:(NSInteger)index service:(NSInteger)sIndex
 {
@@ -270,11 +201,7 @@
     {
         NSLog(@"rssi %d", [[peripheral RSSI] intValue]);
         
-        if ([[peripheral RSSI] intValue] > -36 && isNear == NO)//说明靠近了，那么发送数据
-        {
-            [self sendData:@"near"];
-            isNear = YES;
-        }
+        [self sendData:@"near"];
         
         self.rssieBlock([[peripheral RSSI] intValue]);
     }
@@ -324,19 +251,16 @@
             self.writeCharacteristic = characteristic;
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
             
-            if (isNear == YES)
-            {
-                [self sendData:@"near"];
-                
-                NSString *name = [NSString stringWithFormat:@"要接收%@的文件吗？",[UIDevice currentDevice].name];
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                message:name
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Cancel"
-                                                      otherButtonTitles:@"OK", nil];
-                [alert show];
-            }
+            [self sendData:@"near"];
+            
+            NSString *name = [NSString stringWithFormat:@"要接收%@的文件吗？",[UIDevice currentDevice].name];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:name
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
             
         }
         else

@@ -7,9 +7,11 @@
 //
 
 #import "CentralViewController.h"
-#import "CentralOperateViewController.h"
 
-@interface CentralViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CentralViewController ()
+{
+    UIButton *peripheralBtn;
+}
 
 @property (strong, nonatomic) UITableView *myTableView;
 
@@ -27,123 +29,72 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.title = @"周边信号强度";
+    self.title = @"搜索周边信号";
     
-    [[CentralOperateManager sharedManager] startScanWithFinish:^{}];
+    [self setupUI];
     
-    UILabel *rssiLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 44)];
-    rssiLab.textColor = [UIColor blackColor];
-    rssiLab.textAlignment = NSTextAlignmentCenter;
-    rssiLab.font = [UIFont systemFontOfSize:10];
-    rssiLab.backgroundColor = [UIColor redColor];
-    [self.view addSubview:rssiLab];
-    
-    [[CentralOperateManager sharedManager] getRSSIData:^(NSInteger rssi) {
+    //搜索周边信号
+    [[CentralOperateManager sharedManager] scanPeripheralSignal:^(CBPeripheral *peripheral) {
         
-        rssiLab.text = [NSString stringWithFormat:@"信号强度:%d",rssi];
+        [self findAnimationPeripheral:peripheral];
         
     }];
-    
-//    [self initTableView];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [[CentralOperateManager sharedManager] startScanWithFinish:^{
-        
-        [self.myTableView reloadData];
-        
-    }];
+    [[CentralOperateManager sharedManager] stopScanSign];
 }
 
-
-- (void)initTableView
+- (void)setupUI
 {
-    self.myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60)];
-    [self.view addSubview:self.myTableView];
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    
-    UIButton *relfash = [UIButton buttonWithType:UIButtonTypeCustom];
-    relfash.frame = CGRectMake(0, 0, 40, 40);
-    [relfash setTitle:@"刷新" forState:UIControlStateNormal];
-    [relfash setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    relfash.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-    [relfash addTarget:self action:@selector(reflashPeripherals) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:relfash];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(0, 0, 40, 40);
-    [leftBtn setTitle:@"返回" forState:UIControlStateNormal];
-    [leftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-    [leftBtn addTarget:self action:@selector(backToMainView) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    peripheralBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    peripheralBtn.frame = CGRectMake(0, 0, 100, 100);
+    peripheralBtn.center = self.view.center;
+    [peripheralBtn addTarget:self action:@selector(goToBumpView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:peripheralBtn];
+    UIImage *image = [UIImage imageWithColor:[UIColor randomColor] size:CGSizeMake(100, 100)];
+    [peripheralBtn setBackgroundImage:[UIImage imageWithCornerRadius:50 image:image] forState:UIControlStateNormal];
+    peripheralBtn.layer.cornerRadius = 50;
+    peripheralBtn.layer.shadowColor = [UIColor grayColor].CGColor;
+    peripheralBtn.layer.shadowOffset = CGSizeMake(5, 5);
+    peripheralBtn.layer.shadowOpacity = 0.6;
+    peripheralBtn.hidden = YES;
 }
 
-- (void)backToMainView
+- (void)goToBumpView
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    [[CentralOperateManager sharedManager] stopScan];
+    
 }
 
-- (void)reflashPeripherals
+- (void)findAnimationPeripheral:(CBPeripheral *)peripheral
 {
-    [[CentralOperateManager sharedManager] reflashScan];
+    CAKeyframeAnimation * animation;
+    animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animation.duration = 0.5;
+    
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = YES;
+    
+    NSMutableArray *values = [NSMutableArray array];
+    
+    peripheralBtn.hidden = NO;
+    [peripheralBtn setTitle:peripheral.name forState:UIControlStateNormal];
+    
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 0.9)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+    
+    
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    animation.values = values;
+    [peripheralBtn.layer addAnimation:animation forKey:nil];
 }
 
-
-#pragma mark -Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return [CentralOperateManager sharedManager].dataDicArr.count;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSString *cellIdentifier = @"characteristicDetailsCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    
-    if ([CentralOperateManager sharedManager].dataDicArr.count >indexPath.row)
-    {
-        NSDictionary *dic = [[CentralOperateManager sharedManager].dataDicArr objectAtIndex:indexPath.row];
-        
-        cell.textLabel.text = [dic objectForKey:@"name"];
-        
-        NSArray *arr = [dic objectForKey:@"UUIDs"];
-        NSNumber *rssi = [dic objectForKey:@"RSSI"];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"services:%zd个 RSSI:%d",arr.count,[rssi intValue]];
-    }
-    
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //service:0为读数据，
-    [[CentralOperateManager sharedManager] connectPeripheral:indexPath.row service:0];
-    
-    CentralOperateViewController *operateVC = [[CentralOperateViewController alloc] init];
-    [self.navigationController pushViewController:operateVC animated:YES];
-    
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
 
 
 /*

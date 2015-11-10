@@ -68,13 +68,12 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
     CBUUID *descriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
     
     self.readwriteCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:CharacteristicUUID] properties:CBCharacteristicPropertyNotify | CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable | CBAttributePermissionsWriteable];
-    //设置description
+    
     CBMutableDescriptor *readwriteCharacteristicDescription1 = [[CBMutableDescriptor alloc]initWithType: descriptionStringUUID value:@"name"];
     [self.readwriteCharacteristic setDescriptors:@[readwriteCharacteristicDescription1]];
     
     
     CBMutableService *service = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID] primary:YES];
-    
     [service setCharacteristics:@[self.readwriteCharacteristic]];
     
     [self.peripheralManager addService:service];
@@ -102,7 +101,6 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 
 
 #pragma  mark -- CBPeripheralManagerDelegate
-//peripheralManager状态改变
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
     switch (peripheral.state)
@@ -111,6 +109,7 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
             [self addServices];
             break;
         case CBPeripheralManagerStatePoweredOff:
+            [self.peripheralManager stopAdvertising];
             break;
             
         default:
@@ -118,16 +117,16 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
     }
 }
 
-//perihpheral添加了service
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error
 {
-    if (error != nil)
+    if (error == nil)
     {
-        [self.peripheralManager startAdvertising:@{
-                                                   CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:ServiceUUID]],
-                                                   CBAdvertisementDataLocalNameKey : LocalNameKey
-                                                   }
-         ];
+        [self.peripheralManager startAdvertising:@{CBAdvertisementDataServiceUUIDsKey:@[[CBUUID UUIDWithString:ServiceUUID]],
+                                                   CBAdvertisementDataLocalNameKey:@"A"}];
+    }
+    else
+    {
+        NSLog(@"didAddService:error:%@",error);
     }
 }
 
