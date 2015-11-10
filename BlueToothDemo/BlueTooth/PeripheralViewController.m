@@ -30,7 +30,9 @@
     
     [[PeripheralOperateManager sharedManager] startBroadcastService];
     
-    [self initUI];
+//    [self initUI];
+    
+    [self initRadar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -49,6 +51,7 @@
     showTextView.editable = NO;
     
     [[PeripheralOperateManager sharedManager] reciveData:^(NSString *string) {
+        
         if (string.length == 0)
         {
             return ;
@@ -74,6 +77,33 @@
     sendBtn.backgroundColor = [UIColor grayColor];
     sendBtn.layer.cornerRadius = 10;
     [self.view addSubview:sendBtn];
+}
+
+- (void)initRadar
+{
+    NSMutableArray *_tempArr = [NSMutableArray array];
+    for (NSInteger index = 0; index < 5; index++)
+    {
+        UIImageView *scanView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-50)/2, (self.view.frame.size.height-50)/2, 50, 50)];
+        scanView.image = [UIImage createRoundImageSize:CGSizeMake(50, 50) color:[UIColor colorWithHexString:@"5dc68f"]];
+        [self.view addSubview:scanView];
+        [_tempArr addObject:scanView];
+    }
+    
+    for (NSInteger index = 0; index < 5; index++)
+    {
+        UIImageView *scanView = [_tempArr objectAtIndex:index];
+        
+        [UIView animateWithDuration:4.0f delay:index * 1 options:UIViewAnimationOptionRepeat animations:^{
+            scanView.frame = CGRectMake(0, (self.view.frame.size.height - self.view.frame.size.width)/2, self.view.frame.size.width, self.view.frame.size.width);
+            scanView.alpha = 0.0f;
+            
+        } completion:^(BOOL finished){
+            [scanView removeFromSuperview];
+        }];
+    }
+    
+    [_tempArr removeAllObjects];
 }
 
 - (void)sendData

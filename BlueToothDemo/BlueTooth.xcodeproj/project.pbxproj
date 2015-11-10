@@ -43,6 +43,8 @@
 		772C61841BE2FE6E006E3D56 /* BlueToothTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueToothTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772C61891BE2FE6E006E3D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772C618A1BE2FE6E006E3D56 /* BlueToothTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueToothTests.m; sourceTree = "<group>"; };
+		77F6ABE81BF036E900C46078 /* UIColor_RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_RandomColor.h; sourceTree = "<group>"; };
+		77F6ABE91BF036E900C46078 /* UIImage_Colorful.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage_Colorful.h; sourceTree = "<group>"; };
 		77FA8AE31BE70575005FFB38 /* CentralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralViewController.h; sourceTree = "<group>"; };
 		77FA8AE41BE70575005FFB38 /* CentralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralViewController.m; sourceTree = "<group>"; };
 		77FA8AE61BE7058C005FFB38 /* PeripheralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralViewController.h; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				772C61731BE2FE6E006E3D56 /* AppDelegate.m */,
 				772C61751BE2FE6E006E3D56 /* ViewController.h */,
 				772C61761BE2FE6E006E3D56 /* ViewController.m */,
+				77F6ABE71BF036E900C46078 /* Category */,
 				77FCDB681BE75F24001AE0C7 /* Manager */,
 				77FA8AE31BE70575005FFB38 /* CentralViewController.h */,
 				77FA8AE41BE70575005FFB38 /* CentralViewController.m */,
@@ -138,6 +141,15 @@
 				772C61891BE2FE6E006E3D56 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		77F6ABE71BF036E900C46078 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				77F6ABE81BF036E900C46078 /* UIColor_RandomColor.h */,
+				77F6ABE91BF036E900C46078 /* UIImage_Colorful.h */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		77FCDB681BE75F24001AE0C7 /* Manager */ = {
@@ -375,11 +387,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: he wang (BCSQVR967R)";
 				GCC_PREFIX_HEADER = "BlueTooth/BlueTooth-Prefix.pch";
 				INFOPLIST_FILE = BlueTooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eafc8727-737e-49a0-b8b7-a265b23b994b";
 			};
 			name = Debug;
 		};
@@ -387,11 +401,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: he wang (BCSQVR967R)";
 				GCC_PREFIX_HEADER = "BlueTooth/BlueTooth-Prefix.pch";
 				INFOPLIST_FILE = BlueTooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eafc8727-737e-49a0-b8b7-a265b23b994b";
 			};
 			name = Release;
 		};

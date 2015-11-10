@@ -17,7 +17,8 @@
 
 @implementation CentralViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -26,9 +27,24 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.title = @"周边信号源列表";
+    self.title = @"周边信号强度";
     
-    [self initTableView];
+    [[CentralOperateManager sharedManager] startScanWithFinish:^{}];
+    
+    UILabel *rssiLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 44)];
+    rssiLab.textColor = [UIColor blackColor];
+    rssiLab.textAlignment = NSTextAlignmentCenter;
+    rssiLab.font = [UIFont systemFontOfSize:10];
+    rssiLab.backgroundColor = [UIColor redColor];
+    [self.view addSubview:rssiLab];
+    
+    [[CentralOperateManager sharedManager] getRSSIData:^(NSInteger rssi) {
+        
+        rssiLab.text = [NSString stringWithFormat:@"信号强度:%d",rssi];
+        
+    }];
+    
+//    [self initTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated

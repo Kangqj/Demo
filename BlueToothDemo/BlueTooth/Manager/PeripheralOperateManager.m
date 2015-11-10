@@ -10,7 +10,6 @@
 
 @interface PeripheralOperateManager () <CBPeripheralManagerDelegate,CBPeripheralDelegate>
 {
-    int serviceNum;
     NSTimer *timer;
 }
 
@@ -43,57 +42,43 @@
     return self;
 }
 
-- (void)createService
-{
-    //characteristics字段描述
-    CBUUID *CBUUIDCharacteristicUserDescriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
-    
-    /*
-     可以通知的Characteristic
-     properties：CBCharacteristicPropertyNotify
-     permissions CBAttributePermissionsReadable
-     */
-    CBMutableCharacteristic *notiyCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:notiyCharacteristicUUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
-    
-    /*
-     可读写的characteristics
-     properties：CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead
-     permissions CBAttributePermissionsReadable | CBAttributePermissionsWriteable
-     */
-    self.readwriteCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readwriteCharacteristicUUID] properties:CBCharacteristicPropertyNotify | CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable | CBAttributePermissionsWriteable];
-    //设置description
-    CBMutableDescriptor *readwriteCharacteristicDescription1 = [[CBMutableDescriptor alloc]initWithType: CBUUIDCharacteristicUserDescriptionStringUUID value:@"name"];
-    [self.readwriteCharacteristic setDescriptors:@[readwriteCharacteristicDescription1]];
-    
-    
-    /*
-     只读的Characteristic
-     properties：CBCharacteristicPropertyRead
-     permissions CBAttributePermissionsReadable
-     */
-    CBMutableCharacteristic *readCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:readCharacteristicUUID] properties:CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable];
-    
-    
-    //service1初始化并加入两个characteristics
-    CBMutableService *service1 = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID1] primary:YES];
-    NSLog(@"%@",service1.UUID);
-    
-    [service1 setCharacteristics:@[notiyCharacteristic,self.readwriteCharacteristic]];
-    
-    //service2初始化并加入一个characteristics
-    CBMutableService *service2 = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID2] primary:YES];
-    [service2 setCharacteristics:@[readCharacteristic]];
-    
-    //添加后就会调用代理的- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error
-    [self.peripheralManager addService:service1];
-    [self.peripheralManager addService:service2];
-}
-
 - (void)startBroadcastService
 {
     self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
 }
 
+/*
+typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
+    CBCharacteristicPropertyBroadcast=0x01,//广播,不允许本地特性
+    CBCharacteristicPropertyRead=0x02,//可读
+    CBCharacteristicPropertyWriteWithoutResponse=0x04,//可写,无反馈
+    CBCharacteristicPropertyWrite=0x08,//可写
+    CBCharacteristicPropertyNotify=0x10,//通知,无反馈
+    CBCharacteristicPropertyIndicate=0x20,//标识
+    CBCharacteristicPropertyAuthenticatedSignedWrites=0x40,//允许签名一个可写的特性
+    CBCharacteristicPropertyExtendedProperties=0x80,//如果设置后，附加特性属性为一个扩展的属性说明，不允许本地特性
+    CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)=0x100,//如果设置后，仅允许信任的设备可以打开通知特性值
+    CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)=0x200//如果设置后，仅允许信任的设备可以打开标识特性值
+};
+ */
+
+//添加服务
+- (void)addServices
+{
+    CBUUID *descriptionStringUUID = [CBUUID UUIDWithString:CBUUIDCharacteristicUserDescriptionString];
+    
+    self.readwriteCharacteristic = [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:CharacteristicUUID] properties:CBCharacteristicPropertyNotify | CBCharacteristicPropertyWrite | CBCharacteristicPropertyRead value:nil permissions:CBAttributePermissionsReadable | CBAttributePermissionsWriteable];
+    //设置description
+    CBMutableDescriptor *readwriteCharacteristicDescription1 = [[CBMutableDescriptor alloc]initWithType: descriptionStringUUID value:@"name"];
+    [self.readwriteCharacteristic setDescriptors:@[readwriteCharacteristicDescription1]];
+    
+    
+    CBMutableService *service = [[CBMutableService alloc]initWithType:[CBUUID UUIDWithString:ServiceUUID] primary:YES];
+    
+    [service setCharacteristics:@[self.readwriteCharacteristic]];
+    
+    [self.peripheralManager addService:service];
+}
 
 - (void)stopBroadcastService
 {
@@ -101,7 +86,6 @@
     
     self.peripheralManager.delegate = nil;
     self.peripheralManager = nil;
-    serviceNum = 0;
 }
 
 //发送数据
@@ -119,15 +103,14 @@
 
 #pragma  mark -- CBPeripheralManagerDelegate
 //peripheralManager状态改变
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
-    switch (peripheral.state) {
-            //在这里判断蓝牙设别的状态  当开启了则可调用  setUp方法(自定义)
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
+{
+    switch (peripheral.state)
+    {
         case CBPeripheralManagerStatePoweredOn:
-            NSLog(@"powered on");
-            [self createService];
+            [self addServices];
             break;
         case CBPeripheralManagerStatePoweredOff:
-            NSLog(@"powered off");
             break;
             
         default:
@@ -136,23 +119,16 @@
 }
 
 //perihpheral添加了service
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error{
-    if (error == nil) {
-        serviceNum++;
-    }
-    
-    //因为我们添加了2个服务，所以想两次都添加完成后才去发送广播
-    if (serviceNum==2) {
-        //添加服务后可以在此向外界发出通告 调用完这个方法后会调用代理的
-        //(void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error
+{
+    if (error != nil)
+    {
         [self.peripheralManager startAdvertising:@{
-                                                   CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:ServiceUUID1],[CBUUID UUIDWithString:ServiceUUID2]],
+                                                   CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:ServiceUUID]],
                                                    CBAdvertisementDataLocalNameKey : LocalNameKey
                                                    }
          ];
-        
     }
-    
 }
 
 //peripheral开始发送advertising
@@ -217,6 +193,15 @@
         if ([dataStr isEqualToString:@"near"])
         {
             timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:self.readwriteCharacteristic  repeats:YES];
+            
+            NSString *name = [NSString stringWithFormat:@"你和%@碰了一下",[UIDevice currentDevice].name];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:name
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
         }
         
         self.receiveBlock(dataStr);
@@ -225,8 +210,6 @@
     }else{
         [self.peripheralManager respondToRequest:request withResult:CBATTErrorWriteNotPermitted];
     }
-    
-    
 }
 
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral{

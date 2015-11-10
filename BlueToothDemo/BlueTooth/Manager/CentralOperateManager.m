@@ -18,6 +18,7 @@
 @property(nonatomic, assign) NSInteger peripheralIndex;
 @property(nonatomic, assign) NSInteger serviceIndex;
 @property(nonatomic, assign) NSTimer   *timer;
+@property(nonatomic, assign) NSTimer   *scanTimer;
 
 
 @end
@@ -93,6 +94,17 @@
             
             [self.centralManager scanForPeripheralsWithServices:nil options:nil];
             
+            if (self.scanTimer == nil)
+            {
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                              target:self
+                                                            selector:@selector(reScan)
+                                                            userInfo:nil
+                                                             repeats:YES];
+                [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+            }
+            
+            
             break;
             
         default:
@@ -101,6 +113,9 @@
     }
 }
 
+/*
+ 在实现中，可以不断扫描周边的蓝牙信号，根据信号的RSSI来判断哪个信号源离得最近，那么就自动去连接那个服务
+ */
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
@@ -128,6 +143,39 @@
     }
     
     self.scanFinishBlock();
+    
+    //根据RSSI值来识别碰撞行为
+    int value = [RSSI intValue];
+    NSLog(@"RSSI   %d",value);
+    float distance = [self calcDistByRSSI:value];
+    NSLog(@"distance---%f米",distance);
+    
+    self.rssieBlock([RSSI intValue]);
+    
+    if (value > -30 && isNear == NO)
+    {
+        isNear = YES;
+        [self.centralManager connectPeripheral:peripheral options:nil];
+        [self.scanTimer invalidate];
+        self.scanTimer = nil;
+    }
+    else if (value < -50)
+    {
+        isNear = NO;
+    }
+}
+
+- (float)calcDistByRSSI:(int)rssi
+{
+    int iRssi = abs(rssi);
+    float power = (iRssi-59)/(10*2.0);
+    return pow(10, power);
+}
+
+//不断扫描
+- (void)reScan
+{
+    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
 }
 
 - (void)connectPeripheral:(NSInteger)index service:(NSInteger)sIndex
@@ -178,7 +226,7 @@
     
 }
 
-#pragma mark 连接服务结果回调
+#pragma mark CBCentralManagerDelegate
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     
@@ -196,6 +244,7 @@
         [peripheral setDelegate:self];
         [peripheral discoverServices:@[uuid]];
         
+        /*
         isNear = NO;
         if (self.timer)
         {
@@ -207,10 +256,14 @@
                                                       target:peripheral
                                                     selector:@selector(readRSSI)
                                                     userInfo:nil
-                                                     repeats:1.0];
+                                                     repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+         */
+        
     }
 }
+
+#pragma mark CBPeripheralDelegate 周边接收回调
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if (!error)
@@ -227,7 +280,7 @@
     }
 }
 
-#pragma mark CBPeripheralDelegate 周边接收回调
+
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
     if (error)
@@ -249,7 +302,9 @@
         }
         
         //FFF2特性具有读写权限
-        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@"FFF2"]] forService:service];
+//        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@"FFF2"]] forService:service];
+        
+        [peripheral discoverCharacteristics:nil forService:service];
     }
 }
 
@@ -268,18 +323,30 @@
         {
             self.writeCharacteristic = characteristic;
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+            
+            if (isNear == YES)
+            {
+                [self sendData:@"near"];
+                
+                NSString *name = [NSString stringWithFormat:@"要接收%@的文件吗？",[UIDevice currentDevice].name];
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                message:name
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Cancel"
+                                                      otherButtonTitles:@"OK", nil];
+                [alert show];
+            }
+            
         }
         else
         {
             [peripheral readValueForCharacteristic:characteristic];
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
         }
-    }
-    
-    for (CBCharacteristic *characteristic in service.characteristics)
-    {
-      [peripheral discoverDescriptorsForCharacteristic:characteristic];
-      [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+        
+        [peripheral discoverDescriptorsForCharacteristic:characteristic];
+        [peripheral setNotifyValue:YES forCharacteristic:characteristic];
     }
 }
 
@@ -291,7 +358,11 @@
     
     NSString *dataStr = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
     NSLog(@"characteristic uuid:%@  value:%@ string:%@",characteristic.UUID,characteristic.value,dataStr);
-    self.receiveBlock(dataStr);
+    if (self.receiveBlock)
+    {
+        self.receiveBlock(dataStr);
+    }
+    
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
@@ -334,31 +405,16 @@
 //写数据回调
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
-    
+    NSString *dataStr = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+    NSLog(@"WriteValueRespone:%@",dataStr);
 }
 
-//设置通知
--(void)notifyCharacteristic:(CBPeripheral *)peripheral
-             characteristic:(CBCharacteristic *)characteristic{
-    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
-    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-    
-}
-
-//取消通知
--(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
-                   characteristic:(CBCharacteristic *)characteristic{
-    
-    [peripheral setNotifyValue:NO forCharacteristic:characteristic];
-}
-
-//停止扫描并断开连接
--(void)disconnectPeripheral:(CBCentralManager *)centralManager
-                 peripheral:(CBPeripheral *)peripheral{
-    //停止扫描
-    [centralManager stopScan];
-    //断开连接
-    [centralManager cancelPeripheralConnection:peripheral];
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self sendData:@"OK"];
+    }
 }
 
 @end

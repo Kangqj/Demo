@@ -56,7 +56,7 @@
     inputField.layer.borderWidth = 1.0;
     inputField.layer.borderColor = [UIColor grayColor].CGColor;
     inputField.text = @"测试";
-//    [self.view addSubview:inputField];
+    [self.view addSubview:inputField];
     
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendBtn.frame = CGRectMake(20, 210, self.view.frame.size.width-40, 40);

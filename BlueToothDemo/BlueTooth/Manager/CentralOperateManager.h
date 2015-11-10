@@ -34,6 +34,9 @@ typedef void (^RSSIDataBlock)(NSInteger rssi);
 //接收数据
 - (void)reciveData:(ReceiveDataBlock)receive;
 
+//发送数据
+- (void)sendData:(NSString *)string;
+
 //断开连接
 - (void)disconnectCurPeripheral;
 
