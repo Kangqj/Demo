@@ -20,7 +20,9 @@
 
 static NSString *const ServiceUUID =  @"FFF0";
 static NSString *const CharacteristicUUID =  @"FFF1";
-static NSString * const LocalNameKey =  @"myPeripheral";
+static NSString *const NameKey =  @"A";
+
+static NSString *const BumpKey =  @"bump";
 
 #endif
 

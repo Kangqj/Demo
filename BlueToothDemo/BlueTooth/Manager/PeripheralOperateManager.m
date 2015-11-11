@@ -122,7 +122,7 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
     if (error == nil)
     {
         [self.peripheralManager startAdvertising:@{CBAdvertisementDataServiceUUIDsKey:@[[CBUUID UUIDWithString:ServiceUUID]],
-                                                   CBAdvertisementDataLocalNameKey:@"A"}];
+                                                   CBAdvertisementDataLocalNameKey:NameKey}];
     }
     else
     {
@@ -132,22 +132,18 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 
 //peripheral开始发送advertising
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
-    NSLog(@"in peripheralManagerDidStartAdvertisiong");
+    
 }
 
 //订阅characteristics
 -(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
 {
     NSLog(@"订阅了 %@的数据",characteristic.UUID);
-    //每秒执行一次给主设备发送一个当前时间的秒数
-//    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:characteristic  repeats:YES];
 }
 
 //取消订阅characteristics
 -(void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic{
-    NSLog(@"取消订阅 %@的数据",characteristic.UUID);
-    //取消回应
-    [timer invalidate];
+    
 }
 
 //发送数据，发送当前时间的秒数
@@ -164,7 +160,7 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 
 //读characteristics请求
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
-    NSLog(@"didReceiveReadRequest");
+    
     //判断是否有读数据的权限
     if (request.characteristic.properties & CBCharacteristicPropertyRead) {
         NSData *data = request.characteristic.value;
@@ -178,29 +174,20 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 
 //写characteristics请求
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
-    NSLog(@"didReceiveWriteRequests");
+    
     CBATTRequest *request = requests[0];
     
     //判断是否有写数据的权限
     if (request.characteristic.properties & CBCharacteristicPropertyWrite) {
-        //需要转换成CBMutableCharacteristic对象才能进行写值
+        
         CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;
         c.value = request.value;
         NSString *dataStr = [[NSString alloc] initWithData:request.value encoding:NSUTF8StringEncoding];
         NSLog(@"%@",dataStr);
         
-        if ([dataStr isEqualToString:@"near"])
+        if ([dataStr isEqualToString:BumpKey])
         {
             timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:self.readwriteCharacteristic  repeats:YES];
-            
-            NSString *name = [NSString stringWithFormat:@"你和%@碰了一下",[UIDevice currentDevice].name];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                            message:name
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"OK", nil];
-            [alert show];
         }
         
         self.receiveBlock(dataStr);

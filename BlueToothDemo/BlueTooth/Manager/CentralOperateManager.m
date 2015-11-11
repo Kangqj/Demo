@@ -150,7 +150,7 @@
         
         if ([[peripheral RSSI] intValue] > -36)
         {
-            [self sendData:@"near"];
+            [self sendData:BumpKey];
         }
     }
 }
