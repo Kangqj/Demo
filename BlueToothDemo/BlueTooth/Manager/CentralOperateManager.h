@@ -14,8 +14,6 @@ typedef void (^FindSignalBlock)(CBPeripheral *peripheral);
 typedef void (^ReceiveDataBlock)(NSString *string);
 typedef void (^RSSIDataBlock)(NSInteger rssi);
 
-@property(nonatomic, strong) NSMutableArray *peripheralArr;
-@property(nonatomic, strong) NSMutableArray *dataDicArr;
 @property(nonatomic, strong) FindSignalBlock findSignalBlock;
 @property(nonatomic, strong) ReceiveDataBlock receiveBlock;
 @property(nonatomic, strong) RSSIDataBlock rssieBlock;
@@ -28,17 +26,17 @@ typedef void (^RSSIDataBlock)(NSInteger rssi);
 //停止搜索
 - (void)stopScanSign;
 
-//选区周边和服务
-- (void)connectPeripheral:(NSInteger)index service:(NSInteger)sIndex;
+//连接周边服务
+- (void)connectPeripheral;
+
+//断开连接
+- (void)disconnectPeripheral;
 
 //接收数据
 - (void)reciveData:(ReceiveDataBlock)receive;
 
 //发送数据
 - (void)sendData:(NSString *)string;
-
-//断开连接
-- (void)disconnectCurPeripheral;
 
 //获取RSSI强度
 - (void)getRSSIData:(RSSIDataBlock)rssi;

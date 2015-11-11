@@ -15,10 +15,8 @@
 
 @property(nonatomic, strong) CBCentralManager *centralManager;
 @property(nonatomic, strong) CBCharacteristic *writeCharacteristic;
-@property(nonatomic, assign) NSInteger peripheralIndex;
-@property(nonatomic, assign) NSInteger serviceIndex;
-@property(nonatomic, assign) NSTimer   *timer;
-@property(nonatomic, assign) NSTimer   *scanTimer;
+@property(nonatomic, strong) CBPeripheral     *curPeripheral;
+@property(nonatomic, assign) NSTimer          *timer;
 
 
 @end
@@ -43,8 +41,6 @@
     {
         self = [super init];
         
-        self.peripheralArr = [NSMutableArray array];
-        self.dataDicArr = [NSMutableArray array];
     }
     
     return self;
@@ -54,10 +50,17 @@
 {
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     
-    [self.peripheralArr removeAllObjects];
-    [self.dataDicArr removeAllObjects];
-    
     self.findSignalBlock = block;
+}
+
+- (void)connectPeripheral
+{
+    [self.centralManager connectPeripheral:self.curPeripheral options:nil];
+}
+
+- (void)disconnectPeripheral
+{
+    [self.centralManager cancelPeripheralConnection:self.curPeripheral];
 }
 
 - (void)stopScanSign
@@ -68,13 +71,36 @@
     self.centralManager = nil;
 }
 
-//获取RSSI强度
+
 - (void)getRSSIData:(RSSIDataBlock)rssi
 {
     self.rssieBlock = rssi;
 }
 
-#pragma mark 找到服务回调
+- (float)calcDistByRSSI:(int)rssi
+{
+    int iRssi = abs(rssi);
+    float power = (iRssi-59)/(10*2.0);
+    return pow(10, power);
+}
+
+
+- (void)reciveData:(ReceiveDataBlock)receive
+{
+    self.receiveBlock = receive;
+}
+
+
+- (void)sendData:(NSString *)string
+{
+    if (self.writeCharacteristic)
+    {
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        [self.curPeripheral writeValue:data forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+}
+
+#pragma mark CBCentralManagerDelegate
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     switch (central.state)
@@ -91,151 +117,61 @@
     }
 }
 
-/*
- 在实现中，可以不断扫描周边的蓝牙信号，根据信号的RSSI来判断哪个信号源离得最近，那么就自动去连接那个服务
- */
-
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
+    self.curPeripheral = peripheral;
     self.findSignalBlock(peripheral);
+}
+
+
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+{
+    [peripheral discoverServices:@[[CBUUID UUIDWithString:ServiceUUID]]];
     
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:peripheral
+                                                selector:@selector(readRSSI)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
-- (float)calcDistByRSSI:(int)rssi
-{
-    int iRssi = abs(rssi);
-    float power = (iRssi-59)/(10*2.0);
-    return pow(10, power);
-}
-
-
-- (void)connectPeripheral:(NSInteger)index service:(NSInteger)sIndex
-{
-    if (self.peripheralArr.count > index)
-    {
-        self.peripheralIndex = index;
-        self.serviceIndex = sIndex;
-        
-        CBPeripheral *peripheral = [self.peripheralArr objectAtIndex:index];
-        [self.centralManager connectPeripheral:peripheral options:nil];
-    }
-    else
-    {
-        NSLog(@"数组越界");
-    }
-}
-
-- (void)disconnectCurPeripheral
-{
-    if (self.peripheralArr.count > self.peripheralIndex)
-    {
-        CBPeripheral *peripheral = [self.peripheralArr objectAtIndex:self.peripheralIndex];
-        [self.centralManager cancelPeripheralConnection:peripheral];
-    }
-}
-
-//接收数据
-- (void)reciveData:(ReceiveDataBlock)receive
-{
-    self.receiveBlock = receive;
-}
-
-//发送数据
-- (void)sendData:(NSString *)string
-{
-    if (self.writeCharacteristic)
-    {
-        CBPeripheral *peripheral = [self.peripheralArr objectAtIndex:self.peripheralIndex];
-        
-        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-        [peripheral writeValue:data forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
-    }
-    else
-    {
-        NSLog(@"没有写入权限");
-    }
-    
-}
-
-#pragma mark CBCentralManagerDelegate
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     
 }
 
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-{
-    //让周边去发现这个服务
-    NSDictionary *dic = [self.dataDicArr objectAtIndex:self.peripheralIndex];
-    NSArray *arr = [dic objectForKey:@"UUIDs"];
-    
-    if (arr.count > self.serviceIndex)
-    {
-        CBUUID *uuid = [arr objectAtIndex:self.serviceIndex];
-        [peripheral setDelegate:self];
-        [peripheral discoverServices:@[uuid]];
-        
-        /*
-        isNear = NO;
-        if (self.timer)
-        {
-            [self.timer invalidate];
-            self.timer = nil;
-        }
-        
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                      target:peripheral
-                                                    selector:@selector(readRSSI)
-                                                    userInfo:nil
-                                                     repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-         */
-        
-    }
-}
-
-#pragma mark CBPeripheralDelegate 周边接收回调
+#pragma mark CBPeripheralDelegate
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if (!error)
     {
-        NSLog(@"rssi %d", [[peripheral RSSI] intValue]);
-        
-        [self sendData:@"near"];
-        
         self.rssieBlock([[peripheral RSSI] intValue]);
+        
+        if ([[peripheral RSSI] intValue] > -36)
+        {
+            [self sendData:@"near"];
+        }
     }
 }
 
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
-    if (error)
+    if (!error)
     {
-        NSLog(@"Error discovering service:%@", [error localizedDescription]);
-        return;
-    }
-    
-    //找到需要的那个服务，然后将特征给这个服务
-    for (CBService *service in peripheral.services)
-    {
-        NSLog(@"Service found with UUID: %@",service.UUID);
-        
-        NSLog(@"%d-%d",service.includedServices.count,service.characteristics.count);
-        
-        for (CBCharacteristic *characteristic in service.characteristics)
+        for (CBService *service in peripheral.services)
         {
-            NSLog(@"characteristic found with UUID: %@",characteristic.UUID);
+            NSLog(@"Service found with UUID: %@",service.UUID);
+            [peripheral discoverCharacteristics:nil forService:service];
         }
-        
-        //FFF2特性具有读写权限
-//        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@"FFF2"]] forService:service];
-        
-        [peripheral discoverCharacteristics:nil forService:service];
+    }
+    else
+    {
+        NSLog(@"didDiscoverServices Error:%@", [error localizedDescription]);
     }
 }
 
-#pragma mark 特征的值更新回调
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
     if (error)
@@ -246,9 +182,11 @@
     
     for (CBCharacteristic *characteristic in service.characteristics)
     {
-        if (characteristic.properties & CBCharacteristicPropertyWrite)
+        if (characteristic.properties & CBCharacteristicPropertyWrite & CBCharacteristicPropertyRead)
         {
             self.writeCharacteristic = characteristic;
+            
+            [peripheral readValueForCharacteristic:characteristic];
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
             
             [self sendData:@"near"];
@@ -263,30 +201,20 @@
             [alert show];
             
         }
-        else
-        {
-            [peripheral readValueForCharacteristic:characteristic];
-            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-        }
         
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
         [peripheral setNotifyValue:YES forCharacteristic:characteristic];
     }
 }
 
-//获取的charateristic的值
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    //打印出characteristic的UUID和值
-    //!注意，value的类型是NSData，具体开发时，会根据外设协议制定的方式去解析数据
-    
     NSString *dataStr = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
     NSLog(@"characteristic uuid:%@  value:%@ string:%@",characteristic.UUID,characteristic.value,dataStr);
     if (self.receiveBlock)
     {
         self.receiveBlock(dataStr);
     }
-    
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
@@ -304,41 +232,23 @@
     else
     {
         NSLog(@"Notification stopped on %@.Disconnecting", characteristic);
-        //        [self.centralManager cancelPeripheralConnection:peripheral];
     }
 }
 
-//搜索到Characteristic的Descriptors
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
     
-    //打印出Characteristic和他的Descriptors
-    NSLog(@"characteristic uuid:%@",characteristic.UUID);
-    for (CBDescriptor *d in characteristic.descriptors) {
-        NSLog(@"Descriptor uuid:%@",d.UUID);
-    }
+    
 }
 
-//获取到Descriptors的值
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error
 {
-    //打印出DescriptorsUUID 和value
-    //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
-    NSLog(@"characteristic uuid:%@  value:%@",[NSString stringWithFormat:@"%@",descriptor.UUID],descriptor.value);
+    
 }
 
 //写数据回调
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
-    NSString *dataStr = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-    NSLog(@"WriteValueRespone:%@",dataStr);
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        [self sendData:@"OK"];
-    }
+    
 }
 
 @end

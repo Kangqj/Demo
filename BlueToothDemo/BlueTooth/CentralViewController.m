@@ -7,6 +7,8 @@
 //
 
 #import "CentralViewController.h"
+#import "BumpViewController.h"
+
 
 @interface CentralViewController ()
 {
@@ -66,7 +68,8 @@
 
 - (void)goToBumpView
 {
-    
+    BumpViewController *bumpViewController = [[BumpViewController alloc] init];
+    [self.navigationController pushViewController:bumpViewController animated:YES];
 }
 
 - (void)findAnimationPeripheral:(CBPeripheral *)peripheral

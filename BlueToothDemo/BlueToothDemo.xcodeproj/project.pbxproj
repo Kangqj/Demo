@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770E36021BF3367400B6A98D /* BumpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E36011BF3367400B6A98D /* BumpViewController.m */; };
 		772C61711BE2FE6E006E3D56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 772C61701BE2FE6E006E3D56 /* main.m */; };
 		772C61741BE2FE6E006E3D56 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 772C61731BE2FE6E006E3D56 /* AppDelegate.m */; };
 		772C61771BE2FE6E006E3D56 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772C61761BE2FE6E006E3D56 /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		770E36001BF3367400B6A98D /* BumpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BumpViewController.h; sourceTree = "<group>"; };
+		770E36011BF3367400B6A98D /* BumpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BumpViewController.m; sourceTree = "<group>"; };
 		772C616B1BE2FE6D006E3D56 /* BlueToothDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueToothDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772C616F1BE2FE6E006E3D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772C61701BE2FE6E006E3D56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				77FCDB681BE75F24001AE0C7 /* Manager */,
 				77FA8AE31BE70575005FFB38 /* CentralViewController.h */,
 				77FA8AE41BE70575005FFB38 /* CentralViewController.m */,
+				770E36001BF3367400B6A98D /* BumpViewController.h */,
+				770E36011BF3367400B6A98D /* BumpViewController.m */,
 				77FA8AE61BE7058C005FFB38 /* PeripheralViewController.h */,
 				77FA8AE71BE7058C005FFB38 /* PeripheralViewController.m */,
 				772C617B1BE2FE6E006E3D56 /* Images.xcassets */,
@@ -259,6 +264,7 @@
 			files = (
 				772C61771BE2FE6E006E3D56 /* ViewController.m in Sources */,
 				772C61741BE2FE6E006E3D56 /* AppDelegate.m in Sources */,
+				770E36021BF3367400B6A98D /* BumpViewController.m in Sources */,
 				77FCDB6B1BE75F63001AE0C7 /* CentralOperateManager.m in Sources */,
 				77FCDB6E1BE75F83001AE0C7 /* PeripheralOperateManager.m in Sources */,
 				77FA8AE51BE70575005FFB38 /* CentralViewController.m in Sources */,
