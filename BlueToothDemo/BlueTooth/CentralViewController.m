@@ -26,21 +26,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.extendedLayoutIncludesOpaqueBars = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"搜索周边信号";
     
     [self setupUI];
-    
-    //搜索周边信号
-    [[CentralOperateManager sharedManager] scanPeripheralSignal:^(CBPeripheral *peripheral) {
-        
-        [self findAnimationPeripheral:peripheral];
-        
-    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -48,6 +38,18 @@
     [super viewWillDisappear:animated];
     
     [[CentralOperateManager sharedManager] stopScanSign];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //搜索周边信号
+    [[CentralOperateManager sharedManager] scanPeripheralSignal:^(CBPeripheral *peripheral) {
+        
+        [self findAnimationPeripheral:peripheral];
+        
+    }];
 }
 
 - (void)setupUI
@@ -66,12 +68,14 @@
     peripheralBtn.hidden = YES;
 }
 
+//进入传输界面
 - (void)goToBumpView
 {
     BumpViewController *bumpViewController = [[BumpViewController alloc] init];
     [self.navigationController pushViewController:bumpViewController animated:YES];
 }
 
+//跳出动画
 - (void)findAnimationPeripheral:(CBPeripheral *)peripheral
 {
     CAKeyframeAnimation * animation;
