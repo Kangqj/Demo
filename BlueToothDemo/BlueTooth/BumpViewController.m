@@ -18,7 +18,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[CentralOperateManager sharedManager] connectPeripheral];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *rssiLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, 30)];
+    rssiLab.textColor = [UIColor blackColor];
+    rssiLab.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:rssiLab];
+    [[CentralOperateManager sharedManager] getRSSIData:^(NSInteger rssi) {
+        rssiLab.text = [NSString stringWithFormat:@"RSSI:%d",rssi];
+    }];
+    
+    UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    [self.view addSubview:picImageView];
+    picImageView.center = self.view.center;
+    
+    [[CentralOperateManager sharedManager] reciveData:^(NSData *data) {
+        
+        picImageView.image = [UIImage imageWithData:data];
+        
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning {

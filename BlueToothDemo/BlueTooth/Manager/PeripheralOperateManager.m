@@ -147,14 +147,15 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 }
 
 //发送数据，发送当前时间的秒数
--(BOOL)sendData:(NSTimer *)t {
-    CBMutableCharacteristic *characteristic = t.userInfo;
-    NSDateFormatter *dft = [[NSDateFormatter alloc]init];
-    [dft setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSLog(@"%@",[dft stringFromDate:[NSDate date]]);
-    
-    //执行回应Central通知数据
-    return  [self.peripheralManager updateValue:[[dft stringFromDate:[NSDate date]] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:(CBMutableCharacteristic *)characteristic onSubscribedCentrals:nil];
+-(BOOL)sendData
+{    
+    NSString *picPath = [[NSBundle mainBundle] pathForResource:@"10M" ofType:@"png"];
+    NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:picPath];
+    [handle seekToFileOffset:0];
+    NSData *segmentData = [handle readDataOfLength:150];
+    [handle closeFile];
+    NSLog(@"sendData:%ld",segmentData.length);
+    return [self.peripheralManager updateValue:segmentData forCharacteristic:self.readwriteCharacteristic onSubscribedCentrals:nil];
 }
 
 
@@ -183,14 +184,16 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
         CBMutableCharacteristic *c =(CBMutableCharacteristic *)request.characteristic;
         c.value = request.value;
         NSString *dataStr = [[NSString alloc] initWithData:request.value encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",dataStr);
-        
+        NSLog(@"didReceiveWriteRequests:%@",dataStr);
         if ([dataStr isEqualToString:BumpKey])
         {
-            timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sendData:) userInfo:self.readwriteCharacteristic  repeats:YES];
+            [self sendData];
         }
         
-        self.receiveBlock(dataStr);
+//        if (self.receiveBlock)
+//        {
+//            self.receiveBlock(request.value);
+//        }
         
         [self.peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
     }else{

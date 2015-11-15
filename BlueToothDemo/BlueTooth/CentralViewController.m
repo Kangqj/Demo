@@ -12,7 +12,9 @@
 
 @interface CentralViewController ()
 {
-    UIButton *peripheralBtn;
+    UIButton    *peripheralBtn;
+    UILabel     *rssiLab;
+    UIImageView *picImageView;
 }
 
 @property (strong, nonatomic) UITableView *myTableView;
@@ -31,6 +33,13 @@
     self.title = @"搜索周边信号";
     
     [self setupUI];
+    
+    //搜索周边信号
+    [[CentralOperateManager sharedManager] scanPeripheralSignal:^(CBPeripheral *peripheral) {
+        
+        [self findAnimationPeripheral:peripheral];
+        
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -44,12 +53,6 @@
 {
     [super viewDidAppear:animated];
     
-    //搜索周边信号
-    [[CentralOperateManager sharedManager] scanPeripheralSignal:^(CBPeripheral *peripheral) {
-        
-        [self findAnimationPeripheral:peripheral];
-        
-    }];
 }
 
 - (void)setupUI
@@ -66,13 +69,35 @@
     peripheralBtn.layer.shadowOffset = CGSizeMake(5, 5);
     peripheralBtn.layer.shadowOpacity = 0.6;
     peripheralBtn.hidden = YES;
+    
+    
+    rssiLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, 30)];
+    rssiLab.textColor = [UIColor redColor];
+    rssiLab.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:rssiLab];
+    
+    
+    picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    [self.view addSubview:picImageView];
 }
 
 //进入传输界面
 - (void)goToBumpView
 {
-    BumpViewController *bumpViewController = [[BumpViewController alloc] init];
-    [self.navigationController pushViewController:bumpViewController animated:YES];
+    [[CentralOperateManager sharedManager] connectPeripheral];
+    
+    [[CentralOperateManager sharedManager] getRSSIData:^(NSInteger rssi) {
+        rssiLab.text = [NSString stringWithFormat:@"RSSI:%ld",rssi];
+    }];
+    
+    [[CentralOperateManager sharedManager] reciveData:^(NSData *data) {
+        
+        picImageView.image = [UIImage imageWithData:data];
+        
+    }];
+    
+//    BumpViewController *bumpViewController = [[BumpViewController alloc] init];
+//    [self.navigationController pushViewController:bumpViewController animated:NO];
 }
 
 //跳出动画

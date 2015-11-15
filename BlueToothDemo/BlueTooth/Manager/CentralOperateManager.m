@@ -15,13 +15,14 @@
 
 @property(nonatomic, strong) CBCentralManager *centralManager;
 @property(nonatomic, strong) CBCharacteristic *writeCharacteristic;
-@property(nonatomic, strong) CBPeripheral     *curPeripheral;
-@property(nonatomic, assign) NSTimer          *timer;
+@property(nonatomic, strong) NSTimer          *timer;
 
 
 @end
 
 @implementation CentralOperateManager
+
+@synthesize curPeripheral;
 
 + (CentralOperateManager *)sharedManager
 {
@@ -56,6 +57,7 @@
 - (void)connectPeripheral
 {
     [self.centralManager connectPeripheral:self.curPeripheral options:nil];
+    //@{CBConnectPeripheralOptionNotifyOnDisconnectionKey:@YES}
 }
 
 - (void)disconnectPeripheral
@@ -107,33 +109,47 @@
     {
         case CBCentralManagerStatePoweredOn:
             
-            [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:ServiceUUID]] options:nil];
+            [self.centralManager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];//已发现的设备是否重复扫描
             
             break;
             
         default:
-            NSLog(@"Central Manager did change state");
             break;
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    self.curPeripheral = peripheral;
     self.findSignalBlock(peripheral);
+    
+    [self.centralManager stopScan];
+    
+    if (self.curPeripheral != peripheral)
+    {
+        self.curPeripheral = peripheral;
+        
+//        [self.centralManager connectPeripheral:self.curPeripheral options:nil];
+    }
 }
 
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
+    peripheral.delegate = self;
     [peripheral discoverServices:@[[CBUUID UUIDWithString:ServiceUUID]]];
+    
+    if (self.timer)
+    {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                   target:peripheral
                                                 selector:@selector(readRSSI)
                                                 userInfo:nil
                                                  repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
@@ -146,12 +162,16 @@
 {
     if (!error)
     {
-        self.rssieBlock([[peripheral RSSI] intValue]);
-        
-        if ([[peripheral RSSI] intValue] > -36)
+        if (self.rssieBlock)
         {
-            [self sendData:BumpKey];
+            self.rssieBlock([[peripheral RSSI] intValue]);
+            
+            if ([[peripheral RSSI] intValue] > -36)
+            {
+                [self sendData:BumpKey];
+            }
         }
+        
     }
 }
 
@@ -163,7 +183,7 @@
         for (CBService *service in peripheral.services)
         {
             NSLog(@"Service found with UUID: %@",service.UUID);
-            [peripheral discoverCharacteristics:nil forService:service];
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:CharacteristicUUID]] forService:service];
         }
     }
     else
@@ -182,38 +202,22 @@
     
     for (CBCharacteristic *characteristic in service.characteristics)
     {
-        if (characteristic.properties & CBCharacteristicPropertyWrite & CBCharacteristicPropertyRead)
-        {
-            self.writeCharacteristic = characteristic;
-            
-            [peripheral readValueForCharacteristic:characteristic];
-            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-            
-            [self sendData:@"near"];
-            
-            NSString *name = [NSString stringWithFormat:@"要接收%@的文件吗？",[UIDevice currentDevice].name];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:name
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"OK", nil];
-            [alert show];
-            
-        }
+        self.writeCharacteristic = characteristic;
         
-        [peripheral discoverDescriptorsForCharacteristic:characteristic];
+        [peripheral readValueForCharacteristic:characteristic];
         [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+        [peripheral discoverDescriptorsForCharacteristic:characteristic];
+        
+        [self sendData:BumpKey];
     }
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSString *dataStr = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-    NSLog(@"characteristic uuid:%@  value:%@ string:%@",characteristic.UUID,characteristic.value,dataStr);
+    NSData *imageData = characteristic.value;
     if (self.receiveBlock)
     {
-        self.receiveBlock(dataStr);
+        self.receiveBlock(imageData);
     }
 }
 
@@ -249,6 +253,30 @@
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
     
+}
+
+//设置通知
+-(void)notifyCharacteristic:(CBPeripheral *)peripheral
+             characteristic:(CBCharacteristic *)characteristic{
+    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
+    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+    
+}
+
+//取消通知
+-(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
+                   characteristic:(CBCharacteristic *)characteristic{
+    
+    [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+}
+
+//停止扫描并断开连接
+-(void)disconnectPeripheral:(CBCentralManager *)centralManager
+                 peripheral:(CBPeripheral *)peripheral{
+    //停止扫描
+    [centralManager stopScan];
+    //断开连接
+    [centralManager cancelPeripheralConnection:peripheral];
 }
 
 @end

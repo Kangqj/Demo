@@ -50,7 +50,7 @@
     [self.view addSubview:showTextView];
     showTextView.editable = NO;
     
-    [[PeripheralOperateManager sharedManager] reciveData:^(NSString *string) {
+    [[PeripheralOperateManager sharedManager] reciveData:^(NSData *string) {
         
         if (string.length == 0)
         {
