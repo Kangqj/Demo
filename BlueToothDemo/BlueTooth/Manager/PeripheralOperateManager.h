@@ -11,7 +11,7 @@
 @interface PeripheralOperateManager : NSObject
 
 typedef void (^ReceiveDataBlock)(NSData *data);
-@property(nonatomic, strong) ReceiveDataBlock receiveBlock;
+@property(nonatomic, copy) ReceiveDataBlock receiveBlock;
 
 
 + (PeripheralOperateManager *)sharedManager;

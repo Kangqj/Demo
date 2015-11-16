@@ -14,9 +14,9 @@ typedef void (^FindSignalBlock)(CBPeripheral *peripheral);
 typedef void (^ReceiveDataBlock)(NSData *data);
 typedef void (^RSSIDataBlock)(NSInteger rssi);
 
-@property(nonatomic, strong) FindSignalBlock findSignalBlock;
-@property(nonatomic, strong) ReceiveDataBlock receiveBlock;
-@property(nonatomic, strong) RSSIDataBlock rssieBlock;
+@property(nonatomic, copy) FindSignalBlock findSignalBlock;
+@property(nonatomic, copy) ReceiveDataBlock receiveBlock;
+@property(nonatomic, copy) RSSIDataBlock rssieBlock;
 @property(nonatomic, strong) CBPeripheral     *curPeripheral;
 
 + (CentralOperateManager *)sharedManager;
