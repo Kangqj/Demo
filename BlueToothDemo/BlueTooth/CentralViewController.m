@@ -71,13 +71,14 @@
     peripheralBtn.hidden = YES;
     
     
-    rssiLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, 30)];
+    rssiLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 30)];
     rssiLab.textColor = [UIColor redColor];
     rssiLab.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:rssiLab];
     
     
-    picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    picImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-100)/2, 100, 100, 100)];
+    picImageView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:picImageView];
 }
 
@@ -87,12 +88,12 @@
     [[CentralOperateManager sharedManager] connectPeripheral];
     
     [[CentralOperateManager sharedManager] getRSSIData:^(NSInteger rssi) {
-        rssiLab.text = [NSString stringWithFormat:@"RSSI:%ld",rssi];
+        rssiLab.text = [NSString stringWithFormat:@"RSSI:%d",rssi];
     }];
     
-    [[CentralOperateManager sharedManager] reciveData:^(NSData *data) {
+    [[CentralOperateManager sharedManager] reciveData:^(NSString *path) {
         
-        picImageView.image = [UIImage imageWithData:data];
+        picImageView.image = [UIImage imageWithContentsOfFile:path];
         
     }];
     

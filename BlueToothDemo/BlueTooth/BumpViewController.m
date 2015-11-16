@@ -32,9 +32,9 @@
     [self.view addSubview:picImageView];
     picImageView.center = self.view.center;
     
-    [[CentralOperateManager sharedManager] reciveData:^(NSData *data) {
+    [[CentralOperateManager sharedManager] reciveData:^(NSString *path) {
         
-        picImageView.image = [UIImage imageWithData:data];
+        picImageView.image = [UIImage imageWithContentsOfFile:path];
         
     }];
 }

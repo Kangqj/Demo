@@ -168,7 +168,7 @@
             
             if ([[peripheral RSSI] intValue] > -36)
             {
-                [self sendData:BumpKey];
+//                [self sendData:BumpKey];
             }
         }
         
@@ -215,9 +215,17 @@
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSData *imageData = characteristic.value;
-    if (self.receiveBlock)
+    
+    if (imageData.length == 150)
     {
-        self.receiveBlock(imageData);
+        NSString *path = [NSHomeDirectory() stringByAppendingString:@"/image.png"];
+        
+        [imageData writeToFile:path atomically:NO];
+        
+        if (self.receiveBlock)
+        {
+            self.receiveBlock(path);
+        }
     }
 }
 

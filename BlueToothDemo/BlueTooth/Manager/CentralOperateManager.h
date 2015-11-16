@@ -11,7 +11,7 @@
 @interface CentralOperateManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 typedef void (^FindSignalBlock)(CBPeripheral *peripheral);
-typedef void (^ReceiveDataBlock)(NSData *data);
+typedef void (^ReceiveDataBlock)(NSString *path);
 typedef void (^RSSIDataBlock)(NSInteger rssi);
 
 @property(nonatomic, copy) FindSignalBlock findSignalBlock;

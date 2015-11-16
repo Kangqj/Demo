@@ -10,7 +10,7 @@
 
 @interface PeripheralOperateManager : NSObject
 
-typedef void (^ReceiveDataBlock)(NSData *data);
+typedef void (^ReceiveDataBlock)(NSString *path);
 @property(nonatomic, copy) ReceiveDataBlock receiveBlock;
 
 
