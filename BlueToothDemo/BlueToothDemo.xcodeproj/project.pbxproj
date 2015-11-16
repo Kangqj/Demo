@@ -14,6 +14,7 @@
 		772C617C1BE2FE6E006E3D56 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772C617B1BE2FE6E006E3D56 /* Images.xcassets */; };
 		772C617F1BE2FE6E006E3D56 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772C617D1BE2FE6E006E3D56 /* LaunchScreen.xib */; };
 		772C618B1BE2FE6E006E3D56 /* BlueToothTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 772C618A1BE2FE6E006E3D56 /* BlueToothTests.m */; };
+		77D6D1701BF9B2D30015153B /* icon_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D6D16F1BF9B2D30015153B /* icon_64.png */; };
 		77F6E3C11BF43CAC002C7264 /* 10M.png in Resources */ = {isa = PBXBuildFile; fileRef = 77F6E3C01BF43CAC002C7264 /* 10M.png */; };
 		77FA8AE51BE70575005FFB38 /* CentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FA8AE41BE70575005FFB38 /* CentralViewController.m */; };
 		77FA8AE81BE7058C005FFB38 /* PeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FA8AE71BE7058C005FFB38 /* PeripheralViewController.m */; };
@@ -46,6 +47,7 @@
 		772C61841BE2FE6E006E3D56 /* BlueToothDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueToothDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772C61891BE2FE6E006E3D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772C618A1BE2FE6E006E3D56 /* BlueToothTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueToothTests.m; sourceTree = "<group>"; };
+		77D6D16F1BF9B2D30015153B /* icon_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_64.png; sourceTree = "<group>"; };
 		77F6ABE81BF036E900C46078 /* UIColor_RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_RandomColor.h; sourceTree = "<group>"; };
 		77F6ABE91BF036E900C46078 /* UIImage_Colorful.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage_Colorful.h; sourceTree = "<group>"; };
 		77F6E3C01BF43CAC002C7264 /* 10M.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10M.png; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				77FA8AE61BE7058C005FFB38 /* PeripheralViewController.h */,
 				77FA8AE71BE7058C005FFB38 /* PeripheralViewController.m */,
 				77F6E3C01BF43CAC002C7264 /* 10M.png */,
+				77D6D16F1BF9B2D30015153B /* icon_64.png */,
 				772C617B1BE2FE6E006E3D56 /* Images.xcassets */,
 				772C617D1BE2FE6E006E3D56 /* LaunchScreen.xib */,
 				772C616E1BE2FE6D006E3D56 /* Supporting Files */,
@@ -246,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77D6D1701BF9B2D30015153B /* icon_64.png in Resources */,
 				77F6E3C11BF43CAC002C7264 /* 10M.png in Resources */,
 				772C617F1BE2FE6E006E3D56 /* LaunchScreen.xib in Resources */,
 				772C617C1BE2FE6E006E3D56 /* Images.xcassets in Resources */,

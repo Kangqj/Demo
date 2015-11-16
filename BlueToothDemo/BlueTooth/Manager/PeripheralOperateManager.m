@@ -149,7 +149,7 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 //发送数据，发送当前时间的秒数
 -(BOOL)sendData
 {    
-    NSString *picPath = [[NSBundle mainBundle] pathForResource:@"10M" ofType:@"png"];
+    NSString *picPath = [[NSBundle mainBundle] pathForResource:@"icon_64" ofType:@"png"];
     NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:picPath];
     [handle seekToFileOffset:0];
     NSData *segmentData = [handle readDataOfLength:150];
