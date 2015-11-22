@@ -37,7 +37,7 @@ typedef void (^RSSIDataBlock)(NSInteger rssi);
 - (void)reciveData:(ReceiveDataBlock)receive;
 
 //发送数据
-- (void)sendData:(NSString *)string;
+- (void)sendData:(NSData *)data;
 
 //获取RSSI强度
 - (void)getRSSIData:(RSSIDataBlock)rssi;

@@ -10,12 +10,13 @@
 
 @interface CentralOperateManager ()
 {
-    
+    int curIndex;
 }
 
 @property(nonatomic, strong) CBCentralManager *centralManager;
 @property(nonatomic, strong) CBCharacteristic *writeCharacteristic;
 @property(nonatomic, strong) NSTimer          *timer;
+@property(nonatomic, strong) NSMutableData    *buffer;
 
 
 @end
@@ -42,6 +43,7 @@
     {
         self = [super init];
         
+        self.buffer = [NSMutableData data];
     }
     
     return self;
@@ -93,11 +95,10 @@
 }
 
 
-- (void)sendData:(NSString *)string
+- (void)sendData:(NSData *)data
 {
     if (self.writeCharacteristic)
     {
-        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
         [self.curPeripheral writeValue:data forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
     }
 }
@@ -207,24 +208,50 @@
         [peripheral readValueForCharacteristic:characteristic];
         [peripheral setNotifyValue:YES forCharacteristic:characteristic];
         [peripheral discoverDescriptorsForCharacteristic:characteristic];
-        
-        [self sendData:BumpKey];
     }
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSData *imageData = characteristic.value;
-    
-    if (imageData.length == 150)
+    if (characteristic.value)
     {
-        NSString *path = [NSHomeDirectory() stringByAppendingString:@"/image.png"];
+        /*key
+         type:       //消息类型
+         data:       //图片数据
+         index:      //序列号
+         length:     //长度
+         alllength:  //总长度
+         */
+        NSError *error;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:characteristic.value options:kNilOptions error:&error];
         
-        [imageData writeToFile:path atomically:NO];
+        NSString *type = [json objectForKey:@"type"];
         
-        if (self.receiveBlock)
+        if ([type isEqualToString:TransferKey])
         {
-            self.receiveBlock(path);
+            NSNumber *index = [json objectForKey:@"index"];
+            curIndex = [index intValue];
+            
+            if (0 == [index intValue]) {
+                self.buffer = nil;
+                self.buffer = [NSMutableData data];
+            }
+            
+            NSData *data = [json objectForKey:@"data"];
+            [self.buffer appendData:data];
+            
+            NSNumber *lengthNum = [json objectForKey:@"alllength"];
+            long long alllength = [lengthNum longLongValue];
+            
+            if (self.buffer.length >= alllength)
+            {
+                NSString *path = [NSHomeDirectory() stringByAppendingString:@"/image.png"];
+                
+                if (self.receiveBlock && [self.buffer writeToFile:path atomically:NO])
+                {
+                    self.receiveBlock(path);
+                }
+            }
         }
     }
 }
@@ -240,6 +267,15 @@
     {
         NSLog(@"Notification began on %@", characteristic);
         [peripheral readValueForCharacteristic:characteristic];
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                             BumpKey,@"type",
+                             [NSNumber numberWithInt:curIndex],@"index",nil];
+        
+        NSError *errors;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
+        
+        [self sendData:jsonData];
     }
     else
     {
@@ -260,9 +296,16 @@
 //写数据回调
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         TransferKey,@"type",
+                         [NSNumber numberWithInt:curIndex],@"index",nil];
     
+    NSError *errors;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
+    
+    [self sendData:jsonData];
 }
-
+/*
 //设置通知
 -(void)notifyCharacteristic:(CBPeripheral *)peripheral
              characteristic:(CBCharacteristic *)characteristic{
@@ -285,6 +328,6 @@
     [centralManager stopScan];
     //断开连接
     [centralManager cancelPeripheralConnection:peripheral];
-}
+}*/
 
 @end

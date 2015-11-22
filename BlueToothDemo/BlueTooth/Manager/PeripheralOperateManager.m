@@ -8,9 +8,12 @@
 
 #import "PeripheralOperateManager.h"
 
+#define kBlock_length   150
+
 @interface PeripheralOperateManager () <CBPeripheralManagerDelegate,CBPeripheralDelegate>
 {
     NSTimer *timer;
+    int  blokcNumber;
 }
 
 @property(nonatomic, strong) CBPeripheralManager *peripheralManager;
@@ -37,6 +40,8 @@
     if (self)
     {
         self = [super init];
+        
+        blokcNumber = 0;
     }
     
     return self;
@@ -147,15 +152,43 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 }
 
 //发送数据，发送当前时间的秒数
--(BOOL)sendData
-{    
+-(BOOL)sendDataIndex:(int)index
+{
+    NSData *segmentData = [self getBlockDataIn:blokcNumber blockLength:kBlock_length];
+    
+    /*
+     type:       //消息类型
+     data:       //图片数据
+     index:      //序列号
+     length:     //长度
+     alllength:  //总长度
+     */
+    
+    NSString *picPath = [[NSBundle mainBundle] pathForResource:@"icon_64" ofType:@"png"];
+    NSData *fileData = [NSData dataWithContentsOfFile:picPath];
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         TransferKey,@"type",
+                         segmentData,@"data",
+                         [NSNumber numberWithInt:index],@"index",
+                         [NSNumber numberWithInt:kBlock_length],@"length",
+                         [NSNumber numberWithLongLong:fileData.length],@"alllength",nil];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+    
+    return [self.peripheralManager updateValue:jsonData forCharacteristic:self.readwriteCharacteristic onSubscribedCentrals:nil];
+}
+
+- (NSData *)getBlockDataIn:(int)index blockLength:(int)length
+{
     NSString *picPath = [[NSBundle mainBundle] pathForResource:@"icon_64" ofType:@"png"];
     NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:picPath];
-    [handle seekToFileOffset:0];
-    NSData *segmentData = [handle readDataOfLength:150];
+    [handle seekToFileOffset:index*length];
+    NSData *segmentData = [handle readDataOfLength:length];
     [handle closeFile];
-    NSLog(@"sendData:%ld",segmentData.length);
-    return [self.peripheralManager updateValue:segmentData forCharacteristic:self.readwriteCharacteristic onSubscribedCentrals:nil];
+    
+    return segmentData;
 }
 
 
@@ -185,15 +218,25 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
         c.value = request.value;
         NSString *dataStr = [[NSString alloc] initWithData:request.value encoding:NSUTF8StringEncoding];
         NSLog(@"didReceiveWriteRequests:%@",dataStr);
-        if ([dataStr isEqualToString:BumpKey])
-        {
-            [self sendData];
-        }
         
-//        if (self.receiveBlock)
-//        {
-//            self.receiveBlock(request.value);
-//        }
+        if (request.value)
+        {
+            NSError *error;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:request.value options:kNilOptions error:&error];
+            
+            NSString *type = [json objectForKey:@"type"];
+            
+            if ([type isEqualToString:BumpKey])
+            {
+                [self sendDataIndex:0];
+                blokcNumber = 0;
+            }
+            else if ([type isEqualToString:TransferKey])
+            {
+                NSNumber *number = [json objectForKey:@"index"];
+                [self sendDataIndex:[number intValue]];
+            }
+        }
         
         [self.peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
     }else{
