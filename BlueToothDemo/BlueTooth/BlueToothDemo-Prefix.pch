@@ -24,6 +24,7 @@ static NSString *const NameKey =  @"A";
 
 static NSString *const BumpKey      =  @"bump"; //发现
 static NSString *const TransferKey  =  @"transfer"; //传输
+static NSString *const ArchiverKey  =  @"Archiver";
 
 #endif
 

@@ -174,10 +174,15 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
                          [NSNumber numberWithInt:kBlock_length],@"length",
                          [NSNumber numberWithLongLong:fileData.length],@"alllength",nil];
     
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+//    NSError *error;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
     
-    return [self.peripheralManager updateValue:jsonData forCharacteristic:self.readwriteCharacteristic onSubscribedCentrals:nil];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:dic forKey:ArchiverKey];
+    [archiver finishEncoding];
+    
+    return [self.peripheralManager updateValue:data forCharacteristic:self.readwriteCharacteristic onSubscribedCentrals:nil];
 }
 
 - (NSData *)getBlockDataIn:(int)index blockLength:(int)length
@@ -221,10 +226,15 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
         
         if (request.value)
         {
-            NSError *error;
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:request.value options:kNilOptions error:&error];
+//            NSError *error;
+//            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:request.value options:kNilOptions error:&error];
             
-            NSString *type = [json objectForKey:@"type"];
+            NSDictionary *dic = [NSDictionary dictionary];
+            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:request.value];
+            [unarchiver decodeObjectForKey:ArchiverKey];
+            [unarchiver finishDecoding];
+            
+            NSString *type = [dic objectForKey:@"type"];
             
             if ([type isEqualToString:BumpKey])
             {
@@ -233,7 +243,7 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
             }
             else if ([type isEqualToString:TransferKey])
             {
-                NSNumber *number = [json objectForKey:@"index"];
+                NSNumber *number = [dic objectForKey:@"index"];
                 [self sendDataIndex:[number intValue]];
             }
         }

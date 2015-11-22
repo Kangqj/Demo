@@ -222,14 +222,18 @@
          length:     //长度
          alllength:  //总长度
          */
-        NSError *error;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:characteristic.value options:kNilOptions error:&error];
+//        NSError *error;
+//        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:characteristic.value options:kNilOptions error:&error];
+        NSDictionary *dic = [NSDictionary dictionary];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:characteristic.value];
+        [unarchiver decodeObjectForKey:ArchiverKey];
+        [unarchiver finishDecoding];
         
-        NSString *type = [json objectForKey:@"type"];
+        NSString *type = [dic objectForKey:@"type"];
         
         if ([type isEqualToString:TransferKey])
         {
-            NSNumber *index = [json objectForKey:@"index"];
+            NSNumber *index = [dic objectForKey:@"index"];
             curIndex = [index intValue];
             
             if (0 == [index intValue]) {
@@ -237,10 +241,10 @@
                 self.buffer = [NSMutableData data];
             }
             
-            NSData *data = [json objectForKey:@"data"];
+            NSData *data = [dic objectForKey:@"data"];
             [self.buffer appendData:data];
             
-            NSNumber *lengthNum = [json objectForKey:@"alllength"];
+            NSNumber *lengthNum = [dic objectForKey:@"alllength"];
             long long alllength = [lengthNum longLongValue];
             
             if (self.buffer.length >= alllength)
@@ -272,10 +276,14 @@
                              BumpKey,@"type",
                              [NSNumber numberWithInt:curIndex],@"index",nil];
         
-        NSError *errors;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
+//        NSError *errors;
+//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
+        NSMutableData *data = [[NSMutableData alloc] init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+        [archiver encodeObject:dic forKey:ArchiverKey];
+        [archiver finishEncoding];
         
-        [self sendData:jsonData];
+        [self sendData:data];
     }
     else
     {
@@ -300,10 +308,15 @@
                          TransferKey,@"type",
                          [NSNumber numberWithInt:curIndex],@"index",nil];
     
-    NSError *errors;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
+//    NSError *errors;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
     
-    [self sendData:jsonData];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:dic forKey:ArchiverKey];
+    [archiver finishEncoding];
+    
+    [self sendData:data];
 }
 /*
 //设置通知
