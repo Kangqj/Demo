@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 康起军. All rights reserved.
 //
 
-#import "Manager.h"
+#import "MCManager.h"
 
 /*
  每一个服务都应有一个类型（标示符），它是由ASCII字母、数字和“-”组成的短文本串，最多15个字符。
@@ -14,11 +14,11 @@
  */
 static NSString *const MyServiceType = @"chat-files";
 
-@implementation Manager
+@implementation MCManager
 
-+ (Manager *)sharedManager
++ (MCManager *)sharedManager
 {
-    static Manager *instance = nil;
+    static MCManager *instance = nil;
     static dispatch_once_t predicate;
     
     dispatch_once(&predicate, ^{

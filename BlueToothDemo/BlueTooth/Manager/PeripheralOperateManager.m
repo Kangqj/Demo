@@ -177,10 +177,12 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 //    NSError *error;
 //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:dic forKey:ArchiverKey];
-    [archiver finishEncoding];
+//    NSMutableData *data = [[NSMutableData alloc] init];
+//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//    [archiver encodeObject:dic forKey:ArchiverKey];
+//    [archiver finishEncoding];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
     
     return [self.peripheralManager updateValue:data forCharacteristic:self.readwriteCharacteristic onSubscribedCentrals:nil];
 }
@@ -229,10 +231,12 @@ typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
 //            NSError *error;
 //            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:request.value options:kNilOptions error:&error];
             
-            NSDictionary *dic = [NSDictionary dictionary];
-            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:request.value];
-            [unarchiver decodeObjectForKey:ArchiverKey];
-            [unarchiver finishDecoding];
+            NSDictionary *dic= [NSKeyedUnarchiver unarchiveObjectWithData:request.value];
+            
+//            NSDictionary *dic = [NSDictionary dictionary];
+//            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:request.value];
+//            [unarchiver decodeObjectForKey:ArchiverKey];
+//            [unarchiver finishDecoding];
             
             NSString *type = [dic objectForKey:@"type"];
             

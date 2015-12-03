@@ -25,17 +25,21 @@
     [self setupUI];
     
     //设备初始化
-    [[Manager sharedManager] setupPeerAndSessionWithDisplayName:@"路人甲"];
+    [[MCManager sharedManager] setupPeerAndSessionWithDisplayName:@"A"];
     
     //广播信号
-    [[Manager sharedManager] advertisingPeer:YES];
+    [[MCManager sharedManager] advertisingPeer:YES];
     
     //搜索其他设备
-    [[Manager sharedManager] browsingForPeers:^(MCPeerID *peer) {
+    [[MCManager sharedManager] browsingForPeers:^(MCPeerID *peer) {
+        
+        [[DataManager sharedManager].peerArr addObject:peer];
         
         [self findLoseAnimation:YES peer:peer];
         
     } lose:^(MCPeerID *peer) {
+        
+        [[DataManager sharedManager].peerArr removeObject:peer];
         
         [self findLoseAnimation:NO peer:peer];
         

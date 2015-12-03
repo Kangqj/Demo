@@ -222,12 +222,18 @@
          length:     //长度
          alllength:  //总长度
          */
+        
+        NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Documents/bb"];
+        [characteristic.value writeToFile:path atomically:YES];
+        
 //        NSError *error;
-//        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:characteristic.value options:kNilOptions error:&error];
-        NSDictionary *dic = [NSDictionary dictionary];
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:characteristic.value];
-        [unarchiver decodeObjectForKey:ArchiverKey];
-        [unarchiver finishDecoding];
+//        NSDictionary *dic = [[NSDictionary alloc] init];
+//        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:characteristic.value];
+//        [unarchiver decodeObjectForKey:ArchiverKey];
+//        [unarchiver finishDecoding];
+        
+//        NSDictionary *dic= [NSKeyedUnarchiver unarchiveObjectWithData:characteristic.value];
+        NSDictionary *dic= [NSKeyedUnarchiver unarchiveObjectWithFile:path];
         
         NSString *type = [dic objectForKey:@"type"];
         
@@ -278,10 +284,12 @@
         
 //        NSError *errors;
 //        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
-        NSMutableData *data = [[NSMutableData alloc] init];
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-        [archiver encodeObject:dic forKey:ArchiverKey];
-        [archiver finishEncoding];
+//        NSMutableData *data = [[NSMutableData alloc] init];
+//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//        [archiver encodeObject:dic forKey:ArchiverKey];
+//        [archiver finishEncoding];
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
         
         [self sendData:data];
     }
@@ -311,11 +319,11 @@
 //    NSError *errors;
 //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&errors];
     
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:dic forKey:ArchiverKey];
-    [archiver finishEncoding];
-    
+//    NSMutableData *data = [[NSMutableData alloc] init];
+//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//    [archiver encodeObject:dic forKey:ArchiverKey];
+//    [archiver finishEncoding];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
     [self sendData:data];
 }
 /*

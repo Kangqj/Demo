@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041D41E91C10743F005841F2 /* MCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41E81C10743F005841F2 /* MCManager.m */; settings = {ASSET_TAGS = (); }; };
+		041D41EC1C1074CD005841F2 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41EB1C1074CD005841F2 /* DataManager.m */; settings = {ASSET_TAGS = (); }; };
+		041D41F01C10760F005841F2 /* PeerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41EF1C10760F005841F2 /* PeerView.m */; settings = {ASSET_TAGS = (); }; };
 		042729B51BEE37B900C32560 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042729B41BEE37B900C32560 /* ChatViewController.m */; };
 		772E783F1BEC9A88005CA847 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E783E1BEC9A88005CA847 /* main.m */; };
 		772E78421BEC9A88005CA847 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E78411BEC9A88005CA847 /* AppDelegate.m */; };
@@ -15,7 +18,6 @@
 		772E784A1BEC9A88005CA847 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 772E78491BEC9A88005CA847 /* Images.xcassets */; };
 		772E784D1BEC9A88005CA847 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772E784B1BEC9A88005CA847 /* LaunchScreen.xib */; };
 		772E78591BEC9A88005CA847 /* MultipeerConnectivityDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E78581BEC9A88005CA847 /* MultipeerConnectivityDemoTests.m */; };
-		772E78641BEC9D61005CA847 /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E78631BEC9D61005CA847 /* Manager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041D41E71C10743F005841F2 /* MCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCManager.h; sourceTree = "<group>"; };
+		041D41E81C10743F005841F2 /* MCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCManager.m; sourceTree = "<group>"; };
+		041D41EA1C1074CD005841F2 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		041D41EB1C1074CD005841F2 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		041D41EE1C10760F005841F2 /* PeerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerView.h; sourceTree = "<group>"; };
+		041D41EF1C10760F005841F2 /* PeerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerView.m; sourceTree = "<group>"; };
 		042729B31BEE37B900C32560 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		042729B41BEE37B900C32560 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		772E78391BEC9A88005CA847 /* MultipeerConnectivityDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerConnectivityDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +52,6 @@
 		772E78521BEC9A88005CA847 /* MultipeerConnectivityDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultipeerConnectivityDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772E78571BEC9A88005CA847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772E78581BEC9A88005CA847 /* MultipeerConnectivityDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipeerConnectivityDemoTests.m; sourceTree = "<group>"; };
-		772E78621BEC9D61005CA847 /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
-		772E78631BEC9D61005CA847 /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Manager.m; sourceTree = "<group>"; };
 		772E787B1BECADE8005CA847 /* UIColor_RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_RandomColor.h; sourceTree = "<group>"; };
 		772E787C1BECADE8005CA847 /* UIImage_Colorful.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage_Colorful.h; sourceTree = "<group>"; };
 		772E787D1BECAE40005CA847 /* MultipeerConnectivityDemo-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultipeerConnectivityDemo-prefix.pch"; sourceTree = "<group>"; };
@@ -69,6 +75,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041D41E61C10743F005841F2 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				041D41E71C10743F005841F2 /* MCManager.h */,
+				041D41E81C10743F005841F2 /* MCManager.m */,
+				041D41EA1C1074CD005841F2 /* DataManager.h */,
+				041D41EB1C1074CD005841F2 /* DataManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		041D41ED1C1075F1005841F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				041D41EE1C10760F005841F2 /* PeerView.h */,
+				041D41EF1C10760F005841F2 /* PeerView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		772E78301BEC9A88005CA847 = {
 			isa = PBXGroup;
 			children = (
@@ -92,12 +118,12 @@
 			children = (
 				772E78401BEC9A88005CA847 /* AppDelegate.h */,
 				772E78411BEC9A88005CA847 /* AppDelegate.m */,
-				772E78621BEC9D61005CA847 /* Manager.h */,
-				772E78631BEC9D61005CA847 /* Manager.m */,
 				772E78431BEC9A88005CA847 /* ViewController.h */,
 				772E78441BEC9A88005CA847 /* ViewController.m */,
 				042729B31BEE37B900C32560 /* ChatViewController.h */,
 				042729B41BEE37B900C32560 /* ChatViewController.m */,
+				041D41ED1C1075F1005841F2 /* View */,
+				041D41E61C10743F005841F2 /* Manager */,
 				772E787A1BECADE8005CA847 /* Extension */,
 				772E78461BEC9A88005CA847 /* Main.storyboard */,
 				772E78491BEC9A88005CA847 /* Images.xcassets */,
@@ -243,11 +269,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041D41E91C10743F005841F2 /* MCManager.m in Sources */,
+				041D41EC1C1074CD005841F2 /* DataManager.m in Sources */,
 				772E78451BEC9A88005CA847 /* ViewController.m in Sources */,
+				041D41F01C10760F005841F2 /* PeerView.m in Sources */,
 				772E78421BEC9A88005CA847 /* AppDelegate.m in Sources */,
 				042729B51BEE37B900C32560 /* ChatViewController.m in Sources */,
 				772E783F1BEC9A88005CA847 /* main.m in Sources */,
-				772E78641BEC9D61005CA847 /* Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

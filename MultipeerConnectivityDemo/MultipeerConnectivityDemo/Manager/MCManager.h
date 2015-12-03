@@ -11,7 +11,7 @@
 typedef void (^ FindPeer)(MCPeerID *peer);
 typedef void (^ LosePeer)(MCPeerID *peer);
 
-@interface Manager : NSObject <MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate>
+@interface MCManager : NSObject <MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate>
 
 @property (nonatomic, strong) MCPeerID *peerID;//设备id
 @property (nonatomic, strong) MCSession *session;//会话
@@ -20,7 +20,7 @@ typedef void (^ LosePeer)(MCPeerID *peer);
 @property (nonatomic, strong) FindPeer findPeerBlk;
 @property (nonatomic, strong) LosePeer losePeerBlk;
 
-+ (Manager *)sharedManager;
++ (MCManager *)sharedManager;
 
 //初始化peer和session
 -(void)setupPeerAndSessionWithDisplayName:(NSString *)displayName;

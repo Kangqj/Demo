@@ -11,9 +11,12 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
+
 #import "UIColor_RandomColor.h"
 #import "UIImage_Colorful.h"
-#import "Manager.h"
+
+#import "MCManager.h"
+#import "DataManager.h"
 
 #define RGBColor(r, g, b)  [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
