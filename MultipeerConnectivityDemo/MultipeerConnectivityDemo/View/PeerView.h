@@ -9,10 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface PeerView : UIView
+{
+    UILabel *flagLab;
+    UIProgressView *progressView;
+}
 
 @property (strong, nonatomic) MCPeerID *peerID;
 @property (copy, nonatomic) void (^ConnectPeer)(MCPeerID *peer);
 
 - (instancetype)initWithFrame:(CGRect)frame peer:(MCPeerID *)peer color:(UIColor *)color;
+
+- (void)loadProgress:(float)progress;
 
 @end

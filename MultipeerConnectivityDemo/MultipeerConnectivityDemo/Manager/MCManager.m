@@ -81,17 +81,96 @@ static NSString *const MyServiceType = @"chat-files";
     }
 }
 
+- (void)invitePeer:(MCPeerID *)peer
+{
+    [self.myBrowser invitePeer:peer toSession:self.session withContext:nil timeout:10];
+}
+
+- (void)receiveInvitation:(ReceiveInvite)inviteBlk
+{
+    self.receiveInviteBlk = inviteBlk;
+}
+
+- (void)sendMessage:(NSString *)msg to:(MCPeerID *)peer
+{
+    NSData *dataToSend = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    
+    [self.session sendData:dataToSend toPeers:@[peer]
+                                    withMode:MCSessionSendDataReliable
+                                       error:&error];
+    
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+}
+
+- (void)receiveMessage:(ReceiveMsg)msgblk
+{
+    self.receiveMsg = msgblk;
+}
+
+- (void)sendFile:(NSString *)path to:(MCPeerID *)peer
+{
+    [self.session sendResourceAtURL:[NSURL fileURLWithPath:path] withName:[path lastPathComponent] toPeer:peer withCompletionHandler:^(NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        }
+        else{
+            
+            [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [KProgressHUD showHUDWithText:@"发送完成" delay:2.0 height:40];
+            });
+            
+        }
+        
+    }];
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [progress addObserver:self
+//                   forKeyPath:@"fractionCompleted"
+//                      options:NSKeyValueObservingOptionNew
+//                      context:nil];
+//    });
+}
+
+- (void)receiveFile:(ReceiveFile)receive
+{
+    self.receivefile = receive;
+}
+
 #pragma mark MCSessionDelegate
 
 //节点状态改变，已连接或断开，MCSessionStateConnected , MCSessionStateConnecting  and  MCSessionStateNotConnected。最后一个状态在节点从连接断开后依然有效
 -(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
-    NSDictionary *dict = @{@"peerID": peerID,
-                           @"state" : [NSNumber numberWithInt:state]
-                           };
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"MCDidChangeStateNotification"
-                                                        object:nil
-                                                      userInfo:dict];
+    switch (state) {
+        case MCSessionStateNotConnected:
+        {
+            NSLog(@"连接断开");
+            self.losePeerBlk(peerID);
+            
+            NSLog(@"---%@",self.session.connectedPeers);
+            break;
+        }
+        case MCSessionStateConnecting:
+        {
+            NSLog(@"正在连接");
+            break;
+        }
+        case MCSessionStateConnected:
+        {
+            NSLog(@"连接成功");
+            self.findPeerBlk(peerID);
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 //接收到的数据，有三种数据可以交换：消息，流，和资源
@@ -103,41 +182,76 @@ static NSString *const MyServiceType = @"chat-files";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"MCDidReceiveDataNotification"
                                                         object:nil
                                                       userInfo:dict];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        self.receiveMsg(peerID, msg);
+    });
 }
 
 //开始接收到资源文件
 -(void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress{
     
-    NSDictionary *dict = @{@"resourceName"  :   resourceName,
-                           @"peerID"        :   peerID,
-                           @"progress"      :   progress
-                           };
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"MCDidStartReceivingResourceNotification"
-                                                        object:nil
-                                                      userInfo:dict];
-    
-    
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         [progress addObserver:self
                    forKeyPath:@"fractionCompleted"
                       options:NSKeyValueObservingOptionNew
                       context:nil];
+        
+        self.receivePeer = peerID;
+        self.receivefile(peerID,0.0);
     });
 }
 
 //资源接收完成
 -(void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error{
     
-    NSDictionary *dict = @{@"resourceName"  :   resourceName,
-                           @"peerID"        :   peerID,
-                           @"localURL"      :   localURL
-                           };
+    if (error == nil)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            self.receivefile(peerID, 1.0);
+            
+            NSArray *fileArr = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[DataManager sharedManager].downPath error:nil];
+            NSString *name = [NSString stringWithFormat:@"image_%ld.jpg",fileArr.count + 1];
+            
+            NSString *destinationPath = [[DataManager sharedManager].downPath stringByAppendingPathComponent:name];
+            NSURL *destinationURL = [NSURL fileURLWithPath:destinationPath];
+            
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSError *error;
+            [fileManager copyItemAtURL:localURL toURL:destinationURL error:&error];
+            
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            
+            UIImage *image = [UIImage imageWithContentsOfFile:destinationPath];
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+            
+        });
+        
+    }
+    else
+    {
+        NSLog(@"%@",error.description);
+    }
+}
+
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    NSString *msg = nil ;
+    if(error != NULL)
+    {
+        msg = @"保存图片失败" ;
+        
+    }else{
+        msg = @"保存图片成功" ;
+        
+    }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishReceivingResourceNotification"
-                                                        object:nil
-                                                      userInfo:dict];
-    
+    [KProgressHUD showHUDWithText:msg delay:2.0 height:40];
 }
 
 //接收流数据
@@ -174,11 +288,23 @@ static NSString *const MyServiceType = @"chat-files";
 {
     //其中：invitationHandler 这个参数是用来处理是否接收请求的,如下所示
     invitationHandler(YES,_session); //这就表示你接受邀请了，系统将会你们的设备进行匹配
+    
+    NSLog(@"接受邀请");
+//    self.receiveInviteBlk(peerID, _session, invitationHandler);
 }
 
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didNotStartAdvertisingPeer:(NSError *)error
 {
     
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSProgress *progress = (NSProgress *)object;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.receivefile(self.receivePeer,progress.fractionCompleted);
+    });
 }
 
 @end

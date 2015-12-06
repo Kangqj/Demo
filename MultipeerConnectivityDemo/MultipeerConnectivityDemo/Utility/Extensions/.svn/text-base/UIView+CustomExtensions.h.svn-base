@@ -1,0 +1,24 @@
+//
+//  UIView+CustomExtensions.h
+//  MOA
+//
+//  Created by Sea on 13-5-2.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIView (CustomExtensions)
+
+/*!
+ @function
+ @abstract      创建非UIButton方法,可创建UITextField,UILabel,UIView...etc
+ 
+ @param         frame:              相对于参数view的位置
+ @param         view:               控件所放置的父视图
+ 
+ @result        组件实例
+ */
++ (id)creatUIControlWithFrame:(CGRect)frame targetView:(UIView *)view;
+
+@end

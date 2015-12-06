@@ -8,24 +8,35 @@
 
 #import "ViewController.h"
 #import "ChatViewController.h"
+#import "PeerView.h"
 
-@interface ViewController ()
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
-    UIButton *peerBtn;
+    NSMutableArray *peerViewArr;
+    MCPeerID       *curPeer;
 }
+
+@property (strong, nonatomic) NSMutableArray *peerViewArr;
+@property (strong, nonatomic) MCPeerID       *curPeer;
+
 
 @end
 
 @implementation ViewController
 
+@synthesize peerViewArr;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self setupUI];
+    self.peerViewArr = [NSMutableArray array];
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+
+    [[DataManager sharedManager] createSandboxFolder];
     
     //设备初始化
-    [[MCManager sharedManager] setupPeerAndSessionWithDisplayName:@"A"];
+    [[MCManager sharedManager] setupPeerAndSessionWithDisplayName:[UIDevice currentDevice].name];
     
     //广播信号
     [[MCManager sharedManager] advertisingPeer:YES];
@@ -35,30 +46,119 @@
         
         [[DataManager sharedManager].peerArr addObject:peer];
         
-        [self findLoseAnimation:YES peer:peer];
+        [self addPeerView:peer];
         
     } lose:^(MCPeerID *peer) {
         
         [[DataManager sharedManager].peerArr removeObject:peer];
         
-        [self findLoseAnimation:NO peer:peer];
+        [self removePeerView:peer];
+        
+    }];
+    
+    //接收到邀请, 默认接受邀请
+//    [[MCManager sharedManager] receiveInvitation:^(MCPeerID *peer, MCSession *session, InvitationHandler handle) {
+//        
+//        handle(YES,session);
+//        
+//    }];
+    
+    //收到消息
+    [[MCManager sharedManager] receiveMessage:^(MCPeerID *peer, NSString *msg) {
+        
+        for (PeerView *view in self.peerViewArr)
+        {
+            if ([view.peerID.displayName isEqualToString:peer.displayName])
+            {
+                [AnimationEngin shakeAnimation:view repeatCount:3];
+                break;
+            }
+        }
+        
+        [KProgressHUD showHUDWithText:msg delay:2 height:40];
+    }];
+    
+    //收到文件
+    [[MCManager sharedManager] receiveFile:^(MCPeerID *peer, float progress) {
+        
+        for (PeerView *view in self.peerViewArr)
+        {
+            if ([view.peerID.displayName isEqualToString:peer.displayName])
+            {
+                [view loadProgress:progress];
+                
+                break;
+            }
+        }
         
     }];
 }
 
-- (void)setupUI
+- (void)addPeerView:(MCPeerID *)peer
 {
-    peerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    peerBtn.frame = CGRectMake(120, 210, 100, 100);
-    [peerBtn addTarget:self action:@selector(goToChat) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:peerBtn];
-    UIImage *image = [UIImage imageWithColor:[UIColor randomColor]];
-    [peerBtn setBackgroundImage:[UIImage imageWithCornerRadius:50 image:image] forState:UIControlStateNormal];
-    peerBtn.layer.cornerRadius = 50;
-    peerBtn.layer.shadowColor = [UIColor grayColor].CGColor;
-    peerBtn.layer.shadowOffset = CGSizeMake(5, 5);
-    peerBtn.layer.shadowOpacity = 0.6;
-    peerBtn.hidden = YES;
+    PeerView *loseView = nil;
+    
+    for (PeerView *view in self.peerViewArr)
+    {
+        if ([view.peerID.displayName isEqualToString:peer.displayName])
+        {
+            loseView = view;
+            break;
+        }
+    }
+    
+    if (loseView != nil)
+    {
+        return;
+    }
+    
+    PeerView *peerView = [[PeerView alloc] initWithFrame:CGRectMake(100, 100, 150, 150) peer:peer color:[UIColor randomColor]];
+    [self.view addSubview:peerView];
+    [self.peerViewArr addObject:peerView];
+    peerView.hidden = YES;
+    
+    [[MCManager sharedManager] invitePeer:peer];
+    
+    [peerView setConnectPeer:^(MCPeerID *peer) {
+        
+        self.curPeer = peer;
+        UIImagePickerController *pickController = [[UIImagePickerController alloc] init];
+        pickController.delegate = self;
+        pickController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        [self presentViewController:pickController animated:YES completion:NULL];
+        
+//        [[MCManager sharedManager] sendMessage:@"hello" to:peer];
+    }];
+    
+    [AnimationEngin popoverDismissAnimation:YES view:peerView dismissFinish:^(UIView *view) {
+        
+    }];
+}
+
+- (void)removePeerView:(MCPeerID *)peer
+{
+    PeerView *loseView = nil;
+    
+    for (PeerView *view in self.peerViewArr)
+    {
+        if ([view.peerID.displayName isEqualToString:peer.displayName])
+        {
+            loseView = view;
+            break;
+        }
+    }
+    
+    if (loseView != nil)
+    {
+        [self.peerViewArr removeObject:loseView];
+        
+        [AnimationEngin popoverDismissAnimation:NO view:loseView dismissFinish:^(UIView *view) {
+            
+            PeerView *peerView = (PeerView *)view;
+            [peerView removeFromSuperview];
+            
+        }];
+    }
 }
 
 - (void)goToChat
@@ -67,52 +167,34 @@
     [self presentViewController:chatViewController animated:YES completion:NULL];
 }
 
-- (void)findLoseAnimation:(BOOL)isFind peer:(MCPeerID *)peer
+#pragma -mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    CAKeyframeAnimation * animation;
-    animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    animation.duration = 0.5;
+    /*
+     Printing description of info:
+     {
+     UIImagePickerControllerMediaType = "public.image";
+     UIImagePickerControllerOriginalImage = "<UIImage: 0x175c6e40> size {1936, 2592} orientation 3 scale 1.000000";
+     UIImagePickerControllerReferenceURL = "assets-library://asset/asset.JPG?id=4007A4D4-819F-4A3A-8600-AEE1684C3CFF&ext=JPG";
+     }
+     */
     
-    animation.fillMode = kCAFillModeForwards;
-    animation.removedOnCompletion = YES;
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    NSMutableArray *values = [NSMutableArray array];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSArray *fileArr = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[DataManager sharedManager].downPath error:nil];
+        NSString *name = [NSString stringWithFormat:@"image_%ld.jpg",fileArr.count + 1];
+        
+        NSData *data = UIImagePNGRepresentation(image);
+        NSString *filePath = [[DataManager sharedManager].bufferPath stringByAppendingPathComponent:name];
+        [data writeToFile:filePath atomically:NO];
+        [[MCManager sharedManager] sendFile:filePath to:self.curPeer];
+    });
     
-    if (isFind)
-    {
-        peerBtn.hidden = NO;
-        [peerBtn setTitle:peer.displayName forState:UIControlStateNormal];
-        
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1.0)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 0.9)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-        
-        
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    }
-    else
-    {
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 0.9)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1.0)]];
-        [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
-        
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        animation.delegate = self;
-    }
-    
-    animation.values = values;
-    [peerBtn.layer addAnimation:animation forKey:nil];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (flag)
-    {
-        peerBtn.hidden = YES;
-    }
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

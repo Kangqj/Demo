@@ -11,6 +11,12 @@
 		041D41EC1C1074CD005841F2 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41EB1C1074CD005841F2 /* DataManager.m */; settings = {ASSET_TAGS = (); }; };
 		041D41F01C10760F005841F2 /* PeerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41EF1C10760F005841F2 /* PeerView.m */; settings = {ASSET_TAGS = (); }; };
 		042729B51BEE37B900C32560 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042729B41BEE37B900C32560 /* ChatViewController.m */; };
+		0436B2621C11CAC80040A4B0 /* AnimationEngin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B2481C11CAC70040A4B0 /* AnimationEngin.m */; settings = {ASSET_TAGS = (); }; };
+		0436B2641C11CAC80040A4B0 /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B24D1C11CAC80040A4B0 /* UIColor+CustomExtensions.m */; settings = {ASSET_TAGS = (); }; };
+		0436B2651C11CAC80040A4B0 /* SandboxKeyChainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B2501C11CAC80040A4B0 /* SandboxKeyChainHelper.m */; settings = {ASSET_TAGS = (); }; };
+		0436B2661C11CAC80040A4B0 /* KIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B2531C11CAC80040A4B0 /* KIAlertView.m */; settings = {ASSET_TAGS = (); }; };
+		0436B2671C11CAC80040A4B0 /* KProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B2561C11CAC80040A4B0 /* KProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		0436B2691C11CAC80040A4B0 /* RandomNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B25C1C11CAC80040A4B0 /* RandomNumber.m */; settings = {ASSET_TAGS = (); }; };
 		772E783F1BEC9A88005CA847 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E783E1BEC9A88005CA847 /* main.m */; };
 		772E78421BEC9A88005CA847 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E78411BEC9A88005CA847 /* AppDelegate.m */; };
 		772E78451BEC9A88005CA847 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E78441BEC9A88005CA847 /* ViewController.m */; };
@@ -39,6 +45,18 @@
 		041D41EF1C10760F005841F2 /* PeerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerView.m; sourceTree = "<group>"; };
 		042729B31BEE37B900C32560 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		042729B41BEE37B900C32560 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		0436B2471C11CAC70040A4B0 /* AnimationEngin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEngin.h; sourceTree = "<group>"; };
+		0436B2481C11CAC70040A4B0 /* AnimationEngin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationEngin.m; sourceTree = "<group>"; };
+		0436B24C1C11CAC80040A4B0 /* UIColor+CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomExtensions.h"; sourceTree = "<group>"; };
+		0436B24D1C11CAC80040A4B0 /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
+		0436B24F1C11CAC80040A4B0 /* SandboxKeyChainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxKeyChainHelper.h; sourceTree = "<group>"; };
+		0436B2501C11CAC80040A4B0 /* SandboxKeyChainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxKeyChainHelper.m; sourceTree = "<group>"; };
+		0436B2521C11CAC80040A4B0 /* KIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIAlertView.h; sourceTree = "<group>"; };
+		0436B2531C11CAC80040A4B0 /* KIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIAlertView.m; sourceTree = "<group>"; };
+		0436B2551C11CAC80040A4B0 /* KProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KProgressHUD.h; sourceTree = "<group>"; };
+		0436B2561C11CAC80040A4B0 /* KProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KProgressHUD.m; sourceTree = "<group>"; };
+		0436B25B1C11CAC80040A4B0 /* RandomNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomNumber.h; sourceTree = "<group>"; };
+		0436B25C1C11CAC80040A4B0 /* RandomNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomNumber.m; sourceTree = "<group>"; };
 		772E78391BEC9A88005CA847 /* MultipeerConnectivityDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerConnectivityDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772E783D1BEC9A88005CA847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772E783E1BEC9A88005CA847 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,6 +113,73 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0436B2451C11CAC70040A4B0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0436B2461C11CAC70040A4B0 /* AnimationEngin */,
+				0436B24B1C11CAC80040A4B0 /* Extensions */,
+				0436B24E1C11CAC80040A4B0 /* Keychain */,
+				0436B2511C11CAC80040A4B0 /* KIAlertView */,
+				0436B2541C11CAC80040A4B0 /* KProgressHUD */,
+				0436B25A1C11CAC80040A4B0 /* RandomNumber */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		0436B2461C11CAC70040A4B0 /* AnimationEngin */ = {
+			isa = PBXGroup;
+			children = (
+				0436B2471C11CAC70040A4B0 /* AnimationEngin.h */,
+				0436B2481C11CAC70040A4B0 /* AnimationEngin.m */,
+			);
+			path = AnimationEngin;
+			sourceTree = "<group>";
+		};
+		0436B24B1C11CAC80040A4B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0436B24C1C11CAC80040A4B0 /* UIColor+CustomExtensions.h */,
+				0436B24D1C11CAC80040A4B0 /* UIColor+CustomExtensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0436B24E1C11CAC80040A4B0 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				0436B24F1C11CAC80040A4B0 /* SandboxKeyChainHelper.h */,
+				0436B2501C11CAC80040A4B0 /* SandboxKeyChainHelper.m */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		0436B2511C11CAC80040A4B0 /* KIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				0436B2521C11CAC80040A4B0 /* KIAlertView.h */,
+				0436B2531C11CAC80040A4B0 /* KIAlertView.m */,
+			);
+			path = KIAlertView;
+			sourceTree = "<group>";
+		};
+		0436B2541C11CAC80040A4B0 /* KProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				0436B2551C11CAC80040A4B0 /* KProgressHUD.h */,
+				0436B2561C11CAC80040A4B0 /* KProgressHUD.m */,
+			);
+			path = KProgressHUD;
+			sourceTree = "<group>";
+		};
+		0436B25A1C11CAC80040A4B0 /* RandomNumber */ = {
+			isa = PBXGroup;
+			children = (
+				0436B25B1C11CAC80040A4B0 /* RandomNumber.h */,
+				0436B25C1C11CAC80040A4B0 /* RandomNumber.m */,
+			);
+			path = RandomNumber;
+			sourceTree = "<group>";
+		};
 		772E78301BEC9A88005CA847 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +211,7 @@
 				041D41E61C10743F005841F2 /* Manager */,
 				772E787A1BECADE8005CA847 /* Extension */,
 				772E78461BEC9A88005CA847 /* Main.storyboard */,
+				0436B2451C11CAC70040A4B0 /* Utility */,
 				772E78491BEC9A88005CA847 /* Images.xcassets */,
 				772E784B1BEC9A88005CA847 /* LaunchScreen.xib */,
 				772E783C1BEC9A88005CA847 /* Supporting Files */,
@@ -273,8 +359,14 @@
 				041D41EC1C1074CD005841F2 /* DataManager.m in Sources */,
 				772E78451BEC9A88005CA847 /* ViewController.m in Sources */,
 				041D41F01C10760F005841F2 /* PeerView.m in Sources */,
+				0436B2621C11CAC80040A4B0 /* AnimationEngin.m in Sources */,
 				772E78421BEC9A88005CA847 /* AppDelegate.m in Sources */,
+				0436B2661C11CAC80040A4B0 /* KIAlertView.m in Sources */,
+				0436B2651C11CAC80040A4B0 /* SandboxKeyChainHelper.m in Sources */,
+				0436B2691C11CAC80040A4B0 /* RandomNumber.m in Sources */,
 				042729B51BEE37B900C32560 /* ChatViewController.m in Sources */,
+				0436B2641C11CAC80040A4B0 /* UIColor+CustomExtensions.m in Sources */,
+				0436B2671C11CAC80040A4B0 /* KProgressHUD.m in Sources */,
 				772E783F1BEC9A88005CA847 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

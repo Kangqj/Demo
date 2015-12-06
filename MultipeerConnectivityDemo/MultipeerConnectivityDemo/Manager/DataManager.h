@@ -11,8 +11,12 @@
 @interface DataManager : NSObject
 
 @property (strong, nonatomic) NSMutableArray *peerArr;
+@property (strong, nonatomic) NSString       *downPath;
+@property (strong, nonatomic) NSString       *bufferPath;
+
 
 + (DataManager *)sharedManager;
 
+- (void)createSandboxFolder;
 
 @end

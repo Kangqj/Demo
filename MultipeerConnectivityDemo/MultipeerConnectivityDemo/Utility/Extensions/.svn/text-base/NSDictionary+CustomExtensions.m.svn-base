@@ -1,0 +1,82 @@
+//
+//  NSDictionary+CustomExtensions.m
+//  Sandglass
+//
+//  Created by kangqijun on 14-3-19.
+//
+//
+
+#import "NSDictionary+CustomExtensions.h"
+
+@implementation NSDictionary (CustomExtensions)
+
+
+- (NSDictionary *)objectMetaForKey:(NSString *)key
+{
+    NSDictionary *dic = nil;
+    
+    if (key !=nil && [[self allKeys] containsObject:key])
+    {
+        NSArray *arr = [self objectForKey:key];
+        
+        if (arr != nil && [arr count] > 0)
+        {
+            dic = [arr objectAtIndex:0];
+        }
+    }
+    
+    return dic;
+}
+
+- (id) dataForKey : (id)aKey
+{
+    NSDictionary *tmpResult = [self objectForKeyWithOutCaps:aKey];
+    
+    if ([tmpResult isKindOfClass:[NSDictionary class]]) {
+        if ([[tmpResult allKeys] containsObject:@"data"]) {
+            NSArray *tmpData = [tmpResult objectForKey:@"data"];
+            if (tmpData) {
+                if ([tmpData count] == 1) {
+                    return [tmpData objectAtIndex:0];
+                }
+                return tmpData;
+            }
+        }
+    }
+    
+    return tmpResult;
+}
+
+- (id) dataArrForKey : (id)aKey
+{
+    id tmpResult = [self objectForKeyWithOutCaps:aKey];
+    
+    if ([tmpResult isKindOfClass:[NSDictionary class]]) {
+        if ([[tmpResult allKeys] containsObject:@"data"]) {
+            NSArray *tmpData = [tmpResult objectForKey:@"data"];
+            if (tmpData && [tmpData count] > 0) {
+                return tmpData;
+            }
+        }
+    }
+    
+    if (![tmpResult isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+
+    return tmpResult;
+}
+
+-(id)objectForKeyWithOutCaps:(id)aKey
+{
+    id tmpResult = [self objectForKey:aKey];
+    if (tmpResult) {
+        return tmpResult;
+    }
+    else {
+        return [self objectForKey:[aKey lowercaseString]];
+    }
+}
+
+
+@end

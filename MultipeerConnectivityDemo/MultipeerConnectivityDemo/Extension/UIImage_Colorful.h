@@ -20,7 +20,7 @@
 //根据颜色生成图片
 + (UIImage *)imageWithColor:(UIColor *)color
 {
-    CGRect rect = CGRectMake(0, 0, 100, 100);
+    CGRect rect = CGRectMake(0, 0, 110, 110);
     
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

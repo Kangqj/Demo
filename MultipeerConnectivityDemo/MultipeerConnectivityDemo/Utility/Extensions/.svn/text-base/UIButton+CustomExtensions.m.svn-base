@@ -1,0 +1,231 @@
+//
+//  UIButton+CustomExtensions.m
+//  MOA
+//
+//  Created by Sea on 13-5-2.
+//
+//
+
+#import "UIButton+CustomExtensions.h"
+
+@implementation UIButton (CustomExtensions)
+
+
+/*!
+ @function
+ @abstract      创建UIButton的便捷方法
+ 
+ @param         type:                   需要创建UIButton的样式
+ @param         frame:                  相对于参数view的位置
+ @param         view:                   该控件的父视图
+ @param         imageName:              UIButton的图片  须有后缀名,如果没有,则默认png
+                                        (1)nil,则无图片
+                                        (2)根据值,找到图片,则为UIControlStateNormal状态下的图片
+                                        (3)根据值,无法找到图片,则拼接_1,_2继续检测图片是否存在,如果存在,则xxx_1.png对应UIControlStateNormal,xxx_2.png对应UIControlStateHighlighted
+                                        (4) 如果依旧不存在,则不设置图片
+ @result        创建的UIButton实例
+ */
++ (UIButton *)buttonWithType:(UIButtonType)type frame:(CGRect)frame targetView:(UIView *)view stateImageName:(NSString *)imageName imageBundle:(NSString *)bundleName{
+    
+    UIButton *button = [UIButton buttonWithType:type];
+    
+    button.frame = frame;
+    
+    if (imageName) {
+        
+        NSString *extension = [imageName pathExtension];
+        
+        if (!extension) {
+            extension = @"png";
+        }
+        
+        UIImage *imageNormal = nil;
+        
+        UIImage *imageHighlighted = nil;
+        
+        if (!bundleName) {
+            
+            imageNormal = [UIImage imageNamed:imageName];
+            
+            if (!imageNormal) {
+                
+                NSString *path = [imageName stringByDeletingPathExtension];
+                
+                imageNormal = [UIImage imageNamed:[path stringByAppendingFormat:@"_1.%@",extension]];
+                imageHighlighted = [UIImage imageNamed:[path stringByAppendingFormat:@"_2.%@",extension]];
+            }
+        }
+        else {
+            
+            NSString *temp = [imageName stringByDeletingPathExtension];
+            
+            NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"]];
+            NSString *imagePath = [bundle pathForResource:temp ofType:extension];
+            
+            if (imagePath) {
+                
+                imageNormal = [UIImage imageWithContentsOfFile:imagePath];
+            }
+            else {
+                
+                imageNormal = [UIImage imageWithContentsOfFile:[bundle pathForResource:[temp stringByAppendingString:@"_1"] ofType:extension]];
+                imageHighlighted = [UIImage imageWithContentsOfFile:[bundle pathForResource:[temp stringByAppendingString:@"_2"] ofType:extension]];
+                
+            }
+        }
+        
+        if (imageNormal) {
+            
+            [button setBackgroundImage:imageNormal forState: UIControlStateNormal];
+        }
+        
+        if (imageHighlighted) {
+            
+            [button setBackgroundImage:imageHighlighted forState:UIControlStateHighlighted];
+        }
+    }
+    
+    [view addSubview:button];
+    
+    return button;
+}
+
+
+
+- (void)buttonWithImageName:(NSString *)imageName imageBundle:(NSString *)bundleName {
+    
+    if (imageName) {
+        
+        NSString *extension = [imageName pathExtension];
+        
+        if (!extension) {
+            extension = @"png";
+        }
+        
+        UIImage *imageNormal = nil;
+        
+        UIImage *imageHighlighted = nil;
+        
+        if (!bundleName) {
+            
+            imageNormal = [UIImage imageNamed:imageName];
+            
+            if (!imageNormal) {
+                
+                NSString *path = [imageName stringByDeletingPathExtension];
+                
+                imageNormal = [UIImage imageNamed:[path stringByAppendingFormat:@"_1.%@",extension]];
+                imageHighlighted = [UIImage imageNamed:[path stringByAppendingFormat:@"_2.%@",extension]];
+            }
+        }
+        else {
+            
+            //设置按钮图标
+            NSString *temp = [imageName stringByDeletingPathExtension];
+            
+            NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"]];
+            NSString *imagePath = [bundle pathForResource:temp ofType:extension];
+            
+            if (imagePath) {
+                
+                imageNormal = [UIImage imageWithContentsOfFile:imagePath];
+            }
+            else {
+                
+                imageNormal = [UIImage imageWithContentsOfFile:[bundle pathForResource:[temp stringByAppendingString:@"_1"] ofType:extension]];
+                imageHighlighted = [UIImage imageWithContentsOfFile:[bundle pathForResource:[temp stringByAppendingString:@"_2"] ofType:extension]];
+                
+            }
+            
+        }
+        
+        if (imageNormal) {
+            
+            [self setImage:imageNormal forState: UIControlStateNormal];
+        }
+        
+        if (imageHighlighted) {
+            
+            [self setImage:imageHighlighted forState:UIControlStateHighlighted];
+        }
+    }
+}
+
+
+- (void)buttonWithBackgroundImageName:(NSString *)backgroundImageName imageBundle:(NSString *)bundleName {
+    
+    if (backgroundImageName) {
+        
+        NSString *extension = [backgroundImageName pathExtension];
+        
+        if (!extension) {
+            extension = @"png";
+        }
+        
+        UIImage *backgroundImageNormal = nil;
+        UIImage *backgroundImageHighlighted = nil;
+        
+        if (!bundleName) {
+            
+            backgroundImageNormal = [UIImage imageNamed:backgroundImageName];
+            
+            if (!backgroundImageNormal) {
+                
+                NSString *path = [backgroundImageName stringByDeletingPathExtension];
+                
+                backgroundImageNormal = [UIImage imageNamed:[path stringByAppendingFormat:@"_1.%@",extension]];
+                backgroundImageHighlighted = [UIImage imageNamed:[path stringByAppendingFormat:@"_2.%@",extension]];
+            }
+        }
+        else {
+            
+            NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"]];
+            
+            //设置背景图片
+            NSString *temp = [backgroundImageName stringByDeletingPathExtension];
+            NSString *backImagePath = [bundle pathForResource:temp ofType:extension];
+            
+            if (backImagePath) {
+                
+                backgroundImageNormal = [UIImage imageWithContentsOfFile:backImagePath];
+            }
+            else {
+                
+                backgroundImageNormal = [UIImage imageWithContentsOfFile:[bundle pathForResource:[temp stringByAppendingString:@"_1"] ofType:extension]];
+                backgroundImageHighlighted = [UIImage imageWithContentsOfFile:[bundle pathForResource:[temp stringByAppendingString:@"_2"] ofType:extension]];
+            }
+            
+        }
+        
+        if (backgroundImageNormal) {
+            
+            [self setBackgroundImage:backgroundImageNormal forState: UIControlStateNormal];
+        }
+        
+        if (backgroundImageHighlighted) {
+            
+            [self setBackgroundImage:backgroundImageHighlighted forState:UIControlStateHighlighted];
+        }
+    }
+}
+
+
+
++ (UIButton *)buttonWithImageName:(NSString *)imageName backgroundImageName:(NSString *)backgroundImageName imageBundle:(NSString *)bundleName {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    if (imageName) {
+        
+        [button buttonWithImageName:imageName imageBundle:bundleName];
+    }
+    
+    if (backgroundImageName) {
+        
+        [button buttonWithBackgroundImageName:imageName imageBundle:bundleName];
+    }
+    
+    return button;
+}
+
+@end

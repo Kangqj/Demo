@@ -10,7 +10,7 @@
 
 @implementation DataManager
 
-@synthesize peerArr;
+@synthesize peerArr, downPath, bufferPath;
 
 + (DataManager *)sharedManager
 {
@@ -37,5 +37,23 @@
     return self;
 }
 
+- (void)createSandboxFolder
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    NSString *downFolder = [kDocumentsPath stringByAppendingPathComponent:@"download"];
+    if (![manager fileExistsAtPath:downFolder])
+    {
+        [manager createDirectoryAtPath:downFolder withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    self.downPath = downFolder;
+    
+    NSString *bufferFolder = [kDocumentsPath stringByAppendingPathComponent:@"buffer"];
+    if (![manager fileExistsAtPath:bufferFolder])
+    {
+        [manager createDirectoryAtPath:bufferFolder withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    self.bufferPath = bufferFolder;
+}
 
 @end
