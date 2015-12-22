@@ -15,6 +15,7 @@
 		777F3ED81C290178009984FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 777F3ED61C290178009984FA /* LaunchScreen.storyboard */; };
 		777F3EE31C290178009984FA /* CamouflageLocationDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F3EE21C290178009984FA /* CamouflageLocationDemoTests.m */; };
 		777F3EEE1C290178009984FA /* CamouflageLocationDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F3EED1C290178009984FA /* CamouflageLocationDemoUITests.m */; };
+		777F3EFE1C2922A7009984FA /* KAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 777F3EFD1C2922A7009984FA /* KAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		777F3EE91C290178009984FA /* CamouflageLocationDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamouflageLocationDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		777F3EED1C290178009984FA /* CamouflageLocationDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamouflageLocationDemoUITests.m; sourceTree = "<group>"; };
 		777F3EEF1C290178009984FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		777F3EFC1C2922A7009984FA /* KAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAnnotation.h; sourceTree = "<group>"; };
+		777F3EFD1C2922A7009984FA /* KAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 				777F3ECC1C290178009984FA /* AppDelegate.m */,
 				777F3ECE1C290178009984FA /* ViewController.h */,
 				777F3ECF1C290178009984FA /* ViewController.m */,
+				777F3EFB1C292287009984FA /* Module */,
 				777F3ED11C290178009984FA /* Main.storyboard */,
 				777F3ED41C290178009984FA /* Assets.xcassets */,
 				777F3ED61C290178009984FA /* LaunchScreen.storyboard */,
@@ -138,6 +142,15 @@
 				777F3EEF1C290178009984FA /* Info.plist */,
 			);
 			path = CamouflageLocationDemoUITests;
+			sourceTree = "<group>";
+		};
+		777F3EFB1C292287009984FA /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				777F3EFC1C2922A7009984FA /* KAnnotation.h */,
+				777F3EFD1C2922A7009984FA /* KAnnotation.m */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +285,7 @@
 			files = (
 				777F3ED01C290178009984FA /* ViewController.m in Sources */,
 				777F3ECD1C290178009984FA /* AppDelegate.m in Sources */,
+				777F3EFE1C2922A7009984FA /* KAnnotation.m in Sources */,
 				777F3ECA1C290178009984FA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +510,7 @@
 				777F3EF41C290178009984FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		777F3EF51C290178009984FA /* Build configuration list for PBXNativeTarget "CamouflageLocationDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +519,7 @@
 				777F3EF71C290178009984FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		777F3EF81C290178009984FA /* Build configuration list for PBXNativeTarget "CamouflageLocationDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +528,7 @@
 				777F3EFA1C290178009984FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
