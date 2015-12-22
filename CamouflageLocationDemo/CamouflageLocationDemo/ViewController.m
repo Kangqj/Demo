@@ -54,46 +54,67 @@
 
 - (void)location
 {
-    m_MapView.showsUserLocation = YES;
+//    m_MapView.showsUserLocation = YES;
+//    [self startLocating];
+    [m_MapView setRegion:MKCoordinateRegionMake(m_MapView.userLocation.coordinate, m_MapView.region.span) animated:YES];
 }
 
 - (void)clean
 {
-    for (MKAnnotationView *annoView in annoViewArr)
+//    for (MKAnnotationView *annoView in annoViewArr)
+//    {
+//        [annoView removeFromSuperview];
+//    }
+    
+    for (KAnnotation *annotation in m_MapView.annotations)//
     {
-        [annoView removeFromSuperview];
+        [m_MapView removeAnnotation:annotation];
     }
+    
+//    for (id overlays in m_MapView.overlays)
+//    {
+//        if ([overlays isKindOfClass:[MKPolyline class]])
+//        {
+//            [m_MapView removeOverlay:overlays];
+//        }
+//        else if ([overlays isKindOfClass:[MKPolygon class]])
+//        {
+//            [m_MapView removeOverlay:overlays];
+//        }
+//    }
 }
 
 #pragma mark MKMapViewDelegate
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
-//    if ([overlay isKindOfClass:[MKPolygon class]])
-//    {
-//        MKOverlayView *pview = [[MKOverlayView alloc] initWithOverlay:overlay];
-//        pview.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.4f];
-//        
-//        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-//        [pview addGestureRecognizer:pan];
-//        
-//        return pview;
-//    }
+    if ([overlay isKindOfClass:[MKPolygon class]])
+    {
+        MKOverlayView *pview = [[MKOverlayView alloc] initWithOverlay:overlay];
+        pview.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.4f];
+        
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        [pview addGestureRecognizer:pan];
+        
+        return pview;
+    }
+    else if ([overlay isKindOfClass:[MKCircleView class]])
+    {
+        MKCircleView* circleView = [[MKCircleView alloc] initWithOverlay:overlay];
+        circleView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
+        circleView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        circleView.lineWidth = 3.0;
+        return circleView;
+    }
+    else if ([overlay isKindOfClass:[MKPolyline class]])
+    {
+        MKPolylineView *lineview = [[MKPolylineView alloc] initWithOverlay:overlay];
+        lineview.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+        lineview.lineWidth = 2.0;
+        return lineview;
+    }
     
-//    if ([overlay isKindOfClass:[MKCircle class]])
-//    {
-//        MKCircleView* circleView = [[MKCircleView alloc] initWithOverlay:overlay];
-//        circleView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
-//        circleView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
-//        circleView.lineWidth = 3.0;
-//        return circleView;
-//    }
-    
-    MKCircleView* circleView = [[MKCircleView alloc] initWithOverlay:overlay];
-    circleView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
-    circleView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
-    circleView.lineWidth = 3.0;
-    return circleView;
+    return nil;
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)pan
@@ -118,13 +139,15 @@
 {
     m_MapView.showsUserLocation = NO;
     
-    MKCircle* circle = [MKCircle circleWithCenterCoordinate:m_MapView.userLocation.location.coordinate radius:5000];
-    [m_MapView addOverlay:circle];
+    [m_MapView setRegion:MKCoordinateRegionMake(userLocation.coordinate, m_MapView.region.span) animated:YES];
     
-    return;
+//    MKCircle* circle = [MKCircle circleWithCenterCoordinate:m_MapView.userLocation.location.coordinate radius:5000];
+//    [m_MapView addOverlay:circle];
+//    
+//    return;
     
     float gap = 0.001;
-    CLLocationCoordinate2D center = m_MapView.userLocation.location.coordinate;
+    CLLocationCoordinate2D center = userLocation.coordinate;
     CLLocationCoordinate2D leftUp = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude - gap);
     CLLocationCoordinate2D rightUp = CLLocationCoordinate2DMake(center.latitude + gap, center.longitude - gap);
     CLLocationCoordinate2D leftDown = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude + gap);
@@ -140,6 +163,10 @@
     [m_MapView addAnnotation:annotation];
     
     NSLog(@"%@",m_MapView.userLocation.location.description);
+    
+    
+    MKPolyline *line = [MKPolyline polylineWithCoordinates:coordinates count:4];
+    [m_MapView addOverlay:line];
 }
 
 #pragma mark - 地图控件代理方法
@@ -186,7 +213,11 @@
     CLLocation *alocation = [locations lastObject];
     if (alocation && location == nil) {
         location = alocation;
+        
+//        [m_MapView setRegion:MKCoordinateRegionMake(alocation.coordinate, m_MapView.region.span) animated:YES];
     }
+    
+    [m_MapView setRegion:MKCoordinateRegionMake(alocation.coordinate, m_MapView.region.span) animated:YES];
     [locManager stopUpdatingLocation];
 }
 
