@@ -199,7 +199,7 @@
 {
     self.geocoder = [[CLGeocoder alloc] init];
     
-    [self.geocoder geocodeAddressString:place completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+    [self.geocoder geocodeAddressString:place completionHandler:^(NSArray *placemarks, NSError *error) {
         if (placemarks.count > 0)
         {
             CLPlacemark *mark = [placemarks objectAtIndex:0];
@@ -209,11 +209,12 @@
             
             [self clean];
             
-            CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
+//            CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
             
             float gap = 0.001;
             
-            CLLocationCoordinate2D center = [m_MapView convertPoint:point toCoordinateFromView:m_MapView];
+//            CLLocationCoordinate2D center = [m_MapView convertPoint:point toCoordinateFromView:m_MapView];
+            CLLocationCoordinate2D center = userCoor;
             CLLocationCoordinate2D leftUp = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude - gap);
             CLLocationCoordinate2D rightUp = CLLocationCoordinate2DMake(center.latitude + gap, center.longitude - gap);
             CLLocationCoordinate2D leftDown = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude + gap);

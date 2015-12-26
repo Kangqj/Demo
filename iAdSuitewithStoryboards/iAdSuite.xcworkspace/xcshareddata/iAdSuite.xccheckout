@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>870E7A69-E80A-486D-A762-8A89B13F4568</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iAdSuite</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>72ACAB37A172610E659307B68510F16EDBF806BB</key>
+		<string>gitlab.sd.apple.com:samplecode/dts_sc1399_iadsuitewithstor-4-1.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iAdSuite.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>72ACAB37A172610E659307B68510F16EDBF806BB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>gitlab.sd.apple.com:samplecode/dts_sc1399_iadsuitewithstor-4-1.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>72ACAB37A172610E659307B68510F16EDBF806BB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>72ACAB37A172610E659307B68510F16EDBF806BB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iAd%20Suite%20with%20Storyboards</string>
+		</dict>
+	</array>
+</dict>
+</plist>
