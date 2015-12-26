@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "77F02A1F1C2E7896005825A8"
+               BlueprintIdentifier = "77F02A5E1C2E7EA8005825A8"
                BuildableName = "PuzzleDemo.app"
                BlueprintName = "PuzzleDemo"
                ReferencedContainer = "container:PuzzleDemo.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "77F02A381C2E7896005825A8"
+               BlueprintIdentifier = "77F02A771C2E7EA8005825A8"
                BuildableName = "PuzzleDemoTests.xctest"
                BlueprintName = "PuzzleDemoTests"
                ReferencedContainer = "container:PuzzleDemo.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "77F02A431C2E7896005825A8"
+               BlueprintIdentifier = "77F02A821C2E7EA8005825A8"
                BuildableName = "PuzzleDemoUITests.xctest"
                BlueprintName = "PuzzleDemoUITests"
                ReferencedContainer = "container:PuzzleDemo.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "77F02A1F1C2E7896005825A8"
+            BlueprintIdentifier = "77F02A5E1C2E7EA8005825A8"
             BuildableName = "PuzzleDemo.app"
             BlueprintName = "PuzzleDemo"
             ReferencedContainer = "container:PuzzleDemo.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "77F02A1F1C2E7896005825A8"
+            BlueprintIdentifier = "77F02A5E1C2E7EA8005825A8"
             BuildableName = "PuzzleDemo.app"
             BlueprintName = "PuzzleDemo"
             ReferencedContainer = "container:PuzzleDemo.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "77F02A1F1C2E7896005825A8"
+            BlueprintIdentifier = "77F02A5E1C2E7EA8005825A8"
             BuildableName = "PuzzleDemo.app"
             BlueprintName = "PuzzleDemo"
             ReferencedContainer = "container:PuzzleDemo.xcodeproj">
