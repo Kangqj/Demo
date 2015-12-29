@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
 
 @interface ViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
     MKMapView		*m_MapView;
-    CLLocationManager	*locManager;
-    CLLocation			*location;//定位得到的信息
     
-    UIView *contentView;
+    UIView          *contentView;
+    UIImageView     *fenceView;
 }
 
 @end

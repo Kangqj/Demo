@@ -8,15 +8,16 @@
 
 #import "ViewController.h"
 #import "KAnnotation.h"
+#include <math.h>
 
 @interface ViewController ()
 {
-    NSMutableArray *annoViewArr;
-    
     CLLocationCoordinate2D userCoor;
     CLGeocoder *geocoder;
     
     UITextField *textField;
+    
+    double spanArea;
 }
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
@@ -36,6 +37,13 @@
     [m_MapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [self.view addSubview:m_MapView];
     
+    fenceView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    fenceView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:fenceView];
+    fenceView.layer.borderColor = [UIColor redColor].CGColor;
+    fenceView.layer.borderWidth = 2.0;
+    fenceView.center = CGPointMake(m_MapView.frame.size.width/2, m_MapView.frame.size.height/2);
+    
     contentView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 50, 60)];
     contentView.backgroundColor = [UIColor clearColor];//[[UIColor greenColor] colorWithAlphaComponent:0.4];
     [m_MapView addSubview:contentView];
@@ -43,13 +51,8 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [contentView addGestureRecognizer:pan];
     
-//    UILongPressGestureRecognizer *longRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handlelongRecognizer:)];
-//    longRecognizer.allowableMovement = 1024;
-//    longRecognizer.minimumPressDuration = 1;
-//    [m_MapView addGestureRecognizer:longRecognizer];
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapRecognizer:)];
-    [m_MapView addGestureRecognizer:tapRecognizer];
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapRecognizer:)];
+//    [m_MapView addGestureRecognizer:tapRecognizer];
     
     UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     locationBtn.frame = CGRectMake(0, 20, 80, 30);
@@ -64,8 +67,6 @@
     [cleanBtn setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
     [cleanBtn addTarget:self action:@selector(clean) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cleanBtn];
-    
-    annoViewArr = [[NSMutableArray alloc] init];
     
     textField = [[UITextField alloc] initWithFrame:CGRectMake(160, 20, self.view.frame.size.width-240, 30)];
     [self.view addSubview:textField];
@@ -99,39 +100,9 @@
     MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:4];
     [m_MapView addOverlay:polygon];
     
-    KAnnotation *annotation = [[KAnnotation alloc] init];
-    annotation.title = @"当前位置";
-    annotation.coordinate = center;
-    [m_MapView addAnnotation:annotation];
-}
-
-- (void)handlelongRecognizer:(UILongPressGestureRecognizer *)pan
-{
-    CGPoint point = [pan locationInView:m_MapView];
-    
-    if (pan.state == UIGestureRecognizerStateBegan)
-    {
-        [self clean];
-        
-        float gap = 0.001;
-        
-        CLLocationCoordinate2D center = [m_MapView convertPoint:point toCoordinateFromView:m_MapView];
-        userCoor = center;
-        CLLocationCoordinate2D leftUp = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude - gap);
-        CLLocationCoordinate2D rightUp = CLLocationCoordinate2DMake(center.latitude + gap, center.longitude - gap);
-        CLLocationCoordinate2D leftDown = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude + gap);
-        CLLocationCoordinate2D rightDown = CLLocationCoordinate2DMake(center.latitude + gap, center.longitude + gap);
-        
-        CLLocationCoordinate2D coordinates[4] = {leftUp, leftDown, rightUp, rightDown};
-        MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:4];
-        [m_MapView addOverlay:polygon];
-        
-        KAnnotation *annotation = [[KAnnotation alloc] init];
-        annotation.title = @"当前位置";
-        annotation.coordinate = center;
-        [m_MapView addAnnotation:annotation];
-    }
-    
+//    KAnnotation *annotation = [[KAnnotation alloc] init];
+//    annotation.coordinate = center;
+//    [m_MapView addAnnotation:annotation];
 }
 
 - (void)handleTapRecognizer:(UITapGestureRecognizer *)tap
@@ -153,39 +124,33 @@
     MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:4];
     [m_MapView addOverlay:polygon];
     
-    KAnnotation *annotation = [[KAnnotation alloc] init];
-    annotation.title = @"当前位置";
-    annotation.coordinate = center;
-    [m_MapView addAnnotation:annotation];
-    
+//    KAnnotation *annotation = [[KAnnotation alloc] init];
+//    annotation.coordinate = center;
+//    [m_MapView addAnnotation:annotation];
 }
 
 - (void)location
 {
-//    m_MapView.showsUserLocation = YES;
-//    [self startLocating];
     [m_MapView setRegion:MKCoordinateRegionMake(m_MapView.userLocation.coordinate, m_MapView.region.span) animated:YES];
 }
 
 - (void)clean
 {
-//    for (MKAnnotationView *annoView in annoViewArr)
+//    for (KAnnotation *annotation in m_MapView.annotations)//删除大头针
 //    {
-//        [annoView removeFromSuperview];
+//        [m_MapView removeAnnotation:annotation];
 //    }
     
-    for (KAnnotation *annotation in m_MapView.annotations)//删除大头针
-    {
-        [m_MapView removeAnnotation:annotation];
-    }
+//    for (id overlays in m_MapView.overlays)//删除所有区域和线路
+//    {
+//        if ([overlays isKindOfClass:[MKPolyline class]] || [overlays isKindOfClass:[MKPolygon class]])
+//        {
+//            [m_MapView removeOverlay:overlays];
+//        }
+//    }
     
-    for (id overlays in m_MapView.overlays)//删除区域和线路
-    {
-        if ([overlays isKindOfClass:[MKPolyline class]] || [overlays isKindOfClass:[MKPolygon class]])
-        {
-            [m_MapView removeOverlay:overlays];
-        }
-    }
+//    [m_MapView removeAnnotations:m_MapView.annotations];//删除所有大头针
+    [m_MapView removeOverlays:m_MapView.overlays];//删除所有区域和线路
 }
 
 - (void)search
@@ -209,11 +174,8 @@
             
             [self clean];
             
-//            CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
-            
             float gap = 0.001;
             
-//            CLLocationCoordinate2D center = [m_MapView convertPoint:point toCoordinateFromView:m_MapView];
             CLLocationCoordinate2D center = userCoor;
             CLLocationCoordinate2D leftUp = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude - gap);
             CLLocationCoordinate2D rightUp = CLLocationCoordinate2DMake(center.latitude + gap, center.longitude - gap);
@@ -225,7 +187,7 @@
             [m_MapView addOverlay:polygon];
             
             KAnnotation *annotation = [[KAnnotation alloc] init];
-            annotation.title = @"当前位置";
+//            annotation.title = @"当前位置";
             annotation.coordinate = center;
             [m_MapView addAnnotation:annotation];
         }
@@ -241,17 +203,43 @@
 
 #pragma mark MKMapViewDelegate
 
+//当拖拽，放大，缩小，双击手势开始时调用
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
     CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
     contentView.center = point;
 }
 
+//当拖拽，放大，缩小，双击手势结束时调用
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
     contentView.center = point;
+    
+    if (m_MapView.showsUserLocation == NO)
+    {
+        if (spanArea)
+        {
+            double newSpan = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
+            
+            float width = sqrtf(spanArea/newSpan * (fenceView.frame.size.width * fenceView.frame.size.height));
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                CGRect rect = fenceView.frame;
+                rect.size.width = width;
+                rect.size.height = width;
+                fenceView.frame = rect;
+                
+                fenceView.center = CGPointMake(m_MapView.frame.size.width/2, m_MapView.frame.size.height/2);
+                
+            }];
+        }
+        
+        spanArea = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
+    }
 }
+
 
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
@@ -281,19 +269,24 @@
     return nil;
 }
 
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    NSLog(@"didUpdateUserLocation:%f, %f",m_MapView.region.span.latitudeDelta,m_MapView.region.span.longitudeDelta);
+    
     userCoor = userLocation.coordinate;
     
     m_MapView.showsUserLocation = NO;
     
     [m_MapView setRegion:MKCoordinateRegionMake(userLocation.coordinate, m_MapView.region.span) animated:YES];
     
+    //加圆形区域
 //    MKCircle* circle = [MKCircle circleWithCenterCoordinate:m_MapView.userLocation.location.coordinate radius:5000];
 //    [m_MapView addOverlay:circle];
 //    
 //    return;
     
+    //加矩形区域
     float gap = 0.001;
     CLLocationCoordinate2D center = userLocation.coordinate;
     CLLocationCoordinate2D leftUp = CLLocationCoordinate2DMake(center.latitude - gap, center.longitude - gap);
@@ -305,14 +298,14 @@
     MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:4];
     [m_MapView addOverlay:polygon];
     
+    
+    CLLocationCoordinate2D point = CLLocationCoordinate2DMake(m_MapView.userLocation.location.coordinate.latitude - gap/2, m_MapView.userLocation.location.coordinate.longitude - gap*2);
     KAnnotation *annotation = [[KAnnotation alloc] init];
     annotation.title = @"当前位置";
-    annotation.coordinate = m_MapView.userLocation.location.coordinate;
+    annotation.coordinate = point;
     [m_MapView addAnnotation:annotation];
     
-    NSLog(@"%@",m_MapView.userLocation.location.description);
-    
-    
+    //画线条
 //    MKPolyline *line = [MKPolyline polylineWithCoordinates:coordinates count:4];
 //    [m_MapView addOverlay:line];
 }
@@ -321,58 +314,60 @@
 #pragma mark 显示大头针时调用，注意方法中的annotation参数是即将显示的大头针对象
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[KAnnotation class]]) {
-        MKPinAnnotationView *pinview = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"mylocation"];
-        pinview.animatesDrop = NO;
-        pinview.pinTintColor = [UIColor redColor];
-        pinview.selected = YES;
-        return pinview;
+    MKPinAnnotationView *pin = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier: @"myPin"];
+    if (pin == nil) {
+        pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"myPin"];
+    } else {
+        pin.annotation = annotation;
     }
-    return nil;
+    
+    pin.canShowCallout=YES;
+    pin.animatesDrop = YES;
+    pin.draggable = YES;
+    pin.selected = YES;
+    
+    return pin;
 }
 
-- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray<MKAnnotationView *> *)views
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState
+   fromOldState:(MKAnnotationViewDragState)oldState
 {
-    [annoViewArr addObjectsFromArray:views];
-}
-
-#pragma mark CLLocationManagerDelegate
--(void)startLocating
-{
-    if (![CLLocationManager locationServicesEnabled] ||
-        ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)) {
-        
-        
-        
-    } else
-    {
-        if (locManager == nil) {
-            locManager = [[CLLocationManager alloc] init];
-            locManager.delegate = self;
-            locManager.desiredAccuracy = kCLLocationAccuracyBest;
-            [locManager requestAlwaysAuthorization];
+    switch (newState) {
+            
+        case MKAnnotationViewDragStateStarting: {
+            
+            NSLog(@"拿起");
+            
+            break;
         }
-        [locManager startUpdatingLocation];
+            
+        case MKAnnotationViewDragStateDragging: {
+            
+            NSLog(@"开始拖拽");
+            
+            break;
+        }
+            
+        case MKAnnotationViewDragStateEnding: {
+            
+            NSLog(@"放下,并将大头针");
+            
+            NSLog(@"x is %f", view.center.x);
+            NSLog(@"y is %f", view.center.y);
+            
+            CGPoint dropPoint = CGPointMake(view.center.x, view.center.y);
+            CLLocationCoordinate2D newCoordinate = [mapView convertPoint:dropPoint toCoordinateFromView:view.superview];
+            [view.annotation setCoordinate:newCoordinate];
+            
+            break;
+        }
+            
+        default:
+            break;
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *alocation = [locations lastObject];
-    if (alocation && location == nil) {
-        location = alocation;
-        
-//        [m_MapView setRegion:MKCoordinateRegionMake(alocation.coordinate, m_MapView.region.span) animated:YES];
-    }
-    
-    [m_MapView setRegion:MKCoordinateRegionMake(alocation.coordinate, m_MapView.region.span) animated:YES];
-    [locManager stopUpdatingLocation];
-}
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
