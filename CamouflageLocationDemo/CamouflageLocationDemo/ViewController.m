@@ -17,7 +17,7 @@
     
     UITextField *textField;
     
-    double spanArea;
+    double oldSpanArea;
 }
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
@@ -77,6 +77,8 @@
     [searchBtn setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchBtn];
+    
+    self.geocoder = [[CLGeocoder alloc] init];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)pan
@@ -162,13 +164,11 @@
 
 - (void)switchWithPlace:(NSString *)place
 {
-    self.geocoder = [[CLGeocoder alloc] init];
-    
     [self.geocoder geocodeAddressString:place completionHandler:^(NSArray *placemarks, NSError *error) {
         if (placemarks.count > 0)
         {
             CLPlacemark *mark = [placemarks objectAtIndex:0];
-            
+            NSLog(@"%@",mark.name);
             userCoor = CLLocationCoordinate2DMake(mark.location.coordinate.latitude, mark.location.coordinate.longitude);
             [m_MapView setRegion:MKCoordinateRegionMake(userCoor, m_MapView.region.span) animated:YES];
             
@@ -218,11 +218,12 @@
     
     if (m_MapView.showsUserLocation == NO)
     {
-        if (spanArea)
+        if (oldSpanArea)
         {
             double newSpan = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
             
-            float width = sqrtf(spanArea/newSpan * (fenceView.frame.size.width * fenceView.frame.size.height));
+            float ratio  = oldSpanArea/newSpan;
+            float width = sqrtf(ratio * (fenceView.frame.size.width * fenceView.frame.size.height));
             
             [UIView animateWithDuration:0.3 animations:^{
                 
@@ -236,7 +237,7 @@
             }];
         }
         
-        spanArea = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
+        oldSpanArea = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
     }
 }
 
