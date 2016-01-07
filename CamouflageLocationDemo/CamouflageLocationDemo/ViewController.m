@@ -18,6 +18,8 @@
     UITextField *textField;
     
     double oldSpanArea;
+    
+    CLLocationManager *locationManager;
 }
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
@@ -79,6 +81,10 @@
     [self.view addSubview:searchBtn];
     
     self.geocoder = [[CLGeocoder alloc] init];
+    
+    //定位授权
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager requestWhenInUseAuthorization];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)pan
