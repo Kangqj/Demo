@@ -10,6 +10,105 @@
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
+@implementation UIView(Masonry_LJC)
+
+- (void) distributeSpacingHorizontallyWith:(NSArray*)views
+{
+    NSMutableArray *spaces = [NSMutableArray arrayWithCapacity:views.count+1];
+    
+    for ( int i = 0 ; i < views.count+1 ; ++i )
+    {
+        UIView *v = [UIView new];
+        [spaces addObject:v];
+        [self addSubview:v];
+        
+        [v mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(v.mas_height);
+        }];
+    }
+    
+    UIView *v0 = spaces[0];
+    
+    [v0 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.mas_left);
+        make.centerY.equalTo(((UIView*)views[0]).mas_centerY);
+    }];
+    
+    UIView *lastSpace = v0;
+    for ( int i = 0 ; i < views.count; ++i )
+    {
+        UIView *obj = views[i];
+        UIView *space = spaces[i+1];
+        
+        [obj mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(lastSpace.mas_right);
+        }];
+        
+        [space mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(obj.mas_right);
+            make.centerY.equalTo(obj.mas_centerY);
+            make.width.equalTo(v0);
+        }];
+        
+        lastSpace = space;
+    }
+    
+    [lastSpace mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.mas_right);
+    }];
+    
+}
+
+- (void) distributeSpacingVerticallyWith:(NSArray*)views
+{
+    NSMutableArray *spaces = [NSMutableArray arrayWithCapacity:views.count+1];
+    
+    for ( int i = 0 ; i < views.count+1 ; ++i )
+    {
+        UIView *v = [UIView new];
+        [spaces addObject:v];
+        [self addSubview:v];
+        
+        [v mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(v.mas_height);
+        }];
+    }
+    
+    
+    UIView *v0 = spaces[0];
+    
+    [v0 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_top);
+        make.centerX.equalTo(((UIView*)views[0]).mas_centerX);
+    }];
+    
+    UIView *lastSpace = v0;
+    for ( int i = 0 ; i < views.count; ++i )
+    {
+        UIView *obj = views[i];
+        UIView *space = spaces[i+1];
+        
+        [obj mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(lastSpace.mas_bottom);
+        }];
+        
+        [space mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(obj.mas_bottom);
+            make.centerX.equalTo(obj.mas_centerX);
+            make.height.equalTo(v0);
+        }];
+        
+        lastSpace = space;
+    }
+    
+    [lastSpace mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.mas_bottom);
+    }];
+    
+}
+
+@end
+
 
 @interface ViewController ()
 
@@ -74,7 +173,8 @@
         // 添加大小约束（make就是要添加约束的控件view）
         make.size.mas_equalTo(CGSizeMake(100, 100));
         // 添加居中约束（居中方式与self相同）
-        make.center.equalTo(weakSelf.view); }];
+        make.center.equalTo(weakSelf.view);
+    }];
     
     /********************************************/
     UIView *blackView = [UIView new];
@@ -111,7 +211,121 @@
        
         make.top.left.bottom.and.right.equalTo(view).insets(UIEdgeInsetsMake(10, 10, 10, 10));
     }];
-    /********************************************/
+    
+    
+    /*[中级] 在UIScrollView顺序排列一些view并自动计算contentSize*/
+    
+    UIScrollView *scrollView = [UIScrollView new];
+    scrollView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:scrollView];
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.view).with.insets(UIEdgeInsetsMake(200,10,10,10));
+    }];
+    
+    UIView *container = [UIView new];
+    [scrollView addSubview:container];
+    [container mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(scrollView); //自动的计算uiscrollView的contentSize
+//        make.left.mas_equalTo(0);
+        make.width.equalTo(scrollView);
+    }];
+    
+    int count = 10;
+    
+    UIView *lastView = nil;
+    
+    for ( int i = 1 ; i <= count ; ++i )
+    {
+        UIView *subv = [UIView new];
+        [container addSubview:subv];
+        subv.backgroundColor = [UIColor colorWithHue:( arc4random() % 256 / 256.0 )
+                                          saturation:( arc4random() % 128 / 256.0 ) + 0.5
+                                          brightness:( arc4random() % 128 / 256.0 ) + 0.5
+                                               alpha:1];
+        
+        [subv mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.and.right.equalTo(container);
+            make.height.mas_equalTo(@(20*i));
+            
+            if ( lastView )
+            {
+                make.top.mas_equalTo(lastView.mas_bottom);
+            }
+            else
+            {
+                make.top.mas_equalTo(container.mas_top);
+            }
+        }];
+        
+        lastView = subv;
+    }
+    
+    
+    [container mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(lastView.mas_bottom);
+    }];
+    
+    return;
+    
+    /*[高级] 横向或者纵向等间隙的排列一组view */
+    
+    UIView *sv = [UIView new];
+    [self.view addSubview:sv];
+    
+    [sv mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.and.right.and.width.and.height.equalTo(weakSelf);
+        
+    }];
+    
+
+    UIView *sv11 = [UIView new];
+    UIView *sv12 = [UIView new];
+    UIView *sv13 = [UIView new];
+    UIView *sv21 = [UIView new];
+    UIView *sv31 = [UIView new];
+    
+    sv11.backgroundColor = [UIColor redColor];
+    sv12.backgroundColor = [UIColor redColor];
+    sv13.backgroundColor = [UIColor redColor];
+    sv21.backgroundColor = [UIColor redColor];
+    sv31.backgroundColor = [UIColor redColor];
+    
+    [sv addSubview:sv11];
+    [sv addSubview:sv12];
+    [sv addSubview:sv13];
+    [sv addSubview:sv21];
+    [sv addSubview:sv31];
+    
+    //给予不同的大小 测试效果
+    
+    [sv11 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(@[sv12,sv13]);
+        make.centerX.equalTo(@[sv21,sv31]);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+    }];
+    
+    [sv12 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(70, 20));
+    }];
+    
+    [sv13 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
+    
+    [sv21 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(50, 20));
+    }];
+    
+    [sv31 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(40, 60));
+    }];
+    
+    [sv distributeSpacingHorizontallyWith:@[sv11,sv12,sv13]];
+    [sv distributeSpacingVerticallyWith:@[sv11,sv21,sv31]];
+    
+//    [sv showPlaceHolderWithAllSubviews];
+//    [sv hidePlaceHolder];
 }
 
 - (void)didReceiveMemoryWarning {
