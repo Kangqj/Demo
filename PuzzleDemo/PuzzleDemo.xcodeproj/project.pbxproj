@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7772AC9C1C44D4F800ABF7FD /* UIImage+Modifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 7772AC9B1C44D4F800ABF7FD /* UIImage+Modifications.m */; };
+		7772AC9E1C44D5BF00ABF7FD /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772AC9D1C44D5BF00ABF7FD /* test.png */; };
 		77F02A641C2E7EA8005825A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F02A631C2E7EA8005825A8 /* main.m */; };
 		77F02A671C2E7EA8005825A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F02A661C2E7EA8005825A8 /* AppDelegate.m */; };
 		77F02A6A1C2E7EA8005825A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F02A691C2E7EA8005825A8 /* ViewController.m */; };
@@ -37,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		0C3A8243F6FD9609BF2611B8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7772AC9A1C44D4F800ABF7FD /* UIImage+Modifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Modifications.h"; sourceTree = "<group>"; };
+		7772AC9B1C44D4F800ABF7FD /* UIImage+Modifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Modifications.m"; sourceTree = "<group>"; };
+		7772AC9D1C44D5BF00ABF7FD /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		77F02A5F1C2E7EA8005825A8 /* PuzzleDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F02A631C2E7EA8005825A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77F02A651C2E7EA8005825A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +127,9 @@
 				77F02A661C2E7EA8005825A8 /* AppDelegate.m */,
 				77F02A681C2E7EA8005825A8 /* ViewController.h */,
 				77F02A691C2E7EA8005825A8 /* ViewController.m */,
+				7772AC9A1C44D4F800ABF7FD /* UIImage+Modifications.h */,
+				7772AC9B1C44D4F800ABF7FD /* UIImage+Modifications.m */,
+				7772AC9D1C44D5BF00ABF7FD /* test.png */,
 				77F02A6B1C2E7EA8005825A8 /* Main.storyboard */,
 				77F02A6E1C2E7EA8005825A8 /* Assets.xcassets */,
 				77F02A701C2E7EA8005825A8 /* LaunchScreen.storyboard */,
@@ -274,6 +282,7 @@
 				77F02A721C2E7EA8005825A8 /* LaunchScreen.storyboard in Resources */,
 				77F02A6F1C2E7EA8005825A8 /* Assets.xcassets in Resources */,
 				77F02A6D1C2E7EA8005825A8 /* Main.storyboard in Resources */,
+				7772AC9E1C44D5BF00ABF7FD /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +343,7 @@
 				77F02A6A1C2E7EA8005825A8 /* ViewController.m in Sources */,
 				77F02A671C2E7EA8005825A8 /* AppDelegate.m in Sources */,
 				77F02A641C2E7EA8005825A8 /* main.m in Sources */,
+				7772AC9C1C44D4F800ABF7FD /* UIImage+Modifications.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
