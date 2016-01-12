@@ -112,7 +112,7 @@ static NSString *const MyServiceType = @"chat-files";
 
 - (void)sendFile:(NSString *)path to:(MCPeerID *)peer
 {
-    [self.session sendResourceAtURL:[NSURL fileURLWithPath:path] withName:[path lastPathComponent] toPeer:peer withCompletionHandler:^(NSError * _Nullable error) {
+    [self.session sendResourceAtURL:[NSURL fileURLWithPath:path] withName:[path lastPathComponent] toPeer:peer withCompletionHandler:^(NSError *error) {
         
         if (error) {
             NSLog(@"Error: %@", [error localizedDescription]);

@@ -36,8 +36,8 @@
         [peerBtn setTitle:peer.displayName forState:UIControlStateNormal];
         [self addSubview:peerBtn];
         
-        UIImage *image = [UIImage imageWithColor:color];
-        [peerBtn setBackgroundImage:[UIImage imageWithCornerRadius:50 image:image] forState:UIControlStateNormal];
+        [peerBtn setBackgroundImage:[UIImage drawRoundImageWithColor:color size:peerBtn.frame.size] forState:UIControlStateNormal];
+//        [peerBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:color size:CGSizeMake(100, 50)] forState:UIControlStateNormal];
         peerBtn.layer.cornerRadius = 50;
         peerBtn.layer.shadowColor = [UIColor grayColor].CGColor;
         peerBtn.layer.shadowOffset = CGSizeMake(5, 5);
@@ -57,6 +57,9 @@
         [self addSubview:progressView];
         progressView.hidden = YES;
         
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        [self addGestureRecognizer:pan];
+        
         /*
         UIButton *cameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         cameraBtn.frame = CGRectMake((self.frame.size.width-100)/2, 110, 50, 50);
@@ -73,6 +76,49 @@
     }
     
     return self;
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)pan
+{
+    CGPoint point = [pan translationInView:self];
+    pan.view.center = CGPointMake(pan.view.center.x + point.x, pan.view.center.y + point.y);
+    [pan setTranslation:CGPointMake(0, 0) inView:self];
+    
+    return;
+    
+    if (pan.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint velocity = [pan velocityInView:self];
+        
+        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+        
+        CGFloat slideMult = magnitude / 200;
+        
+        NSLog(@"magnitude: %f, slideMult: %f", magnitude, slideMult);
+        
+        float slideFactor = 0.1 * slideMult; // Increase for more of a slide
+        
+        CGPoint finalPoint = CGPointMake(pan.view.center.x + (velocity.x * slideFactor),
+                                         
+                                         pan.view.center.y + (velocity.y * slideFactor));
+        
+        finalPoint.x = MIN(MAX(finalPoint.x, 0), self.bounds.size.width);
+        
+        finalPoint.y = MIN(MAX(finalPoint.y, 0), self.bounds.size.height);
+        
+        [UIView animateWithDuration:slideFactor*2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            pan.view.center = finalPoint;
+            
+        } completion:nil];
+    }
+    else
+    {
+        CGPoint point = [pan translationInView:self];
+        NSLog(@"%f,%f",point.x,point.y);
+        pan.view.center = CGPointMake(pan.view.center.x + point.x, pan.view.center.y + point.y);
+        [pan setTranslation:CGPointMake(0, 0) inView:self];
+    }
 }
 
 - (void)loadProgress:(float)progress
@@ -105,7 +151,8 @@
     
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+/*
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.superview bringSubviewToFront:self];
     
@@ -113,7 +160,7 @@
     startPoint = [touch  locationInView:self];
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch  locationInView:self.superview];
@@ -121,7 +168,7 @@
     self.frame = CGRectMake(point.x-startPoint.x, point.y-startPoint.y, self.frame.size.width, self.frame.size.height);
     
 }
-
+*/
 
 
 @end
