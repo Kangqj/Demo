@@ -9,9 +9,12 @@
 #import "ViewController.h"
 #import "ChatViewController.h"
 #import "PeerView.h"
+#import "RadarView.h"
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
+    RadarView *radarView;
+    
     NSMutableArray *peerViewArr;
     MCPeerID       *curPeer;
 }
@@ -24,11 +27,15 @@
 
 @implementation ViewController
 
-@synthesize peerViewArr;
+@synthesize peerViewArr, curPeer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    radarView = [[RadarView alloc] initWithFrame:CGRectMake((kMainScreenWidth-50)/2, 20, 50, 50)];
+    [self.view addSubview:radarView];
+    [radarView start];
     
     self.peerViewArr = [NSMutableArray array];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -40,7 +47,7 @@
     
     //广播信号
     [[MCManager sharedManager] advertisingPeer:YES];
-    
+    [self addPeerView:nil];
     //搜索其他设备
     [[MCManager sharedManager] browsingForPeers:^(MCPeerID *peer) {
         
@@ -120,7 +127,8 @@
     [[MCManager sharedManager] invitePeer:peer];
     
     [peerView setConnectPeer:^(MCPeerID *peer) {
-        
+        [self removePeerView:peer];
+        return ;
         self.curPeer = peer;
         UIImagePickerController *pickController = [[UIImagePickerController alloc] init];
         pickController.delegate = self;
@@ -168,7 +176,7 @@
 }
 
 #pragma -mark UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     /*
      Printing description of info:

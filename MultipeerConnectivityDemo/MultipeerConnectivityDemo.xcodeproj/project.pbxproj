@@ -10,6 +10,7 @@
 		041D41E91C10743F005841F2 /* MCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41E81C10743F005841F2 /* MCManager.m */; settings = {ASSET_TAGS = (); }; };
 		041D41EC1C1074CD005841F2 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41EB1C1074CD005841F2 /* DataManager.m */; settings = {ASSET_TAGS = (); }; };
 		041D41F01C10760F005841F2 /* PeerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D41EF1C10760F005841F2 /* PeerView.m */; settings = {ASSET_TAGS = (); }; };
+		0421FA421C15B18B006E54AF /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0421FA411C15B18B006E54AF /* RadarView.m */; settings = {ASSET_TAGS = (); }; };
 		042729B51BEE37B900C32560 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042729B41BEE37B900C32560 /* ChatViewController.m */; };
 		0436B2621C11CAC80040A4B0 /* AnimationEngin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B2481C11CAC70040A4B0 /* AnimationEngin.m */; settings = {ASSET_TAGS = (); }; };
 		0436B2641C11CAC80040A4B0 /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436B24D1C11CAC80040A4B0 /* UIColor+CustomExtensions.m */; settings = {ASSET_TAGS = (); }; };
@@ -43,6 +44,8 @@
 		041D41EB1C1074CD005841F2 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		041D41EE1C10760F005841F2 /* PeerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerView.h; sourceTree = "<group>"; };
 		041D41EF1C10760F005841F2 /* PeerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerView.m; sourceTree = "<group>"; };
+		0421FA401C15B18B006E54AF /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
+		0421FA411C15B18B006E54AF /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
 		042729B31BEE37B900C32560 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		042729B41BEE37B900C32560 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		0436B2471C11CAC70040A4B0 /* AnimationEngin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEngin.h; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 			children = (
 				041D41EE1C10760F005841F2 /* PeerView.h */,
 				041D41EF1C10760F005841F2 /* PeerView.m */,
+				0421FA401C15B18B006E54AF /* RadarView.h */,
+				0421FA411C15B18B006E54AF /* RadarView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				0436B2641C11CAC80040A4B0 /* UIColor+CustomExtensions.m in Sources */,
 				0436B2671C11CAC80040A4B0 /* KProgressHUD.m in Sources */,
 				772E783F1BEC9A88005CA847 /* main.m in Sources */,
+				0421FA421C15B18B006E54AF /* RadarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

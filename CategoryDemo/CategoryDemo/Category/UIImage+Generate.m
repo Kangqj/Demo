@@ -1,47 +1,14 @@
 //
-//  UIImage_Colorful.h
-//  MultipeerConnectivityDemo
+//  UIImage+Generate.m
+//  CategoryDemo
 //
-//  Created by Kangqj on 15/11/6.
-//  Copyright (c) 2015年 康起军. All rights reserved.
+//  Created by 康起军 on 16/1/14.
+//  Copyright © 2016年 康起军. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UIImage+Generate.h"
 
-@interface UIImage (colorful)
-
-+ (UIImage *)drawRectImageWithColor:(UIColor *)color size:(CGSize)size;
-+ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size;
-+ (UIImage *)drawRoundRectImageWithColor:(UIColor *)color size:(CGSize)size;
-+ (UIImage *)drawRadarBottomImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
-
-@end
-
-@implementation UIImage (colorful)
-
-//画一个圆形图片
-+ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size
-{
-    UIGraphicsBeginImageContext(size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    //去锯齿处理
-    CGContextSetAllowsAntialiasing(context, true);
-    CGContextSetShouldAntialias(context, true);
-    
-    //2.绘制图形
-    CGContextAddArc(context, size.width/2, size.height/2, size.width/2 - 2, 0, 2*M_PI, YES);
-    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
-    CGContextSetLineWidth(context, 2);//线条宽度
-    CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
-    
-    //3.显示
-    CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
+@implementation UIImage (Generate)
 
 //画一个直角矩形图片
 + (UIImage *)drawRectImageWithColor:(UIColor *)color size:(CGSize)size
@@ -68,10 +35,11 @@
     UIGraphicsBeginImageContext(rect.size);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
     //去锯齿处理
     CGContextSetAllowsAntialiasing(context, true);
     CGContextSetShouldAntialias(context, true);
-    
+
     CGContextSetFillColorWithColor(context, [color CGColor]);
     
     //切圆角
@@ -88,6 +56,29 @@
     return image;
 }
 
+//画一个圆形图片
++ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //去锯齿处理
+    CGContextSetAllowsAntialiasing(context, true);
+    CGContextSetShouldAntialias(context, true);
+
+    CGContextAddArc(context, size.width/2, size.height/2, size.width/2 - 2, 0, 2*M_PI, YES);
+    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
+    CGContextSetLineWidth(context, 2);//线条宽度
+    CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
+    
+    CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 //画雷达底座
 + (UIImage *)drawRadarBottomImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
 {
@@ -96,10 +87,11 @@
     UIGraphicsBeginImageContext(rect.size);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
     //去锯齿处理
     CGContextSetAllowsAntialiasing(context, true);
     CGContextSetShouldAntialias(context, true);
-    
+
     //画圆点
     CGContextAddArc(context, size.width/2, size.width/2, size.width/20, 0, 2*M_PI, YES);
     CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
@@ -114,7 +106,6 @@
         CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
     }
     
-    //3.显示
     CGContextDrawPath(context, kCGPathFillStroke);
     
     //只要三个点就行跟画一条线方式一样，把三点连接起来
@@ -142,5 +133,6 @@
     
     return image;
 }
+
 
 @end
