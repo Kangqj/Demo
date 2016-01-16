@@ -56,6 +56,10 @@
 //    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapRecognizer:)];
 //    [m_MapView addGestureRecognizer:tapRecognizer];
     
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+    [pinchGesture setDelegate:self];
+    [m_MapView addGestureRecognizer:pinchGesture];
+    
     UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     locationBtn.frame = CGRectMake(0, 20, 80, 30);
     [locationBtn setTitle:@"Location" forState:UIControlStateNormal];
@@ -137,6 +141,32 @@
 //    [m_MapView addAnnotation:annotation];
 }
 
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gesture
+{
+    CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
+    contentView.center = point;
+    if (oldSpanArea)
+    {
+        double newSpan = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
+        
+        float ratio  = oldSpanArea/newSpan;
+        float width = sqrtf(ratio * (fenceView.frame.size.width * fenceView.frame.size.height));
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            CGRect rect = fenceView.frame;
+            rect.size.width = width;
+            rect.size.height = width;
+            fenceView.frame = rect;
+            
+            fenceView.center = CGPointMake(m_MapView.frame.size.width/2, m_MapView.frame.size.height/2);
+            
+        }];
+    }
+    
+    oldSpanArea = m_MapView.region.span.latitudeDelta * m_MapView.region.span.longitudeDelta;
+}
+
 - (void)location
 {
     [m_MapView setRegion:MKCoordinateRegionMake(m_MapView.userLocation.coordinate, m_MapView.region.span) animated:YES];
@@ -205,6 +235,12 @@
             NSLog(@"An error occurred = %@", error);
         }
     }];
+}
+
+#pragma mark UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 #pragma mark MKMapViewDelegate
