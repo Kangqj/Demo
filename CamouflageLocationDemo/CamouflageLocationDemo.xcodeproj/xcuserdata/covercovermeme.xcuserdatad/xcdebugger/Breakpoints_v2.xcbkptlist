@@ -10,13 +10,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CamouflageLocationDemo/ViewController.m"
-            timestampString = "474630998.582419"
+            timestampString = "474631878.413093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-switchWithPlace:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController switchWithPlace:]"
+                  moduleName = "CamouflageLocationDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/covercovermeme/Demo/CamouflageLocationDemo/CamouflageLocationDemo/ViewController.m"
+                  timestampString = "474631736.866552"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[ViewController switchWithPlace:]_block_invoke"
+                  moduleName = "CamouflageLocationDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/covercovermeme/Demo/CamouflageLocationDemo/CamouflageLocationDemo/ViewController.m"
+                  timestampString = "474631736.866813"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CamouflageLocationDemo/ViewController.m"
-            timestampString = "474630934.314744"
+            timestampString = "474631610.18444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-handlePan:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-contentViewHandlePan:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CamouflageLocationDemo/ViewController.m"
-            timestampString = "474630985.514918"
+            timestampString = "474631878.413093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-handleTapRecognizer:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CamouflageLocationDemo/ViewController.m"
+            timestampString = "474631576.741511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-mapViewHandlePan:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

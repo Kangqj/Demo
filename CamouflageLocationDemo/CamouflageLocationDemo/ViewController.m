@@ -50,7 +50,7 @@
     contentView.backgroundColor = [UIColor clearColor];//[[UIColor greenColor] colorWithAlphaComponent:0.4];
     [m_MapView addSubview:contentView];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(contentViewHandlePan:)];
     [contentView addGestureRecognizer:pan];
     
 //    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapRecognizer:)];
@@ -59,6 +59,10 @@
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
     [pinchGesture setDelegate:self];
     [m_MapView addGestureRecognizer:pinchGesture];
+    
+    UIPanGestureRecognizer *mappan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mapViewHandlePan:)];
+    [mappan setDelegate:self];
+    [m_MapView addGestureRecognizer:mappan];
     
     UIButton *locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     locationBtn.frame = CGRectMake(0, 20, 80, 30);
@@ -91,10 +95,16 @@
     [locationManager requestWhenInUseAuthorization];
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)pan
+- (void)mapViewHandlePan:(UIPanGestureRecognizer *)pan
 {
-    [self clean];
+    NSLog(@"--------------地图拖动事件");
+}
+
+- (void)contentViewHandlePan:(UIPanGestureRecognizer *)pan
+{
+    NSLog(@"--------------MKOverlayView拖动事件");
     
+    [self clean];
     CGPoint point = [pan locationInView:m_MapView];
     contentView.center = point;
     [pan setTranslation:CGPointZero inView:pan.view];
@@ -111,14 +121,11 @@
     CLLocationCoordinate2D coordinates[4] = {leftUp, leftDown, rightUp, rightDown};
     MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:4];
     [m_MapView addOverlay:polygon];
-    
-//    KAnnotation *annotation = [[KAnnotation alloc] init];
-//    annotation.coordinate = center;
-//    [m_MapView addAnnotation:annotation];
 }
 
 - (void)handleTapRecognizer:(UITapGestureRecognizer *)tap
 {
+    NSLog(@"--------------地图触碰事件");
     CGPoint point = [tap locationInView:m_MapView];
     
     [self clean];
@@ -136,13 +143,17 @@
     MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:4];
     [m_MapView addOverlay:polygon];
     
-//    KAnnotation *annotation = [[KAnnotation alloc] init];
-//    annotation.coordinate = center;
-//    [m_MapView addAnnotation:annotation];
+    
+    CLLocationCoordinate2D annpoint = CLLocationCoordinate2DMake(center.latitude - gap/2, center.longitude - gap*2);
+    
+    KAnnotation *annotation = [[KAnnotation alloc] init];
+    annotation.coordinate = annpoint;
+    [m_MapView addAnnotation:annotation];
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gesture
 {
+    NSLog(@"--------------地图缩放事件");
     CGPoint point = [m_MapView convertCoordinate:userCoor toPointToView:m_MapView];
     contentView.center = point;
     if (oldSpanArea)
@@ -187,7 +198,7 @@
 //        }
 //    }
     
-//    [m_MapView removeAnnotations:m_MapView.annotations];//删除所有大头针
+    [m_MapView removeAnnotations:m_MapView.annotations];//删除所有大头针
     [m_MapView removeOverlays:m_MapView.overlays];//删除所有区域和线路
 }
 
