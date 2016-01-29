@@ -125,7 +125,7 @@
 
 - (void)handleTapRecognizer:(UITapGestureRecognizer *)tap
 {
-    NSLog(@"--------------地图触碰事件");
+    NSLog(@"--------------地图点击事件");
     CGPoint point = [tap locationInView:m_MapView];
     
     [self clean];
