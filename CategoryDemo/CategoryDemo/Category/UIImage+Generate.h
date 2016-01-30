@@ -10,9 +10,16 @@
 
 @interface UIImage (Generate)
 
+//直角矩形
 + (UIImage *)drawRectImageWithColor:(UIColor *)color size:(CGSize)size;
-+ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size;
+
+//圆角矩形
 + (UIImage *)drawRoundRectImageWithColor:(UIColor *)color size:(CGSize)size;
+
+//圆形
++ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
+
+//三角形
 + (UIImage *)drawRadarBottomImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
 
 

@@ -57,7 +57,7 @@
 }
 
 //画一个圆形图片
-+ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size
++ (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
 {
     UIGraphicsBeginImageContext(size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -69,7 +69,15 @@
     CGContextAddArc(context, size.width/2, size.height/2, size.width/2 - 2, 0, 2*M_PI, YES);
     CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
     CGContextSetLineWidth(context, 2);//线条宽度
-    CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
+    
+    if (empty)
+    {
+        CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);//填充颜色
+    }
+    else
+    {
+        CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
+    }
     
     CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
     
@@ -79,7 +87,7 @@
     return image;
 }
 
-//画雷达底座
+//三角形
 + (UIImage *)drawRadarBottomImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
 {
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
