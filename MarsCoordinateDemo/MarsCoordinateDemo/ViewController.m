@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //http://lbsyun.baidu.com/index.php?title=webapi/guide/changeposition
+    
     NSString *coords = [NSString stringWithFormat:@"%f,%f",11.0, 22.0];
     NSString *ak = @"ygPhipw5FCio0PeobzHStlMz";
     NSString *from = @"3";
@@ -35,13 +37,15 @@
     [self request:httpUrl withHttpArg:httpArg];
 }
 
+#pragma mark 使用百度的WebAPI对非百度地图坐标的坐标转化为百度地图的坐标
 -(void)request: (NSString*)httpUrl withHttpArg: (NSString*)HttpArg
 {
     NSString *urlStr = [[NSString alloc]initWithFormat: @"%@?%@", httpUrl, HttpArg];
     NSURL *url = [NSURL URLWithString: urlStr];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
     [request setHTTPMethod: @"GET"];
-    [request addValue: @"您自己的apikey" forHTTPHeaderField: @"apikey"];
+//    [request addValue: @"您自己的apikey" forHTTPHeaderField: @"apikey"];
+    
     [NSURLConnection sendAsynchronousRequest: request
                                        queue: [NSOperationQueue mainQueue]
                            completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
@@ -52,6 +56,10 @@
                                    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                    NSLog(@"HttpResponseCode:%ld", responseCode);
                                    NSLog(@"HttpResponseBody %@",responseString);
+                                   
+                                   NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                   NSLog(@"---%@",dic);
+
                                }
                            }];
 }
