@@ -17,6 +17,7 @@
 		0491DB6E1C47DD4B00F033FC /* CategoryDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491DB6D1C47DD4B00F033FC /* CategoryDemoUITests.m */; };
 		0491DB811C47E2BB00F033FC /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491DB801C47E2BB00F033FC /* UIImage+Generate.m */; };
 		0491DB841C47E3FC00F033FC /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491DB831C47E3FC00F033FC /* UIColor+CustomExtensions.m */; };
+		7761473C1C5C59560069DC92 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7761473B1C5C59560069DC92 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0491DB801C47E2BB00F033FC /* UIImage+Generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Generate.m"; sourceTree = "<group>"; };
 		0491DB821C47E3FC00F033FC /* UIColor+CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomExtensions.h"; sourceTree = "<group>"; };
 		0491DB831C47E3FC00F033FC /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
+		7761473B1C5C59560069DC92 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				0491DB4C1C47DD4A00F033FC /* AppDelegate.m */,
 				0491DB4E1C47DD4A00F033FC /* ViewController.h */,
 				0491DB4F1C47DD4A00F033FC /* ViewController.m */,
+				7761473B1C5C59560069DC92 /* README.md */,
 				0491DB511C47DD4A00F033FC /* Main.storyboard */,
 				0491DB7E1C47E2BB00F033FC /* Category */,
 				0491DB541C47DD4A00F033FC /* Assets.xcassets */,
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7761473C1C5C59560069DC92 /* README.md in Sources */,
 				0491DB811C47E2BB00F033FC /* UIImage+Generate.m in Sources */,
 				0491DB501C47DD4A00F033FC /* ViewController.m in Sources */,
 				0491DB4D1C47DD4A00F033FC /* AppDelegate.m in Sources */,
