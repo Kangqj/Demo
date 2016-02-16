@@ -20,7 +20,9 @@
 + (UIImage *)drawRoundImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
 
 //三角形
-+ (UIImage *)drawRadarBottomImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
++ (UIImage *)drawTriangleImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
 
+//笑脸
++ (UIImage *)drawSmileFaceImageWithColor:(UIColor *)color size:(CGSize)size radius:(float)radius;
 
 @end

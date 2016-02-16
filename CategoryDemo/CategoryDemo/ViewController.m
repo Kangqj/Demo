@@ -45,14 +45,20 @@
     //三角形实心
     UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
     button5.frame = CGRectMake(20, 340, 80, 80);
-    [button5 setBackgroundImage:[UIImage drawRadarBottomImageWithColor:[UIColor randomColor] size:button3.frame.size isEmpty:NO] forState:UIControlStateNormal];
+    [button5 setBackgroundImage:[UIImage drawTriangleImageWithColor:[UIColor randomColor] size:button3.frame.size isEmpty:NO] forState:UIControlStateNormal];
     [self.view addSubview:button5];
     
     //三角形空心
     UIButton *button6 = [UIButton buttonWithType:UIButtonTypeCustom];
     button6.frame = CGRectMake(20, 430, 80, 80);
-    [button6 setBackgroundImage:[UIImage drawRadarBottomImageWithColor:[UIColor randomColor] size:button3.frame.size isEmpty:YES] forState:UIControlStateNormal];
+    [button6 setBackgroundImage:[UIImage drawTriangleImageWithColor:[UIColor randomColor] size:button3.frame.size isEmpty:YES] forState:UIControlStateNormal];
     [self.view addSubview:button6];
+    
+    //笑脸
+    UIButton *button7 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button7.frame = CGRectMake(150, 30, 80, 80);
+    [button7 setBackgroundImage:[UIImage drawSmileFaceImageWithColor:[UIColor randomColor] size:button7.frame.size radius:80/3] forState:UIControlStateNormal];
+    [self.view addSubview:button7];
     
 
 }

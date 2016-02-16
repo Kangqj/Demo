@@ -88,7 +88,7 @@
 }
 
 //三角形
-+ (UIImage *)drawRadarBottomImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
++ (UIImage *)drawTriangleImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
 {
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
     
@@ -142,5 +142,72 @@
     return image;
 }
 
+//笑脸
++ (UIImage *)drawSmileFaceImageWithColor:(UIColor *)color size:(CGSize)size radius:(float)radius
+{
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+
+    //眼睛
+    CGContextAddArc(context, size.width/3, size.width/3, size.width/15, 0, 2*M_PI, YES);
+    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
+    CGContextSetLineWidth(context, 2);//线条宽度
+    CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
+    CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
+    
+    CGContextAddArc(context, size.width*2/3, size.width/3, size.width/15, 0, 2*M_PI, YES);
+    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
+    CGContextSetLineWidth(context, 2);//线条宽度
+    CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
+    CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
+    
+    //嘴
+    drawArc(color, CGPointMake(size.width/2, size.height/2), radius, 180/8, 180*7/8, NO);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+/*
+ 画圆弧,圆
+ CGContextAddArc(context, 圆心x, 圆心y, 半径, 开始弧度, 结束弧度, 1逆时针0顺时针);
+ 
+ 角度坐标象限示意图:
+ 
+            PI*3/2
+            |
+            |
+            |
+ PI ________|_______ 0
+            |
+            |
+            |
+            PI/2
+ 
+ */
+void drawArc(UIColor *color,  CGPoint center, CGFloat radius, CGFloat startAngle, CGFloat endAngle, bool isClockwise)
+{
+    //1.获得图形上下文
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    //2.绘制图形
+    CGContextAddArc(context, center.x, center.y, radius, arc(startAngle), arc(endAngle), isClockwise);
+    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
+    CGContextSetLineWidth(context, 2);//线条宽度
+    CGContextSetFillColorWithColor(context, [UIColor orangeColor].CGColor);//填充颜色
+    
+    //3.显示
+//    CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
+    //kCGPathFill填充非零绕数规则,kCGPathEOFill表示用奇偶规则,kCGPathStroke路径,kCGPathFillStroke路径填充,kCGPathEOFillStroke表示描线，不是填充
+    
+    //3.显示
+    CGContextStrokePath(context);//绘制路径
+}
+//角度转弧度
+CGFloat arc(float angle)
+{
+    return angle*M_PI/180;
+}
 
 @end
