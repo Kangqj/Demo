@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048EE8B11C76036E00A0AA06 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 048EE8B01C76036E00A0AA06 /* README.md */; };
 		7761474B1C5C66E80069DC92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7761474A1C5C66E80069DC92 /* main.m */; };
 		7761474E1C5C66E90069DC92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7761474D1C5C66E90069DC92 /* AppDelegate.m */; };
 		776147511C5C66E90069DC92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 776147501C5C66E90069DC92 /* ViewController.m */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048EE8B01C76036E00A0AA06 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		776147461C5C66E80069DC92 /* MarsCoordinateDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsCoordinateDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7761474A1C5C66E80069DC92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7761474C1C5C66E90069DC92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				7761474D1C5C66E90069DC92 /* AppDelegate.m */,
 				7761474F1C5C66E90069DC92 /* ViewController.h */,
 				776147501C5C66E90069DC92 /* ViewController.m */,
+				048EE8B01C76036E00A0AA06 /* README.md */,
 				776147521C5C66E90069DC92 /* Main.storyboard */,
 				776147551C5C66E90069DC92 /* Assets.xcassets */,
 				776147571C5C66E90069DC92 /* LaunchScreen.storyboard */,
@@ -272,6 +275,7 @@
 			files = (
 				776147511C5C66E90069DC92 /* ViewController.m in Sources */,
 				7761474E1C5C66E90069DC92 /* AppDelegate.m in Sources */,
+				048EE8B11C76036E00A0AA06 /* README.md in Sources */,
 				7761474B1C5C66E80069DC92 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +500,7 @@
 				776147751C5C66E90069DC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		776147761C5C66E90069DC92 /* Build configuration list for PBXNativeTarget "MarsCoordinateDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +509,7 @@
 				776147781C5C66E90069DC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		776147791C5C66E90069DC92 /* Build configuration list for PBXNativeTarget "MarsCoordinateDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +518,7 @@
 				7761477B1C5C66E90069DC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
