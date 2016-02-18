@@ -18,18 +18,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //http://lbsyun.baidu.com/index.php?title=webapi/guide/changeposition
+    //WebAPI: http://lbsyun.baidu.com/index.php?title=webapi/guide/changeposition
     
-    NSString *coords = [NSString stringWithFormat:@"%f,%f",11.0, 22.0];
-    NSString *ak = @"ygPhipw5FCio0PeobzHStlMz";
+    [self exchangeCoords:CLLocationCoordinate2DMake(118.781332,32.059105) isGPS:NO];
+}
+
+- (void)exchangeCoords:(CLLocationCoordinate2D)cll isGPS:(BOOL)isgps
+{
+    NSString *coords = [NSString stringWithFormat:@"%f,%f",cll.latitude, cll.longitude];
+    NSString *ak = @"mEqVXQmbhj7RM8nPqvWFy3EC";
     NSString *from = @"3";
-//    if (isgps)
-//    {
-//        from = @"1";
-//        coords = [NSString stringWithFormat:@"%f,%f", cll.longitude, cll.latitude];//gps坐标的经纬度参数要反过来，否则转换不成功
-//    }
+    if (isgps)
+    {
+        from = @"1";
+    }
     NSString *to = @"5";
-    NSString *mcode = @"com.coverme.covermeAdhoc";
+    NSString *mcode = @"sss.MarsCoordinateDemo";
     
     NSString *httpUrl = @"http://api.map.baidu.com/geoconv/v1/";
     NSString *httpArg = [NSString stringWithFormat:@"coords=%@&from=%@&to=%@&ak=%@&mcode=%@",coords, from, to, ak, mcode];
@@ -44,14 +48,16 @@
     NSURL *url = [NSURL URLWithString: urlStr];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
     [request setHTTPMethod: @"GET"];
-//    [request addValue: @"您自己的apikey" forHTTPHeaderField: @"apikey"];
     
     [NSURLConnection sendAsynchronousRequest: request
                                        queue: [NSOperationQueue mainQueue]
                            completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
-                               if (error) {
+                               if (error)
+                               {
                                    NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
-                               } else {
+                               }
+                               else
+                               {
                                    NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
                                    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                    NSLog(@"HttpResponseCode:%ld", responseCode);
@@ -59,6 +65,20 @@
                                    
                                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                    NSLog(@"---%@",dic);
+                                   
+                                   NSString *status = [dic objectForKey:@"status"];
+                                   
+                                   if ([status intValue] == 0)
+                                   {
+                                       NSArray *arr = [dic objectForKey:@"result"];
+                                       if (arr.count > 0)
+                                       {
+                                           NSDictionary *dic = [arr objectAtIndex:0];
+                                           
+                                           NSLog(@"\n转换成功-转换结果:%@",dic);
+                                       }
+                                       
+                                   }
 
                                }
                            }];
