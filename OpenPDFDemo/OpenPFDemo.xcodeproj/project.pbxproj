@@ -15,6 +15,12 @@
 		779AF49C1C7FEC6B00037DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 779AF49A1C7FEC6B00037DA2 /* LaunchScreen.storyboard */; };
 		779AF4A71C7FEC6B00037DA2 /* OpenPFDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4A61C7FEC6B00037DA2 /* OpenPFDemoTests.m */; };
 		779AF4B21C7FEC6C00037DA2 /* OpenPFDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4B11C7FEC6C00037DA2 /* OpenPFDemoUITests.m */; };
+		779AF4C11C7FF3FB00037DA2 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4C01C7FF3FB00037DA2 /* WebViewController.m */; };
+		779AF4C31C7FF5AB00037DA2 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AF4C21C7FF5AB00037DA2 /* QuickLook.framework */; };
+		779AF4C51C7FF77F00037DA2 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 779AF4C41C7FF77F00037DA2 /* test.pdf */; };
+		779AF4C81C80006C00037DA2 /* DrawPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4C71C80006C00037DA2 /* DrawPDFViewController.m */; };
+		779AF4CB1C80207500037DA2 /* DrawPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4CA1C80207500037DA2 /* DrawPDFView.m */; };
+		779AF4CE1C80385E00037DA2 /* MuPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4CD1C80385E00037DA2 /* MuPDFViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,16 @@
 		779AF4AD1C7FEC6C00037DA2 /* OpenPFDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenPFDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		779AF4B11C7FEC6C00037DA2 /* OpenPFDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenPFDemoUITests.m; sourceTree = "<group>"; };
 		779AF4B31C7FEC6C00037DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		779AF4BF1C7FF3FB00037DA2 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		779AF4C01C7FF3FB00037DA2 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		779AF4C21C7FF5AB00037DA2 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		779AF4C41C7FF77F00037DA2 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
+		779AF4C61C80006C00037DA2 /* DrawPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPDFViewController.h; sourceTree = "<group>"; };
+		779AF4C71C80006C00037DA2 /* DrawPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPDFViewController.m; sourceTree = "<group>"; };
+		779AF4C91C80207500037DA2 /* DrawPDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPDFView.h; sourceTree = "<group>"; };
+		779AF4CA1C80207500037DA2 /* DrawPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPDFView.m; sourceTree = "<group>"; };
+		779AF4CC1C80385E00037DA2 /* MuPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuPDFViewController.h; sourceTree = "<group>"; };
+		779AF4CD1C80385E00037DA2 /* MuPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuPDFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779AF4C31C7FF5AB00037DA2 /* QuickLook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,7 @@
 		779AF4801C7FEC6B00037DA2 = {
 			isa = PBXGroup;
 			children = (
+				779AF4C21C7FF5AB00037DA2 /* QuickLook.framework */,
 				779AF48B1C7FEC6B00037DA2 /* OpenPFDemo */,
 				779AF4A51C7FEC6B00037DA2 /* OpenPFDemoTests */,
 				779AF4B01C7FEC6C00037DA2 /* OpenPFDemoUITests */,
@@ -105,6 +123,15 @@
 				779AF4901C7FEC6B00037DA2 /* AppDelegate.m */,
 				779AF4921C7FEC6B00037DA2 /* ViewController.h */,
 				779AF4931C7FEC6B00037DA2 /* ViewController.m */,
+				779AF4BF1C7FF3FB00037DA2 /* WebViewController.h */,
+				779AF4C01C7FF3FB00037DA2 /* WebViewController.m */,
+				779AF4C61C80006C00037DA2 /* DrawPDFViewController.h */,
+				779AF4C71C80006C00037DA2 /* DrawPDFViewController.m */,
+				779AF4C91C80207500037DA2 /* DrawPDFView.h */,
+				779AF4CA1C80207500037DA2 /* DrawPDFView.m */,
+				779AF4CC1C80385E00037DA2 /* MuPDFViewController.h */,
+				779AF4CD1C80385E00037DA2 /* MuPDFViewController.m */,
+				779AF4C41C7FF77F00037DA2 /* test.pdf */,
 				779AF4951C7FEC6B00037DA2 /* Main.storyboard */,
 				779AF4981C7FEC6B00037DA2 /* Assets.xcassets */,
 				779AF49A1C7FEC6B00037DA2 /* LaunchScreen.storyboard */,
@@ -243,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779AF4C51C7FF77F00037DA2 /* test.pdf in Resources */,
 				779AF49C1C7FEC6B00037DA2 /* LaunchScreen.storyboard in Resources */,
 				779AF4991C7FEC6B00037DA2 /* Assets.xcassets in Resources */,
 				779AF4971C7FEC6B00037DA2 /* Main.storyboard in Resources */,
@@ -271,8 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				779AF4941C7FEC6B00037DA2 /* ViewController.m in Sources */,
+				779AF4CE1C80385E00037DA2 /* MuPDFViewController.m in Sources */,
 				779AF4911C7FEC6B00037DA2 /* AppDelegate.m in Sources */,
+				779AF4C81C80006C00037DA2 /* DrawPDFViewController.m in Sources */,
 				779AF48E1C7FEC6B00037DA2 /* main.m in Sources */,
+				779AF4C11C7FF3FB00037DA2 /* WebViewController.m in Sources */,
+				779AF4CB1C80207500037DA2 /* DrawPDFView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,10 +444,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OpenPFDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sss.OpenPFDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -424,10 +457,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OpenPFDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sss.OpenPFDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -498,6 +532,7 @@
 				779AF4B81C7FEC6C00037DA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		779AF4B91C7FEC6C00037DA2 /* Build configuration list for PBXNativeTarget "OpenPFDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +541,7 @@
 				779AF4BB1C7FEC6C00037DA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		779AF4BC1C7FEC6C00037DA2 /* Build configuration list for PBXNativeTarget "OpenPFDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +550,7 @@
 				779AF4BE1C7FEC6C00037DA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
