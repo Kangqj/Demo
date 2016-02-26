@@ -28,14 +28,26 @@
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
+
+/*
+Quartz2D              UIKit
+ 
+        y               (0, 0)|----------x
+        |                     |
+        |                     |
+        |                     |
+        |                     |
+ (0, 0) |---------x           |
+
+*/
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     //调整坐标系
-    CGContextTranslateCTM(context, 0.0, self.bounds.size.height);
-    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextTranslateCTM(context, 0.0, self.bounds.size.height);//先垂直下移height高度
+    CGContextScaleCTM(context, 1.0, -1.0);//再垂直向上翻转
     
     //绘制pdf内容
     CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, page);
