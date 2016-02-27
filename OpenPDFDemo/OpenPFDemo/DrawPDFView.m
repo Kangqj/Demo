@@ -37,7 +37,7 @@ Quartz2D              UIKit
         |                     |
         |                     |
         |                     |
- (0, 0) |---------x           |
+ (0, 0) |---------x           y
 
 */
 - (void)drawRect:(CGRect)rect {
