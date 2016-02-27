@@ -7,6 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#include "common.h"
+
+enum
+{
+    ResourceCacheMaxSize = 128<<20	/**< use at most 128M for resource cache */
+};
+
 
 @interface AppDelegate ()
 
@@ -17,6 +24,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    queue = dispatch_queue_create("com.artifex.mupdf.queue", NULL);
+    ctx = fz_new_context(NULL, NULL, ResourceCacheMaxSize);
+    fz_register_document_handlers(ctx);
+    
     return YES;
 }
 
