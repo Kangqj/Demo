@@ -52,6 +52,7 @@
     pageLab.textColor = [UIColor lightGrayColor];
     pageLab.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:pageLab];
+    
 }
 
 #pragma - mark UIScrollViewDelegate
