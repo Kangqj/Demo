@@ -53,13 +53,13 @@
         float radius = self.frame.size.width/2;
         
         NSArray *paramArr = [NSArray arrayWithObjects:[NSNumber numberWithFloat:radius/3.0],[NSNumber numberWithFloat:1.0], nil];
-        [self performSelector:@selector(drawRipple:) withObject:paramArr afterDelay:1.0];
+        [self performSelector:@selector(drawRipple:) withObject:paramArr afterDelay:0.3];
         
         paramArr = [NSArray arrayWithObjects:[NSNumber numberWithFloat:radius*2/3.0],[NSNumber numberWithFloat:2.0/3], nil];
-        [self performSelector:@selector(drawRipple:) withObject:paramArr afterDelay:1.5];
+        [self performSelector:@selector(drawRipple:) withObject:paramArr afterDelay:0.6];
         
         paramArr = [NSArray arrayWithObjects:[NSNumber numberWithFloat:radius],[NSNumber numberWithFloat:1.0/3], nil];
-        [self performSelector:@selector(drawRipple:) withObject:paramArr afterDelay:1.8];
+        [self performSelector:@selector(drawRipple:) withObject:paramArr afterDelay:0.9];
     }
     
 }
@@ -80,8 +80,8 @@
 
 - (void)drawRipple:(NSArray *)paramArr
 {
-    NSNumber *radius = [paramArr objectAtIndex:0];
-    NSNumber *endOpacity = [paramArr objectAtIndex:1];
+    NSNumber *radius = [paramArr objectAtIndex:0];     //弧度
+    NSNumber *endOpacity = [paramArr objectAtIndex:1]; //结束透明度
     
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:[radius floatValue] startAngle:arc(45) endAngle:arc(135) clockwise:NO];
     
@@ -105,7 +105,7 @@
     CABasicAnimation *strokeAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
     strokeAnim.fromValue         = [NSNumber numberWithFloat:0.0];
     strokeAnim.toValue           = endOpacity;
-    strokeAnim.duration          = 2;
+    strokeAnim.duration          = 1;
     strokeAnim.repeatCount       = FLT_MAX;       //重复次数，无数次
     strokeAnim.autoreverses      = YES;           //动画结束后，是否执行动画回到初始状态
     strokeAnim.removedOnCompletion = NO;

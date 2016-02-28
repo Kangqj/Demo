@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    radarView = [[RadarView alloc] initWithFrame:CGRectMake((kMainScreenWidth-50)/2, 20, 50, 50)];
+    radarView = [[RadarView alloc] initWithFrame:CGRectMake((kMainScreenWidth-50)/2, 20, 100, 100)];
     [self.view addSubview:radarView];
     [radarView start];
     
