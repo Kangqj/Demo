@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0416652F1C848FEA005E9064 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0416652E1C848FEA005E9064 /* README.md */; };
 		779AF48E1C7FEC6B00037DA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF48D1C7FEC6B00037DA2 /* main.m */; };
 		779AF4911C7FEC6B00037DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4901C7FEC6B00037DA2 /* AppDelegate.m */; };
 		779AF4941C7FEC6B00037DA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AF4931C7FEC6B00037DA2 /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0416652E1C848FEA005E9064 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		779AF4891C7FEC6B00037DA2 /* OpenPFDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPFDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779AF48D1C7FEC6B00037DA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		779AF48F1C7FEC6B00037DA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				779AF4C71C80006C00037DA2 /* DrawPDFViewController.m */,
 				779AF4C91C80207500037DA2 /* DrawPDFView.h */,
 				779AF4CA1C80207500037DA2 /* DrawPDFView.m */,
+				0416652E1C848FEA005E9064 /* README.md */,
 				779AF4C41C7FF77F00037DA2 /* test.pdf */,
 				779AF4951C7FEC6B00037DA2 /* Main.storyboard */,
 				779AF4981C7FEC6B00037DA2 /* Assets.xcassets */,
@@ -627,6 +630,7 @@
 				779AF4941C7FEC6B00037DA2 /* ViewController.m in Sources */,
 				77E5A1C51C819E9800D366DF /* MuAnnotSelectView.m in Sources */,
 				77E5A1DF1C81A5B700D366DF /* MuPrintPageRenderer.m in Sources */,
+				0416652F1C848FEA005E9064 /* README.md in Sources */,
 				77E5A1CD1C819E9800D366DF /* MuTextSelectView.m in Sources */,
 				77E5A1C81C819E9800D366DF /* MuInkView.m in Sources */,
 				77E5A1D11C81A4A100D366DF /* MuDocumentController.m in Sources */,
