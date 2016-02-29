@@ -1,5 +1,5 @@
 >写这篇笔记的原因是之前的老项目遇到了一个问题：iOS9后PDF中文会显示乱码，而且试了各种方法都不行，还好最终找到了解决方法－－－MuPDF
->所以在此总结一下解决问题过程中使用过的方法：
+>所以在此总结一下解决该问题过程中使用过的方法：
 
 ![](http://www.icosky.com/icon/png/System/Rhor%20v2%20Part%203/PDF%20File.png)
 
@@ -233,11 +233,6 @@ fz_register_document_handlers(ctx);
     free(_filePath);
 }
 ```
-
-参考资料：
-
-- [http://blog.csdn.net/yiyaaixuexi/article/details/7645725]()
-- [http://stackoverflow.com/questions/7324014/develop-an-ebook-reader-on-iphone-ipad-using-mupdf-library/31111924#31111924]()
 
 ***
 Demo下载链接：[OpenPDFDemo](https://github.com/Kangqj/Demo/tree/master/OpenPDFDemo)
