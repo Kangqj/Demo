@@ -2,7 +2,7 @@
 //  ViewController.m
 //  OpenPFDemo
 //
-//  Created by coverme on 16/2/26.
+//  Created by 康起军 on 16/2/26.
 //  Copyright © 2016年 Kangqj. All rights reserved.
 // 参考：http://blog.csdn.net/yiyaaixuexi/article/details/7645725
 
@@ -10,9 +10,19 @@
 #import "WebViewController.h"
 #import <QuickLook/QuickLook.h>
 #import "DrawPDFViewController.h"
-#import "MuPDFViewController.h"
+
+#include "common.h"
+#include "mupdf/fitz.h"
+#import "MuDocRef.h"
+#import "MuDocumentController.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, QLPreviewControllerDataSource, UIPageViewControllerDataSource>
+{
+    char *_filePath;
+    NSString *_filename;
+    fz_context *ctx;
+    MuDocRef *doc;
+}
 
 @end
 
@@ -37,7 +47,7 @@
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
     
     switch (indexPath.row)
@@ -71,6 +81,8 @@
         {
             WebViewController *viewController = [[WebViewController alloc] init];
             [self.navigationController pushViewController:viewController animated:YES];
+            [viewController release];
+            
             break;
         }
         case 1:
@@ -78,6 +90,8 @@
             QLPreviewController *previewController = [[QLPreviewController alloc] init];
             previewController.dataSource = self;
             [self.navigationController pushViewController:previewController animated:YES];
+            [previewController release];
+            
             break;
         }
         case 2:
@@ -98,19 +112,74 @@
                                      completion:nil];
             
             [self.navigationController pushViewController:pageController animated:YES];
+            [pageController release];
+            
             break;
         }
         case 3:
         {
-            MuPDFViewController *viewController = [[MuPDFViewController alloc] init];
-            [self.navigationController pushViewController:viewController animated:YES];
-
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
+            [self openMuPDF:path name:@"test.pdf"];
             break;
         }
         default:
             break;
     }
 }
+
+- (void)openMuPDF:(NSString *)path name:(NSString *)name
+{
+    _filePath = malloc(strlen([path UTF8String])+1);
+    
+    strcpy(_filePath, [path UTF8String]);
+    
+    dispatch_sync(queue, ^{});
+    
+    printf("open document '%s'\n", _filePath);
+    
+    _filename = [name retain];
+    
+    doc = [[MuDocRef alloc] initWithFilename:_filePath];
+    if (!doc) {
+        
+        return;
+    }
+    
+    if (fz_needs_password(ctx, doc->doc))
+    {
+        [self askForPassword: @"'%@' needs a password:"];
+    }
+    else
+    {
+        [self onPasswordOkay];
+    }
+}
+
+- (void)askForPassword: (NSString*)prompt
+{
+    UIAlertView *passwordAlertView = [[UIAlertView alloc]
+                                      initWithTitle: @"Password Protected"
+                                      message: [NSString stringWithFormat: prompt, [_filename lastPathComponent]]
+                                      delegate: self
+                                      cancelButtonTitle: @"Cancel"
+                                      otherButtonTitles: @"Done", nil];
+    [passwordAlertView setAlertViewStyle: UIAlertViewStyleSecureTextInput];
+    [passwordAlertView show];
+    [passwordAlertView release];
+}
+
+- (void)onPasswordOkay
+{
+    MuDocumentController *document = [[MuDocumentController alloc] initWithFilename:_filename path:_filePath document:doc];
+    if (document) {
+        [self setTitle: @"Library"];
+        [[self navigationController] pushViewController:document animated:YES];
+        [document release];
+    }
+    [_filename release];
+    free(_filePath);
+}
+
 
 
 - (DrawPDFViewController *)getViewControllerWithPage:(NSInteger)page
