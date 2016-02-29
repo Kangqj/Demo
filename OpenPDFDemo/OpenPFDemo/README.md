@@ -1,13 +1,15 @@
 >写这篇笔记的原因是之前的老项目遇到了一个问题：iOS9后PDF中文会显示乱码，而且试了各种方法都不行，还好最终找到了解决方法－－－MuPDF
 >所以在此总结一下解决问题过程中使用过的方法：
 
+![](http://www.icosky.com/icon/png/System/Rhor%20v2%20Part%203/PDF%20File.png)
+
 #1.使用UIWebView加载
 
 ```
 //代码很简单
 UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
 [self.view addSubview:webView];
-    
+
 NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
 NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
 [webView loadRequest:request];
@@ -34,31 +36,31 @@ previewController.dataSource = self;
 ```
 /*
 Quartz2D              UIKit
- 
-        y               (0, 0)|----------x
-        |                     |
-        |                     |
-        |                     |
-        |                     |
- (0, 0) |---------x           y
+
+y               (0, 0)|----------x
+|                     |
+|                     |
+|                     |
+|                     |
+(0, 0) |---------x           y
 
 */
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    //调整坐标系
-    CGContextTranslateCTM(context, 0.0, self.bounds.size.height);//先垂直下移height高度
-    CGContextScaleCTM(context, 1.0, -1.0);//再垂直向上翻转
-    
-    //绘制pdf内容
-    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, page);
-    CGContextSaveGState(context);
-    CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(pageRef, kCGPDFCropBox, self.bounds, 0, true);
-    CGContextConcatCTM(context, pdfTransform);
-    CGContextDrawPDFPage(context, pageRef);
-    CGContextRestoreGState(context);
+// Drawing code
+
+CGContextRef context = UIGraphicsGetCurrentContext();
+
+//调整坐标系
+CGContextTranslateCTM(context, 0.0, self.bounds.size.height);//先垂直下移height高度
+CGContextScaleCTM(context, 1.0, -1.0);//再垂直向上翻转
+
+//绘制pdf内容
+CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, page);
+CGContextSaveGState(context);
+CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(pageRef, kCGPDFCropBox, self.bounds, 0, true);
+CGContextConcatCTM(context, pdfTransform);
+CGContextDrawPDFPage(context, pageRef);
+CGContextRestoreGState(context);
 }
 ```
 
@@ -137,7 +139,7 @@ promote:lib mac$ 
 `mupdf/platform/ios `路径下的`common.h，common .m`；
 2. 添加之前生成好的依赖包到你的工程中；
 3. 配置你工程的`Library Search Path `，添加依赖包的路径，
- 比如：`$(inherited) $(PROJECT_DIR)/External/MuPDF/lib/ `
+比如：`$(inherited) $(PROJECT_DIR)/External/MuPDF/lib/ `
 4. 由于库中引用文件`#include "mupdf/fitz.h"`，使用`include`编译指令，所以头文件绝对路径=搜索路径+相对路径，
 所以需要配置搜索路径`Header Search Paths`为`"$(SRCROOT)/OpenPFDemo/ThirdLib/include"`；
 
@@ -167,7 +169,7 @@ promote:lib mac$ 
 ```
 enum
 {
-    ResourceCacheMaxSize = 128<<20	/**< use at most 128M for resource cache */
+ResourceCacheMaxSize = 128<<20	/**< use at most 128M for resource cache */
 };
 
 queue = dispatch_queue_create("com.artifex.mupdf.queue", NULL);
