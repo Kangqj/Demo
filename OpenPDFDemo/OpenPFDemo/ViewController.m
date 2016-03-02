@@ -59,7 +59,7 @@
             cell.textLabel.text = @"QLPreviewController";
             break;
         case 2:
-            cell.textLabel.text = @"CGContextDrawPDFPage";
+            cell.textLabel.text = @"CGContextDrawPDFPage+UIPageViewController";
             break;
         case 3:
             cell.textLabel.text = @"MuPDF";
