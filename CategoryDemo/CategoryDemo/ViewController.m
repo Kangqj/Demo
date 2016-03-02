@@ -60,7 +60,17 @@
     [button7 setBackgroundImage:[UIImage drawSmileFaceImageWithColor:[UIColor randomColor] size:button7.frame.size radius:80/3] forState:UIControlStateNormal];
     [self.view addSubview:button7];
     
-
+    //椭圆空心
+    UIButton *button8 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button8.frame = CGRectMake(150, 120, 100, 50);
+    [button8 setBackgroundImage:[UIImage drawEllipseImageWithColor:[UIColor randomColor] size:button8.frame.size isEmpty:YES] forState:UIControlStateNormal];
+    [self.view addSubview:button8];
+    
+    //椭圆实心
+    UIButton *button9 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button9.frame = CGRectMake(150, 180, 100, 50);
+    [button9 setBackgroundImage:[UIImage drawEllipseImageWithColor:[UIColor randomColor] size:button9.frame.size isEmpty:NO] forState:UIControlStateNormal];
+    [self.view addSubview:button9];
 }
 
 - (void)didReceiveMemoryWarning {

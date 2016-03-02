@@ -170,6 +170,39 @@
     return image;
 }
 
+//椭圆
++ (UIImage *)drawEllipseImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
+{
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2);//线条宽度
+    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
+    
+    //去锯齿处理
+    CGContextSetAllowsAntialiasing(context, true);
+    CGContextSetShouldAntialias(context, true);
+    
+    //绘制椭圆
+    CGContextAddEllipseInRect(context, CGRectMake(2, 2, size.width-4, size.height-4));
+    
+    if (empty)
+    {
+        CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);//填充颜色
+    }
+    else
+    {
+        CGContextSetFillColorWithColor(context, color.CGColor);//填充颜色
+    }
+    
+    CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
 /*
  画圆弧,圆
  CGContextAddArc(context, 圆心x, 圆心y, 半径, 开始弧度, 结束弧度, 1逆时针0顺时针);

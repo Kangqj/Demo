@@ -25,4 +25,8 @@
 //笑脸
 + (UIImage *)drawSmileFaceImageWithColor:(UIColor *)color size:(CGSize)size radius:(float)radius;
 
+//椭圆
++ (UIImage *)drawEllipseImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
+
+
 @end
