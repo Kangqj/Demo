@@ -15,6 +15,9 @@
 		04858EB91C886AA500E7AE45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04858EB71C886AA500E7AE45 /* LaunchScreen.storyboard */; };
 		04858EC41C886AA500E7AE45 /* PDFDealTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04858EC31C886AA500E7AE45 /* PDFDealTests.m */; };
 		04858ECF1C886AA500E7AE45 /* PDFDealUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04858ECE1C886AA500E7AE45 /* PDFDealUITests.m */; };
+		04CA58B11C8A8EC6007A920C /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58AE1C8A8EC6007A920C /* UIColor+CustomExtensions.m */; };
+		04CA58B21C8A8EC6007A920C /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58B01C8A8EC6007A920C /* UIImage+Generate.m */; };
+		04CA58B51C8AB1D6007A920C /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04CA58B41C8AB1D6007A920C /* test.jpg */; };
 		F37FB892C72323AE866347CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2A0797BE214BE03B774AA4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +55,11 @@
 		04858ECA1C886AA500E7AE45 /* PDFDealUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFDealUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04858ECE1C886AA500E7AE45 /* PDFDealUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFDealUITests.m; sourceTree = "<group>"; };
 		04858ED01C886AA500E7AE45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04CA58AD1C8A8EC6007A920C /* UIColor+CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomExtensions.h"; sourceTree = "<group>"; };
+		04CA58AE1C8A8EC6007A920C /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
+		04CA58AF1C8A8EC6007A920C /* UIImage+Generate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Generate.h"; sourceTree = "<group>"; };
+		04CA58B01C8A8EC6007A920C /* UIImage+Generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Generate.m"; sourceTree = "<group>"; };
+		04CA58B41C8AB1D6007A920C /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		166753E0BA7472B69E74D4F5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AD2A0797BE214BE03B774AA4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAAB81313E57D3B89EE3B48 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +120,8 @@
 				04858EAD1C886AA500E7AE45 /* AppDelegate.m */,
 				04858EAF1C886AA500E7AE45 /* ViewController.h */,
 				04858EB01C886AA500E7AE45 /* ViewController.m */,
+				04CA58B41C8AB1D6007A920C /* test.jpg */,
+				04CA58AC1C8A8EC6007A920C /* Category */,
 				04858EB21C886AA500E7AE45 /* Main.storyboard */,
 				04858EB51C886AA500E7AE45 /* Assets.xcassets */,
 				04858EB71C886AA500E7AE45 /* LaunchScreen.storyboard */,
@@ -145,6 +155,17 @@
 				04858ED01C886AA500E7AE45 /* Info.plist */,
 			);
 			path = PDFDealUITests;
+			sourceTree = "<group>";
+		};
+		04CA58AC1C8A8EC6007A920C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				04CA58AD1C8A8EC6007A920C /* UIColor+CustomExtensions.h */,
+				04CA58AE1C8A8EC6007A920C /* UIColor+CustomExtensions.m */,
+				04CA58AF1C8A8EC6007A920C /* UIImage+Generate.h */,
+				04CA58B01C8A8EC6007A920C /* UIImage+Generate.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		41E7FFF482A3FC52523F0FEF /* Pods */ = {
@@ -273,6 +294,7 @@
 				04858EB91C886AA500E7AE45 /* LaunchScreen.storyboard in Resources */,
 				04858EB61C886AA500E7AE45 /* Assets.xcassets in Resources */,
 				04858EB41C886AA500E7AE45 /* Main.storyboard in Resources */,
+				04CA58B51C8AB1D6007A920C /* test.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,9 +367,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CA58B11C8A8EC6007A920C /* UIColor+CustomExtensions.m in Sources */,
 				04858EB11C886AA500E7AE45 /* ViewController.m in Sources */,
 				04858EAE1C886AA500E7AE45 /* AppDelegate.m in Sources */,
 				04858EAB1C886AA500E7AE45 /* main.m in Sources */,
+				04CA58B21C8A8EC6007A920C /* UIImage+Generate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
