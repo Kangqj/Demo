@@ -15,6 +15,8 @@
 		04CA58D21C8C51D9007A920C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CA58D01C8C51D9007A920C /* LaunchScreen.storyboard */; };
 		04CA58DD1C8C51D9007A920C /* CAShapeLayerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58DC1C8C51D9007A920C /* CAShapeLayerDemoTests.m */; };
 		04CA58E81C8C51D9007A920C /* CAShapeLayerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58E71C8C51D9007A920C /* CAShapeLayerDemoUITests.m */; };
+		04CA58FA1C8C5416007A920C /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58F71C8C5416007A920C /* UIColor+CustomExtensions.m */; };
+		04CA58FB1C8C5416007A920C /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58F91C8C5416007A920C /* UIImage+Generate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		04CA58E31C8C51D9007A920C /* CAShapeLayerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAShapeLayerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CA58E71C8C51D9007A920C /* CAShapeLayerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAShapeLayerDemoUITests.m; sourceTree = "<group>"; };
 		04CA58E91C8C51D9007A920C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04CA58F61C8C5416007A920C /* UIColor+CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomExtensions.h"; sourceTree = "<group>"; };
+		04CA58F71C8C5416007A920C /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
+		04CA58F81C8C5416007A920C /* UIImage+Generate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Generate.h"; sourceTree = "<group>"; };
+		04CA58F91C8C5416007A920C /* UIImage+Generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Generate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 				04CA58C61C8C51D9007A920C /* AppDelegate.m */,
 				04CA58C81C8C51D9007A920C /* ViewController.h */,
 				04CA58C91C8C51D9007A920C /* ViewController.m */,
+				04CA58F51C8C5416007A920C /* Category */,
 				04CA58CB1C8C51D9007A920C /* Main.storyboard */,
 				04CA58CE1C8C51D9007A920C /* Assets.xcassets */,
 				04CA58D01C8C51D9007A920C /* LaunchScreen.storyboard */,
@@ -138,6 +145,17 @@
 				04CA58E91C8C51D9007A920C /* Info.plist */,
 			);
 			path = CAShapeLayerDemoUITests;
+			sourceTree = "<group>";
+		};
+		04CA58F51C8C5416007A920C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				04CA58F61C8C5416007A920C /* UIColor+CustomExtensions.h */,
+				04CA58F71C8C5416007A920C /* UIColor+CustomExtensions.m */,
+				04CA58F81C8C5416007A920C /* UIImage+Generate.h */,
+				04CA58F91C8C5416007A920C /* UIImage+Generate.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CA58FA1C8C5416007A920C /* UIColor+CustomExtensions.m in Sources */,
 				04CA58CA1C8C51D9007A920C /* ViewController.m in Sources */,
 				04CA58C71C8C51D9007A920C /* AppDelegate.m in Sources */,
 				04CA58C41C8C51D9007A920C /* main.m in Sources */,
+				04CA58FB1C8C5416007A920C /* UIImage+Generate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
