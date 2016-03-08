@@ -28,5 +28,8 @@
 //椭圆
 + (UIImage *)drawEllipseImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
 
+//贝塞尔曲线
++ (UIImage *)drawBezierLineImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty;
+
 
 @end

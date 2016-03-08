@@ -71,6 +71,18 @@
     button9.frame = CGRectMake(150, 180, 100, 50);
     [button9 setBackgroundImage:[UIImage drawEllipseImageWithColor:[UIColor randomColor] size:button9.frame.size isEmpty:NO] forState:UIControlStateNormal];
     [self.view addSubview:button9];
+    
+    //贝塞尔曲线空心
+    UIButton *button10 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button10.frame = CGRectMake(150, 240, 100, 50);
+    [button10 setBackgroundImage:[UIImage drawBezierLineImageWithColor:[UIColor randomColor] size:button10.frame.size isEmpty:YES] forState:UIControlStateNormal];
+    [self.view addSubview:button10];
+    
+    //贝塞尔曲线实心
+    UIButton *button11 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button11.frame = CGRectMake(150, 300, 100, 50);
+    [button11 setBackgroundImage:[UIImage drawBezierLineImageWithColor:[UIColor randomColor] size:button10.frame.size isEmpty:NO] forState:UIControlStateNormal];
+    [self.view addSubview:button11];
 }
 
 - (void)didReceiveMemoryWarning {

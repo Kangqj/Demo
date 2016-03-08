@@ -202,6 +202,39 @@
     return image;
 }
 
+//贝塞尔曲线
++ (UIImage *)drawBezierLineImageWithColor:(UIColor *)color size:(CGSize)size isEmpty:(BOOL)empty
+{
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2);//线条宽度
+    CGContextSetStrokeColorWithColor(context, color.CGColor);//线条颜色
+    
+    //绘制贝塞尔
+    CGPoint fromPoint = CGPointMake(0, size.height/2);                  //起点
+    CGPoint toPoint = CGPointMake(size.width, size.height/2);           //终点
+    CGPoint controlPoint1 = CGPointMake(size.width/3, 0);   //控制点1
+    CGPoint controlPoint2 = CGPointMake(size.width*2/3, size.height); //控制点2
+    
+    CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
+    CGContextAddCurveToPoint(context, controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, toPoint.x, toPoint.y);
+    
+    if (empty)
+    {
+        CGContextStrokePath(context);//填充颜色
+    }
+    else
+    {
+        CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);//填充颜色
+        CGContextDrawPath(context, kCGPathFillStroke);//绘制路径加填充
+    }
+    
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 
 /*
  画圆弧,圆
