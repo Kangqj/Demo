@@ -7,7 +7,9 @@
 //
 
 /*
-UIBezierPath： http://justsee.iteye.com/blog/1972853
+UIBezierPath：
+ http://justsee.iteye.com/blog/1972853
+ http://blog.chinaunix.net/uid-20622737-id-3161025.html
 弹簧动画： http://www.renfei.org/blog/ios-8-spring-animation.html
 Demo： http://www.jianshu.com/p/21db20189c40
  
