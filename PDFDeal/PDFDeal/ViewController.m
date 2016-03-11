@@ -9,8 +9,10 @@
 #import "ViewController.h"
 #import "Masonry.h"
 #import "UIImage+Generate.h"
+#import <MessageUI/MessageUI.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
-@interface ViewController ()
+@interface ViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -50,6 +52,21 @@
 
     }];
     
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addBtn addTarget:self action:@selector(addPic) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addBtn];
+    
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        CGSize size = CGSizeMake(80, 40);
+        make.size.mas_equalTo(size);
+        make.left.mas_equalTo(self.view.frame.size.width-80);
+        make.top.mas_equalTo(sendBtn.mas_bottom).offset(20);
+        
+        [addBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor blueColor] size:size] forState:UIControlStateNormal];
+        
+    }];
+    
 }
 
 - (void)drawPDF
@@ -68,12 +85,6 @@
     NSString *saveDirectory = [paths objectAtIndex:0];
     NSString *newFilePath = [saveDirectory stringByAppendingPathComponent:@"aaa.png"];
     [imgData writeToFile:newFilePath atomically:NO];
-}
-
-
-- (void)sendPDF
-{
-    NSLog(@"sendPDF");
 }
 
 -(void)createTextPdf:(NSString *)name size:(CGSize)size password:(NSString *)pw content:(NSString *)content font:(int)number
@@ -237,6 +248,192 @@ void WQDrawContent(CGContextRef myContext,
     CGImageRelease(image);
 }
 
+- (void)sendPDF
+{
+    NSLog(@"sendPDF");
+    [self sendMailInApp];
+}
+
+#pragma mark - 在应用内发送邮件
+//激活邮件功能
+- (void)sendMailInApp
+{
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+    if (!mailClass) {
+        NSLog(@"当前系统版本不支持应用内发送邮件功能，您可以使用mailto方法代替");
+        return;
+    }
+    if (![mailClass canSendMail]) {
+        NSLog(@"用户没有设置邮件账户");
+        return;
+    }
+    [self displayMailPicker];
+}
+
+//调出邮件发送窗口
+- (void)displayMailPicker
+{
+    MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
+    mailPicker.mailComposeDelegate = self;
+    
+    //设置主题
+    [mailPicker setSubject: @"eMail主题"];
+    //添加收件人
+    NSArray *toRecipients = [NSArray arrayWithObject:@"coverme1200@163.com"];
+    [mailPicker setToRecipients: toRecipients];
+//    //添加抄送
+//    NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil];
+//    [mailPicker setCcRecipients:ccRecipients];
+//    //添加密送
+//    NSArray *bccRecipients = [NSArray arrayWithObjects:@"fourth@example.com", nil];
+//    [mailPicker setBccRecipients:bccRecipients];
+    
+    // 添加一张图片
+    UIImage *addPic = [UIImage imageNamed: @"test.jpg"];
+    NSData *imageData = UIImagePNGRepresentation(addPic);            // png
+    //关于mimeType：http://www.iana.org/assignments/media-types/index.html
+    [mailPicker addAttachmentData: imageData mimeType: @"" fileName: @"Icon.png"];
+    
+    //添加一个pdf附件
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *saveDirectory = [paths objectAtIndex:0];
+    NSString *file = [saveDirectory stringByAppendingPathComponent:@"test2.pdf"];
+
+//    NSString *file = [self fullBundlePathFromRelativePath:@"高质量C++编程指南.pdf"];
+    NSData *pdf = [NSData dataWithContentsOfFile:file];
+    [mailPicker addAttachmentData: pdf mimeType: @"" fileName: @"aaa.pdf"];
+    
+    NSString *emailBody = @"<font color='red'>eMail</font> 正文";
+    [mailPicker setMessageBody:emailBody isHTML:YES];
+    [self presentModalViewController: mailPicker animated:YES];
+//    [mailPicker release];
+}
+
+- (void)addPic
+{
+    
+    /*
+     http://blog.sina.com.cn/s/blog_8dabcad30101qwcr.html
+     http://www.cnblogs.com/salam/archive/2012/12/23/2830250.html
+    @autoreleasepool {
+        
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       // Group enumerator Block
+                       void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop)
+                       {
+                           if (cancelLibraryProcess)
+                           {
+                               *stop = YES;
+                           }
+                           if (group == nil)
+                           {
+                               return;
+                           }
+                           if (self.isPhotoAlbum)
+                           {
+                               [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                           }
+                           else
+                           {
+                               [group setAssetsFilter:[ALAssetsFilter allVideos]];
+                           }
+                           
+                           if ([group numberOfAssets]!=0) {
+                               if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:NSLocalizedString(@"Camera Roll",nil)]) {
+                                   [self.assetGroups insertObject:group atIndex:0];
+                               }
+                               else{
+                                   [self.assetGroups addObject:group];
+                               }
+                           }
+                           // Reload albums
+                           [self performSelectorOnMainThread:@selector(reloadVisibleTable) withObject:nil waitUntilDone:YES];
+                       };
+                       // Group Enumerator Failure Block
+                       void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+                           kLogI(@"get visible album data error:%@",error);
+                           double version = [[UIDevice currentDevice].systemVersion doubleValue];//判定系统版本。
+                           if(version>=6.0f){
+                               UIAlertView  *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                                                    message:NSLocalizedString(@"To import photos to hidden albums or browse your visible albums, CoverMe needs to access your camera roll. Your photos won’t be uploaded to CoverMe servers. Please permit CoverMe to access your photos from Settings->Privacy->Photos.", nil)
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:nil
+                                                                          otherButtonTitles:NSLocalizedString(@"OK", nil),nil];
+                               alertView.tag = 0x51;
+                               [alertView show];
+                               [alertView release];
+                           }
+                           else{
+                               UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
+                                                                                message:NSLocalizedString(@"CoverMe needs to access your camera rolls. Your photos and videos won’t be uploaded to CoverMe servers.", nil)
+                                                                               delegate:self
+                                                                      cancelButtonTitle:nil
+                                                                      otherButtonTitles:NSLocalizedString(@"OK", nil),nil];
+                               alert.tag = 0x51;
+                               [alert show];
+                           }
+                       };
+                       // Enumerate Albums
+                       [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                                              usingBlock:assetGroupEnumerator
+                                            failureBlock:assetGroupEnumberatorFailure];
+                   });    
+     
+     
+     */
+
+}
+
+#pragma -mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    /*
+     Printing description of info:
+     {
+     UIImagePickerControllerMediaType = "public.image";
+     UIImagePickerControllerOriginalImage = "<UIImage: 0x175c6e40> size {1936, 2592} orientation 3 scale 1.000000";
+     UIImagePickerControllerReferenceURL = "assets-library://asset/asset.JPG?id=4007A4D4-819F-4A3A-8600-AEE1684C3CFF&ext=JPG";
+     }
+     */
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+    });
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+#pragma mark - 实现 MFMailComposeViewControllerDelegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    //关闭邮件发送窗口
+    [self dismissModalViewControllerAnimated:YES];
+    NSString *msg;
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            msg = @"用户取消编辑邮件";
+            break;
+        case MFMailComposeResultSaved:
+            msg = @"用户成功保存邮件";
+            break;
+        case MFMailComposeResultSent:
+            msg = @"用户点击发送，将邮件放到队列中，还没发送";
+            break;
+        case MFMailComposeResultFailed:
+            msg = @"用户试图保存或者发送邮件失败";
+            break;
+        default:
+            msg = @"";
+            break;
+    }
+    NSLog(@"%@", msg);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

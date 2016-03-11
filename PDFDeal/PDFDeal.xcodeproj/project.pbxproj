@@ -18,6 +18,9 @@
 		04CA58B11C8A8EC6007A920C /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58AE1C8A8EC6007A920C /* UIColor+CustomExtensions.m */; };
 		04CA58B21C8A8EC6007A920C /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CA58B01C8A8EC6007A920C /* UIImage+Generate.m */; };
 		04CA58B51C8AB1D6007A920C /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04CA58B41C8AB1D6007A920C /* test.jpg */; };
+		7777A89C1C92AFB200F2C039 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7777A89B1C92AFB200F2C039 /* MessageUI.framework */; };
+		7777A89E1C92CB8800F2C039 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7777A89D1C92CB8800F2C039 /* AssetsLibrary.framework */; };
+		7777A8A11C92CDDB00F2C039 /* AssetsLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777A8A01C92CDDB00F2C039 /* AssetsLibraryManager.m */; };
 		F37FB892C72323AE866347CC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2A0797BE214BE03B774AA4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,10 @@
 		04CA58B01C8A8EC6007A920C /* UIImage+Generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Generate.m"; sourceTree = "<group>"; };
 		04CA58B41C8AB1D6007A920C /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		166753E0BA7472B69E74D4F5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7777A89B1C92AFB200F2C039 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7777A89D1C92CB8800F2C039 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		7777A89F1C92CDDB00F2C039 /* AssetsLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsLibraryManager.h; sourceTree = "<group>"; };
+		7777A8A01C92CDDB00F2C039 /* AssetsLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsLibraryManager.m; sourceTree = "<group>"; };
 		AD2A0797BE214BE03B774AA4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAAB81313E57D3B89EE3B48 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7777A89E1C92CB8800F2C039 /* AssetsLibrary.framework in Frameworks */,
+				7777A89C1C92AFB200F2C039 /* MessageUI.framework in Frameworks */,
 				F37FB892C72323AE866347CC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +129,8 @@
 				04858EAD1C886AA500E7AE45 /* AppDelegate.m */,
 				04858EAF1C886AA500E7AE45 /* ViewController.h */,
 				04858EB01C886AA500E7AE45 /* ViewController.m */,
+				7777A89F1C92CDDB00F2C039 /* AssetsLibraryManager.h */,
+				7777A8A01C92CDDB00F2C039 /* AssetsLibraryManager.m */,
 				04CA58B41C8AB1D6007A920C /* test.jpg */,
 				04CA58AC1C8A8EC6007A920C /* Category */,
 				04858EB21C886AA500E7AE45 /* Main.storyboard */,
@@ -180,6 +191,8 @@
 		54C646971277DD64C6D04EA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7777A89D1C92CB8800F2C039 /* AssetsLibrary.framework */,
+				7777A89B1C92AFB200F2C039 /* MessageUI.framework */,
 				AD2A0797BE214BE03B774AA4 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -371,6 +384,7 @@
 				04858EB11C886AA500E7AE45 /* ViewController.m in Sources */,
 				04858EAE1C886AA500E7AE45 /* AppDelegate.m in Sources */,
 				04858EAB1C886AA500E7AE45 /* main.m in Sources */,
+				7777A8A11C92CDDB00F2C039 /* AssetsLibraryManager.m in Sources */,
 				04CA58B21C8A8EC6007A920C /* UIImage+Generate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PDFDeal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.PDFDeal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,6 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PDFDeal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.PDFDeal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
