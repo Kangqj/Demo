@@ -12,6 +12,7 @@
 @interface ViewController ()
 {
     CAShapeLayer *shapeLayer;
+    UIButton *animationBtn;
 }
 
 @end
@@ -22,23 +23,26 @@
     [super viewDidLoad];
     
     //Circle animation
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn1.frame = CGRectMake(100, 20, 80, 40);
-    [btn1 setTitle:@"Circle" forState:UIControlStateNormal];
-    [btn1 setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor brownColor] size:btn1.frame.size] forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(startCircleAnimation) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn1];
+    animationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    animationBtn.frame = CGRectMake((self.view.frame.size.width-80)/2, 80, 80, 40);
+    [animationBtn setTitle:@"Start" forState:UIControlStateNormal];
+    [animationBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor brownColor] size:animationBtn.frame.size] forState:UIControlStateNormal];
+    [animationBtn addTarget:self action:@selector(startCircleAnimation) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:animationBtn];
     
     //圆圈路径
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(60, 200) radius:50 startAngle:M_PI * 3 / 2 endAngle:M_PI * 7 / 2 clockwise:YES];
+    CGPoint center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);//圆心
+    float radius = 50;//半径
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:M_PI * 3 / 2 endAngle:M_PI * 7 / 2 clockwise:YES];//顺时针绘制
     path.lineCapStyle = kCGLineCapRound; //线条拐角
     path.lineJoinStyle = kCGLineCapRound; //终点处理
     
     //对勾路径
     UIBezierPath *linePath = [UIBezierPath bezierPath];
-    [linePath moveToPoint:CGPointMake(30, 200)];
-    [linePath addLineToPoint:CGPointMake(60, 220)];
-    [linePath addLineToPoint:CGPointMake(90, 190)];
+    [linePath moveToPoint:CGPointMake(center.x - radius + 20, center.y)];
+    [linePath addLineToPoint:CGPointMake(center.x, center.y+20)];
+    [linePath addLineToPoint:CGPointMake(center.x + radius - 15, center.y - 15)];
     
     //拼接两个贝塞尔曲线
     [path appendPath:linePath];
@@ -88,10 +92,18 @@
         if (shapeLayer.strokeEnd == 0.0)
         {
             shapeLayer.strokeEnd = 1.0;
+            
+            [animationBtn setTitle:@"Back" forState:UIControlStateNormal];
+            [animationBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor redColor] size:animationBtn.frame.size] forState:UIControlStateNormal];
+
         }
         else
         {
             shapeLayer.strokeEnd = 0.0;
+            
+            [animationBtn setTitle:@"Start" forState:UIControlStateNormal];
+            [animationBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor brownColor] size:animationBtn.frame.size] forState:UIControlStateNormal];
+
         }
     }
 }
