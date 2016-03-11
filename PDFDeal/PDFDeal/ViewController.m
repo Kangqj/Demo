@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "UIImage+Generate.h"
 #import <MessageUI/MessageUI.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ViewController () <MFMailComposeViewControllerDelegate>
 
@@ -49,6 +50,21 @@
         
         [sendBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor redColor] size:size] forState:UIControlStateNormal];
 
+    }];
+    
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addBtn addTarget:self action:@selector(addPic) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addBtn];
+    
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        CGSize size = CGSizeMake(80, 40);
+        make.size.mas_equalTo(size);
+        make.left.mas_equalTo(self.view.frame.size.width-80);
+        make.top.mas_equalTo(sendBtn.mas_bottom).offset(20);
+        
+        [addBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor blueColor] size:size] forState:UIControlStateNormal];
+        
     }];
     
 }
@@ -292,6 +308,106 @@ void WQDrawContent(CGContextRef myContext,
     [self presentModalViewController: mailPicker animated:YES];
 //    [mailPicker release];
 }
+
+- (void)addPic
+{
+    
+    /*
+     http://blog.sina.com.cn/s/blog_8dabcad30101qwcr.html
+     http://www.cnblogs.com/salam/archive/2012/12/23/2830250.html
+    @autoreleasepool {
+        
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       // Group enumerator Block
+                       void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop)
+                       {
+                           if (cancelLibraryProcess)
+                           {
+                               *stop = YES;
+                           }
+                           if (group == nil)
+                           {
+                               return;
+                           }
+                           if (self.isPhotoAlbum)
+                           {
+                               [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                           }
+                           else
+                           {
+                               [group setAssetsFilter:[ALAssetsFilter allVideos]];
+                           }
+                           
+                           if ([group numberOfAssets]!=0) {
+                               if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:NSLocalizedString(@"Camera Roll",nil)]) {
+                                   [self.assetGroups insertObject:group atIndex:0];
+                               }
+                               else{
+                                   [self.assetGroups addObject:group];
+                               }
+                           }
+                           // Reload albums
+                           [self performSelectorOnMainThread:@selector(reloadVisibleTable) withObject:nil waitUntilDone:YES];
+                       };
+                       // Group Enumerator Failure Block
+                       void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+                           kLogI(@"get visible album data error:%@",error);
+                           double version = [[UIDevice currentDevice].systemVersion doubleValue];//判定系统版本。
+                           if(version>=6.0f){
+                               UIAlertView  *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                                                    message:NSLocalizedString(@"To import photos to hidden albums or browse your visible albums, CoverMe needs to access your camera roll. Your photos won’t be uploaded to CoverMe servers. Please permit CoverMe to access your photos from Settings->Privacy->Photos.", nil)
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:nil
+                                                                          otherButtonTitles:NSLocalizedString(@"OK", nil),nil];
+                               alertView.tag = 0x51;
+                               [alertView show];
+                               [alertView release];
+                           }
+                           else{
+                               UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
+                                                                                message:NSLocalizedString(@"CoverMe needs to access your camera rolls. Your photos and videos won’t be uploaded to CoverMe servers.", nil)
+                                                                               delegate:self
+                                                                      cancelButtonTitle:nil
+                                                                      otherButtonTitles:NSLocalizedString(@"OK", nil),nil];
+                               alert.tag = 0x51;
+                               [alert show];
+                           }
+                       };
+                       // Enumerate Albums
+                       [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                                              usingBlock:assetGroupEnumerator
+                                            failureBlock:assetGroupEnumberatorFailure];
+                   });    
+     
+     
+     */
+
+}
+
+#pragma -mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    /*
+     Printing description of info:
+     {
+     UIImagePickerControllerMediaType = "public.image";
+     UIImagePickerControllerOriginalImage = "<UIImage: 0x175c6e40> size {1936, 2592} orientation 3 scale 1.000000";
+     UIImagePickerControllerReferenceURL = "assets-library://asset/asset.JPG?id=4007A4D4-819F-4A3A-8600-AEE1684C3CFF&ext=JPG";
+     }
+     */
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+    });
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 #pragma mark - 实现 MFMailComposeViewControllerDelegate
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
