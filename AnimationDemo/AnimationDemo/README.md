@@ -1,4 +1,6 @@
-> 经常使用支付宝结账，发现支付成功后，都会有个画圈打勾的动画效果，所以想着：咱自己也试着写一个呗～
+> 经常使用支付宝结账，发现支付成功后，都会有个画圈打勾的动画效果，所以想着：咱也试着写一个呗～
+
+![](http://upload-images.jianshu.io/upload_images/670087-374cbb9c803d5d2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 实现方案：
 
@@ -89,6 +91,7 @@
 
 5.这样完整的动画就出现来了，逆向动画的实现方法也很简单，在动画结束后
 重新设置`strokeEnd = 1.0`，再进行动画事件就可以了。
+（具体动画效果见Demo）
 
 ```
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -107,7 +110,7 @@
 }
 ```
 
-> `CAShapeLayer + UIBezierPath` 可以实现很多其它有意思的动画效果，后面继续研究。。。
+> `CAShapeLayer + UIBezierPath` 可以实现很多其它有意思的动画效果，后面继续研究...
 
 
 ***
