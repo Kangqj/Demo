@@ -62,12 +62,19 @@ Demo： http://www.jianshu.com/p/21db20189c40
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(60, 200) radius:50 startAngle:M_PI * 3 / 2 endAngle:M_PI * 7 / 2 clockwise:YES];
     path.lineCapStyle = kCGLineCapRound; //线条拐角
     path.lineJoinStyle = kCGLineCapRound; //终点处理
+    
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(30, 200)];
+    [linePath addLineToPoint:CGPointMake(60, 220)];
+    [linePath addLineToPoint:CGPointMake(90, 190)];
+    [path appendPath:linePath];//拼接两个贝塞尔曲线
+
     shareLayerOne.path = path.CGPath;
     shareLayerOne.strokeColor = [UIColor redColor].CGColor;//线条颜色
     shareLayerOne.fillColor = [UIColor clearColor].CGColor;//填充颜色
     shareLayerOne.lineWidth = 5.0;
-    shareLayerOne.strokeStart = 0;
-    shareLayerOne.strokeEnd = 0.25;
+    shareLayerOne.strokeStart = 0.0;
+    shareLayerOne.strokeEnd = 0.0;
     [self.view.layer addSublayer:shareLayerOne];
     
     //Spring animation
@@ -88,16 +95,16 @@ Demo： http://www.jianshu.com/p/21db20189c40
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     if (shareLayerOne.strokeEnd == 1.0)
     {
-        [animation setFromValue:@1];
-        [animation setToValue:@0.25];
+        [animation setFromValue:@1.0];
+        [animation setToValue:@0.0];
     }
     else
     {
-        [animation setFromValue:@0.25];
-        [animation setToValue:@1];
+        [animation setFromValue:@0.0];
+        [animation setToValue:@1.0];
     }
     
-    [animation setDuration:5];
+    [animation setDuration:3];
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;//当动画结束后,layer会一直保持着动画最后的状态
     animation.delegate = self;
@@ -113,13 +120,13 @@ Demo： http://www.jianshu.com/p/21db20189c40
 {
     if (flag)
     {
-        if (shareLayerOne.strokeEnd == 0.25)
+        if (shareLayerOne.strokeEnd == 0.0)
         {
             shareLayerOne.strokeEnd = 1.0;
         }
         else
         {
-            shareLayerOne.strokeEnd = 0.25;
+            shareLayerOne.strokeEnd = 0.0;
         }
     }
 }
