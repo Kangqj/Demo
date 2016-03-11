@@ -17,6 +17,7 @@
 		040261661C92F89A00B7DA0E /* AnimationDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 040261651C92F89A00B7DA0E /* AnimationDemoUITests.m */; };
 		040261781C92F8BA00B7DA0E /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 040261751C92F8BA00B7DA0E /* UIColor+CustomExtensions.m */; };
 		040261791C92F8BA00B7DA0E /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 040261771C92F8BA00B7DA0E /* UIImage+Generate.m */; };
+		0402617B1C93001F00B7DA0E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0402617A1C93001F00B7DA0E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		040261751C92F8BA00B7DA0E /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
 		040261761C92F8BA00B7DA0E /* UIImage+Generate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Generate.h"; sourceTree = "<group>"; };
 		040261771C92F8BA00B7DA0E /* UIImage+Generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Generate.m"; sourceTree = "<group>"; };
+		0402617A1C93001F00B7DA0E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				040261441C92F89A00B7DA0E /* AppDelegate.m */,
 				040261461C92F89A00B7DA0E /* ViewController.h */,
 				040261471C92F89A00B7DA0E /* ViewController.m */,
+				0402617A1C93001F00B7DA0E /* README.md */,
 				040261731C92F8BA00B7DA0E /* Category */,
 				040261491C92F89A00B7DA0E /* Main.storyboard */,
 				0402614C1C92F89A00B7DA0E /* Assets.xcassets */,
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0402617B1C93001F00B7DA0E /* README.md in Sources */,
 				040261781C92F8BA00B7DA0E /* UIColor+CustomExtensions.m in Sources */,
 				040261481C92F89A00B7DA0E /* ViewController.m in Sources */,
 				040261451C92F89A00B7DA0E /* AppDelegate.m in Sources */,

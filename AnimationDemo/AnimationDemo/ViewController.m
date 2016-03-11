@@ -44,7 +44,7 @@
     [linePath addLineToPoint:CGPointMake(center.x, center.y+20)];
     [linePath addLineToPoint:CGPointMake(center.x + radius - 15, center.y - 15)];
     
-    //拼接两个贝塞尔曲线
+    //拼接两个路径
     [path appendPath:linePath];
     
     shapeLayer = [CAShapeLayer layer];

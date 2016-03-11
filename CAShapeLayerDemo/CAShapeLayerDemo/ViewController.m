@@ -59,18 +59,21 @@ Demo： http://www.jianshu.com/p/21db20189c40
     [btn1 addTarget:self action:@selector(startCircleAnimation) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn1];
     
-    shareLayerOne = [CAShapeLayer layer];
-    
+    //圆圈路径
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(60, 200) radius:50 startAngle:M_PI * 3 / 2 endAngle:M_PI * 7 / 2 clockwise:YES];
     path.lineCapStyle = kCGLineCapRound; //线条拐角
     path.lineJoinStyle = kCGLineCapRound; //终点处理
     
+    //对勾路径
     UIBezierPath *linePath = [UIBezierPath bezierPath];
     [linePath moveToPoint:CGPointMake(30, 200)];
     [linePath addLineToPoint:CGPointMake(60, 220)];
     [linePath addLineToPoint:CGPointMake(90, 190)];
-    [path appendPath:linePath];//拼接两个贝塞尔曲线
+    
+    //拼接两个贝塞尔曲线
+    [path appendPath:linePath];
 
+    shareLayerOne = [CAShapeLayer layer];
     shareLayerOne.path = path.CGPath;
     shareLayerOne.strokeColor = [UIColor redColor].CGColor;//线条颜色
     shareLayerOne.fillColor = [UIColor clearColor].CGColor;//填充颜色
