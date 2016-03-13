@@ -84,12 +84,8 @@ Demo： http://www.jianshu.com/p/21db20189c40
     shapeLayer.lineWidth = 1.0;
     [self.view.layer addSublayer:shapeLayer];
     
-    
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePa:)];
     [self.view addGestureRecognizer:pan];
-    
-    [self addObserver:self forKeyPath:@"controlY" options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:@"controlY" options:NSKeyValueObservingOptionNew context:nil];
     
     // CADisplayLink默认每秒运行60次calculatePath是算出在运行期间_curveView的坐标，从而确定_shapeLayer的形状
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculatePath)];
@@ -106,8 +102,6 @@ Demo： http://www.jianshu.com/p/21db20189c40
     [linePath addQuadCurveToPoint:CGPointMake(self.view.center.x, 300)
                      controlPoint:CGPointMake(control.x, control.y)];
     shapeLayer.path = linePath.CGPath;
-    
-    springView.frame = CGRectMake(control.x, control.y, 5, 5);
 }
 
 - (void)handlePa:(UIPanGestureRecognizer *)pan
@@ -118,8 +112,6 @@ Demo： http://www.jianshu.com/p/21db20189c40
         {
             case UIGestureRecognizerStateBegan:
             {
-//                CGPoint point = [pan locationInView:self.view];
-//                [self reflashCAShapeLayerPath:point];
                 
                 break;
             }
@@ -128,6 +120,8 @@ Demo： http://www.jianshu.com/p/21db20189c40
             {
                 CGPoint point = [pan locationInView:self.view];
                 [self reflashCAShapeLayerPath:point];
+                
+                springView.frame = CGRectMake(point.x, point.y, 5, 5);
                 
                 break;
             }
@@ -148,8 +142,6 @@ Demo： http://www.jianshu.com/p/21db20189c40
                                      
                                      CGPoint point = CGPointMake(self.view.center.x, 150);
                                      springView.frame = CGRectMake(point.x, point.y, 5, 5);
-
-//                                     [self reflashCAShapeLayerPath:point];
                                  }
                                  completion:^(BOOL finished) {
                                      
@@ -157,12 +149,8 @@ Demo： http://www.jianshu.com/p/21db20189c40
                                      {
                                          displayLink.paused = YES;
                                          isStartting = NO;
-                                         
-//                                         CGPoint point = CGPointMake(self.view.center.x, 150);
-//                                         [self reflashCAShapeLayerPath:point];
                                      }
                                  }];
-                
                 break;
             }
                 
@@ -176,15 +164,7 @@ Demo： http://www.jianshu.com/p/21db20189c40
 {
     // 由于手势结束时,r5执行了一个UIView的弹簧动画,把这个过程的坐标记录下来,并相应的画出_shapeLayer形状
     CALayer *layer = springView.layer.presentationLayer;
-    
-    UIBezierPath *linePath = [UIBezierPath bezierPath];
-    [linePath moveToPoint:CGPointMake(self.view.center.x, 100)];
-    [linePath addQuadCurveToPoint:CGPointMake(self.view.center.x, 300)
-                     controlPoint:CGPointMake(layer.position.x, layer.position.y)];
-    shapeLayer.path = linePath.CGPath;
-    
-//    [self reflashCAShapeLayerPath:CGPointMake(layer.position.x, layer.position.y)];
-//    springView.frame = CGRectMake(layer.position.x, layer.position.y, 5, 5);
+    [self reflashCAShapeLayerPath:CGPointMake(layer.position.x, layer.position.y)];
 }
 
 - (void)startSpringAnimation
