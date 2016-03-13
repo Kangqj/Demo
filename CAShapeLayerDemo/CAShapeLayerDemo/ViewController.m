@@ -26,13 +26,22 @@ Demo： http://www.jianshu.com/p/21db20189c40
 
 @interface ViewController ()
 {
-    CAShapeLayer *shareLayerOne;
-    UIView       *springView;
+    CAShapeLayer  *shapeLayer;
+    CADisplayLink *displayLink;
+    
+    UIView        *springView;
+    
+    BOOL          isStartting;
 }
+
+//@property (nonatomic, assign) CGFloat controlX;
+//@property (nonatomic, assign) CGFloat controlY;
 
 @end
 
 @implementation ViewController
+
+//@synthesize controlX, controlY;
 
 /*
  
@@ -51,97 +60,159 @@ Demo： http://www.jianshu.com/p/21db20189c40
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Circle animation
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn1.frame = CGRectMake(10, 20, 80, 40);
-    [btn1 setTitle:@"Circle" forState:UIControlStateNormal];
-    [btn1 setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor greenColor] size:btn1.frame.size] forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(startCircleAnimation) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn1];
-    
-    //圆圈路径
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(60, 200) radius:50 startAngle:M_PI * 3 / 2 endAngle:M_PI * 7 / 2 clockwise:YES];
-    path.lineCapStyle = kCGLineCapRound; //线条拐角
-    path.lineJoinStyle = kCGLineCapRound; //终点处理
-    
-    //对勾路径
-    UIBezierPath *linePath = [UIBezierPath bezierPath];
-    [linePath moveToPoint:CGPointMake(30, 200)];
-    [linePath addLineToPoint:CGPointMake(60, 220)];
-    [linePath addLineToPoint:CGPointMake(90, 190)];
-    
-    //拼接两个贝塞尔曲线
-    [path appendPath:linePath];
-
-    shareLayerOne = [CAShapeLayer layer];
-    shareLayerOne.path = path.CGPath;
-    shareLayerOne.strokeColor = [UIColor redColor].CGColor;//线条颜色
-    shareLayerOne.fillColor = [UIColor clearColor].CGColor;//填充颜色
-    shareLayerOne.lineWidth = 5.0;
-    shareLayerOne.strokeStart = 0.0;
-    shareLayerOne.strokeEnd = 0.0;
-    [self.view.layer addSublayer:shareLayerOne];
-    
     //Spring animation
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn2.frame = CGRectMake(100, 20, 80, 40);
+    btn2.frame = CGRectMake((self.view.frame.size.width-80)/2, 20, 80, 40);
     [btn2 setTitle:@"Spring" forState:UIControlStateNormal];
     [btn2 setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor greenColor] size:btn2.frame.size] forState:UIControlStateNormal];
     [btn2 addTarget:self action:@selector(startSpringAnimation) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn2];
     
-    springView = [[UIView alloc] initWithFrame:CGRectMake(120, 100, 80, 20)];
-    springView.backgroundColor = [UIColor blueColor];
+    springView = [[UIView alloc] initWithFrame:CGRectMake(self.view.center.x, 150, 5, 5)];
+    springView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:springView];
-}
-
-- (void)startCircleAnimation
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    if (shareLayerOne.strokeEnd == 1.0)
-    {
-        [animation setFromValue:@1.0];
-        [animation setToValue:@0.0];
-    }
-    else
-    {
-        [animation setFromValue:@0.0];
-        [animation setToValue:@1.0];
-    }
     
-    [animation setDuration:3];
-    animation.removedOnCompletion = NO;
-    animation.fillMode = kCAFillModeForwards;//当动画结束后,layer会一直保持着动画最后的状态
-    animation.delegate = self;
-    [shareLayerOne addAnimation:animation forKey:@"Circle"];
-}
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(self.view.center.x, 100)];
+    [linePath addQuadCurveToPoint:CGPointMake(self.view.center.x, 300)
+                     controlPoint:CGPointMake(self.view.center.x, 150)];
 
-- (void)animationDidStart:(CAAnimation *)anim
-{
+    shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = linePath.CGPath;
+    shapeLayer.strokeColor = [UIColor redColor].CGColor;//线条颜色
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;//填充颜色
+    shapeLayer.lineWidth = 1.0;
+    [self.view.layer addSublayer:shapeLayer];
     
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePa:)];
+    [self.view addGestureRecognizer:pan];
+    
+    [self addObserver:self forKeyPath:@"controlY" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"controlY" options:NSKeyValueObservingOptionNew context:nil];
+    
+    // CADisplayLink默认每秒运行60次calculatePath是算出在运行期间_curveView的坐标，从而确定_shapeLayer的形状
+    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculatePath)];
+    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    displayLink.paused = YES;
+    
+    isStartting = NO;
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+- (void)reflashCAShapeLayerPath:(CGPoint)control
 {
-    if (flag)
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(self.view.center.x, 100)];
+    [linePath addQuadCurveToPoint:CGPointMake(self.view.center.x, 300)
+                     controlPoint:CGPointMake(control.x, control.y)];
+    shapeLayer.path = linePath.CGPath;
+    
+    springView.frame = CGRectMake(control.x, control.y, 5, 5);
+}
+
+- (void)handlePa:(UIPanGestureRecognizer *)pan
+{
+    if (!isStartting)
     {
-        if (shareLayerOne.strokeEnd == 0.0)
+        switch (pan.state)
         {
-            shareLayerOne.strokeEnd = 1.0;
-        }
-        else
-        {
-            shareLayerOne.strokeEnd = 0.0;
+            case UIGestureRecognizerStateBegan:
+            {
+//                CGPoint point = [pan locationInView:self.view];
+//                [self reflashCAShapeLayerPath:point];
+                
+                break;
+            }
+                
+            case UIGestureRecognizerStateChanged:
+            {
+                CGPoint point = [pan locationInView:self.view];
+                [self reflashCAShapeLayerPath:point];
+                
+                break;
+            }
+                
+            case UIGestureRecognizerStateEnded:
+            case UIGestureRecognizerStateCancelled:
+            case UIGestureRecognizerStateFailed:
+            {
+                displayLink.paused = NO;
+                isStartting = YES;
+
+                [UIView animateWithDuration:0.5 //持续时间
+                                      delay:0   //延迟时间
+                     usingSpringWithDamping:0.1 //阻尼系数，
+                      initialSpringVelocity:0.0 //初始的速度
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{
+                                     
+                                     CGPoint point = CGPointMake(self.view.center.x, 150);
+                                     springView.frame = CGRectMake(point.x, point.y, 5, 5);
+
+//                                     [self reflashCAShapeLayerPath:point];
+                                 }
+                                 completion:^(BOOL finished) {
+                                     
+                                     if (finished)
+                                     {
+                                         displayLink.paused = YES;
+                                         isStartting = NO;
+                                         
+//                                         CGPoint point = CGPointMake(self.view.center.x, 150);
+//                                         [self reflashCAShapeLayerPath:point];
+                                     }
+                                 }];
+                
+                break;
+            }
+                
+            default:
+                break;
         }
     }
+}
+
+- (void)calculatePath
+{
+    // 由于手势结束时,r5执行了一个UIView的弹簧动画,把这个过程的坐标记录下来,并相应的画出_shapeLayer形状
+    CALayer *layer = springView.layer.presentationLayer;
+    
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(self.view.center.x, 100)];
+    [linePath addQuadCurveToPoint:CGPointMake(self.view.center.x, 300)
+                     controlPoint:CGPointMake(layer.position.x, layer.position.y)];
+    shapeLayer.path = linePath.CGPath;
+    
+//    [self reflashCAShapeLayerPath:CGPointMake(layer.position.x, layer.position.y)];
+//    springView.frame = CGRectMake(layer.position.x, layer.position.y, 5, 5);
 }
 
 - (void)startSpringAnimation
 {
-    [UIView animateWithDuration:0.5
-                          delay:1
-         usingSpringWithDamping:0.2 //初始的速度，数值越大一开始移动越快, 初始速度取值较高而时间较短时，也会出现反弹情况
-          initialSpringVelocity:5.0 //弹簧系数, 数值越小, 的振动效果越明显
+    /*
+     kCAMediaTimingFunctionLinear 线性动画
+     kCAMediaTimingFunctionEaseIn 先慢后快（慢进快出）
+     kCAMediaTimingFunctionEaseOut 先块后慢（快进慢出）
+     kCAMediaTimingFunctionEaseInEaseOut 先慢后快再慢
+     kCAMediaTimingFunctionDefault 默认，也属于中间比较快
+
+     kCATransitionFade 渐变效果
+     kCATransitionMoveIn 进入覆盖效果
+     kCATransitionPush 推出效果
+     kCATransitionReveal 揭露离开效果
+
+     kCATransitionFromRight 从右侧进入
+     kCATransitionFromLeft 从左侧进入
+     kCATransitionFromTop 从顶部进入
+     kCATransitionFromBottom 从底部进入
+
+     */
+    
+    /*
+    [UIView animateWithDuration:0.5 //持续时间
+                          delay:1   //延迟时间
+         usingSpringWithDamping:0.1 //阻尼系数，
+          initialSpringVelocity:5.0 //初始的速度
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          
@@ -164,6 +235,7 @@ Demo： http://www.jianshu.com/p/21db20189c40
                          NSLog(@"%f---%f",layer.position.x, layer.position.y);
 
                      }];
+    */
 }
 
 - (void)didReceiveMemoryWarning {
