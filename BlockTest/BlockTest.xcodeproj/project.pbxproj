@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044A7D251CDF33B3002E9941 /* TestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A7D241CDF33B3002E9941 /* TestEntity.m */; };
 		04C9CBFF1CD5F08000C806E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CBFE1CD5F08000C806E8 /* main.m */; };
 		04C9CC021CD5F08000C806E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CC011CD5F08000C806E8 /* AppDelegate.m */; };
 		04C9CC051CD5F08000C806E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CC041CD5F08000C806E8 /* ViewController.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044A7D231CDF33B3002E9941 /* TestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntity.h; sourceTree = "<group>"; };
+		044A7D241CDF33B3002E9941 /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntity.m; sourceTree = "<group>"; };
 		04C9CBFA1CD5F08000C806E8 /* BlockTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C9CBFE1CD5F08000C806E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C9CC001CD5F08000C806E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				04C9CC011CD5F08000C806E8 /* AppDelegate.m */,
 				04C9CC031CD5F08000C806E8 /* ViewController.h */,
 				04C9CC041CD5F08000C806E8 /* ViewController.m */,
+				044A7D231CDF33B3002E9941 /* TestEntity.h */,
+				044A7D241CDF33B3002E9941 /* TestEntity.m */,
 				04C9CC061CD5F08000C806E8 /* Main.storyboard */,
 				04C9CC091CD5F08000C806E8 /* Assets.xcassets */,
 				04C9CC0B1CD5F08000C806E8 /* LaunchScreen.storyboard */,
@@ -270,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044A7D251CDF33B3002E9941 /* TestEntity.m in Sources */,
 				04C9CC051CD5F08000C806E8 /* ViewController.m in Sources */,
 				04C9CC021CD5F08000C806E8 /* AppDelegate.m in Sources */,
 				04C9CBFF1CD5F08000C806E8 /* main.m in Sources */,
@@ -413,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = BlockTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.BlockTest";
@@ -424,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = BlockTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.BlockTest";
@@ -498,6 +506,7 @@
 				04C9CC291CD5F08000C806E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04C9CC2A1CD5F08000C806E8 /* Build configuration list for PBXNativeTarget "BlockTestTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +515,7 @@
 				04C9CC2C1CD5F08000C806E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04C9CC2D1CD5F08000C806E8 /* Build configuration list for PBXNativeTarget "BlockTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +524,7 @@
 				04C9CC2F1CD5F08000C806E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
