@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "TestEntity.h"
+#import "MRCBlockViewController.h"
+#import "ARCBlockViewController.h"
 
 #define TLog(prefix,Obj) {NSLog(@"变量内存地址：%p, 变量值：%p, 指向对象值：%@, --> %@",&Obj,Obj,Obj,prefix);}
 
@@ -34,14 +36,8 @@ typedef NSString * (^ Block1)(NSString *a);
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-#if __has_feature(objc_arc)
-    NSLog(@"---ARC环境---");
-#else
-    NSLog(@"---MRC环境---");
-#endif
-    
     //显示三种类型的block
-    [self showDifferentBlock];
+//    [self showDifferentBlock];
     
     //数组中加入__NSStackBlock__
 //    [self blockTest1];
@@ -50,11 +46,70 @@ typedef NSString * (^ Block1)(NSString *a);
 //    [self blockTest2];
     
     //block作为函数返回值
-    Block1 block = [self blockTest3];
-    block(@"a");
+//    Block1 block = [self blockTest3];
+//    block(@"a");
     
     //block的循环引用
-    [self recycleTest];
+//    [self recycleTest];
+}
+
+#pragma mark - UITableViewDelegate methods
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    }
+    
+    switch (indexPath.row)
+    {
+        case 0:
+            cell.textLabel.text = @"MRC下的Block";
+            break;
+            
+        case 1:
+            cell.textLabel.text = @"ARC下的Block";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        MRCBlockViewController *viewController = [[MRCBlockViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else
+    {
+        ARCBlockViewController *viewController = [[ARCBlockViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark 三种类型的block
@@ -220,7 +275,7 @@ typedef NSString * (^ Block1)(NSString *a);
     TestEntity *entity = [[TestEntity alloc] init];
     entity.name = @"aaa";
     
-    __weak TestEntity *weak = entity;
+    TestEntity *weak = entity;
     
     TLog(@"weak", weak);
     
