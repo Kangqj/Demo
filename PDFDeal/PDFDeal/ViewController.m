@@ -87,6 +87,7 @@
     [imgData writeToFile:newFilePath atomically:NO];
 }
 
+//http://www.cocoachina.com/bbs/read.php?tid=83761
 -(void)createTextPdf:(NSString *)name size:(CGSize)size password:(NSString *)pw content:(NSString *)content font:(int)number
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -433,6 +434,189 @@ void WQDrawContent(CGContextRef myContext,
             break;
     }
     NSLog(@"%@", msg);
+}
+
+
+#pragma mark 绘制图片到pdf上面
+//http://bbs.csdn.net/topics/390277037
+//拿到原PDFDocumentRef：
+CGPDFDocumentRef WQGetPDFDocumentRef(NSString *filename)
+{
+    CFStringRef path;
+    CFURLRef url;
+    CGPDFDocumentRef document;
+    size_t count;
+    
+    path = CFStringCreateWithCString (NULL, [filename UTF8String], kCFStringEncodingUTF8);
+    url = CFURLCreateWithFileSystemPath (NULL, path, kCFURLPOSIXPathStyle, 0);
+    
+    CFRelease (path);
+    document = CGPDFDocumentCreateWithURL (url);
+    CFRelease(url);
+    count = CGPDFDocumentGetNumberOfPages (document);
+    if (count == 0) {
+        printf("[%s] needs at least one page!\n", [filename UTF8String]);
+        return NULL;
+    }
+    return document;
+}
+
+
+//给你封装个画图片上去的方法
+void drawPicture(CGContextRef myContext,CGRect rect, UIImage *image)
+{
+    CFDataRef imgData = (__bridge CFDataRef)(UIImagePNGRepresentation(image));
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData(imgData);
+    CGImageRef imageRef = CGImageCreateWithPNGDataProvider(dataProvider,
+                                                           NULL,
+                                                           NO,
+                                                           kCGRenderingIntentDefault);
+    
+    CGContextDrawImage(myContext, rect, imageRef);
+    CGDataProviderRelease(dataProvider);
+    CGImageRelease(imageRef);
+}
+
+/*
+void yourDrawPDFFunc(...)
+{
+    ...
+    //在BeginPage与EndPage之间绘制该页内容时调用
+    CGPDFContextBeginPage (pdfContext, pageDictionary);
+    //先绘制原页数据
+    //再调用drawPicture
+    CGPDFContextEndPage (pdfContext);
+    ....
+}
+*/
+
+//http://blog.csdn.net/yiyaaixuexi/article/details/8209188
+
+- (NSString *)pdfDestPath:(NSString *)filename
+{
+    return [NSHomeDirectory() stringByAppendingPathComponent:filename];
+}
+
+- (void)WQCreatePDFFileWithSrc:(NSData *)imgData
+                    toDestFile:(NSString *)destFileName
+                  withPassword:(NSString *)pw
+{
+    NSString *fileFullPath = [self pdfDestPath:destFileName];
+    const char *path = [fileFullPath UTF8String];
+    CFDataRef data = (__bridge CFDataRef)imgData;
+    UIImage *image = [UIImage imageWithData:imgData];
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    CFStringRef password = (__bridge CFStringRef)pw;
+    
+    MyCreatePDFFile(data,rect, path, password);
+}
+
+//PDF合并
+//http://www.cnblogs.com/tx8899/p/4082749.html
+- (void)mergePDF
+
+{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *filePath1 = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"阅办卡.pdf"];
+    
+    NSString *filePath2 = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"文件.pdf"];
+    
+    NSArray *PDFURLS = [NSArray arrayWithObjects:filePath1,filePath2, nil];
+    
+    
+    
+    [self joinPDF:PDFURLS];
+    
+}
+
+
+
+- (NSString *)joinPDF:(NSArray *)listOfPaths {
+    
+    // File paths
+    
+    NSString *fileName = [NSString stringWithFormat:@"公文%d.pdf",arc4random_uniform(100)];
+    
+    NSString *pdfPathOutput = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    
+    
+    
+    CFURLRef pdfURLOutput = (  CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:pdfPathOutput]);
+    
+    
+    
+    NSInteger numberOfPages = 0;
+    
+    // Create the output context
+    
+    CGContextRef writeContext = CGPDFContextCreateWithURL(pdfURLOutput, NULL, NULL);
+    
+    
+    
+    for (NSString *source in listOfPaths) {
+        
+        CFURLRef pdfURL = (  CFURLRef)CFBridgingRetain([[NSURL alloc] initFileURLWithPath:source]);
+        
+        
+        
+        //file ref
+        
+        CGPDFDocumentRef pdfRef = CGPDFDocumentCreateWithURL((CFURLRef) pdfURL);
+        
+        numberOfPages = CGPDFDocumentGetNumberOfPages(pdfRef);
+        
+        
+        
+        // Loop variables
+        
+        CGPDFPageRef page;
+        
+        CGRect mediaBox;
+        
+        
+        
+        // Read the first PDF and generate the output pages
+        
+        //        NSLog(@"GENERATING PAGES FROM PDF 1 (%@)...", source);
+        
+        for (int i=1; i<=numberOfPages; i++) {
+            
+            page = CGPDFDocumentGetPage(pdfRef, i);
+            
+            mediaBox = CGPDFPageGetBoxRect(page, kCGPDFMediaBox);
+            
+            CGContextBeginPage(writeContext, &mediaBox);
+            
+            CGContextDrawPDFPage(writeContext, page);
+            
+            CGContextEndPage(writeContext);
+            
+        }
+        
+        
+        
+        CGPDFDocumentRelease(pdfRef);
+        
+        CFRelease(pdfURL);
+        
+    }
+    
+    CFRelease(pdfURLOutput);
+    
+    
+    
+    // Finalize the output file
+    
+    CGPDFContextClose(writeContext);
+    
+    CGContextRelease(writeContext);
+    
+    
+    
+    return pdfPathOutput;
+    
 }
 
 - (void)didReceiveMemoryWarning {
