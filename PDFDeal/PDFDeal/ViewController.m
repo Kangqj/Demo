@@ -312,7 +312,58 @@ void WQDrawContent(CGContextRef myContext,
 
 - (void)addPic
 {
+    UIImage *image = [UIImage imageNamed:@"image.png"];
+    //创建CGPDFDocumentRef对象
+    NSString *filename = @"test.pdf";
+    CFURLRef pdfURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), (__bridge CFStringRef)filename, NULL, NULL);
+    CGPDFDocumentRef pdfDocument = CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
     
+    //生成一个空的pdf上下文
+    NSString *fileName = [NSString stringWithFormat:@"公文%d.pdf",arc4random_uniform(100)];
+    NSString *pdfPathOutput = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    NSLog(@"%@", pdfPathOutput);
+    CFURLRef pdfURLOutput = (  CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:pdfPathOutput]);
+    CGContextRef pdfContext = CGPDFContextCreateWithURL(pdfURLOutput, NULL, NULL);
+    
+    CFMutableDictionaryRef pageDictionary = NULL;
+    CFDataRef boxData = NULL;
+    
+    CGRect pageRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-60);
+    
+    pageDictionary = CFDictionaryCreateMutable(NULL,
+                                               0,
+                                               &kCFTypeDictionaryKeyCallBacks,
+                                               &kCFTypeDictionaryValueCallBacks);
+    boxData = CFDataCreate(NULL,(const UInt8 *)&pageRect, sizeof (CGRect));
+    CFDictionarySetValue(pageDictionary, kCGPDFContextMediaBox, boxData);
+    CGPDFContextBeginPage (pdfContext, pageDictionary);
+    
+    //开始绘制
+    //在BeginPage与EndPage之间绘制该页内容时调用
+    CGPDFContextBeginPage (pdfContext, pageDictionary);
+    //先绘制原页数据
+    //调整坐标系
+    CGContextTranslateCTM(pdfContext, 0.0, self.view.bounds.size.height);//先垂直下移height高度
+    CGContextScaleCTM(pdfContext, 1.0, -1.0);//再垂直向上翻转
+    
+    //绘制pdf内容
+    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, 0);
+    CGContextSaveGState(pdfContext);
+    CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(pageRef, kCGPDFCropBox, self.view.bounds, 0, true);
+    CGContextConcatCTM(pdfContext, pdfTransform);
+    CGContextDrawPDFPage(pdfContext, pageRef);
+    CGContextRestoreGState(pdfContext);
+
+    //再调用drawPicture
+    CGRect rect = CGRectMake(10, 10, image.size.width, image.size.height);
+    drawPicture(pdfContext, rect, image);
+    
+    CGPDFContextEndPage (pdfContext);
+
+    CGPDFContextEndPage (pdfContext);
+    CGPDFDocumentRelease(pdfDocument);
+    CFRelease(pdfURL);
+
     /*
      http://blog.sina.com.cn/s/blog_8dabcad30101qwcr.html
      http://www.cnblogs.com/salam/archive/2012/12/23/2830250.html
