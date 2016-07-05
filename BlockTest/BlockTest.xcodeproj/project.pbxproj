@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		044A7D251CDF33B3002E9941 /* TestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A7D241CDF33B3002E9941 /* TestEntity.m */; };
+		043AF6A91CFB31D90030D165 /* ARCBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AF6A01CFB31D90030D165 /* ARCBlockViewController.m */; };
+		043AF6AA1CFB31D90030D165 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AF6A31CFB31D90030D165 /* BaseViewController.m */; };
+		043AF6AB1CFB31D90030D165 /* TestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AF6A51CFB31D90030D165 /* TestEntity.m */; };
+		043AF6AC1CFB31D90030D165 /* MRCBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AF6A81CFB31D90030D165 /* MRCBlockViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		043AF6AF1CFB31FC0030D165 /* MRCThreeBlockSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AF6AE1CFB31FC0030D165 /* MRCThreeBlockSViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		043AF6B21CFB32100030D165 /* ARCTwoBlocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AF6B11CFB32100030D165 /* ARCTwoBlocksViewController.m */; };
 		04C9CBFF1CD5F08000C806E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CBFE1CD5F08000C806E8 /* main.m */; };
 		04C9CC021CD5F08000C806E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CC011CD5F08000C806E8 /* AppDelegate.m */; };
 		04C9CC051CD5F08000C806E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CC041CD5F08000C806E8 /* ViewController.m */; };
@@ -16,6 +21,8 @@
 		04C9CC0D1CD5F08000C806E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C9CC0B1CD5F08000C806E8 /* LaunchScreen.storyboard */; };
 		04C9CC181CD5F08000C806E8 /* BlockTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CC171CD5F08000C806E8 /* BlockTestTests.m */; };
 		04C9CC231CD5F08000C806E8 /* BlockTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9CC221CD5F08000C806E8 /* BlockTestUITests.m */; };
+		04E74E191D02707300AC8F91 /* MRCCaptureVarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E74E181D02707300AC8F91 /* MRCCaptureVarViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		04E74E1C1D02708300AC8F91 /* ARCCaptureVarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E74E1B1D02708300AC8F91 /* ARCCaptureVarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +43,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		044A7D231CDF33B3002E9941 /* TestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntity.h; sourceTree = "<group>"; };
-		044A7D241CDF33B3002E9941 /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntity.m; sourceTree = "<group>"; };
+		043AF69F1CFB31D90030D165 /* ARCBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCBlockViewController.h; sourceTree = "<group>"; };
+		043AF6A01CFB31D90030D165 /* ARCBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCBlockViewController.m; sourceTree = "<group>"; };
+		043AF6A21CFB31D90030D165 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		043AF6A31CFB31D90030D165 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		043AF6A41CFB31D90030D165 /* TestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntity.h; sourceTree = "<group>"; };
+		043AF6A51CFB31D90030D165 /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntity.m; sourceTree = "<group>"; };
+		043AF6A71CFB31D90030D165 /* MRCBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCBlockViewController.h; sourceTree = "<group>"; };
+		043AF6A81CFB31D90030D165 /* MRCBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCBlockViewController.m; sourceTree = "<group>"; };
+		043AF6AD1CFB31FC0030D165 /* MRCThreeBlockSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCThreeBlockSViewController.h; sourceTree = "<group>"; };
+		043AF6AE1CFB31FC0030D165 /* MRCThreeBlockSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCThreeBlockSViewController.m; sourceTree = "<group>"; };
+		043AF6B01CFB32100030D165 /* ARCTwoBlocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCTwoBlocksViewController.h; sourceTree = "<group>"; };
+		043AF6B11CFB32100030D165 /* ARCTwoBlocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCTwoBlocksViewController.m; sourceTree = "<group>"; };
 		04C9CBFA1CD5F08000C806E8 /* BlockTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C9CBFE1CD5F08000C806E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C9CC001CD5F08000C806E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +71,10 @@
 		04C9CC1E1CD5F08000C806E8 /* BlockTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C9CC221CD5F08000C806E8 /* BlockTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockTestUITests.m; sourceTree = "<group>"; };
 		04C9CC241CD5F08000C806E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E74E171D02707300AC8F91 /* MRCCaptureVarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCCaptureVarViewController.h; sourceTree = "<group>"; };
+		04E74E181D02707300AC8F91 /* MRCCaptureVarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCCaptureVarViewController.m; sourceTree = "<group>"; };
+		04E74E1A1D02708300AC8F91 /* ARCCaptureVarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCaptureVarViewController.h; sourceTree = "<group>"; };
+		04E74E1B1D02708300AC8F91 /* ARCCaptureVarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCCaptureVarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +102,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043AF69E1CFB31D90030D165 /* ARC */ = {
+			isa = PBXGroup;
+			children = (
+				043AF69F1CFB31D90030D165 /* ARCBlockViewController.h */,
+				043AF6A01CFB31D90030D165 /* ARCBlockViewController.m */,
+				043AF6B01CFB32100030D165 /* ARCTwoBlocksViewController.h */,
+				043AF6B11CFB32100030D165 /* ARCTwoBlocksViewController.m */,
+				04E74E1A1D02708300AC8F91 /* ARCCaptureVarViewController.h */,
+				04E74E1B1D02708300AC8F91 /* ARCCaptureVarViewController.m */,
+			);
+			path = ARC;
+			sourceTree = "<group>";
+		};
+		043AF6A11CFB31D90030D165 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				043AF6A21CFB31D90030D165 /* BaseViewController.h */,
+				043AF6A31CFB31D90030D165 /* BaseViewController.m */,
+				043AF6A41CFB31D90030D165 /* TestEntity.h */,
+				043AF6A51CFB31D90030D165 /* TestEntity.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		043AF6A61CFB31D90030D165 /* MRC */ = {
+			isa = PBXGroup;
+			children = (
+				043AF6A71CFB31D90030D165 /* MRCBlockViewController.h */,
+				043AF6A81CFB31D90030D165 /* MRCBlockViewController.m */,
+				043AF6AD1CFB31FC0030D165 /* MRCThreeBlockSViewController.h */,
+				043AF6AE1CFB31FC0030D165 /* MRCThreeBlockSViewController.m */,
+				04E74E171D02707300AC8F91 /* MRCCaptureVarViewController.h */,
+				04E74E181D02707300AC8F91 /* MRCCaptureVarViewController.m */,
+			);
+			path = MRC;
+			sourceTree = "<group>";
+		};
 		04C9CBF11CD5F08000C806E8 = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +166,9 @@
 				04C9CC011CD5F08000C806E8 /* AppDelegate.m */,
 				04C9CC031CD5F08000C806E8 /* ViewController.h */,
 				04C9CC041CD5F08000C806E8 /* ViewController.m */,
-				044A7D231CDF33B3002E9941 /* TestEntity.h */,
-				044A7D241CDF33B3002E9941 /* TestEntity.m */,
+				043AF6A11CFB31D90030D165 /* Common */,
+				043AF69E1CFB31D90030D165 /* ARC */,
+				043AF6A61CFB31D90030D165 /* MRC */,
 				04C9CC061CD5F08000C806E8 /* Main.storyboard */,
 				04C9CC091CD5F08000C806E8 /* Assets.xcassets */,
 				04C9CC0B1CD5F08000C806E8 /* LaunchScreen.storyboard */,
@@ -275,10 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044A7D251CDF33B3002E9941 /* TestEntity.m in Sources */,
+				043AF6AF1CFB31FC0030D165 /* MRCThreeBlockSViewController.m in Sources */,
+				043AF6AB1CFB31D90030D165 /* TestEntity.m in Sources */,
+				04E74E191D02707300AC8F91 /* MRCCaptureVarViewController.m in Sources */,
 				04C9CC051CD5F08000C806E8 /* ViewController.m in Sources */,
+				043AF6AA1CFB31D90030D165 /* BaseViewController.m in Sources */,
 				04C9CC021CD5F08000C806E8 /* AppDelegate.m in Sources */,
+				043AF6B21CFB32100030D165 /* ARCTwoBlocksViewController.m in Sources */,
+				04E74E1C1D02708300AC8F91 /* ARCCaptureVarViewController.m in Sources */,
+				043AF6AC1CFB31D90030D165 /* MRCBlockViewController.m in Sources */,
 				04C9CBFF1CD5F08000C806E8 /* main.m in Sources */,
+				043AF6A91CFB31D90030D165 /* ARCBlockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
