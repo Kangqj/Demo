@@ -336,7 +336,6 @@ void WQDrawContent(CGContextRef myContext,
                                                &kCFTypeDictionaryValueCallBacks);
     boxData = CFDataCreate(NULL,(const UInt8 *)&pageRect, sizeof (CGRect));
     CFDictionarySetValue(pageDictionary, kCGPDFContextMediaBox, boxData);
-    CGPDFContextBeginPage (pdfContext, pageDictionary);
     
     //开始绘制
     //在BeginPage与EndPage之间绘制该页内容时调用
@@ -347,7 +346,7 @@ void WQDrawContent(CGContextRef myContext,
     CGContextScaleCTM(pdfContext, 1.0, -1.0);//再垂直向上翻转
     
     //绘制pdf内容
-    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, 0);
+    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, 1);
     CGContextSaveGState(pdfContext);
     CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(pageRef, kCGPDFCropBox, self.view.bounds, 0, true);
     CGContextConcatCTM(pdfContext, pdfTransform);
@@ -359,10 +358,9 @@ void WQDrawContent(CGContextRef myContext,
     drawPicture(pdfContext, rect, image);
     
     CGPDFContextEndPage (pdfContext);
-
-    CGPDFContextEndPage (pdfContext);
-    CGPDFDocumentRelease(pdfDocument);
-    CFRelease(pdfURL);
+    
+//    CGPDFDocumentRelease(pdfDocument);
+//    CFRelease(pdfURL);
 
     /*
      http://blog.sina.com.cn/s/blog_8dabcad30101qwcr.html
