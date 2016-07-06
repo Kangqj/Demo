@@ -11,6 +11,7 @@
 #import "UIImage+Generate.h"
 #import <MessageUI/MessageUI.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "PDFUtil.h"
 
 @interface ViewController () <MFMailComposeViewControllerDelegate>
 
@@ -312,7 +313,12 @@ void WQDrawContent(CGContextRef myContext,
 
 - (void)addPic
 {
-    UIImage *image = [UIImage imageNamed:@"image.png"];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"images" ofType:@"png"];
+    NSString *pdfPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"公文55.pdf"];
+    [PDFUtil insertImage:imagePath onPDF:pdfPath atPage:3];
+    return;
+    
+    UIImage *image = [UIImage imageNamed:@"images.png"];
     //创建CGPDFDocumentRef对象
     NSString *filename = @"test.pdf";
     CFURLRef pdfURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), (__bridge CFStringRef)filename, NULL, NULL);
@@ -339,28 +345,50 @@ void WQDrawContent(CGContextRef myContext,
     
     //开始绘制
     //在BeginPage与EndPage之间绘制该页内容时调用
-    CGPDFContextBeginPage (pdfContext, pageDictionary);
+//    CGPDFContextBeginPage (pdfContext, pageDictionary);
     //先绘制原页数据
     //调整坐标系
-    CGContextTranslateCTM(pdfContext, 0.0, self.view.bounds.size.height);//先垂直下移height高度
-    CGContextScaleCTM(pdfContext, 1.0, -1.0);//再垂直向上翻转
+//    CGContextTranslateCTM(pdfContext, 0.0, self.view.bounds.size.height);//先垂直下移height高度
+//    CGContextScaleCTM(pdfContext, 1.0, -1.0);//再垂直向上翻转
     
     //绘制pdf内容
-    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, 1);
-    CGContextSaveGState(pdfContext);
-    CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(pageRef, kCGPDFCropBox, self.view.bounds, 0, true);
-    CGContextConcatCTM(pdfContext, pdfTransform);
-    CGContextDrawPDFPage(pdfContext, pageRef);
-    CGContextRestoreGState(pdfContext);
-
-    //再调用drawPicture
-    CGRect rect = CGRectMake(10, 10, image.size.width, image.size.height);
-    drawPicture(pdfContext, rect, image);
+    NSInteger numberOfPages = CGPDFDocumentGetNumberOfPages(pdfDocument);
+    for (int i=1; i<=numberOfPages; i++)
+    {
+        CGPDFPageRef page = CGPDFDocumentGetPage(pdfDocument, i);
+        CGRect mediaBox = CGPDFPageGetBoxRect(page, kCGPDFMediaBox);
+        
+        CGContextBeginPage(pdfContext, &mediaBox);
+        CGContextDrawPDFPage(pdfContext, page);
+        
+        if (i == 2)
+        {
+            CGRect rect = CGRectMake(10, mediaBox.size.height - 10 - image.size.height, image.size.width, image.size.height);
+            drawPicture(pdfContext, rect, image);
+        }
+        
+        CGContextEndPage(pdfContext);
+    }
     
-    CGPDFContextEndPage (pdfContext);
+//    CGPDFPageRef pageRef = CGPDFDocumentGetPage(pdfDocument, 1);
+//    CGContextSaveGState(pdfContext);
+//    CGAffineTransform pdfTransform = CGPDFPageGetDrawingTransform(pageRef, kCGPDFCropBox, self.view.bounds, 0, true);
+//    CGContextConcatCTM(pdfContext, pdfTransform);
+//    CGContextDrawPDFPage(pdfContext, pageRef);
+//    CGContextRestoreGState(pdfContext);
     
-//    CGPDFDocumentRelease(pdfDocument);
-//    CFRelease(pdfURL);
+//    CGPDFContextBeginPage (pdfContext, pageDictionary);
+//    
+//     //再调用drawPicture
+//    CGRect rect = CGRectMake(10, pageRect.size.height - 10 - image.size.height, image.size.width, image.size.height);
+//    drawPicture(pdfContext, rect, image);
+//    
+//    CGPDFContextEndPage (pdfContext);
+    CGPDFContextClose(pdfContext);
+    
+    CGContextRelease(pdfContext);
+    CGPDFDocumentRelease(pdfDocument);
+    CFRelease(pdfURL);
 
     /*
      http://blog.sina.com.cn/s/blog_8dabcad30101qwcr.html

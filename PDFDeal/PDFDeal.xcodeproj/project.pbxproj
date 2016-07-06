@@ -20,6 +20,8 @@
 		7777A89C1C92AFB200F2C039 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7777A89B1C92AFB200F2C039 /* MessageUI.framework */; };
 		7777A89E1C92CB8800F2C039 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7777A89D1C92CB8800F2C039 /* AssetsLibrary.framework */; };
 		7777A8A11C92CDDB00F2C039 /* AssetsLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7777A8A01C92CDDB00F2C039 /* AssetsLibraryManager.m */; };
+		C35D68011D2CAC8F0093BF24 /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = C35D68001D2CAC8F0093BF24 /* images.png */; };
+		C35D68071D2CD3FA0093BF24 /* PDFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D68061D2CD3FA0093BF24 /* PDFUtil.m */; };
 		C3AEA4DF1D2BA46300879B72 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AEA4DE1D2BA46300879B72 /* QuartzCore.framework */; };
 		C3AEA4E21D2BB37700879B72 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AEA4E01D2BB37700879B72 /* image.png */; };
 		C3AEA4E31D2BB37700879B72 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C3AEA4E11D2BB37700879B72 /* test.pdf */; };
@@ -71,6 +73,10 @@
 		7777A8A01C92CDDB00F2C039 /* AssetsLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsLibraryManager.m; sourceTree = "<group>"; };
 		AD2A0797BE214BE03B774AA4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAAB81313E57D3B89EE3B48 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C35D68001D2CAC8F0093BF24 /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
+		C35D68051D2CD3FA0093BF24 /* PDFUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFUtil.h; sourceTree = "<group>"; };
+		C35D68061D2CD3FA0093BF24 /* PDFUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFUtil.m; sourceTree = "<group>"; };
+		C35D68091D2CD8170093BF24 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C3AEA4DE1D2BA46300879B72 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C3AEA4E01D2BB37700879B72 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		C3AEA4E11D2BB37700879B72 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
@@ -136,7 +142,10 @@
 				04858EB01C886AA500E7AE45 /* ViewController.m */,
 				7777A89F1C92CDDB00F2C039 /* AssetsLibraryManager.h */,
 				7777A8A01C92CDDB00F2C039 /* AssetsLibraryManager.m */,
+				C35D68051D2CD3FA0093BF24 /* PDFUtil.h */,
+				C35D68061D2CD3FA0093BF24 /* PDFUtil.m */,
 				C3AEA4E01D2BB37700879B72 /* image.png */,
+				C35D68001D2CAC8F0093BF24 /* images.png */,
 				C3AEA4E11D2BB37700879B72 /* test.pdf */,
 				04CA58AC1C8A8EC6007A920C /* Category */,
 				04858EB21C886AA500E7AE45 /* Main.storyboard */,
@@ -152,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				04858EAA1C886AA500E7AE45 /* main.m */,
+				C35D68091D2CD8170093BF24 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -314,6 +324,7 @@
 				04858EB91C886AA500E7AE45 /* LaunchScreen.storyboard in Resources */,
 				04858EB61C886AA500E7AE45 /* Assets.xcassets in Resources */,
 				04858EB41C886AA500E7AE45 /* Main.storyboard in Resources */,
+				C35D68011D2CAC8F0093BF24 /* images.png in Resources */,
 				C3AEA4E21D2BB37700879B72 /* image.png in Resources */,
 				C3AEA4E31D2BB37700879B72 /* test.pdf in Resources */,
 			);
@@ -389,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CA58B11C8A8EC6007A920C /* UIColor+CustomExtensions.m in Sources */,
+				C35D68071D2CD3FA0093BF24 /* PDFUtil.m in Sources */,
 				04858EB11C886AA500E7AE45 /* ViewController.m in Sources */,
 				04858EAE1C886AA500E7AE45 /* AppDelegate.m in Sources */,
 				04858EAB1C886AA500E7AE45 /* main.m in Sources */,
@@ -536,6 +548,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PDFDeal/PrefixHeader.pch;
 				INFOPLIST_FILE = PDFDeal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -550,6 +564,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PDFDeal/PrefixHeader.pch;
 				INFOPLIST_FILE = PDFDeal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
