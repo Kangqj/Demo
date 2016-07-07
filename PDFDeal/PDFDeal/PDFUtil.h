@@ -10,9 +10,11 @@
 
 @interface PDFUtil : NSObject
 
-+ (void)generatePDFWith:(UIImage *)image;
++ (void)insertImage:(NSString *)imagePath onPDF:(NSString *)pdfPath atPage:(int)page position:(CGPoint)point;
 
-+ (void)insertImage:(NSString *)imagePath onPDF:(NSString *)pdfPath atPage:(int)page;
++ (NSString *)generatePDFFromImage:(NSString *)imagePath password:(NSString *)pw;
+
++ (NSString *)generateImageFromPDFPath:(NSString *)pdfPath;
 
 
 @end

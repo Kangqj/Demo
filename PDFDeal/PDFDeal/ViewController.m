@@ -315,7 +315,13 @@ void WQDrawContent(CGContextRef myContext,
 {
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"images" ofType:@"png"];
     NSString *pdfPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"公文55.pdf"];
-    [PDFUtil insertImage:imagePath onPDF:pdfPath atPage:3];
+    [PDFUtil insertImage:imagePath onPDF:pdfPath atPage:3 position:CGPointMake(150, 150)];
+    
+    NSString *path = [PDFUtil generatePDFFromImage:imagePath password:@"123"];
+    
+    NSLog(@"%@",path);
+    
+    [PDFUtil generateImageFromPDFPath:pdfPath];
     return;
     
     UIImage *image = [UIImage imageNamed:@"images.png"];
