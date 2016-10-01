@@ -1,0 +1,5 @@
+platform:ios, '7.0'
+
+target 'SDWebImageTest' do
+pod "SDWebImage", "~> 3.8.1"
+end
