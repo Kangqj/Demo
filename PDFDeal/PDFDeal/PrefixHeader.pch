@@ -18,6 +18,10 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "Masonry.h"
+#import "UIImage+Generate.h"
+#import "PDFUtil.h"
+
 #endif
 
 

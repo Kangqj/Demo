@@ -7,13 +7,14 @@
 //
 
 #import "ViewController.h"
-#import "Masonry.h"
-#import "UIImage+Generate.h"
 #import <MessageUI/MessageUI.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "PDFUtil.h"
+#import "PDFViewController.h"
 
 @interface ViewController () <MFMailComposeViewControllerDelegate>
+{
+    UIScrollView *pdfScrollView;
+}
 
 @end
 
@@ -32,7 +33,7 @@
         CGSize size = CGSizeMake(80, 40);
         make.size.mas_equalTo(size);
         make.left.mas_equalTo(0);
-        make.top.mas_equalTo(20);
+        make.top.mas_equalTo(120);
         
         [drawBtn setBackgroundImage:[UIImage drawRoundRectImageWithColor:[UIColor greenColor] size:size] forState:UIControlStateNormal];
     }];
@@ -72,6 +73,11 @@
 
 - (void)drawPDF
 {
+    PDFViewController *previewController = [[PDFViewController alloc] init];
+    [self.navigationController pushViewController:previewController animated:YES];
+    [previewController release];
+    return;
+    
     NSLog(@"drawPDF");
     [self createTextPdf:@"test1.pdf" size:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-60) password:@"123" content:@"sagdgsdhgashjgdjhagskjdgkahjsgdkjhasgdkjhasguiyrieuwyroiwynbmnbz,vzmcxbn" font:10];
     
