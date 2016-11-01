@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA41CA9A3DE692ACB8D41D57 /* libPods-GPUImageTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FBF7E180C9A6CA41A49FD3 /* libPods-GPUImageTest.a */; };
 		C33B52451DC8810F00DDE0A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B52441DC8810F00DDE0A8 /* main.m */; };
 		C33B52481DC8810F00DDE0A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B52471DC8810F00DDE0A8 /* AppDelegate.m */; };
 		C33B524B1DC8810F00DDE0A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B524A1DC8810F00DDE0A8 /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		C33B52531DC8810F00DDE0A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C33B52511DC8810F00DDE0A8 /* LaunchScreen.storyboard */; };
 		C33B525E1DC8810F00DDE0A8 /* GPUImageTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B525D1DC8810F00DDE0A8 /* GPUImageTestTests.m */; };
 		C33B52691DC8810F00DDE0A8 /* GPUImageTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B52681DC8810F00DDE0A8 /* GPUImageTestUITests.m */; };
+		C33B52771DC8996800DDE0A8 /* test_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C33B52761DC8996800DDE0A8 /* test_1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		669FAC0EDFD91F7EE11A4F5D /* Pods-GPUImageTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImageTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPUImageTest/Pods-GPUImageTest.release.xcconfig"; sourceTree = "<group>"; };
+		82FBF7E180C9A6CA41A49FD3 /* libPods-GPUImageTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GPUImageTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F8EC5ABA6C4EDA48D3ED01 /* Pods-GPUImageTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImageTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPUImageTest/Pods-GPUImageTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C33B52401DC8810F00DDE0A8 /* GPUImageTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPUImageTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33B52441DC8810F00DDE0A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C33B52461DC8810F00DDE0A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		C33B52641DC8810F00DDE0A8 /* GPUImageTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GPUImageTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33B52681DC8810F00DDE0A8 /* GPUImageTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageTestUITests.m; sourceTree = "<group>"; };
 		C33B526A1DC8810F00DDE0A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C33B52761DC8996800DDE0A8 /* test_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA41CA9A3DE692ACB8D41D57 /* libPods-GPUImageTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3050BE621A1FD42C9EC722C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2F8EC5ABA6C4EDA48D3ED01 /* Pods-GPUImageTest.debug.xcconfig */,
+				669FAC0EDFD91F7EE11A4F5D /* Pods-GPUImageTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6F593FA18C56887CA0FB7760 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82FBF7E180C9A6CA41A49FD3 /* libPods-GPUImageTest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C33B52371DC8810F00DDE0A8 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +109,8 @@
 				C33B525C1DC8810F00DDE0A8 /* GPUImageTestTests */,
 				C33B52671DC8810F00DDE0A8 /* GPUImageTestUITests */,
 				C33B52411DC8810F00DDE0A8 /* Products */,
+				3050BE621A1FD42C9EC722C4 /* Pods */,
+				6F593FA18C56887CA0FB7760 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +131,7 @@
 				C33B52471DC8810F00DDE0A8 /* AppDelegate.m */,
 				C33B52491DC8810F00DDE0A8 /* ViewController.h */,
 				C33B524A1DC8810F00DDE0A8 /* ViewController.m */,
+				C33B52761DC8996800DDE0A8 /* test_1.png */,
 				C33B524C1DC8810F00DDE0A8 /* Main.storyboard */,
 				C33B524F1DC8810F00DDE0A8 /* Assets.xcassets */,
 				C33B52511DC8810F00DDE0A8 /* LaunchScreen.storyboard */,
@@ -147,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C33B526D1DC8810F00DDE0A8 /* Build configuration list for PBXNativeTarget "GPUImageTest" */;
 			buildPhases = (
+				8A9EC4930522CDCBDE04BE79 /* [CP] Check Pods Manifest.lock */,
 				C33B523C1DC8810F00DDE0A8 /* Sources */,
 				C33B523D1DC8810F00DDE0A8 /* Frameworks */,
 				C33B523E1DC8810F00DDE0A8 /* Resources */,
+				E1E6427FD76CE294F3CF1310 /* [CP] Embed Pods Frameworks */,
+				35558D4AF33FE72D864E9562 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +237,7 @@
 				TargetAttributes = {
 					C33B523F1DC8810F00DDE0A8 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9U8J7M5J7U;
 					};
 					C33B52581DC8810F00DDE0A8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -244,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33B52531DC8810F00DDE0A8 /* LaunchScreen.storyboard in Resources */,
+				C33B52771DC8996800DDE0A8 /* test_1.png in Resources */,
 				C33B52501DC8810F00DDE0A8 /* Assets.xcassets in Resources */,
 				C33B524E1DC8810F00DDE0A8 /* Main.storyboard in Resources */,
 			);
@@ -264,6 +296,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35558D4AF33FE72D864E9562 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPUImageTest/Pods-GPUImageTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A9EC4930522CDCBDE04BE79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1E6427FD76CE294F3CF1310 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPUImageTest/Pods-GPUImageTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C33B523C1DC8810F00DDE0A8 /* Sources */ = {
@@ -411,9 +491,12 @@
 		};
 		C33B526E1DC8810F00DDE0A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2F8EC5ABA6C4EDA48D3ED01 /* Pods-GPUImageTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GPUImageTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kangqj.GPUImageTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,9 +505,12 @@
 		};
 		C33B526F1DC8810F00DDE0A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 669FAC0EDFD91F7EE11A4F5D /* Pods-GPUImageTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GPUImageTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kangqj.GPUImageTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,6 +584,7 @@
 				C33B526F1DC8810F00DDE0A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C33B52701DC8810F00DDE0A8 /* Build configuration list for PBXNativeTarget "GPUImageTestTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +593,7 @@
 				C33B52721DC8810F00DDE0A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C33B52731DC8810F00DDE0A8 /* Build configuration list for PBXNativeTarget "GPUImageTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +602,7 @@
 				C33B52751DC8810F00DDE0A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
