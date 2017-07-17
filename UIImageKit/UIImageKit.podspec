@@ -24,8 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
+  s.description  = "UIImageKit is a library of UIImage class."
 
   s.homepage     = "https://github.com/Kangqj/Demo"
   # s.screenshots  = "http://www.jianshu.com/p/28859be3225d"
@@ -79,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/UIImageKit.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Kangqj/Demo/tree/master/UIImageKit/UIImageKitDemo", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
