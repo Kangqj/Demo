@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "UIColor+CustomExtensions.h"
+#import "UIImage+Generate.h"
 
 @interface ViewController ()
 

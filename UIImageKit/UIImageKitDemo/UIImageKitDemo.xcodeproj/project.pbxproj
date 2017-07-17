@@ -15,6 +15,8 @@
 		04B9EF0C1F1CFF500061C2E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B9EF0A1F1CFF500061C2E8 /* LaunchScreen.storyboard */; };
 		04B9EF171F1CFF500061C2E8 /* UIImageKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9EF161F1CFF500061C2E8 /* UIImageKitDemoTests.m */; };
 		04B9EF221F1CFF500061C2E8 /* UIImageKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9EF211F1CFF500061C2E8 /* UIImageKitDemoUITests.m */; };
+		04B9EF341F1D05370061C2E8 /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9EF311F1D05370061C2E8 /* UIColor+CustomExtensions.m */; };
+		04B9EF351F1D05370061C2E8 /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9EF331F1D05370061C2E8 /* UIImage+Generate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		04B9EF1D1F1CFF500061C2E8 /* UIImageKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIImageKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B9EF211F1CFF500061C2E8 /* UIImageKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIImageKitDemoUITests.m; sourceTree = "<group>"; };
 		04B9EF231F1CFF500061C2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04B9EF301F1D05370061C2E8 /* UIColor+CustomExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomExtensions.h"; sourceTree = "<group>"; };
+		04B9EF311F1D05370061C2E8 /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
+		04B9EF321F1D05370061C2E8 /* UIImage+Generate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Generate.h"; sourceTree = "<group>"; };
+		04B9EF331F1D05370061C2E8 /* UIImage+Generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Generate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 				04B9EF001F1CFF500061C2E8 /* AppDelegate.m */,
 				04B9EF021F1CFF500061C2E8 /* ViewController.h */,
 				04B9EF031F1CFF500061C2E8 /* ViewController.m */,
+				04B9EF2F1F1D05370061C2E8 /* UIImageKit */,
 				04B9EF051F1CFF500061C2E8 /* Main.storyboard */,
 				04B9EF081F1CFF500061C2E8 /* Assets.xcassets */,
 				04B9EF0A1F1CFF500061C2E8 /* LaunchScreen.storyboard */,
@@ -138,6 +145,17 @@
 				04B9EF231F1CFF500061C2E8 /* Info.plist */,
 			);
 			path = UIImageKitDemoUITests;
+			sourceTree = "<group>";
+		};
+		04B9EF2F1F1D05370061C2E8 /* UIImageKit */ = {
+			isa = PBXGroup;
+			children = (
+				04B9EF301F1D05370061C2E8 /* UIColor+CustomExtensions.h */,
+				04B9EF311F1D05370061C2E8 /* UIColor+CustomExtensions.m */,
+				04B9EF321F1D05370061C2E8 /* UIImage+Generate.h */,
+				04B9EF331F1D05370061C2E8 /* UIImage+Generate.m */,
+			);
+			path = UIImageKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B9EF341F1D05370061C2E8 /* UIColor+CustomExtensions.m in Sources */,
 				04B9EF041F1CFF500061C2E8 /* ViewController.m in Sources */,
 				04B9EF011F1CFF500061C2E8 /* AppDelegate.m in Sources */,
 				04B9EEFE1F1CFF500061C2E8 /* main.m in Sources */,
+				04B9EF351F1D05370061C2E8 /* UIImage+Generate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
