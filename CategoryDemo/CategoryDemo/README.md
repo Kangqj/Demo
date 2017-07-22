@@ -295,4 +295,18 @@ CGFloat arc(float angle)
 
 Demo下载链接：[CategoryDemo](https://github.com/Kangqj/Demo/tree/master/CategoryDemo)
 
+###已支持CocoaPods方式集成：
+```
+pod search UIImageKit
+
+-> UIImageKit (1.0.0)
+   UIImageKit is a library of UIImage class.
+   pod 'UIImageKit', '~> 1.0.0'
+   - Homepage: https://github.com/Kangqj/UIImageKit
+   - Source:   https://github.com/Kangqj/UIImageKit.git
+   - Versions: 1.0.0 [master repo]
+(END)
+
+```
+
 [@Kangqj](http://www.jianshu.com/users/1161c7b62af8/latest_articles)
