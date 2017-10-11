@@ -97,7 +97,7 @@
                     }
                     else
                     {
-                        //显示view
+                        [m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.toutiao.com/"]]];
                     }
                 }
             }
