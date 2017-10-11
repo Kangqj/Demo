@@ -52,6 +52,23 @@
     return YES;
 }
 
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString *dtoken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString *finaldtoken = [dtoken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"receivePushToken = %@", finaldtoken);
+
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
 #pragma mark- JPUSHRegisterDelegate
 
 // iOS 10 Support
