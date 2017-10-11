@@ -26,6 +26,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"run on simulator");
+#else
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
@@ -36,7 +39,7 @@
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-
+    
     
     // init Push
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
@@ -44,6 +47,7 @@
     [JPUSHService setupWithOption:launchOptions appKey:appKey_value
                           channel:@"App Store"
                  apsForProduction:0];
+#endif
     
     return YES;
 }
