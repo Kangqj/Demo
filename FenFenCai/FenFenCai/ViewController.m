@@ -130,20 +130,20 @@
                 
                 if ([status intValue] == 1)
                 {
-                    NSString *isshowwap = [jsonResponse objectForKey:@"isshowwap"];
-                    if ([isshowwap intValue] == 1)
-                    {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        NSString *isshowwap = [jsonResponse objectForKey:@"isshowwap"];
+                        if ([isshowwap intValue] == 1)
+                        {
                             NSString *wapurl = [jsonResponse objectForKey:@"wapurl"];
                             [m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:wapurl]]];
-                        });
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
 //                        [m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://m.toutiao.com/"]]];
-                        [self addDrawBoard];
-                    }
+                            [self addDrawBoard];
+                        }
+                    });
                 }
             }
         }
