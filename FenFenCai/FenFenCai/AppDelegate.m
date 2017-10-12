@@ -14,7 +14,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-#define appKey_value @"5ce8f80ff4e30ccc77a3c49e"
+#define appKey_value @"734951e9a0149684fb474a75"
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
 

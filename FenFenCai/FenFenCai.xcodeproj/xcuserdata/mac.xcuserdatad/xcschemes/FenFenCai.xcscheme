@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-               BuildableName = "FenFenCai.app"
+               BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
                BlueprintName = "FenFenCai"
                ReferencedContainer = "container:FenFenCai.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-            BuildableName = "FenFenCai.app"
+            BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
             BlueprintName = "FenFenCai"
             ReferencedContainer = "container:FenFenCai.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-            BuildableName = "FenFenCai.app"
+            BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
             BlueprintName = "FenFenCai"
             ReferencedContainer = "container:FenFenCai.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-            BuildableName = "FenFenCai.app"
+            BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
             BlueprintName = "FenFenCai"
             ReferencedContainer = "container:FenFenCai.xcodeproj">
          </BuildableReference>
