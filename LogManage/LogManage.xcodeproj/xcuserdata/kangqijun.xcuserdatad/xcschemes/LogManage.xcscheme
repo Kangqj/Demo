@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-               BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
-               BlueprintName = "FenFenCai"
-               ReferencedContainer = "container:FenFenCai.xcodeproj">
+               BlueprintIdentifier = "C3BAC3BC1F984BB500361418"
+               BuildableName = "LogManage.app"
+               BlueprintName = "LogManage"
+               ReferencedContainer = "container:LogManage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C3D182F31F8CB59300C4BF20"
-               BuildableName = "FenFenCaiTests.xctest"
-               BlueprintName = "FenFenCaiTests"
-               ReferencedContainer = "container:FenFenCai.xcodeproj">
+               BlueprintIdentifier = "C3BAC3D51F984BB500361418"
+               BuildableName = "LogManageTests.xctest"
+               BlueprintName = "LogManageTests"
+               ReferencedContainer = "container:LogManage.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C3D182FE1F8CB59300C4BF20"
-               BuildableName = "FenFenCaiUITests.xctest"
-               BlueprintName = "FenFenCaiUITests"
-               ReferencedContainer = "container:FenFenCai.xcodeproj">
+               BlueprintIdentifier = "C3BAC3E01F984BB600361418"
+               BuildableName = "LogManageUITests.xctest"
+               BlueprintName = "LogManageUITests"
+               ReferencedContainer = "container:LogManage.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-            BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
-            BlueprintName = "FenFenCai"
-            ReferencedContainer = "container:FenFenCai.xcodeproj">
+            BlueprintIdentifier = "C3BAC3BC1F984BB500361418"
+            BuildableName = "LogManage.app"
+            BlueprintName = "LogManage"
+            ReferencedContainer = "container:LogManage.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-            BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
-            BlueprintName = "FenFenCai"
-            ReferencedContainer = "container:FenFenCai.xcodeproj">
+            BlueprintIdentifier = "C3BAC3BC1F984BB500361418"
+            BuildableName = "LogManage.app"
+            BlueprintName = "LogManage"
+            ReferencedContainer = "container:LogManage.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C3D182DA1F8CB59300C4BF20"
-            BuildableName = "&#x5409;&#x5229;&#x5206;&#x5206;&#x5f69;.app"
-            BlueprintName = "FenFenCai"
-            ReferencedContainer = "container:FenFenCai.xcodeproj">
+            BlueprintIdentifier = "C3BAC3BC1F984BB500361418"
+            BuildableName = "LogManage.app"
+            BlueprintName = "LogManage"
+            ReferencedContainer = "container:LogManage.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
