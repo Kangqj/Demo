@@ -10,11 +10,14 @@
 #import "ZYQAssetPickerController.h"
 #import "UIView+WHB.h"
 #import "HBDrawView.h"
+#import "UIImageKit.h"
 
 @interface ViewController () <ZYQAssetPickerControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,HBDrawViewDelegate>
 {
     UIWebView *m_webView;
     UIView *drawBoardView;
+    
+    NSMutableArray *btnArr;
 }
 
 @property (nonatomic, strong) HBDrawView *drawView;
@@ -47,7 +50,12 @@
      
      */
     
+    self.view.backgroundColor = [UIColor brownColor];
+    
+    btnArr = [[NSMutableArray alloc] init];
+
     m_webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    m_webView.backgroundColor = [UIColor brownColor];
     [self.view addSubview:m_webView];
     
     //清除缓存
@@ -56,7 +64,7 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        [self verifyAppResource];
+//        [self verifyAppResource];
         
         [self requestData];
     });
@@ -77,21 +85,38 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(width*i, 20, width, 40);
         [btn setTitle:[arr objectAtIndex:i] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        btn.titleLabel.font  =[UIFont systemFontOfSize:12];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        btn.titleLabel.font  =[UIFont systemFontOfSize:13];
         [btn addTarget:self action:@selector(drawSetting:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setBackgroundImage:[UIImage drawRectImageWithColor:[UIColor brownColor] size:CGSizeMake(width, 40)] forState:UIControlStateNormal];
         [drawBoardView addSubview:btn];
         btn.tag = i;
+        
+        if (i == 0)
+        {
+            [btn setBackgroundImage:[UIImage drawRectImageWithColor:[UIColor blueColor] size:CGSizeMake(width, 40)] forState:UIControlStateNormal];
+        }
+        
+        [btnArr addObject:btn];
     }
     
     [drawBoardView addSubview:self.drawView];
     
-    [self drawSetting:nil];
+    [self drawSetting:[btnArr objectAtIndex:0]];
 }
 
-- (void)drawSetting:(id)sender
+- (void)drawSetting:(UIButton *)btn
 {
-    [self.drawView setDrawBoardShapeType:((UIButton *)sender).tag];
+    float width = self.view.width/5;
+    
+    for (UIButton *button in btnArr)
+    {
+        [button setBackgroundImage:[UIImage drawRectImageWithColor:[UIColor brownColor] size:CGSizeMake(width, 40)] forState:UIControlStateNormal];
+    }
+    
+    [btn setBackgroundImage:[UIImage drawRectImageWithColor:[UIColor blueColor] size:CGSizeMake(width, 40)] forState:UIControlStateNormal];
+    
+    [self.drawView setDrawBoardShapeType:btn.tag];
     [self.drawView showSettingBoard];
 }
 
@@ -154,7 +179,7 @@
 
 
 
-
+/*
 - (void)verifyAppResource
 {
     NSString *imageUrl = @"http://oxoya8vcc.bkt.clouddn.com/fen.txt";
@@ -186,7 +211,7 @@
         }
         
     }];
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

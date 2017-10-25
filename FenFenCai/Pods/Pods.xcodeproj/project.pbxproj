@@ -7,78 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51697CFD81AD1496C8A32FB3BC1AE7DA /* Pods-FenFenCai-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EE94E44723C63DB4E46C1C17D8164C /* Pods-FenFenCai-dummy.m */; };
-		A154C98113825342DF4D90F00FE1486D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		073F9B8E3373AC712DCB8FA83E88FDB9 /* UIImage+Generate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4610D45FCA6C9E5E07A31B3276332A4A /* UIImage+Generate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46E031DB5676612789722160CF91CC95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
+		4BE3909EF510DB22171222B9413EB2E1 /* UIColor+CustomExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A59A29E178973A264AD5146EFACB /* UIColor+CustomExtensions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		68B0C8D2808B2361E29BD6F75A7D4E62 /* UIImage+Generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9880961C941E3A2F4652577D348BF7E6 /* UIImage+Generate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6D38805EC6888BE33AEC2F84CF899953 /* UIImageKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3C204BFC3F509B7785B22C86A2B74B /* UIImageKit-dummy.m */; };
+		6F459B80AC3BBE60671DB3E45B95ECA7 /* UIImageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 52541CD662972DD2836C28A706793261 /* UIImageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FFC4F050259BBF71C804F2E89C6690F /* Pods-FenFenCai-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EE94E44723C63DB4E46C1C17D8164C /* Pods-FenFenCai-dummy.m */; };
+		90CFA5230F659E92B9291616FA575637 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */; };
+		A5C342CB66FE8D5EE6B0D16C67D6CE8A /* UIColor+CustomExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 47AE2A02B73119DC1D1C1BE60BB34138 /* UIColor+CustomExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD2FD8629E511437649410217FA0F9E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		26DC9D1559EE1EEFF2839FF02CB8B333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A36605B4C0B578A6669C532692F5EEE;
+			remoteInfo = UIImageKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		28EE94E44723C63DB4E46C1C17D8164C /* Pods-FenFenCai-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FenFenCai-dummy.m"; sourceTree = "<group>"; };
-		55BF04192E2472C933D2D1D0738BED34 /* libjcore-ios-1.1.5.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.1.5.a"; sourceTree = "<group>"; };
+		32D0681D34ED1392CD07497FA9CBBF6F /* libjcore-ios-1.1.5.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.1.5.a"; sourceTree = "<group>"; };
+		3BE5AA73436952592C77C3BCFBEF6949 /* libPods-FenFenCai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FenFenCai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E02A59A29E178973A264AD5146EFACB /* UIColor+CustomExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CustomExtensions.m"; path = "UIImageKit/UIColor+CustomExtensions.m"; sourceTree = "<group>"; };
+		4610D45FCA6C9E5E07A31B3276332A4A /* UIImage+Generate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Generate.h"; path = "UIImageKit/UIImage+Generate.h"; sourceTree = "<group>"; };
+		47AE2A02B73119DC1D1C1BE60BB34138 /* UIColor+CustomExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+CustomExtensions.h"; path = "UIImageKit/UIColor+CustomExtensions.h"; sourceTree = "<group>"; };
+		4A923A70C3026BB5D851C15ACB72CC8A /* libjpush-ios-3.0.6.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.0.6.a"; sourceTree = "<group>"; };
+		52541CD662972DD2836C28A706793261 /* UIImageKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UIImageKit.h; path = UIImageKit/UIImageKit.h; sourceTree = "<group>"; };
+		602128A23EC0EA2A944CF514B9936B63 /* libUIImageKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUIImageKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EEAF87C33380B0E306C2E956D2C82F /* Pods-FenFenCai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FenFenCai.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9880961C941E3A2F4652577D348BF7E6 /* UIImage+Generate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Generate.m"; path = "UIImageKit/UIImage+Generate.m"; sourceTree = "<group>"; };
+		9E283A99421E0497CF13EB65D897531C /* UIImageKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UIImageKit.xcconfig; sourceTree = "<group>"; };
+		A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		AE3C204BFC3F509B7785B22C86A2B74B /* UIImageKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImageKit-dummy.m"; sourceTree = "<group>"; };
 		AFB1C65A216578D809A73BBD6DBDC6D9 /* Pods-FenFenCai-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FenFenCai-frameworks.sh"; sourceTree = "<group>"; };
+		BA263A0A8AE3A97A39996716D55FD1AA /* JPUSHService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		BE3CF54C052316EC20F6B2BAEBA3B347 /* Pods-FenFenCai-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FenFenCai-acknowledgements.plist"; sourceTree = "<group>"; };
-		CA846DA68EE6B7947A29E3AF27CF7295 /* libPods-FenFenCai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FenFenCai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E0A2D439F2A5002D487D2939C094E9A9 /* libjpush-ios-3.0.6.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.0.6.a"; sourceTree = "<group>"; };
 		E44D468435EDD4E8E06114BB1AB6231B /* Pods-FenFenCai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FenFenCai.debug.xcconfig"; sourceTree = "<group>"; };
 		E4794D0D4CA48070FE8CE55A96200DA6 /* Pods-FenFenCai-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FenFenCai-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F3FD59531FAA0921FFFF2D9907EAE2E4 /* JPUSHService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F80F9B6D4D74E8C8CC607AC8C5765920 /* UIImageKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImageKit-prefix.pch"; sourceTree = "<group>"; };
 		F906F0E1B931ADBEBB6CED434D53FED4 /* Pods-FenFenCai-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FenFenCai-resources.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E25F8CA45D2D228E7CED959049BD6C5E /* Frameworks */ = {
+		8BBA780DFCCC08D947E10B96046656C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A154C98113825342DF4D90F00FE1486D /* Foundation.framework in Frameworks */,
+				CD2FD8629E511437649410217FA0F9E5 /* Foundation.framework in Frameworks */,
+				90CFA5230F659E92B9291616FA575637 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D346EA2F15FA27A5ED453A8AD510CDFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46E031DB5676612789722160CF91CC95 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0917930F08BA1BA7225A2FDBB6CA8AA8 /* JCore */ = {
+		18960D323968E9F655BA90C40F2AC452 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D12D119DF55978D4D6277E2195D3FEA5 /* Frameworks */,
-			);
-			path = JCore;
-			sourceTree = "<group>";
-		};
-		15D461BB3376D09F0C3088DCDF47CBA8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0917930F08BA1BA7225A2FDBB6CA8AA8 /* JCore */,
-				DC1FEFD4C6A5932F09AA5290165AF70D /* JPush */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		47EACC45889E8B9F2F015A7E636675FA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA846DA68EE6B7947A29E3AF27CF7295 /* libPods-FenFenCai.a */,
+				3BE5AA73436952592C77C3BCFBEF6949 /* libPods-FenFenCai.a */,
+				602128A23EC0EA2A944CF514B9936B63 /* libUIImageKit.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		252DE5CE3D37A7F361BDD3B72874CB02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A923A70C3026BB5D851C15ACB72CC8A /* libjpush-ios-3.0.6.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5442D5E7D8474C61493F826B211DF56B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32D0681D34ED1392CD07497FA9CBBF6F /* libjcore-ios-1.1.5.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60E9E7B63B51D756C3F759069FFD596C /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				BA263A0A8AE3A97A39996716D55FD1AA /* JPUSHService.h */,
+				252DE5CE3D37A7F361BDD3B72874CB02 /* Frameworks */,
+			);
+			path = JPush;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				15D461BB3376D09F0C3088DCDF47CBA8 /* Pods */,
-				47EACC45889E8B9F2F015A7E636675FA /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				940E5C4ADECE486903D3BC2B4A1A913D /* Pods */,
+				18960D323968E9F655BA90C40F2AC452 /* Products */,
 				901A7BD51C4EDFC77AB1BCB1DA1A30C4 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +135,27 @@
 				B8FBDA1B1919B0F2ED07686E90FB76F5 /* Pods-FenFenCai */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		940E5C4ADECE486903D3BC2B4A1A913D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E92BE217B7E378970A89D0BA04AC000C /* JCore */,
+				60E9E7B63B51D756C3F759069FFD596C /* JPush */,
+				E4BECD0209A84759B947AE3ACBEF7F3C /* UIImageKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		943BD12081FE94D6942CFD03C4F49BFD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9E283A99421E0497CF13EB65D897531C /* UIImageKit.xcconfig */,
+				AE3C204BFC3F509B7785B22C86A2B74B /* UIImageKit-dummy.m */,
+				F80F9B6D4D74E8C8CC607AC8C5765920 /* UIImageKit-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UIImageKit";
 			sourceTree = "<group>";
 		};
 		B8FBDA1B1919B0F2ED07686E90FB76F5 /* Pods-FenFenCai */ = {
@@ -106,56 +173,84 @@
 			path = "Target Support Files/Pods-FenFenCai";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		E4BECD0209A84759B947AE3ACBEF7F3C /* UIImageKit */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				47AE2A02B73119DC1D1C1BE60BB34138 /* UIColor+CustomExtensions.h */,
+				3E02A59A29E178973A264AD5146EFACB /* UIColor+CustomExtensions.m */,
+				4610D45FCA6C9E5E07A31B3276332A4A /* UIImage+Generate.h */,
+				9880961C941E3A2F4652577D348BF7E6 /* UIImage+Generate.m */,
+				52541CD662972DD2836C28A706793261 /* UIImageKit.h */,
+				943BD12081FE94D6942CFD03C4F49BFD /* Support Files */,
 			);
-			name = Frameworks;
+			path = UIImageKit;
 			sourceTree = "<group>";
 		};
-		D12D119DF55978D4D6277E2195D3FEA5 /* Frameworks */ = {
+		E92BE217B7E378970A89D0BA04AC000C /* JCore */ = {
 			isa = PBXGroup;
 			children = (
-				55BF04192E2472C933D2D1D0738BED34 /* libjcore-ios-1.1.5.a */,
+				5442D5E7D8474C61493F826B211DF56B /* Frameworks */,
 			);
-			name = Frameworks;
+			path = JCore;
 			sourceTree = "<group>";
 		};
-		D778823437AAEAB630E8B48B1E5FE9E4 /* Frameworks */ = {
+		F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E0A2D439F2A5002D487D2939C094E9A9 /* libjpush-ios-3.0.6.a */,
+				A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */,
+				E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DC1FEFD4C6A5932F09AA5290165AF70D /* JPush */ = {
-			isa = PBXGroup;
-			children = (
-				F3FD59531FAA0921FFFF2D9907EAE2E4 /* JPUSHService.h */,
-				D778823437AAEAB630E8B48B1E5FE9E4 /* Frameworks */,
-			);
-			path = JPush;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		F6A3FDA84CA35A21B03C21CD2C46F4F0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C342CB66FE8D5EE6B0D16C67D6CE8A /* UIColor+CustomExtensions.h in Headers */,
+				073F9B8E3373AC712DCB8FA83E88FDB9 /* UIImage+Generate.h in Headers */,
+				6F459B80AC3BBE60671DB3E45B95ECA7 /* UIImageKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		E0F020C51B5F041C6694D53F47AC6FBD /* Pods-FenFenCai */ = {
+		10D7DB45CC3699AF5736D38259630C7D /* Pods-FenFenCai */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F4B8687702D069CA8BF77038E3E0C65 /* Build configuration list for PBXNativeTarget "Pods-FenFenCai" */;
+			buildConfigurationList = C208A3AD7791AA6BFFFCCBEA6E58CDC7 /* Build configuration list for PBXNativeTarget "Pods-FenFenCai" */;
 			buildPhases = (
-				0C60C5CC47D6CF83E68DCDF3399BD9C9 /* Sources */,
-				E25F8CA45D2D228E7CED959049BD6C5E /* Frameworks */,
+				A111FC31AFF8D8138C5312FA22985D37 /* Sources */,
+				D346EA2F15FA27A5ED453A8AD510CDFC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23B006E17A672D56C52F19BBA3B5EBD9 /* PBXTargetDependency */,
+			);
+			name = "Pods-FenFenCai";
+			productName = "Pods-FenFenCai";
+			productReference = 3BE5AA73436952592C77C3BCFBEF6949 /* libPods-FenFenCai.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5A36605B4C0B578A6669C532692F5EEE /* UIImageKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCD520ACC76D10E5B25154963732A427 /* Build configuration list for PBXNativeTarget "UIImageKit" */;
+			buildPhases = (
+				C75C0C109B73E6A1A9E921390D9244A9 /* Sources */,
+				8BBA780DFCCC08D947E10B96046656C0 /* Frameworks */,
+				F6A3FDA84CA35A21B03C21CD2C46F4F0 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-FenFenCai";
-			productName = "Pods-FenFenCai";
-			productReference = CA846DA68EE6B7947A29E3AF27CF7295 /* libPods-FenFenCai.a */;
+			name = UIImageKit;
+			productName = UIImageKit;
+			productReference = 602128A23EC0EA2A944CF514B9936B63 /* libUIImageKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -175,27 +270,68 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 47EACC45889E8B9F2F015A7E636675FA /* Products */;
+			productRefGroup = 18960D323968E9F655BA90C40F2AC452 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E0F020C51B5F041C6694D53F47AC6FBD /* Pods-FenFenCai */,
+				10D7DB45CC3699AF5736D38259630C7D /* Pods-FenFenCai */,
+				5A36605B4C0B578A6669C532692F5EEE /* UIImageKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0C60C5CC47D6CF83E68DCDF3399BD9C9 /* Sources */ = {
+		A111FC31AFF8D8138C5312FA22985D37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51697CFD81AD1496C8A32FB3BC1AE7DA /* Pods-FenFenCai-dummy.m in Sources */,
+				8FFC4F050259BBF71C804F2E89C6690F /* Pods-FenFenCai-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C75C0C109B73E6A1A9E921390D9244A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BE3909EF510DB22171222B9413EB2E1 /* UIColor+CustomExtensions.m in Sources */,
+				68B0C8D2808B2361E29BD6F75A7D4E62 /* UIImage+Generate.m in Sources */,
+				6D38805EC6888BE33AEC2F84CF899953 /* UIImageKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		23B006E17A672D56C52F19BBA3B5EBD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UIImageKit;
+			target = 5A36605B4C0B578A6669C532692F5EEE /* UIImageKit */;
+			targetProxy = 26DC9D1559EE1EEFF2839FF02CB8B333 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		171613E199AF5F5197D60BC26481846C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87EEAF87C33380B0E306C2E956D2C82F /* Pods-FenFenCai.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		3FA2475660FFC880302AD18E29B2E5FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -238,28 +374,49 @@
 			};
 			name = Debug;
 		};
-		4BD7054CD7F496AD3C7C53AEB7B349A7 /* Release */ = {
+		9A652A72EEEE26745B5284D8F27CF7A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87EEAF87C33380B0E306C2E956D2C82F /* Pods-FenFenCai.release.xcconfig */;
+			baseConfigurationReference = 9E283A99421E0497CF13EB65D897531C /* UIImageKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UIImageKit/UIImageKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A79B79261091B2D16B77C7970BCBC969 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E283A99421E0497CF13EB65D897531C /* UIImageKit.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/UIImageKit/UIImageKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		8C6C9CB939EF7290C4D0275B9D416755 /* Debug */ = {
+		EB3759F52EB6DFA5020BEA41C4F11F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E44D468435EDD4E8E06114BB1AB6231B /* Pods-FenFenCai.debug.xcconfig */;
 			buildSettings = {
@@ -330,11 +487,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F4B8687702D069CA8BF77038E3E0C65 /* Build configuration list for PBXNativeTarget "Pods-FenFenCai" */ = {
+		C208A3AD7791AA6BFFFCCBEA6E58CDC7 /* Build configuration list for PBXNativeTarget "Pods-FenFenCai" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C6C9CB939EF7290C4D0275B9D416755 /* Debug */,
-				4BD7054CD7F496AD3C7C53AEB7B349A7 /* Release */,
+				EB3759F52EB6DFA5020BEA41C4F11F52 /* Debug */,
+				171613E199AF5F5197D60BC26481846C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCD520ACC76D10E5B25154963732A427 /* Build configuration list for PBXNativeTarget "UIImageKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A652A72EEEE26745B5284D8F27CF7A5 /* Debug */,
+				A79B79261091B2D16B77C7970BCBC969 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

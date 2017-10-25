@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '10D7DB45CC3699AF5736D38259630C7D'
-               BlueprintName = 'Pods-FenFenCai'
+               BlueprintIdentifier = '5A36605B4C0B578A6669C532692F5EEE'
+               BlueprintName = 'UIImageKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-FenFenCai.a'>
+               BuildableName = 'libUIImageKit.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

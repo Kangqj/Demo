@@ -2,5 +2,6 @@ platform:ios, '7.0'
 
 target 'FenFenCai' do
 pod 'JPush'
+pod 'UIImageKit'
 
 end

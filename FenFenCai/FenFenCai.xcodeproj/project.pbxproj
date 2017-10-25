@@ -18,6 +18,8 @@
 		0493B8081F8F1BC600C09B95 /* 640-1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B8041F8F1BC600C09B95 /* 640-1136.png */; };
 		0493B8091F8F1BC600C09B95 /* 750-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B8051F8F1BC600C09B95 /* 750-1024.png */; };
 		0493B80A1F8F1BC600C09B95 /* 1242-2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B8061F8F1BC600C09B95 /* 1242-2208.png */; };
+		04A9E3701F923B010086E282 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A9E36E1F923B010086E282 /* launchImage@2x.png */; };
+		04A9E3711F923B010086E282 /* launchImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A9E36F1F923B010086E282 /* launchImage@3x.png */; };
 		04DA76281F8F979F00EFDD8C /* HBDrawingBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA75F41F8F979F00EFDD8C /* HBDrawingBoard.m */; };
 		04DA76291F8F979F00EFDD8C /* BackImageBoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA75F71F8F979F00EFDD8C /* BackImageBoardCollectionViewCell.m */; };
 		04DA762A1F8F979F00EFDD8C /* BackImageBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA75F81F8F979F00EFDD8C /* BackImageBoardCollectionViewCell.xib */; };
@@ -84,6 +86,8 @@
 		0493B8041F8F1BC600C09B95 /* 640-1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "640-1136.png"; sourceTree = "<group>"; };
 		0493B8051F8F1BC600C09B95 /* 750-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "750-1024.png"; sourceTree = "<group>"; };
 		0493B8061F8F1BC600C09B95 /* 1242-2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1242-2208.png"; sourceTree = "<group>"; };
+		04A9E36E1F923B010086E282 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
+		04A9E36F1F923B010086E282 /* launchImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@3x.png"; sourceTree = "<group>"; };
 		04DA75F31F8F979F00EFDD8C /* HBDrawingBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBDrawingBoard.h; sourceTree = "<group>"; };
 		04DA75F41F8F979F00EFDD8C /* HBDrawingBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBDrawingBoard.m; sourceTree = "<group>"; };
 		04DA75F61F8F979F00EFDD8C /* BackImageBoardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackImageBoardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				0493B8041F8F1BC600C09B95 /* 640-1136.png */,
 				0493B8051F8F1BC600C09B95 /* 750-1024.png */,
 				0493B8061F8F1BC600C09B95 /* 1242-2208.png */,
+				04A9E36E1F923B010086E282 /* launchImage@2x.png */,
+				04A9E36F1F923B010086E282 /* launchImage@3x.png */,
 			);
 			path = icon;
 			sourceTree = "<group>";
@@ -457,7 +463,7 @@
 					C3D182DA1F8CB59300C4BF20 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 8XS3W4B2GH;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -505,6 +511,8 @@
 			files = (
 				0493B8011F8F1AB500C09B95 /* 120.png in Resources */,
 				0493B8091F8F1BC600C09B95 /* 750-1024.png in Resources */,
+				04A9E3711F923B010086E282 /* launchImage@3x.png in Resources */,
+				04A9E3701F923B010086E282 /* launchImage@2x.png in Resources */,
 				0493B8081F8F1BC600C09B95 /* 640-1136.png in Resources */,
 				C3D182EE1F8CB59300C4BF20 /* LaunchScreen.storyboard in Resources */,
 				0493B80A1F8F1BC600C09B95 /* 1242-2208.png in Resources */,
@@ -770,16 +778,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "FenFenCai/吉利分分彩.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Duo Liu (8XS3W4B2GH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Duo Liu (8XS3W4B2GH)";
+				DEVELOPMENT_TEAM = 8XS3W4B2GH;
 				INFOPLIST_FILE = FenFenCai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.fenfencai;
 				PRODUCT_NAME = "吉利分分彩";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "92896983-25a9-4f9f-ba24-9b8e9b7a439a";
+				PROVISIONING_PROFILE_SPECIFIER = fenfencai;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -791,16 +799,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "FenFenCai/吉利分分彩.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Duo Liu (8XS3W4B2GH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Duo Liu (8XS3W4B2GH)";
+				DEVELOPMENT_TEAM = 8XS3W4B2GH;
 				INFOPLIST_FILE = FenFenCai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.fenfencai;
 				PRODUCT_NAME = "吉利分分彩";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "92896983-25a9-4f9f-ba24-9b8e9b7a439a";
+				PROVISIONING_PROFILE_SPECIFIER = fenfencai;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
