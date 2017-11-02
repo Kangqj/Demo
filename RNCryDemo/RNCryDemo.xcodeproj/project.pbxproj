@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C36BFB021FAB0C86006E4A12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB011FAB0C86006E4A12 /* main.m */; };
+		C36BFB051FAB0C86006E4A12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB041FAB0C86006E4A12 /* AppDelegate.m */; };
+		C36BFB081FAB0C86006E4A12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB071FAB0C86006E4A12 /* ViewController.m */; };
+		C36BFB0B1FAB0C86006E4A12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36BFB091FAB0C86006E4A12 /* Main.storyboard */; };
+		C36BFB0D1FAB0C86006E4A12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36BFB0C1FAB0C86006E4A12 /* Assets.xcassets */; };
+		C36BFB101FAB0C86006E4A12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36BFB0E1FAB0C86006E4A12 /* LaunchScreen.storyboard */; };
+		C36BFB1B1FAB0C86006E4A12 /* RNCryDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB1A1FAB0C86006E4A12 /* RNCryDemoTests.m */; };
+		C36BFB261FAB0C86006E4A12 /* RNCryDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB251FAB0C86006E4A12 /* RNCryDemoUITests.m */; };
+		C36BFB421FAB0CAB006E4A12 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB371FAB0CAB006E4A12 /* RNCryptor.m */; };
+		C36BFB431FAB0CAB006E4A12 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB391FAB0CAB006E4A12 /* RNCryptorEngine.m */; };
+		C36BFB441FAB0CAB006E4A12 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB3B1FAB0CAB006E4A12 /* RNDecryptor.m */; };
+		C36BFB451FAB0CAB006E4A12 /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB3D1FAB0CAB006E4A12 /* RNEncryptor.m */; };
+		C36BFB461FAB0CAB006E4A12 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36BFB3F1FAB0CAB006E4A12 /* Info.plist */; };
+		C36BFB491FAB0D22006E4A12 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36BFB481FAB0D22006E4A12 /* Security.framework */; };
+		C36BFB4B1FAB0FBD006E4A12 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = C36BFB4A1FAB0FBD006E4A12 /* test.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C36BFB171FAB0C86006E4A12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36BFAF51FAB0C86006E4A12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C36BFAFC1FAB0C86006E4A12;
+			remoteInfo = RNCryDemo;
+		};
+		C36BFB221FAB0C86006E4A12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36BFAF51FAB0C86006E4A12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C36BFAFC1FAB0C86006E4A12;
+			remoteInfo = RNCryDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C36BFAFD1FAB0C86006E4A12 /* RNCryDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNCryDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36BFB011FAB0C86006E4A12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C36BFB031FAB0C86006E4A12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C36BFB041FAB0C86006E4A12 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C36BFB061FAB0C86006E4A12 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C36BFB071FAB0C86006E4A12 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C36BFB0A1FAB0C86006E4A12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C36BFB0C1FAB0C86006E4A12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C36BFB0F1FAB0C86006E4A12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C36BFB111FAB0C86006E4A12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36BFB161FAB0C86006E4A12 /* RNCryDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNCryDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36BFB1A1FAB0C86006E4A12 /* RNCryDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCryDemoTests.m; sourceTree = "<group>"; };
+		C36BFB1C1FAB0C86006E4A12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36BFB211FAB0C86006E4A12 /* RNCryDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNCryDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36BFB251FAB0C86006E4A12 /* RNCryDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCryDemoUITests.m; sourceTree = "<group>"; };
+		C36BFB271FAB0C86006E4A12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36BFB341FAB0CAB006E4A12 /* RNCryptor+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor+Private.h"; sourceTree = "<group>"; };
+		C36BFB351FAB0CAB006E4A12 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
+		C36BFB361FAB0CAB006E4A12 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		C36BFB371FAB0CAB006E4A12 /* RNCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptor.m; sourceTree = "<group>"; };
+		C36BFB381FAB0CAB006E4A12 /* RNCryptorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptorEngine.h; sourceTree = "<group>"; };
+		C36BFB391FAB0CAB006E4A12 /* RNCryptorEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptorEngine.m; sourceTree = "<group>"; };
+		C36BFB3A1FAB0CAB006E4A12 /* RNDecryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDecryptor.h; sourceTree = "<group>"; };
+		C36BFB3B1FAB0CAB006E4A12 /* RNDecryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDecryptor.m; sourceTree = "<group>"; };
+		C36BFB3C1FAB0CAB006E4A12 /* RNEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNEncryptor.h; sourceTree = "<group>"; };
+		C36BFB3D1FAB0CAB006E4A12 /* RNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEncryptor.m; sourceTree = "<group>"; };
+		C36BFB3F1FAB0CAB006E4A12 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36BFB401FAB0CAB006E4A12 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		C36BFB411FAB0CAB006E4A12 /* RNCryptor iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor iOS.h"; sourceTree = "<group>"; };
+		C36BFB481FAB0D22006E4A12 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C36BFB4A1FAB0FBD006E4A12 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C36BFAFA1FAB0C86006E4A12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36BFB491FAB0D22006E4A12 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36BFB131FAB0C86006E4A12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36BFB1E1FAB0C86006E4A12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C36BFAF41FAB0C86006E4A12 = {
+			isa = PBXGroup;
+			children = (
+				C36BFAFF1FAB0C86006E4A12 /* RNCryDemo */,
+				C36BFB191FAB0C86006E4A12 /* RNCryDemoTests */,
+				C36BFB241FAB0C86006E4A12 /* RNCryDemoUITests */,
+				C36BFAFE1FAB0C86006E4A12 /* Products */,
+				C36BFB471FAB0D22006E4A12 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C36BFAFE1FAB0C86006E4A12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFAFD1FAB0C86006E4A12 /* RNCryDemo.app */,
+				C36BFB161FAB0C86006E4A12 /* RNCryDemoTests.xctest */,
+				C36BFB211FAB0C86006E4A12 /* RNCryDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C36BFAFF1FAB0C86006E4A12 /* RNCryDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB031FAB0C86006E4A12 /* AppDelegate.h */,
+				C36BFB041FAB0C86006E4A12 /* AppDelegate.m */,
+				C36BFB061FAB0C86006E4A12 /* ViewController.h */,
+				C36BFB071FAB0C86006E4A12 /* ViewController.m */,
+				C36BFB4A1FAB0FBD006E4A12 /* test.png */,
+				C36BFB331FAB0CAB006E4A12 /* RNCryptor */,
+				C36BFB3E1FAB0CAB006E4A12 /* RNCryptor iOS */,
+				C36BFB091FAB0C86006E4A12 /* Main.storyboard */,
+				C36BFB0C1FAB0C86006E4A12 /* Assets.xcassets */,
+				C36BFB0E1FAB0C86006E4A12 /* LaunchScreen.storyboard */,
+				C36BFB111FAB0C86006E4A12 /* Info.plist */,
+				C36BFB001FAB0C86006E4A12 /* Supporting Files */,
+			);
+			path = RNCryDemo;
+			sourceTree = "<group>";
+		};
+		C36BFB001FAB0C86006E4A12 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB011FAB0C86006E4A12 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C36BFB191FAB0C86006E4A12 /* RNCryDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB1A1FAB0C86006E4A12 /* RNCryDemoTests.m */,
+				C36BFB1C1FAB0C86006E4A12 /* Info.plist */,
+			);
+			path = RNCryDemoTests;
+			sourceTree = "<group>";
+		};
+		C36BFB241FAB0C86006E4A12 /* RNCryDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB251FAB0C86006E4A12 /* RNCryDemoUITests.m */,
+				C36BFB271FAB0C86006E4A12 /* Info.plist */,
+			);
+			path = RNCryDemoUITests;
+			sourceTree = "<group>";
+		};
+		C36BFB331FAB0CAB006E4A12 /* RNCryptor */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB341FAB0CAB006E4A12 /* RNCryptor+Private.h */,
+				C36BFB351FAB0CAB006E4A12 /* RNCryptor-Prefix.pch */,
+				C36BFB361FAB0CAB006E4A12 /* RNCryptor.h */,
+				C36BFB371FAB0CAB006E4A12 /* RNCryptor.m */,
+				C36BFB381FAB0CAB006E4A12 /* RNCryptorEngine.h */,
+				C36BFB391FAB0CAB006E4A12 /* RNCryptorEngine.m */,
+				C36BFB3A1FAB0CAB006E4A12 /* RNDecryptor.h */,
+				C36BFB3B1FAB0CAB006E4A12 /* RNDecryptor.m */,
+				C36BFB3C1FAB0CAB006E4A12 /* RNEncryptor.h */,
+				C36BFB3D1FAB0CAB006E4A12 /* RNEncryptor.m */,
+			);
+			path = RNCryptor;
+			sourceTree = "<group>";
+		};
+		C36BFB3E1FAB0CAB006E4A12 /* RNCryptor iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB3F1FAB0CAB006E4A12 /* Info.plist */,
+				C36BFB401FAB0CAB006E4A12 /* module.modulemap */,
+				C36BFB411FAB0CAB006E4A12 /* RNCryptor iOS.h */,
+			);
+			path = "RNCryptor iOS";
+			sourceTree = "<group>";
+		};
+		C36BFB471FAB0D22006E4A12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFB481FAB0D22006E4A12 /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C36BFAFC1FAB0C86006E4A12 /* RNCryDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36BFB2A1FAB0C86006E4A12 /* Build configuration list for PBXNativeTarget "RNCryDemo" */;
+			buildPhases = (
+				C36BFAF91FAB0C86006E4A12 /* Sources */,
+				C36BFAFA1FAB0C86006E4A12 /* Frameworks */,
+				C36BFAFB1FAB0C86006E4A12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNCryDemo;
+			productName = RNCryDemo;
+			productReference = C36BFAFD1FAB0C86006E4A12 /* RNCryDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C36BFB151FAB0C86006E4A12 /* RNCryDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36BFB2D1FAB0C86006E4A12 /* Build configuration list for PBXNativeTarget "RNCryDemoTests" */;
+			buildPhases = (
+				C36BFB121FAB0C86006E4A12 /* Sources */,
+				C36BFB131FAB0C86006E4A12 /* Frameworks */,
+				C36BFB141FAB0C86006E4A12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C36BFB181FAB0C86006E4A12 /* PBXTargetDependency */,
+			);
+			name = RNCryDemoTests;
+			productName = RNCryDemoTests;
+			productReference = C36BFB161FAB0C86006E4A12 /* RNCryDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C36BFB201FAB0C86006E4A12 /* RNCryDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36BFB301FAB0C86006E4A12 /* Build configuration list for PBXNativeTarget "RNCryDemoUITests" */;
+			buildPhases = (
+				C36BFB1D1FAB0C86006E4A12 /* Sources */,
+				C36BFB1E1FAB0C86006E4A12 /* Frameworks */,
+				C36BFB1F1FAB0C86006E4A12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C36BFB231FAB0C86006E4A12 /* PBXTargetDependency */,
+			);
+			name = RNCryDemoUITests;
+			productName = RNCryDemoUITests;
+			productReference = C36BFB211FAB0C86006E4A12 /* RNCryDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C36BFAF51FAB0C86006E4A12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Kangqijun;
+				TargetAttributes = {
+					C36BFAFC1FAB0C86006E4A12 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9U8J7M5J7U;
+						ProvisioningStyle = Automatic;
+					};
+					C36BFB151FAB0C86006E4A12 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9U8J7M5J7U;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C36BFAFC1FAB0C86006E4A12;
+					};
+					C36BFB201FAB0C86006E4A12 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9U8J7M5J7U;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C36BFAFC1FAB0C86006E4A12;
+					};
+				};
+			};
+			buildConfigurationList = C36BFAF81FAB0C86006E4A12 /* Build configuration list for PBXProject "RNCryDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C36BFAF41FAB0C86006E4A12;
+			productRefGroup = C36BFAFE1FAB0C86006E4A12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C36BFAFC1FAB0C86006E4A12 /* RNCryDemo */,
+				C36BFB151FAB0C86006E4A12 /* RNCryDemoTests */,
+				C36BFB201FAB0C86006E4A12 /* RNCryDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C36BFAFB1FAB0C86006E4A12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36BFB461FAB0CAB006E4A12 /* Info.plist in Resources */,
+				C36BFB4B1FAB0FBD006E4A12 /* test.png in Resources */,
+				C36BFB101FAB0C86006E4A12 /* LaunchScreen.storyboard in Resources */,
+				C36BFB0D1FAB0C86006E4A12 /* Assets.xcassets in Resources */,
+				C36BFB0B1FAB0C86006E4A12 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36BFB141FAB0C86006E4A12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36BFB1F1FAB0C86006E4A12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C36BFAF91FAB0C86006E4A12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36BFB451FAB0CAB006E4A12 /* RNEncryptor.m in Sources */,
+				C36BFB081FAB0C86006E4A12 /* ViewController.m in Sources */,
+				C36BFB421FAB0CAB006E4A12 /* RNCryptor.m in Sources */,
+				C36BFB051FAB0C86006E4A12 /* AppDelegate.m in Sources */,
+				C36BFB431FAB0CAB006E4A12 /* RNCryptorEngine.m in Sources */,
+				C36BFB441FAB0CAB006E4A12 /* RNDecryptor.m in Sources */,
+				C36BFB021FAB0C86006E4A12 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36BFB121FAB0C86006E4A12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36BFB1B1FAB0C86006E4A12 /* RNCryDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C36BFB1D1FAB0C86006E4A12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36BFB261FAB0C86006E4A12 /* RNCryDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C36BFB181FAB0C86006E4A12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C36BFAFC1FAB0C86006E4A12 /* RNCryDemo */;
+			targetProxy = C36BFB171FAB0C86006E4A12 /* PBXContainerItemProxy */;
+		};
+		C36BFB231FAB0C86006E4A12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C36BFAFC1FAB0C86006E4A12 /* RNCryDemo */;
+			targetProxy = C36BFB221FAB0C86006E4A12 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C36BFB091FAB0C86006E4A12 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C36BFB0A1FAB0C86006E4A12 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C36BFB0E1FAB0C86006E4A12 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C36BFB0F1FAB0C86006E4A12 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C36BFB281FAB0C86006E4A12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C36BFB291FAB0C86006E4A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C36BFB2B1FAB0C86006E4A12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = RNCryDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kangqj.RNCryDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C36BFB2C1FAB0C86006E4A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = RNCryDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kangqj.RNCryDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C36BFB2E1FAB0C86006E4A12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = RNCryDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kangqj.RNCryDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNCryDemo.app/RNCryDemo";
+			};
+			name = Debug;
+		};
+		C36BFB2F1FAB0C86006E4A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = RNCryDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kangqj.RNCryDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNCryDemo.app/RNCryDemo";
+			};
+			name = Release;
+		};
+		C36BFB311FAB0C86006E4A12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = RNCryDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kangqj.RNCryDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RNCryDemo;
+			};
+			name = Debug;
+		};
+		C36BFB321FAB0C86006E4A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = RNCryDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kangqj.RNCryDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RNCryDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C36BFAF81FAB0C86006E4A12 /* Build configuration list for PBXProject "RNCryDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36BFB281FAB0C86006E4A12 /* Debug */,
+				C36BFB291FAB0C86006E4A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C36BFB2A1FAB0C86006E4A12 /* Build configuration list for PBXNativeTarget "RNCryDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36BFB2B1FAB0C86006E4A12 /* Debug */,
+				C36BFB2C1FAB0C86006E4A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C36BFB2D1FAB0C86006E4A12 /* Build configuration list for PBXNativeTarget "RNCryDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36BFB2E1FAB0C86006E4A12 /* Debug */,
+				C36BFB2F1FAB0C86006E4A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C36BFB301FAB0C86006E4A12 /* Build configuration list for PBXNativeTarget "RNCryDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36BFB311FAB0C86006E4A12 /* Debug */,
+				C36BFB321FAB0C86006E4A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C36BFAF51FAB0C86006E4A12 /* Project object */;
+}
