@@ -207,6 +207,7 @@
 				TargetAttributes = {
 					049353DC1CD0F8C20033792E = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 9U8J7M5J7U;
 					};
 					049353F51CD0F8C20033792E = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -413,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
 				INFOPLIST_FILE = CrashDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.CrashDemo";
@@ -424,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
 				INFOPLIST_FILE = CrashDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.CrashDemo";
@@ -498,6 +501,7 @@
 				0493540C1CD0F8C20033792E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0493540D1CD0F8C20033792E /* Build configuration list for PBXNativeTarget "CrashDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +510,7 @@
 				0493540F1CD0F8C20033792E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		049354101CD0F8C20033792E /* Build configuration list for PBXNativeTarget "CrashDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +519,7 @@
 				049354121CD0F8C20033792E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
