@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3CEB0B121BD60E2000FC08E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B111BD60E2000FC08E5 /* main.m */; };
+		3CEB0B151BD60E2000FC08E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B141BD60E2000FC08E5 /* AppDelegate.m */; };
+		3CEB0B1D1BD60E2000FC08E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB0B1C1BD60E2000FC08E5 /* Assets.xcassets */; };
+		3CEB0B201BD60E2000FC08E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB0B1E1BD60E2000FC08E5 /* LaunchScreen.storyboard */; };
+		3CEB0B2B1BD60E2000FC08E5 /* ______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B2A1BD60E2000FC08E5 /* ______Tests.m */; };
+		3CEB0B361BD60E2100FC08E5 /* ______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B351BD60E2100FC08E5 /* ______UITests.m */; };
+		3CEB0B531BD6116F00FC08E5 /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B4E1BD6116F00FC08E5 /* LockController.m */; };
+		3CEB0B541BD6116F00FC08E5 /* LockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B501BD6116F00FC08E5 /* LockView.m */; };
+		3CEB0B551BD6116F00FC08E5 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B521BD6116F00FC08E5 /* UIView+Extension.m */; };
+		3CEB0B581BD6119400FC08E5 /* KaiGeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB0B571BD6119400FC08E5 /* KaiGeViewController.m */; };
+		3CEB0B5C1BD6120C00FC08E5 /* KaiGeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB0B5B1BD6120C00FC08E5 /* KaiGeView.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3CEB0B271BD60E2000FC08E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CEB0B051BD60E2000FC08E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CEB0B0C1BD60E2000FC08E5;
+			remoteInfo = "凯哥手势解锁";
+		};
+		3CEB0B321BD60E2100FC08E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CEB0B051BD60E2000FC08E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CEB0B0C1BD60E2000FC08E5;
+			remoteInfo = "凯哥手势解锁";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3CEB0B0D1BD60E2000FC08E5 /* 凯哥手势解锁.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "凯哥手势解锁.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEB0B111BD60E2000FC08E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3CEB0B131BD60E2000FC08E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3CEB0B141BD60E2000FC08E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3CEB0B1C1BD60E2000FC08E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3CEB0B1F1BD60E2000FC08E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3CEB0B211BD60E2000FC08E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CEB0B261BD60E2000FC08E5 /* 凯哥手势解锁Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "凯哥手势解锁Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEB0B2A1BD60E2000FC08E5 /* ______Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "______Tests.m"; sourceTree = "<group>"; };
+		3CEB0B2C1BD60E2000FC08E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CEB0B311BD60E2100FC08E5 /* 凯哥手势解锁UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "凯哥手势解锁UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CEB0B351BD60E2100FC08E5 /* ______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "______UITests.m"; sourceTree = "<group>"; };
+		3CEB0B371BD60E2100FC08E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CEB0B4D1BD6116F00FC08E5 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockController.h; sourceTree = "<group>"; };
+		3CEB0B4E1BD6116F00FC08E5 /* LockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockController.m; sourceTree = "<group>"; };
+		3CEB0B4F1BD6116F00FC08E5 /* LockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockView.h; sourceTree = "<group>"; };
+		3CEB0B501BD6116F00FC08E5 /* LockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockView.m; sourceTree = "<group>"; };
+		3CEB0B511BD6116F00FC08E5 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		3CEB0B521BD6116F00FC08E5 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		3CEB0B561BD6119400FC08E5 /* KaiGeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaiGeViewController.h; sourceTree = "<group>"; };
+		3CEB0B571BD6119400FC08E5 /* KaiGeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaiGeViewController.m; sourceTree = "<group>"; };
+		3CEB0B5B1BD6120C00FC08E5 /* KaiGeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KaiGeView.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3CEB0B0A1BD60E2000FC08E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEB0B231BD60E2000FC08E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEB0B2E1BD60E2100FC08E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3CEB0B041BD60E2000FC08E5 = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B0F1BD60E2000FC08E5 /* 凯哥手势解锁Demo */,
+				3CEB0B291BD60E2000FC08E5 /* 凯哥手势解锁Tests */,
+				3CEB0B341BD60E2100FC08E5 /* 凯哥手势解锁UITests */,
+				3CEB0B0E1BD60E2000FC08E5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3CEB0B0E1BD60E2000FC08E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B0D1BD60E2000FC08E5 /* 凯哥手势解锁.app */,
+				3CEB0B261BD60E2000FC08E5 /* 凯哥手势解锁Tests.xctest */,
+				3CEB0B311BD60E2100FC08E5 /* 凯哥手势解锁UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CEB0B0F1BD60E2000FC08E5 /* 凯哥手势解锁Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B4C1BD6116F00FC08E5 /* Gesture unlock */,
+				3CEB0B131BD60E2000FC08E5 /* AppDelegate.h */,
+				3CEB0B141BD60E2000FC08E5 /* AppDelegate.m */,
+				3CEB0B561BD6119400FC08E5 /* KaiGeViewController.h */,
+				3CEB0B571BD6119400FC08E5 /* KaiGeViewController.m */,
+				3CEB0B5B1BD6120C00FC08E5 /* KaiGeView.storyboard */,
+				3CEB0B1C1BD60E2000FC08E5 /* Assets.xcassets */,
+				3CEB0B1E1BD60E2000FC08E5 /* LaunchScreen.storyboard */,
+				3CEB0B211BD60E2000FC08E5 /* Info.plist */,
+				3CEB0B101BD60E2000FC08E5 /* Supporting Files */,
+			);
+			name = "凯哥手势解锁Demo";
+			path = "凯哥手势解锁";
+			sourceTree = "<group>";
+		};
+		3CEB0B101BD60E2000FC08E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B111BD60E2000FC08E5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3CEB0B291BD60E2000FC08E5 /* 凯哥手势解锁Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B2A1BD60E2000FC08E5 /* ______Tests.m */,
+				3CEB0B2C1BD60E2000FC08E5 /* Info.plist */,
+			);
+			path = "凯哥手势解锁Tests";
+			sourceTree = "<group>";
+		};
+		3CEB0B341BD60E2100FC08E5 /* 凯哥手势解锁UITests */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B351BD60E2100FC08E5 /* ______UITests.m */,
+				3CEB0B371BD60E2100FC08E5 /* Info.plist */,
+			);
+			path = "凯哥手势解锁UITests";
+			sourceTree = "<group>";
+		};
+		3CEB0B4C1BD6116F00FC08E5 /* Gesture unlock */ = {
+			isa = PBXGroup;
+			children = (
+				3CEB0B4D1BD6116F00FC08E5 /* LockController.h */,
+				3CEB0B4E1BD6116F00FC08E5 /* LockController.m */,
+				3CEB0B4F1BD6116F00FC08E5 /* LockView.h */,
+				3CEB0B501BD6116F00FC08E5 /* LockView.m */,
+				3CEB0B511BD6116F00FC08E5 /* UIView+Extension.h */,
+				3CEB0B521BD6116F00FC08E5 /* UIView+Extension.m */,
+			);
+			path = "Gesture unlock";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3CEB0B0C1BD60E2000FC08E5 /* 凯哥手势解锁 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CEB0B3A1BD60E2100FC08E5 /* Build configuration list for PBXNativeTarget "凯哥手势解锁" */;
+			buildPhases = (
+				3CEB0B091BD60E2000FC08E5 /* Sources */,
+				3CEB0B0A1BD60E2000FC08E5 /* Frameworks */,
+				3CEB0B0B1BD60E2000FC08E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "凯哥手势解锁";
+			productName = "凯哥手势解锁";
+			productReference = 3CEB0B0D1BD60E2000FC08E5 /* 凯哥手势解锁.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3CEB0B251BD60E2000FC08E5 /* 凯哥手势解锁Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CEB0B3D1BD60E2100FC08E5 /* Build configuration list for PBXNativeTarget "凯哥手势解锁Tests" */;
+			buildPhases = (
+				3CEB0B221BD60E2000FC08E5 /* Sources */,
+				3CEB0B231BD60E2000FC08E5 /* Frameworks */,
+				3CEB0B241BD60E2000FC08E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CEB0B281BD60E2000FC08E5 /* PBXTargetDependency */,
+			);
+			name = "凯哥手势解锁Tests";
+			productName = "凯哥手势解锁Tests";
+			productReference = 3CEB0B261BD60E2000FC08E5 /* 凯哥手势解锁Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3CEB0B301BD60E2100FC08E5 /* 凯哥手势解锁UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CEB0B401BD60E2100FC08E5 /* Build configuration list for PBXNativeTarget "凯哥手势解锁UITests" */;
+			buildPhases = (
+				3CEB0B2D1BD60E2100FC08E5 /* Sources */,
+				3CEB0B2E1BD60E2100FC08E5 /* Frameworks */,
+				3CEB0B2F1BD60E2100FC08E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CEB0B331BD60E2100FC08E5 /* PBXTargetDependency */,
+			);
+			name = "凯哥手势解锁UITests";
+			productName = "凯哥手势解锁UITests";
+			productReference = 3CEB0B311BD60E2100FC08E5 /* 凯哥手势解锁UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3CEB0B051BD60E2000FC08E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = kaigelaile;
+				TargetAttributes = {
+					3CEB0B0C1BD60E2000FC08E5 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9U8J7M5J7U;
+					};
+					3CEB0B251BD60E2000FC08E5 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 3CEB0B0C1BD60E2000FC08E5;
+					};
+					3CEB0B301BD60E2100FC08E5 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 3CEB0B0C1BD60E2000FC08E5;
+					};
+				};
+			};
+			buildConfigurationList = 3CEB0B081BD60E2000FC08E5 /* Build configuration list for PBXProject "凯哥手势解锁" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3CEB0B041BD60E2000FC08E5;
+			productRefGroup = 3CEB0B0E1BD60E2000FC08E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3CEB0B0C1BD60E2000FC08E5 /* 凯哥手势解锁 */,
+				3CEB0B251BD60E2000FC08E5 /* 凯哥手势解锁Tests */,
+				3CEB0B301BD60E2100FC08E5 /* 凯哥手势解锁UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3CEB0B0B1BD60E2000FC08E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEB0B5C1BD6120C00FC08E5 /* KaiGeView.storyboard in Resources */,
+				3CEB0B201BD60E2000FC08E5 /* LaunchScreen.storyboard in Resources */,
+				3CEB0B1D1BD60E2000FC08E5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEB0B241BD60E2000FC08E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEB0B2F1BD60E2100FC08E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3CEB0B091BD60E2000FC08E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEB0B541BD6116F00FC08E5 /* LockView.m in Sources */,
+				3CEB0B531BD6116F00FC08E5 /* LockController.m in Sources */,
+				3CEB0B151BD60E2000FC08E5 /* AppDelegate.m in Sources */,
+				3CEB0B551BD6116F00FC08E5 /* UIView+Extension.m in Sources */,
+				3CEB0B581BD6119400FC08E5 /* KaiGeViewController.m in Sources */,
+				3CEB0B121BD60E2000FC08E5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEB0B221BD60E2000FC08E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEB0B2B1BD60E2000FC08E5 /* ______Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CEB0B2D1BD60E2100FC08E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEB0B361BD60E2100FC08E5 /* ______UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3CEB0B281BD60E2000FC08E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CEB0B0C1BD60E2000FC08E5 /* 凯哥手势解锁 */;
+			targetProxy = 3CEB0B271BD60E2000FC08E5 /* PBXContainerItemProxy */;
+		};
+		3CEB0B331BD60E2100FC08E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CEB0B0C1BD60E2000FC08E5 /* 凯哥手势解锁 */;
+			targetProxy = 3CEB0B321BD60E2100FC08E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3CEB0B1E1BD60E2000FC08E5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CEB0B1F1BD60E2000FC08E5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3CEB0B381BD60E2100FC08E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3CEB0B391BD60E2100FC08E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3CEB0B3B1BD60E2100FC08E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = "凯哥手势解锁/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kaigelaile.------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3CEB0B3C1BD60E2100FC08E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = "凯哥手势解锁/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kaigelaile.------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3CEB0B3E1BD60E2100FC08E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "凯哥手势解锁Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kaigelaile.------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/凯哥手势解锁.app/凯哥手势解锁";
+			};
+			name = Debug;
+		};
+		3CEB0B3F1BD60E2100FC08E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "凯哥手势解锁Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kaigelaile.------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/凯哥手势解锁.app/凯哥手势解锁";
+			};
+			name = Release;
+		};
+		3CEB0B411BD60E2100FC08E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "凯哥手势解锁UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kaigelaile.------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "凯哥手势解锁";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		3CEB0B421BD60E2100FC08E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "凯哥手势解锁UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kaigelaile.------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "凯哥手势解锁";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3CEB0B081BD60E2000FC08E5 /* Build configuration list for PBXProject "凯哥手势解锁" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEB0B381BD60E2100FC08E5 /* Debug */,
+				3CEB0B391BD60E2100FC08E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CEB0B3A1BD60E2100FC08E5 /* Build configuration list for PBXNativeTarget "凯哥手势解锁" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEB0B3B1BD60E2100FC08E5 /* Debug */,
+				3CEB0B3C1BD60E2100FC08E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CEB0B3D1BD60E2100FC08E5 /* Build configuration list for PBXNativeTarget "凯哥手势解锁Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEB0B3E1BD60E2100FC08E5 /* Debug */,
+				3CEB0B3F1BD60E2100FC08E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CEB0B401BD60E2100FC08E5 /* Build configuration list for PBXNativeTarget "凯哥手势解锁UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CEB0B411BD60E2100FC08E5 /* Debug */,
+				3CEB0B421BD60E2100FC08E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3CEB0B051BD60E2000FC08E5 /* Project object */;
+}
