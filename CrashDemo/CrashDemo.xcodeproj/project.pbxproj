@@ -15,6 +15,21 @@
 		049353F01CD0F8C20033792E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049353EE1CD0F8C20033792E /* LaunchScreen.storyboard */; };
 		049353FB1CD0F8C20033792E /* CrashDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049353FA1CD0F8C20033792E /* CrashDemoTests.m */; };
 		049354061CD0F8C20033792E /* CrashDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049354051CD0F8C20033792E /* CrashDemoUITests.m */; };
+		C3C10A5F1FFF5CD1004A9BE2 /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */; };
+		C3C10A601FFF5CD1004A9BE2 /* LockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5C1FFF5CD1004A9BE2 /* LockView.m */; };
+		C3C10A611FFF5CD1004A9BE2 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5E1FFF5CD1004A9BE2 /* UIView+Extension.m */; };
+		C3C10A6C1FFF5D27004A9BE2 /* gesture_node_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A641FFF5D27004A9BE2 /* gesture_node_error@2x.png */; };
+		C3C10A6D1FFF5D27004A9BE2 /* gesture_node_error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A651FFF5D27004A9BE2 /* gesture_node_error@3x.png */; };
+		C3C10A6E1FFF5D27004A9BE2 /* gesture_node_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A661FFF5D27004A9BE2 /* gesture_node_highlighted@2x.png */; };
+		C3C10A6F1FFF5D27004A9BE2 /* gesture_node_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A671FFF5D27004A9BE2 /* gesture_node_highlighted@3x.png */; };
+		C3C10A701FFF5D27004A9BE2 /* gesture_node_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A681FFF5D27004A9BE2 /* gesture_node_normal@2x.png */; };
+		C3C10A711FFF5D27004A9BE2 /* gesture_node_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A691FFF5D27004A9BE2 /* gesture_node_normal@3x.png */; };
+		C3C10A721FFF5D27004A9BE2 /* HomeButtomBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A6A1FFF5D27004A9BE2 /* HomeButtomBG@2x.png */; };
+		C3C10A731FFF5D27004A9BE2 /* icon_access.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A6B1FFF5D27004A9BE2 /* icon_access.png */; };
+		C3C10A761FFF6C3E004A9BE2 /* touchID_green.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A741FFF6C3E004A9BE2 /* touchID_green.png */; };
+		C3C10A771FFF6C3E004A9BE2 /* touchID_red.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A751FFF6C3E004A9BE2 /* touchID_red.png */; };
+		C3C10A7A1FFF7484004A9BE2 /* NSString+QDTouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A791FFF7484004A9BE2 /* NSString+QDTouchID.m */; };
+		C3C10A7D1FFF7487004A9BE2 /* NSString+QDTouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A7C1FFF7487004A9BE2 /* NSString+QDTouchID.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,26 @@
 		049354011CD0F8C20033792E /* CrashDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrashDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		049354051CD0F8C20033792E /* CrashDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashDemoUITests.m; sourceTree = "<group>"; };
 		049354071CD0F8C20033792E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3C10A591FFF5CD1004A9BE2 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockController.h; sourceTree = "<group>"; };
+		C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockController.m; sourceTree = "<group>"; };
+		C3C10A5B1FFF5CD1004A9BE2 /* LockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockView.h; sourceTree = "<group>"; };
+		C3C10A5C1FFF5CD1004A9BE2 /* LockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockView.m; sourceTree = "<group>"; };
+		C3C10A5D1FFF5CD1004A9BE2 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		C3C10A5E1FFF5CD1004A9BE2 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		C3C10A641FFF5D27004A9BE2 /* gesture_node_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_error@2x.png"; sourceTree = "<group>"; };
+		C3C10A651FFF5D27004A9BE2 /* gesture_node_error@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_error@3x.png"; sourceTree = "<group>"; };
+		C3C10A661FFF5D27004A9BE2 /* gesture_node_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_highlighted@2x.png"; sourceTree = "<group>"; };
+		C3C10A671FFF5D27004A9BE2 /* gesture_node_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_highlighted@3x.png"; sourceTree = "<group>"; };
+		C3C10A681FFF5D27004A9BE2 /* gesture_node_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_normal@2x.png"; sourceTree = "<group>"; };
+		C3C10A691FFF5D27004A9BE2 /* gesture_node_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gesture_node_normal@3x.png"; sourceTree = "<group>"; };
+		C3C10A6A1FFF5D27004A9BE2 /* HomeButtomBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomeButtomBG@2x.png"; sourceTree = "<group>"; };
+		C3C10A6B1FFF5D27004A9BE2 /* icon_access.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_access.png; sourceTree = "<group>"; };
+		C3C10A741FFF6C3E004A9BE2 /* touchID_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchID_green.png; sourceTree = "<group>"; };
+		C3C10A751FFF6C3E004A9BE2 /* touchID_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touchID_red.png; sourceTree = "<group>"; };
+		C3C10A781FFF7484004A9BE2 /* NSString+QDTouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDTouchID.h"; sourceTree = "<group>"; };
+		C3C10A791FFF7484004A9BE2 /* NSString+QDTouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QDTouchID.m"; sourceTree = "<group>"; };
+		C3C10A7B1FFF7487004A9BE2 /* NSString+QDTouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QDTouchID.h"; sourceTree = "<group>"; };
+		C3C10A7C1FFF7487004A9BE2 /* NSString+QDTouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QDTouchID.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +140,12 @@
 				049353E41CD0F8C20033792E /* AppDelegate.m */,
 				049353E61CD0F8C20033792E /* ViewController.h */,
 				049353E71CD0F8C20033792E /* ViewController.m */,
+				C3C10A7B1FFF7487004A9BE2 /* NSString+QDTouchID.h */,
+				C3C10A7C1FFF7487004A9BE2 /* NSString+QDTouchID.m */,
+				C3C10A781FFF7484004A9BE2 /* NSString+QDTouchID.h */,
+				C3C10A791FFF7484004A9BE2 /* NSString+QDTouchID.m */,
+				C3C10A631FFF5D27004A9BE2 /* resource */,
+				C3C10A581FFF5CD1004A9BE2 /* Gesture unlock */,
 				049353E91CD0F8C20033792E /* Main.storyboard */,
 				049353EC1CD0F8C20033792E /* Assets.xcassets */,
 				049353EE1CD0F8C20033792E /* LaunchScreen.storyboard */,
@@ -139,6 +180,37 @@
 			);
 			path = CrashDemoUITests;
 			sourceTree = "<group>";
+		};
+		C3C10A581FFF5CD1004A9BE2 /* Gesture unlock */ = {
+			isa = PBXGroup;
+			children = (
+				C3C10A591FFF5CD1004A9BE2 /* LockController.h */,
+				C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */,
+				C3C10A5B1FFF5CD1004A9BE2 /* LockView.h */,
+				C3C10A5C1FFF5CD1004A9BE2 /* LockView.m */,
+				C3C10A5D1FFF5CD1004A9BE2 /* UIView+Extension.h */,
+				C3C10A5E1FFF5CD1004A9BE2 /* UIView+Extension.m */,
+			);
+			path = "Gesture unlock";
+			sourceTree = "<group>";
+		};
+		C3C10A631FFF5D27004A9BE2 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				C3C10A641FFF5D27004A9BE2 /* gesture_node_error@2x.png */,
+				C3C10A651FFF5D27004A9BE2 /* gesture_node_error@3x.png */,
+				C3C10A661FFF5D27004A9BE2 /* gesture_node_highlighted@2x.png */,
+				C3C10A671FFF5D27004A9BE2 /* gesture_node_highlighted@3x.png */,
+				C3C10A681FFF5D27004A9BE2 /* gesture_node_normal@2x.png */,
+				C3C10A691FFF5D27004A9BE2 /* gesture_node_normal@3x.png */,
+				C3C10A6A1FFF5D27004A9BE2 /* HomeButtomBG@2x.png */,
+				C3C10A6B1FFF5D27004A9BE2 /* icon_access.png */,
+				C3C10A741FFF6C3E004A9BE2 /* touchID_green.png */,
+				C3C10A751FFF6C3E004A9BE2 /* touchID_red.png */,
+			);
+			name = resource;
+			path = CrashDemo/resource;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -244,9 +316,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C10A6F1FFF5D27004A9BE2 /* gesture_node_highlighted@3x.png in Resources */,
+				C3C10A6E1FFF5D27004A9BE2 /* gesture_node_highlighted@2x.png in Resources */,
 				049353F01CD0F8C20033792E /* LaunchScreen.storyboard in Resources */,
+				C3C10A701FFF5D27004A9BE2 /* gesture_node_normal@2x.png in Resources */,
 				049353ED1CD0F8C20033792E /* Assets.xcassets in Resources */,
+				C3C10A711FFF5D27004A9BE2 /* gesture_node_normal@3x.png in Resources */,
+				C3C10A771FFF6C3E004A9BE2 /* touchID_red.png in Resources */,
+				C3C10A6D1FFF5D27004A9BE2 /* gesture_node_error@3x.png in Resources */,
 				049353EB1CD0F8C20033792E /* Main.storyboard in Resources */,
+				C3C10A761FFF6C3E004A9BE2 /* touchID_green.png in Resources */,
+				C3C10A731FFF5D27004A9BE2 /* icon_access.png in Resources */,
+				C3C10A6C1FFF5D27004A9BE2 /* gesture_node_error@2x.png in Resources */,
+				C3C10A721FFF5D27004A9BE2 /* HomeButtomBG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,9 +353,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C10A611FFF5CD1004A9BE2 /* UIView+Extension.m in Sources */,
+				C3C10A5F1FFF5CD1004A9BE2 /* LockController.m in Sources */,
+				C3C10A601FFF5CD1004A9BE2 /* LockView.m in Sources */,
+				C3C10A7A1FFF7484004A9BE2 /* NSString+QDTouchID.m in Sources */,
 				049353E81CD0F8C20033792E /* ViewController.m in Sources */,
 				049353E51CD0F8C20033792E /* AppDelegate.m in Sources */,
 				049353E21CD0F8C20033792E /* main.m in Sources */,
+				C3C10A7D1FFF7487004A9BE2 /* NSString+QDTouchID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
