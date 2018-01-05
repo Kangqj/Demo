@@ -12,6 +12,8 @@
 #import <LocalAuthentication/LAError.h>
 #import "NSString+QDTouchID.h"
 
+#define key_shakeFlag    @"key_shakeFlag"
+
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, LockControllerDelegate>
 {
     NSMutableArray *dataArr;
@@ -49,6 +51,12 @@
     m_tableview.delegate = self;
     m_tableview.dataSource = self;
     [self.view addSubview:m_tableview];
+    
+    
+    // 设置允许摇一摇功能
+    [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
+    // 并让自己成为第一响应者
+    [self becomeFirstResponder];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -158,7 +166,7 @@
         case 2:
         {
             UISwitch *switchFlag = [[UISwitch alloc]initWithFrame:CGRectMake(self.view.frame.size.width - 78 - 10, 8, 78, 28)];
-            [switchFlag addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
+            [switchFlag addTarget:self action:@selector(shakeSwitchAction) forControlEvents:UIControlEventValueChanged];
             [switchFlag setOn:NO];
             cell.accessoryView = switchFlag;
             
@@ -271,6 +279,13 @@
     
 }
 
+- (void)shakeSwitchAction
+{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:key_shakeFlag];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -309,6 +324,8 @@
         case 7:
         {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passwordone"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key_shakeFlag];
+
             [[NSUserDefaults standardUserDefaults] synchronize];
             break;
         }
@@ -535,6 +552,28 @@
         });
     }];
     
+    
+}
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (event.subtype == UIEventSubtypeMotionShake) { // 判断是否是摇动结束
+        NSLog(@"摇动结束");
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:key_shakeFlag])
+        {
+            exit(0);
+        }
+    }
+}
+
+- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
     
 }
 
