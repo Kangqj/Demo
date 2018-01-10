@@ -15,6 +15,27 @@
 		049353F01CD0F8C20033792E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049353EE1CD0F8C20033792E /* LaunchScreen.storyboard */; };
 		049353FB1CD0F8C20033792E /* CrashDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049353FA1CD0F8C20033792E /* CrashDemoTests.m */; };
 		049354061CD0F8C20033792E /* CrashDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049354051CD0F8C20033792E /* CrashDemoUITests.m */; };
+		C34921E12005E0E100CA81BA /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5E1FFF5CD1004A9BE2 /* UIView+Extension.m */; };
+		C34921E22005E0E100CA81BA /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */; };
+		C34921E32005E0E100CA81BA /* LockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5C1FFF5CD1004A9BE2 /* LockView.m */; };
+		C34921E42005E0E100CA81BA /* NSString+QDTouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A791FFF7484004A9BE2 /* NSString+QDTouchID.m */; };
+		C34921E52005E0E100CA81BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049353E71CD0F8C20033792E /* ViewController.m */; };
+		C34921E62005E0E100CA81BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 049353E41CD0F8C20033792E /* AppDelegate.m */; };
+		C34921E72005E0E100CA81BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 049353E11CD0F8C20033792E /* main.m */; };
+		C34921E82005E0E100CA81BA /* NSString+QDTouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A7C1FFF7487004A9BE2 /* NSString+QDTouchID.m */; };
+		C34921EB2005E0E100CA81BA /* gesture_node_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A671FFF5D27004A9BE2 /* gesture_node_highlighted@3x.png */; };
+		C34921EC2005E0E100CA81BA /* gesture_node_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A661FFF5D27004A9BE2 /* gesture_node_highlighted@2x.png */; };
+		C34921ED2005E0E100CA81BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049353EE1CD0F8C20033792E /* LaunchScreen.storyboard */; };
+		C34921EE2005E0E100CA81BA /* gesture_node_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A681FFF5D27004A9BE2 /* gesture_node_normal@2x.png */; };
+		C34921EF2005E0E100CA81BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049353EC1CD0F8C20033792E /* Assets.xcassets */; };
+		C34921F02005E0E100CA81BA /* gesture_node_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A691FFF5D27004A9BE2 /* gesture_node_normal@3x.png */; };
+		C34921F12005E0E100CA81BA /* touchID_red.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A751FFF6C3E004A9BE2 /* touchID_red.png */; };
+		C34921F22005E0E100CA81BA /* gesture_node_error@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A651FFF5D27004A9BE2 /* gesture_node_error@3x.png */; };
+		C34921F32005E0E100CA81BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049353E91CD0F8C20033792E /* Main.storyboard */; };
+		C34921F42005E0E100CA81BA /* touchID_green.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A741FFF6C3E004A9BE2 /* touchID_green.png */; };
+		C34921F52005E0E100CA81BA /* icon_access.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A6B1FFF5D27004A9BE2 /* icon_access.png */; };
+		C34921F62005E0E100CA81BA /* gesture_node_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A641FFF5D27004A9BE2 /* gesture_node_error@2x.png */; };
+		C34921F72005E0E100CA81BA /* HomeButtomBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A6A1FFF5D27004A9BE2 /* HomeButtomBG@2x.png */; };
 		C3C10A5F1FFF5CD1004A9BE2 /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */; };
 		C3C10A601FFF5CD1004A9BE2 /* LockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5C1FFF5CD1004A9BE2 /* LockView.m */; };
 		C3C10A611FFF5CD1004A9BE2 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5E1FFF5CD1004A9BE2 /* UIView+Extension.m */; };
@@ -50,7 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		049353DD1CD0F8C20033792E /* CrashDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrashDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		049353DD1CD0F8C20033792E /* CrashDemo_debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrashDemo_debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049353E11CD0F8C20033792E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		049353E31CD0F8C20033792E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		049353E41CD0F8C20033792E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,13 +80,15 @@
 		049353EA1CD0F8C20033792E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		049353EC1CD0F8C20033792E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049353EF1CD0F8C20033792E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		049353F11CD0F8C20033792E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049353F11CD0F8C20033792E /* CrashDemo_debug-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrashDemo_debug-Info.plist"; sourceTree = "<group>"; };
 		049353F61CD0F8C20033792E /* CrashDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrashDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		049353FA1CD0F8C20033792E /* CrashDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashDemoTests.m; sourceTree = "<group>"; };
 		049353FC1CD0F8C20033792E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		049354011CD0F8C20033792E /* CrashDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrashDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		049354051CD0F8C20033792E /* CrashDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashDemoUITests.m; sourceTree = "<group>"; };
 		049354071CD0F8C20033792E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C34921FB2005E0E100CA81BA /* CrashDemo_appstore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrashDemo_appstore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C34921FC2005E0E800CA81BA /* CrashDemo_appstore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CrashDemo_appstore-Info.plist"; path = "/Users/kangqijun/Demo/CrashDemo/CrashDemo_appstore-Info.plist"; sourceTree = "<absolute>"; };
 		C3C10A591FFF5CD1004A9BE2 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockController.h; sourceTree = "<group>"; };
 		C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockController.m; sourceTree = "<group>"; };
 		C3C10A5B1FFF5CD1004A9BE2 /* LockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockView.h; sourceTree = "<group>"; };
@@ -110,6 +133,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C34921E92005E0E100CA81BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,15 +150,17 @@
 				049353F91CD0F8C20033792E /* CrashDemoTests */,
 				049354041CD0F8C20033792E /* CrashDemoUITests */,
 				049353DE1CD0F8C20033792E /* Products */,
+				C34921FC2005E0E800CA81BA /* CrashDemo_appstore-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		049353DE1CD0F8C20033792E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				049353DD1CD0F8C20033792E /* CrashDemo.app */,
+				049353DD1CD0F8C20033792E /* CrashDemo_debug.app */,
 				049353F61CD0F8C20033792E /* CrashDemoTests.xctest */,
 				049354011CD0F8C20033792E /* CrashDemoUITests.xctest */,
+				C34921FB2005E0E100CA81BA /* CrashDemo_appstore.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,7 +181,7 @@
 				049353E91CD0F8C20033792E /* Main.storyboard */,
 				049353EC1CD0F8C20033792E /* Assets.xcassets */,
 				049353EE1CD0F8C20033792E /* LaunchScreen.storyboard */,
-				049353F11CD0F8C20033792E /* Info.plist */,
+				049353F11CD0F8C20033792E /* CrashDemo_debug-Info.plist */,
 				049353E01CD0F8C20033792E /* Supporting Files */,
 			);
 			path = CrashDemo;
@@ -215,9 +247,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		049353DC1CD0F8C20033792E /* CrashDemo */ = {
+		049353DC1CD0F8C20033792E /* CrashDemo_debug */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0493540A1CD0F8C20033792E /* Build configuration list for PBXNativeTarget "CrashDemo" */;
+			buildConfigurationList = 0493540A1CD0F8C20033792E /* Build configuration list for PBXNativeTarget "CrashDemo_debug" */;
 			buildPhases = (
 				049353D91CD0F8C20033792E /* Sources */,
 				049353DA1CD0F8C20033792E /* Frameworks */,
@@ -227,9 +259,9 @@
 			);
 			dependencies = (
 			);
-			name = CrashDemo;
+			name = CrashDemo_debug;
 			productName = CrashDemo;
-			productReference = 049353DD1CD0F8C20033792E /* CrashDemo.app */;
+			productReference = 049353DD1CD0F8C20033792E /* CrashDemo_debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		049353F51CD0F8C20033792E /* CrashDemoTests */ = {
@@ -268,6 +300,23 @@
 			productReference = 049354011CD0F8C20033792E /* CrashDemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C34921DF2005E0E100CA81BA /* CrashDemo_appstore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C34921F82005E0E100CA81BA /* Build configuration list for PBXNativeTarget "CrashDemo_appstore" */;
+			buildPhases = (
+				C34921E02005E0E100CA81BA /* Sources */,
+				C34921E92005E0E100CA81BA /* Frameworks */,
+				C34921EA2005E0E100CA81BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CrashDemo_appstore;
+			productName = CrashDemo;
+			productReference = C34921FB2005E0E100CA81BA /* CrashDemo_appstore.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -289,6 +338,9 @@
 						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = 049353DC1CD0F8C20033792E;
 					};
+					C34921DF2005E0E100CA81BA = {
+						DevelopmentTeam = 9U8J7M5J7U;
+					};
 				};
 			};
 			buildConfigurationList = 049353D81CD0F8C20033792E /* Build configuration list for PBXProject "CrashDemo" */;
@@ -304,7 +356,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				049353DC1CD0F8C20033792E /* CrashDemo */,
+				049353DC1CD0F8C20033792E /* CrashDemo_debug */,
+				C34921DF2005E0E100CA81BA /* CrashDemo_appstore */,
 				049353F51CD0F8C20033792E /* CrashDemoTests */,
 				049354001CD0F8C20033792E /* CrashDemoUITests */,
 			);
@@ -346,6 +399,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C34921EA2005E0E100CA81BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C34921EB2005E0E100CA81BA /* gesture_node_highlighted@3x.png in Resources */,
+				C34921EC2005E0E100CA81BA /* gesture_node_highlighted@2x.png in Resources */,
+				C34921ED2005E0E100CA81BA /* LaunchScreen.storyboard in Resources */,
+				C34921EE2005E0E100CA81BA /* gesture_node_normal@2x.png in Resources */,
+				C34921EF2005E0E100CA81BA /* Assets.xcassets in Resources */,
+				C34921F02005E0E100CA81BA /* gesture_node_normal@3x.png in Resources */,
+				C34921F12005E0E100CA81BA /* touchID_red.png in Resources */,
+				C34921F22005E0E100CA81BA /* gesture_node_error@3x.png in Resources */,
+				C34921F32005E0E100CA81BA /* Main.storyboard in Resources */,
+				C34921F42005E0E100CA81BA /* touchID_green.png in Resources */,
+				C34921F52005E0E100CA81BA /* icon_access.png in Resources */,
+				C34921F62005E0E100CA81BA /* gesture_node_error@2x.png in Resources */,
+				C34921F72005E0E100CA81BA /* HomeButtomBG@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -380,17 +453,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C34921E02005E0E100CA81BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C34921E12005E0E100CA81BA /* UIView+Extension.m in Sources */,
+				C34921E22005E0E100CA81BA /* LockController.m in Sources */,
+				C34921E32005E0E100CA81BA /* LockView.m in Sources */,
+				C34921E42005E0E100CA81BA /* NSString+QDTouchID.m in Sources */,
+				C34921E52005E0E100CA81BA /* ViewController.m in Sources */,
+				C34921E62005E0E100CA81BA /* AppDelegate.m in Sources */,
+				C34921E72005E0E100CA81BA /* main.m in Sources */,
+				C34921E82005E0E100CA81BA /* NSString+QDTouchID.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		049353F81CD0F8C20033792E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 049353DC1CD0F8C20033792E /* CrashDemo */;
+			target = 049353DC1CD0F8C20033792E /* CrashDemo_debug */;
 			targetProxy = 049353F71CD0F8C20033792E /* PBXContainerItemProxy */;
 		};
 		049354031CD0F8C20033792E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 049353DC1CD0F8C20033792E /* CrashDemo */;
+			target = 049353DC1CD0F8C20033792E /* CrashDemo_debug */;
 			targetProxy = 049354021CD0F8C20033792E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -502,7 +590,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9U8J7M5J7U;
-				INFOPLIST_FILE = CrashDemo/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					TARGET_DEBUG,
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/CrashDemo/CrashDemo_debug-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.CrashDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -514,7 +607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9U8J7M5J7U;
-				INFOPLIST_FILE = CrashDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CrashDemo/CrashDemo_debug-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.CrashDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -569,6 +662,37 @@
 			};
 			name = Release;
 		};
+		C34921F92005E0E100CA81BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					TARGET_APPSTORE,
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/CrashDemo_appstore-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.CrashDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C34921FA2005E0E100CA81BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				INFOPLIST_FILE = "$(SRCROOT)/CrashDemo_appstore-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KQJ-Studio.CrashDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -581,7 +705,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0493540A1CD0F8C20033792E /* Build configuration list for PBXNativeTarget "CrashDemo" */ = {
+		0493540A1CD0F8C20033792E /* Build configuration list for PBXNativeTarget "CrashDemo_debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0493540B1CD0F8C20033792E /* Debug */,
@@ -604,6 +728,15 @@
 			buildConfigurations = (
 				049354111CD0F8C20033792E /* Debug */,
 				049354121CD0F8C20033792E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C34921F82005E0E100CA81BA /* Build configuration list for PBXNativeTarget "CrashDemo_appstore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C34921F92005E0E100CA81BA /* Debug */,
+				C34921FA2005E0E100CA81BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "049353DC1CD0F8C20033792E"
-               BuildableName = "CrashDemo.app"
-               BlueprintName = "CrashDemo"
+               BuildableName = "CrashDemo_debug.app"
+               BlueprintName = "CrashDemo_debug"
                ReferencedContainer = "container:CrashDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "049353F51CD0F8C20033792E"
-               BuildableName = "CrashDemoTests.xctest"
-               BlueprintName = "CrashDemoTests"
-               ReferencedContainer = "container:CrashDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "049354001CD0F8C20033792E"
-               BuildableName = "CrashDemoUITests.xctest"
-               BlueprintName = "CrashDemoUITests"
-               ReferencedContainer = "container:CrashDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "049353DC1CD0F8C20033792E"
-            BuildableName = "CrashDemo.app"
-            BlueprintName = "CrashDemo"
+            BuildableName = "CrashDemo_debug.app"
+            BlueprintName = "CrashDemo_debug"
             ReferencedContainer = "container:CrashDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "049353DC1CD0F8C20033792E"
-            BuildableName = "CrashDemo.app"
-            BlueprintName = "CrashDemo"
+            BuildableName = "CrashDemo_debug.app"
+            BlueprintName = "CrashDemo_debug"
             ReferencedContainer = "container:CrashDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "049353DC1CD0F8C20033792E"
-            BuildableName = "CrashDemo.app"
-            BlueprintName = "CrashDemo"
+            BuildableName = "CrashDemo_debug.app"
+            BlueprintName = "CrashDemo_debug"
             ReferencedContainer = "container:CrashDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

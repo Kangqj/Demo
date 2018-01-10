@@ -29,6 +29,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"Setting";
     
+#ifdef TARGET_DEBUG
+    NSLog(@"TARGET_DEBUG");
+#elif TARGET_APPSTORE
+    NSLog(@"TARGET_APPSTORE");
+#endif
+    
+    /*
     NSArray *arr1 = [NSArray arrayWithObjects:@"手势密码", @"Touch ID", @"字母密码", nil];
     
     NSArray *arr2 = [NSArray arrayWithObjects:@"更改密码", @"设置伪装密码", nil];
@@ -57,6 +64,8 @@
     [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
     // 并让自己成为第一响应者
     [self becomeFirstResponder];
+    */
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -583,3 +592,18 @@
 }
 
 @end
+
+
+/*
+ google analytics:
+ https://analytics.google.com/analytics/web/?hl=zh-CN#embed/report-home/a112271169w167343202p167602249/
+ 
+ 左下测 管理 -> 媒体资源 -> 跟踪代码 -> iOS SDK入门指南
+ 
+ https://developers.google.com/analytics/devguides/collection/ios/v3/
+ 
+ 
+ 
+ 
+ */
+
