@@ -595,15 +595,25 @@
 
 
 /*
- google analytics:
+ 1. google analytics:
+ 账号：qq邮箱
+ 
  https://analytics.google.com/analytics/web/?hl=zh-CN#embed/report-home/a112271169w167343202p167602249/
  
  左下测 管理 -> 媒体资源 -> 跟踪代码 -> iOS SDK入门指南
  
+ 文档：
  https://developers.google.com/analytics/devguides/collection/ios/v3/
  
  
  
+ 2. crashlytic:
+ 账号：qq邮箱
+ https://fabric.io/kits?show_signup=true&utm_campaign=fabric-marketing&utm_medium=natural
+ 
+ 
+ 
+ 文档：https://fabric.io/kits/ios/crashlytics/install
  
  */
 
