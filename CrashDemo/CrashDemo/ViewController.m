@@ -35,6 +35,15 @@
     NSLog(@"TARGET_APPSTORE");
 #endif
     
+    self.navigationController.navigationBarHidden = NO;
+    
+    UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didNavOneBtnClick:)];
+    self.navigationItem.leftBarButtonItems = @[item0];
+
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"写入" style:UIBarButtonItemStylePlain target:self action:@selector(didNavOneBtnClick:)];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(didNavOneBtnClick:)];
+    self.navigationItem.rightBarButtonItems = @[item1,item2];
+    
     /*
     NSArray *arr1 = [NSArray arrayWithObjects:@"手势密码", @"Touch ID", @"字母密码", nil];
     
@@ -43,13 +52,13 @@
     NSArray *arr3 = [NSArray arrayWithObjects:@"摇一摇关闭应用", @"摇一摇锁屏", nil];
     
     NSArray *arr4 = [NSArray arrayWithObjects:@"更改App图标", @"设置伪装", nil];
-
+     
     NSArray *arr5 = [NSArray arrayWithObjects:@"入侵抓拍",@"抓拍记录",nil];
-
+     
     NSArray *arr6 = [NSArray arrayWithObjects:@"意见反馈",@"评价",nil];
-
+     
     NSArray *arr7 = [NSArray arrayWithObjects:@"关于我们",nil];
-
+     
     NSArray *arr8 = [NSArray arrayWithObjects:@"销毁账户",nil];
     
     dataArr = [[NSMutableArray alloc] initWithObjects:arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, nil];
@@ -59,13 +68,19 @@
     m_tableview.dataSource = self;
     [self.view addSubview:m_tableview];
     
-    
     // 设置允许摇一摇功能
     [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
     // 并让自己成为第一响应者
     [self becomeFirstResponder];
     */
-    
+}
+
+- (void)didNavOneBtnClick:(UIBarButtonItem *)item
+{
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    anim.duration = 0.25;
+    anim.values = @[@(1.2),@(0.8),@(1.1),@(0.9),@(1.0)];
+    [self.view.layer addAnimation:anim forKey:@""];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
