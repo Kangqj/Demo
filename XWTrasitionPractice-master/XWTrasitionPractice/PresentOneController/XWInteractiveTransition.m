@@ -56,7 +56,7 @@
     UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotatePiece:)];
     rotation.delegate = self;
 //    [controller.imageView addGestureRecognizer:rotation];
-    [self.vc.view addGestureRecognizer:rotation];
+//    [self.vc.view addGestureRecognizer:rotation];
 
     
     lastScale = 1.0;
@@ -146,7 +146,7 @@
 - (void)pinchAction:(UIPinchGestureRecognizer *)sender
 {
     NSLog(@"1---%f", sender.scale);
-    /*
+    
     float persent = 1.0 - sender.scale;
     
     switch (sender.state) {
@@ -169,9 +169,8 @@
         default:
             break;
     }
-    */
     
-    
+    /*
     //当手指离开屏幕时,将lastscale设置为1.0
     if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
         lastScale = 1.0;
@@ -183,7 +182,7 @@
     CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
     [[(UIPinchGestureRecognizer*)sender view]setTransform:newTransform];
     lastScale = [(UIPinchGestureRecognizer*)sender scale];
-    
+    */
 //    //在原有transform的基础上再缩放
 //    sender.view.transform =CGAffineTransformScale(sender.view.transform, sender.scale, sender.scale);
 //    //重置缩放比例为1
