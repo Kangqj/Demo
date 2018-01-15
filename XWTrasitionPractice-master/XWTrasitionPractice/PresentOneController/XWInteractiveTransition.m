@@ -9,6 +9,9 @@
 #import "XWInteractiveTransition.h"
 
 @interface XWInteractiveTransition ()
+{
+    float lastScale;
+}
 
 @property (nonatomic, weak) UIViewController *vc;
 /**手势方向*/
@@ -37,6 +40,14 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     self.vc = viewController;
     [viewController.view addGestureRecognizer:pan];
+    
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
+    self.vc  = viewController;
+    [viewController.view addGestureRecognizer:pinch];
+    
+    UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotatePiece:)];
+    self.vc  = viewController;
+    [viewController.view addGestureRecognizer:rotation];
 }
 
 /**
@@ -116,4 +127,39 @@
             break;
     }
 }
+
+- (void)pinchAction:(UIPinchGestureRecognizer *)sender{
+    
+    CGFloat scale = 1.0 - [(UIPinchGestureRecognizer*)sender scale];
+    CGAffineTransform currentTransform = sender.view.transform;
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
+    [sender.view setTransform:newTransform];
+    
+    //当手指离开屏幕时,将lastscale设置为1.0
+    if([sender state] == UIGestureRecognizerStateEnded)
+    {
+//        newTransform = CGAffineTransformScale(currentTransform, 1.0, 1.0);
+//        [sender.view setTransform:newTransform];
+    }
+}
+
+- (void)rotatePiece:(UIRotationGestureRecognizer *)gestureRecognizer
+{
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan || [gestureRecognizer state] == UIGestureRecognizerStateChanged)
+    {
+        [gestureRecognizer view].transform = CGAffineTransformRotate([[gestureRecognizer view] transform], [gestureRecognizer rotation]);
+        
+        if([gestureRecognizer state] == UIGestureRecognizerStateEnded)
+        {
+//            [gestureRecognizer setRotation:0];
+        }
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    return YES;
+    
+}
+
 @end

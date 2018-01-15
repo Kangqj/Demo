@@ -42,7 +42,7 @@
     //初始化手势过渡的代理
     self.interactiveTransition = [XWInteractiveTransition interactiveTransitionWithTransitionType:XWInteractiveTransitionTypePop GestureDirection:XWInteractiveTransitionGestureDirectionRight];
     //给当前控制器的视图添加手势
-//    [_interactiveTransition addPanGestureForViewController:self];
+    [_interactiveTransition addPanGestureForViewController:self];
 }
 
 
