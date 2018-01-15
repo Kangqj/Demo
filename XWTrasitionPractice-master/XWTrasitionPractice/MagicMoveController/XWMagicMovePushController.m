@@ -29,8 +29,10 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zrx4.jpg"]];
     self.imageView = imageView;
     [self.view addSubview:imageView];
-    imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.view.height / 2 + 210);
-    imageView.bounds = CGRectMake(0, 0, 280, 280);
+//    imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.view.height / 2 + 210);
+//    imageView.bounds = CGRectMake(0, 0, 280, 280);
+    imageView.frame = self.view.bounds;
+    imageView.userInteractionEnabled = YES;
     UITextView *textView = [UITextView new];
     textView.text = @"这是类似于KeyNote的神奇移动效果，向右滑动可以通过手势控制POP动画";
     textView.font = [UIFont systemFontOfSize:14];

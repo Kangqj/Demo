@@ -7,10 +7,13 @@
 //
 
 #import "XWInteractiveTransition.h"
+#import "XWMagicMovePushController.h"
 
-@interface XWInteractiveTransition ()
+@interface XWInteractiveTransition () <UIGestureRecognizerDelegate>
 {
     float lastScale;
+    
+    float lastRotation;
 }
 
 @property (nonatomic, weak) UIViewController *vc;
@@ -37,17 +40,27 @@
 }
 
 - (void)addPanGestureForViewController:(UIViewController *)viewController{
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+//    self.vc = viewController;
+//    [viewController.view addGestureRecognizer:pan];
+    
     self.vc = viewController;
-    [viewController.view addGestureRecognizer:pan];
     
+//    XWMagicMovePushController *controller = (XWMagicMovePushController *)viewController;
+
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
-    self.vc  = viewController;
-    [viewController.view addGestureRecognizer:pinch];
-    
+    pinch.delegate = self;
+//    [controller.imageView addGestureRecognizer:pinch];
+    [self.vc.view addGestureRecognizer:pinch];
+
     UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotatePiece:)];
-    self.vc  = viewController;
-    [viewController.view addGestureRecognizer:rotation];
+    rotation.delegate = self;
+//    [controller.imageView addGestureRecognizer:rotation];
+    [self.vc.view addGestureRecognizer:rotation];
+
+    
+    lastScale = 1.0;
+    lastRotation = 0.0;
 }
 
 /**
@@ -97,6 +110,8 @@
             }else{
                 [self cancelInteractiveTransition];
             }
+            
+            [self finishInteractiveTransition];
             break;
         }
         default:
@@ -128,37 +143,95 @@
     }
 }
 
-- (void)pinchAction:(UIPinchGestureRecognizer *)sender{
+- (void)pinchAction:(UIPinchGestureRecognizer *)sender
+{
+    NSLog(@"1---%f", sender.scale);
+    /*
+    float persent = 1.0 - sender.scale;
     
-    CGFloat scale = 1.0 - [(UIPinchGestureRecognizer*)sender scale];
-    CGAffineTransform currentTransform = sender.view.transform;
-    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
-    [sender.view setTransform:newTransform];
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            //手势开始的时候标记手势状态，并开始相应的事件
+            self.interation = YES;
+            [self startGesture];
+            break;
+        case UIGestureRecognizerStateChanged:{
+            //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
+            [self updateInteractiveTransition:persent];
+            break;
+        }
+        case UIGestureRecognizerStateEnded:{
+            //手势完成后结束标记并且判断移动距离是否过半，过则finishInteractiveTransition完成转场操作，否者取消转场操作
+            self.interation = NO;
+            [self finishInteractiveTransition];
+            break;
+        }
+        default:
+            break;
+    }
+    */
+    
     
     //当手指离开屏幕时,将lastscale设置为1.0
-    if([sender state] == UIGestureRecognizerStateEnded)
-    {
-//        newTransform = CGAffineTransformScale(currentTransform, 1.0, 1.0);
-//        [sender.view setTransform:newTransform];
+    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+        lastScale = 1.0;
+        return;
     }
+    
+    CGFloat scale = 1.0 - (lastScale - [(UIPinchGestureRecognizer*)sender scale]);
+    CGAffineTransform currentTransform = [(UIPinchGestureRecognizer*)sender view].transform;
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
+    [[(UIPinchGestureRecognizer*)sender view]setTransform:newTransform];
+    lastScale = [(UIPinchGestureRecognizer*)sender scale];
+    
+//    //在原有transform的基础上再缩放
+//    sender.view.transform =CGAffineTransformScale(sender.view.transform, sender.scale, sender.scale);
+//    //重置缩放比例为1
+//    sender.scale = 1;
+//    
+//    if (sender.state == UIGestureRecognizerStateEnded)
+//    {
+//        sender.view.transform = CGAffineTransformIdentity;
+//    }
 }
 
-- (void)rotatePiece:(UIRotationGestureRecognizer *)gestureRecognizer
+- (void)rotatePiece:(UIRotationGestureRecognizer *)sender
 {
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan || [gestureRecognizer state] == UIGestureRecognizerStateChanged)
-    {
-        [gestureRecognizer view].transform = CGAffineTransformRotate([[gestureRecognizer view] transform], [gestureRecognizer rotation]);
-        
-        if([gestureRecognizer state] == UIGestureRecognizerStateEnded)
-        {
-//            [gestureRecognizer setRotation:0];
-        }
+    NSLog(@"2---%f", sender.rotation);
+    
+    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+        lastRotation = 0.0;
+        return;
     }
+    
+    CGFloat rotation = 0.0 - (lastRotation - [(UIRotationGestureRecognizer*)sender rotation]);
+    CGAffineTransform newTransform = CGAffineTransformRotate(sender.view.transform, rotation);
+    [[(UIPinchGestureRecognizer*)sender view]setTransform:newTransform];
+    lastRotation = [(UIRotationGestureRecognizer*)sender rotation];
+    
+//    //在原有transform的基础上再旋转
+//    sender.view.transform = CGAffineTransformRotate(sender.view.transform, sender.rotation);
+//    //重置旋转角度为0
+//    sender.rotation = 0;
+//    
+//    if (sender.state == UIGestureRecognizerStateEnded)
+//    {
+//        sender.view.transform = CGAffineTransformIdentity;
+//    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
     return YES;
+
+//    if ([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]])//先进行捏合手势后，才往下进行旋转手势
+//    {
+//        return YES;
+//    }
+//    else
+//    {
+//        return  NO;
+//    }
     
 }
 

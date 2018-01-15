@@ -99,9 +99,11 @@
         [transitionContext completeTransition:YES];
     }];
 }
+
 /**
  *  执行pop过渡动画
  */
+
 - (void)doPopAnimation:(id<UIViewControllerContextTransitioning>)transitionContext{
     XWMagicMovePushController *fromVC = (XWMagicMovePushController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     XWMagicMoveController *toVC = (XWMagicMoveController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
@@ -110,14 +112,17 @@
     //这里的lastView就是push时候初始化的那个tempView
     UIView *tempView = containerView.subviews.lastObject;
     //设置初始状态
-    cell.imageView.hidden = YES;
+//    cell.imageView.hidden = YES;
     fromVC.imageView.hidden = YES;
     tempView.hidden = NO;
     [containerView insertSubview:toVC.view atIndex:0];
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
         tempView.frame = [cell.imageView convertRect:cell.imageView.bounds toView:containerView];
         fromVC.view.alpha = 0;
+        
     } completion:^(BOOL finished) {
+        
         //由于加入了手势必须判断
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         if ([transitionContext transitionWasCancelled]) {//手势取消了，原来隐藏的imageView要显示出来
