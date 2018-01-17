@@ -14,15 +14,19 @@
 
 #define key_shakeFlag    @"key_shakeFlag"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate, LockControllerDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, LockControllerDelegate, UIDocumentInteractionControllerDelegate>
 {
     NSMutableArray *dataArr;
     UITableView *m_tableview;
 }
 
+@property (strong, nonatomic) UIDocumentInteractionController *docCpntroller;
+
 @end
 
 @implementation ViewController
+
+@synthesize docCpntroller, imageView, titleLab;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,13 +41,15 @@
     
     self.navigationController.navigationBarHidden = NO;
     
+    
+    /*
     UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didNavOneBtnClick:)];
     self.navigationItem.leftBarButtonItems = @[item0];
 
     UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"写入" style:UIBarButtonItemStylePlain target:self action:@selector(didNavOneBtnClick:)];
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(didNavOneBtnClick:)];
     self.navigationItem.rightBarButtonItems = @[item1,item2];
-    
+*/
     /*
     NSArray *arr1 = [NSArray arrayWithObjects:@"手势密码", @"Touch ID", @"字母密码", nil];
     
@@ -73,6 +79,123 @@
     // 并让自己成为第一响应者
     [self becomeFirstResponder];
     */
+    
+    self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.imageView];
+    
+    titleLab = [[UILabel alloc] initWithFrame:CGRectMake(150, 64+200, 200, 40)];
+    titleLab.textColor = [UIColor yellowColor];
+    [self.view addSubview:titleLab];
+    
+    NSString *path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/test.png"];
+    UIImage *image = [UIImage imageNamed:@"touchID_green.png"];
+    NSData *data = UIImagePNGRepresentation(image);
+    BOOL success = [data writeToFile:path atomically:YES];
+    NSLog(@"%d", success);
+    
+    UIButton *openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    openBtn.frame = CGRectMake(20, 64+20, 100, 40);
+    [openBtn addTarget:self action:@selector(openFile) forControlEvents:UIControlEventTouchUpInside];
+    openBtn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:openBtn];
+    
+    
+    UIButton *openBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    openBtn1.frame = CGRectMake(20, 64+20+50, 100, 40);
+    [openBtn1 addTarget:self action:@selector(openFile1) forControlEvents:UIControlEventTouchUpInside];
+    openBtn1.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:openBtn1];
+    
+    
+    UIButton *openBtn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    openBtn2.frame = CGRectMake(20, 64+20+100, 100, 40);
+    [openBtn2 addTarget:self action:@selector(openFile2) forControlEvents:UIControlEventTouchUpInside];
+    openBtn2.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:openBtn2];
+
+}
+
+- (void)openFile
+{
+    NSString *path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/test.png"];
+    self.docCpntroller = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
+    self.docCpntroller.delegate = self;
+    
+    CGRect navRect =self.navigationController.navigationBar.frame;
+    navRect.size =CGSizeMake(1500.0f,40.0f);
+    
+    //显示包含预览的菜单项
+    [self.docCpntroller presentOptionsMenuFromRect:navRect inView:self.view animated:YES];
+    
+    //显示不包含预览菜单项
+//[docController presentOpenInMenuFromRect:navRect inView:self.view animated:YES];
+}
+
+- (void)openFile1
+{
+    NSString *path = [NSHomeDirectory() stringByAppendingString:@"/test.png"];
+    self.docCpntroller = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
+    self.docCpntroller.delegate = self;
+    
+    CGRect navRect =self.navigationController.navigationBar.frame;
+    navRect.size =CGSizeMake(1500.0f,40.0f);
+    
+    //显示包含预览的菜单项
+    //[self.docCpntroller presentOptionsMenuFromRect:navRect inView:self.view animated:YES];
+    
+    //显示不包含预览菜单项
+    [self.docCpntroller presentOpenInMenuFromRect:navRect inView:self.view animated:YES];
+}
+
+
+- (void)openFile2
+{
+    NSString *path = [NSHomeDirectory() stringByAppendingString:@"/test.png"];
+    self.docCpntroller = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
+    self.docCpntroller.delegate = self;
+    
+    [self.docCpntroller presentPreviewAnimated:YES];
+}
+
+- (void)openFile3
+{
+//    
+    UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:@[[[NSBundle mainBundle] URLForResource:@"Steve" withExtension:@"pdf"]] applicationActivities:@[[[ZSCustomActivity alloc] init]]];
+//
+//    // hide AirDrop
+//    // activity.excludedActivityTypes = @[UIActivityTypeAirDrop];
+//    
+//    // incorrect usage
+//    // [self.navigationController pushViewController:activity animated:YES];
+//    
+//    UIPopoverPresentationController *popover = activity.popoverPresentationController;
+//    if (popover) {
+//        popover.sourceView = self.activityButton;
+//        popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+//    }
+//    
+//    [self presentViewController:activity animated:YES completion:NULL];
+}
+
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
+{
+    return self;
+}
+
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller
+{
+    return self.view;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller
+{
+    return  self.view.frame;
+}
+
+//点击预览窗口的“Done”(完成)按钮时调用
+- (void)documentInteractionControllerDidEndPreview:(UIDocumentInteractionController *)controller
+{
+    
 }
 
 - (void)didNavOneBtnClick:(UIBarButtonItem *)item

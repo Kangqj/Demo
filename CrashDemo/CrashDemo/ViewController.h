@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UILabel     *titleLab;
+
 
 @end
 
