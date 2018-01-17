@@ -113,6 +113,11 @@
     openBtn2.backgroundColor = [UIColor greenColor];
     [self.view addSubview:openBtn2];
 
+    UIButton *openBtn3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    openBtn3.frame = CGRectMake(20, 64+20+150, 100, 40);
+    [openBtn3 addTarget:self action:@selector(openFile3) forControlEvents:UIControlEventTouchUpInside];
+    openBtn3.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:openBtn3];
 }
 
 - (void)openFile
@@ -159,22 +164,22 @@
 
 - (void)openFile3
 {
-//    
-    UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:@[[[NSBundle mainBundle] URLForResource:@"Steve" withExtension:@"pdf"]] applicationActivities:@[[[ZSCustomActivity alloc] init]]];
-//
-//    // hide AirDrop
-//    // activity.excludedActivityTypes = @[UIActivityTypeAirDrop];
-//    
-//    // incorrect usage
-//    // [self.navigationController pushViewController:activity animated:YES];
-//    
-//    UIPopoverPresentationController *popover = activity.popoverPresentationController;
-//    if (popover) {
+    NSString *path = [NSHomeDirectory() stringByAppendingString:@"/test.png"];
+    UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:@[path] applicationActivities:nil];
+    
+    // 不想展示哪个就把那个写在数组中
+    activity.excludedActivityTypes = @[UIActivityTypeMessage,UIActivityTypeMail, UIActivityTypeOpenInIBooks, UIActivityTypePostToVimeo];
+    
+    // incorrect usage
+    // [self.navigationController pushViewController:activity animated:YES];
+    
+    UIPopoverPresentationController *popover = activity.popoverPresentationController;
+    if (popover) {
 //        popover.sourceView = self.activityButton;
-//        popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
-//    }
-//    
-//    [self presentViewController:activity animated:YES completion:NULL];
+        popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    }
+    
+    [self presentViewController:activity animated:YES completion:NULL];
 }
 
 - (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
