@@ -36,6 +36,8 @@
 		C34921F52005E0E100CA81BA /* icon_access.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A6B1FFF5D27004A9BE2 /* icon_access.png */; };
 		C34921F62005E0E100CA81BA /* gesture_node_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A641FFF5D27004A9BE2 /* gesture_node_error@2x.png */; };
 		C34921F72005E0E100CA81BA /* HomeButtomBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C10A6A1FFF5D27004A9BE2 /* HomeButtomBG@2x.png */; };
+		C3699856201B1F9700727A20 /* Steve.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C3699855201B1F9700727A20 /* Steve.pdf */; };
+		C3699858201B266600727A20 /* test.zip in Resources */ = {isa = PBXBuildFile; fileRef = C3699857201B266600727A20 /* test.zip */; };
 		C3AA918C200F200500913AB4 /* icon_22x29.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA918A200F200500913AB4 /* icon_22x29.png */; };
 		C3AA918D200F200500913AB4 /* icon_22x29.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA918A200F200500913AB4 /* icon_22x29.png */; };
 		C3AA918E200F200500913AB4 /* icon_22x29.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA918A200F200500913AB4 /* icon_22x29.png */; };
@@ -97,6 +99,8 @@
 		049354071CD0F8C20033792E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C34921FB2005E0E100CA81BA /* CrashDemo_appstore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrashDemo_appstore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C34921FC2005E0E800CA81BA /* CrashDemo_appstore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CrashDemo_appstore-Info.plist"; path = "/Users/kangqijun/Demo/CrashDemo/CrashDemo_appstore-Info.plist"; sourceTree = "<absolute>"; };
+		C3699855201B1F9700727A20 /* Steve.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Steve.pdf; sourceTree = "<group>"; };
+		C3699857201B266600727A20 /* test.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = test.zip; sourceTree = "<group>"; };
 		C3AA918A200F200500913AB4 /* icon_22x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_22x29.png; sourceTree = "<group>"; };
 		C3AA918B200F200500913AB4 /* icon_44x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_44x58.png; sourceTree = "<group>"; };
 		C3C10A591FFF5CD1004A9BE2 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockController.h; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				C3C10A7C1FFF7487004A9BE2 /* NSString+QDTouchID.m */,
 				C3C10A781FFF7484004A9BE2 /* NSString+QDTouchID.h */,
 				C3C10A791FFF7484004A9BE2 /* NSString+QDTouchID.m */,
+				C3699857201B266600727A20 /* test.zip */,
+				C3699855201B1F9700727A20 /* Steve.pdf */,
 				C3C10A631FFF5D27004A9BE2 /* resource */,
 				C3C10A581FFF5CD1004A9BE2 /* Gesture unlock */,
 				049353E91CD0F8C20033792E /* Main.storyboard */,
@@ -388,7 +394,9 @@
 				C3C10A701FFF5D27004A9BE2 /* gesture_node_normal@2x.png in Resources */,
 				049353ED1CD0F8C20033792E /* Assets.xcassets in Resources */,
 				C3C10A711FFF5D27004A9BE2 /* gesture_node_normal@3x.png in Resources */,
+				C3699858201B266600727A20 /* test.zip in Resources */,
 				C3C10A771FFF6C3E004A9BE2 /* touchID_red.png in Resources */,
+				C3699856201B1F9700727A20 /* Steve.pdf in Resources */,
 				C3AA9190200F200500913AB4 /* icon_44x58.png in Resources */,
 				C3C10A6D1FFF5D27004A9BE2 /* gesture_node_error@3x.png in Resources */,
 				049353EB1CD0F8C20033792E /* Main.storyboard in Resources */,

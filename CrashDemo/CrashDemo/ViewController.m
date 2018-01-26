@@ -18,6 +18,8 @@
 {
     NSMutableArray *dataArr;
     UITableView *m_tableview;
+    
+    UIProgressView *m_progressView;
 }
 
 @property (strong, nonatomic) UIDocumentInteractionController *docCpntroller;
@@ -118,6 +120,10 @@
     [openBtn3 addTarget:self action:@selector(openFile3) forControlEvents:UIControlEventTouchUpInside];
     openBtn3.backgroundColor = [UIColor blueColor];
     [self.view addSubview:openBtn3];
+    
+    m_progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    m_progressView.frame = CGRectMake(20, 64+20+250, 225, 40);
+    [self.view addSubview:m_progressView];
 }
 
 - (void)openFile
@@ -138,6 +144,7 @@
 
 - (void)openFile1
 {
+    /*
     NSString *path = [NSHomeDirectory() stringByAppendingString:@"/test.png"];
     self.docCpntroller = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
     self.docCpntroller.delegate = self;
@@ -150,16 +157,148 @@
     
     //显示不包含预览菜单项
     [self.docCpntroller presentOpenInMenuFromRect:navRect inView:self.view animated:YES];
+    */
+    
+    NSLog(@"--------start");
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"zip"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSString *localPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/test.pdf"];
+    m_progressView.progress = 0.0;
+
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+     
+         BOOL success = [data writeToFile:localPath atomically:YES];
+         NSLog(@"--------%d", success);
+     });
+     
+     
+     [self writeBigFileToLocalPath:localPath fileSize:data.length progress:^(float progress) {
+     
+         [m_progressView setProgress:progress animated:YES];
+     }];
 }
 
 
 - (void)openFile2
 {
+    /*
     NSString *path = [NSHomeDirectory() stringByAppendingString:@"/test.png"];
     self.docCpntroller = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
     self.docCpntroller.delegate = self;
     
     [self.docCpntroller presentPreviewAnimated:YES];
+    */
+    NSLog(@"--------start");
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"zip"];
+    NSString *localPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/test.pdf"];
+    m_progressView.progress = 0.0;
+
+    [self copyFileFromPath:path toPath:localPath progress:^(float progress) {
+        [m_progressView setProgress:progress animated:YES];
+        
+        if (progress == 1.0)
+        {
+            NSDictionary *fileAttrs = [[NSFileManager defaultManager] attributesOfItemAtPath:localPath error:nil];
+            NSLog(@"%@", fileAttrs);
+        }
+    }];
+    
+}
+
+- (void)writeBigFileToLocalPath:(NSString *)path fileSize:(long long)size progress:(void (^)(float progress))update
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSDictionary *fileAttrs = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+        NSInteger fileSize = [[fileAttrs objectForKey:NSFileSize] intValue];
+        
+        do {
+            
+//            [NSThread sleepForTimeInterval:0.5];
+            
+            fileAttrs = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+            fileSize = [[fileAttrs objectForKey:NSFileSize] intValue];
+            
+            float progress = (fileSize*1.0)/(size*1.0);
+            
+            NSLog(@"%ld---%lld===进度：%f", fileSize, size, progress);
+            
+            dispatch_sync(dispatch_get_main_queue(), ^()
+            {
+                update(progress);
+            });
+            
+        } while (fileSize < size);
+        
+    });
+}
+
+
+-(void)copyFileFromPath:(NSString *)path1 toPath:(NSString *)path2 progress:(void (^)(float progress))update
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSFileHandle * fh1 = [NSFileHandle fileHandleForReadingAtPath:path1];//读到内存
+        [[NSFileManager defaultManager] createFileAtPath:path2 contents:nil attributes:nil];//写之前必须有该文件
+        NSFileHandle * fh2 = [NSFileHandle fileHandleForWritingAtPath:path2];//写到文件
+        NSData * _data = nil;
+        unsigned long long ret = [fh1 seekToEndOfFile];//返回文件大小
+        if (ret < 1024 * 1024 * 5) {//小于5M的文件一次读写
+            [fh1 seekToFileOffset:0];
+            _data = [fh1 readDataToEndOfFile];
+            [fh2 writeData:_data];
+        }else{
+            NSUInteger n = ret / (1024 * 1024 * 5);
+            if (ret % (1024 * 1024 * 5) != 0) {
+                n++;
+            }
+            NSUInteger offset = 0;
+            NSUInteger size = 1024 * 1024 * 5;
+            for (NSUInteger i = 0; i < n - 1; i++) {
+                //大于5M的文件多次读写
+                [fh1 seekToFileOffset:offset];
+                @autoreleasepool {
+                    /*该自动释放池必须要有否则内存一会就爆了
+                     原因在于readDataOfLength方法返回了一个自动释放的对象,它只能在遇到自动释放池的时候才释放.如果不手动写这个自动释放池,会导致_data指向的对象不能及时释放,最终导致内存爆了.
+                     */
+                    _data = [fh1 readDataOfLength:size];
+                    unsigned long long e = [fh2 seekToEndOfFile];
+                    [fh2 writeData:_data];
+                    NSLog(@"%lu/%lu", i + 1, n - 1);
+                    
+                    float progress = (e*1.0)/(ret*1.0);
+                    NSLog(@"%ld---%lld===进度：%f", e, ret, progress);
+                    dispatch_sync(dispatch_get_main_queue(), ^()
+                                  {
+                                      update(progress);
+                                  });
+                }
+                offset += size;
+            }
+            //最后一次剩余的字节
+            [fh1 seekToFileOffset:offset];
+            _data = [fh1 readDataToEndOfFile];
+            unsigned long long e = [fh2 seekToEndOfFile];
+            [fh2 writeData:_data];
+            
+            float progress = (e*1.0)/(ret*1.0);
+            NSLog(@"%ld---%lld===进度：%f", e, ret, progress);
+            dispatch_sync(dispatch_get_main_queue(), ^()
+                          {
+                              update(progress);
+                          });
+        }
+        [fh1 closeFile];
+        [fh2 closeFile];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^()
+                      {
+                          update(1.0);
+                          NSLog(@"finish");
+                      });
+    });
 }
 
 - (void)openFile3
