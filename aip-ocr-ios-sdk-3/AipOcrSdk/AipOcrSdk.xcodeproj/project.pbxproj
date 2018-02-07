@@ -1,0 +1,730 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		FF9336CA1FBDEEEC005F65D2 /* Release-AipOcrSdk */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FF9336CB1FBDEEEC005F65D2 /* Build configuration list for PBXAggregateTarget "Release-AipOcrSdk" */;
+			buildPhases = (
+				FF9336CE1FBDEEF4005F65D2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Release-AipOcrSdk";
+			productName = "Release-AipOcrSdk";
+		};
+		FF9336CF1FBDEF97005F65D2 /* Release-All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FF9336D01FBDEF98005F65D2 /* Build configuration list for PBXAggregateTarget "Release-All" */;
+			buildPhases = (
+				FF9336D31FBDEFA3005F65D2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Release-All";
+			productName = "Release-All";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		3DB2F81DC7593DC4BBF23DED /* AipOcrService.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DB2FD2F71D95B1E1878143E /* AipOcrService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DB2F8F0E9B8B252DF661F6D /* AipOcrService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB2F265ED75DC46227D342E /* AipOcrService.m */; };
+		574115AB1EE7E4ED009FDD80 /* AipDisplayLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 574115A11EE7E4ED009FDD80 /* AipDisplayLink.h */; };
+		574115AC1EE7E4ED009FDD80 /* AipDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 574115A21EE7E4ED009FDD80 /* AipDisplayLink.m */; };
+		574115AD1EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 574115A31EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.h */; };
+		574115AE1EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 574115A41EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.m */; };
+		574115AF1EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 574115A51EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.h */; };
+		574115B01EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 574115A61EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.m */; };
+		574115B11EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 574115A71EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.h */; };
+		574115B21EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 574115A81EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.m */; };
+		574115B31EE7E4ED009FDD80 /* UIImage+AipCameraAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 574115A91EE7E4ED009FDD80 /* UIImage+AipCameraAddition.h */; };
+		574115B41EE7E4ED009FDD80 /* UIImage+AipCameraAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 574115AA1EE7E4ED009FDD80 /* UIImage+AipCameraAddition.m */; };
+		574115B61EE7EE9A009FDD80 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574115B51EE7EE9A009FDD80 /* CoreMotion.framework */; };
+		57B275321E5C0D30002F1DDC /* AipCameraPreviewView.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B2751B1E5C0D30002F1DDC /* AipCameraPreviewView.h */; };
+		57B275331E5C0D30002F1DDC /* AipCameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B2751C1E5C0D30002F1DDC /* AipCameraPreviewView.m */; };
+		57B275341E5C0D30002F1DDC /* AipCutImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B2751D1E5C0D30002F1DDC /* AipCutImageView.h */; };
+		57B275351E5C0D30002F1DDC /* AipCutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B2751E1E5C0D30002F1DDC /* AipCutImageView.m */; };
+		57B275361E5C0D30002F1DDC /* AipImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B2751F1E5C0D30002F1DDC /* AipImageView.h */; };
+		57B275371E5C0D30002F1DDC /* AipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B275201E5C0D30002F1DDC /* AipImageView.m */; };
+		57B275381E5C0D30002F1DDC /* AipCameraController.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B275221E5C0D30002F1DDC /* AipCameraController.h */; };
+		57B275391E5C0D30002F1DDC /* AipCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B275231E5C0D30002F1DDC /* AipCameraController.m */; };
+		57B2753A1E5C0D30002F1DDC /* AipCaptureCardVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B275241E5C0D30002F1DDC /* AipCaptureCardVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57B2753B1E5C0D30002F1DDC /* AipCaptureCardVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57B275251E5C0D30002F1DDC /* AipCaptureCardVC.mm */; };
+		57B2753C1E5C0D30002F1DDC /* AipGeneralVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B275261E5C0D30002F1DDC /* AipGeneralVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57B2753D1E5C0D30002F1DDC /* AipGeneralVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B275271E5C0D30002F1DDC /* AipGeneralVC.m */; };
+		57D78F7B1EE92EE0003127D5 /* AipNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 57D78F791EE92EE0003127D5 /* AipNavigationController.h */; };
+		57D78F7C1EE92EE0003127D5 /* AipNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D78F7A1EE92EE0003127D5 /* AipNavigationController.m */; };
+		FF9336D51FBDF18C005F65D2 /* AipBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D41FBDF18C005F65D2 /* AipBase.framework */; };
+		FF9336D71FBDF19B005F65D2 /* IdcardQuality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D61FBDF19B005F65D2 /* IdcardQuality.framework */; };
+		FFDAF43D1E49C9EF00AB65B7 /* AipOcrSdk.h in Headers */ = {isa = PBXBuildFile; fileRef = FFDAF43B1E49C9EF00AB65B7 /* AipOcrSdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFE89BAA1E63D4AA00516A4E /* guan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAC31E5ED70000DAF3C2 /* guan@2x.png */; };
+		FFE89BAB1E63D4AA00516A4E /* guan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAC41E5ED70000DAF3C2 /* guan@3x.png */; };
+		FFE89BAC1E63D4AA00516A4E /* queding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAC51E5ED70000DAF3C2 /* queding@2x.png */; };
+		FFE89BAD1E63D4AA00516A4E /* queding@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAC61E5ED70000DAF3C2 /* queding@3x.png */; };
+		FFE89BAE1E63D4AA00516A4E /* xuanzhuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAC71E5ED70000DAF3C2 /* xuanzhuan@2x.png */; };
+		FFE89BAF1E63D4AA00516A4E /* xuanzhuan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAC81E5ED70000DAF3C2 /* xuanzhuan@3x.png */; };
+		FFE89BB01E63D4AA00516A4E /* dengpao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAACA1E5ED70000DAF3C2 /* dengpao@2x.png */; };
+		FFE89BB11E63D4AA00516A4E /* dengpao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAACB1E5ED70000DAF3C2 /* dengpao@3x.png */; };
+		FFE89BB21E63D4AA00516A4E /* dengpao_dianjihou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAACC1E5ED70000DAF3C2 /* dengpao_dianjihou@2x.png */; };
+		FFE89BB31E63D4AA00516A4E /* dengpao_dianjihou@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAACE1E5ED70000DAF3C2 /* dengpao_dianjihou@3x.png */; };
+		FFE89BB41E63D4AA00516A4E /* guanbi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD01E5ED70000DAF3C2 /* guanbi@2x.png */; };
+		FFE89BB51E63D4AA00516A4E /* guanbi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD11E5ED70000DAF3C2 /* guanbi@3x.png */; };
+		FFE89BB61E63D4AA00516A4E /* paizhaoanniu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD21E5ED70000DAF3C2 /* paizhaoanniu@2x.png */; };
+		FFE89BB71E63D4AA00516A4E /* paizhaoanniu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD31E5ED70000DAF3C2 /* paizhaoanniu@3x.png */; };
+		FFE89BB81E63D4AA00516A4E /* paizhaoanniu_dianjihou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAF51E5ED83900DAF3C2 /* paizhaoanniu_dianjihou@2x.png */; };
+		FFE89BB91E63D4AA00516A4E /* paizhaoanniu_dianjihou@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAF61E5ED83900DAF3C2 /* paizhaoanniu_dianjihou@3x.png */; };
+		FFE89BBA1E63D4AA00516A4E /* tuku@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD61E5ED70000DAF3C2 /* tuku@2x.png */; };
+		FFE89BBB1E63D4AA00516A4E /* tuku@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD71E5ED70000DAF3C2 /* tuku@3x.png */; };
+		FFE89BBC1E63D4AA00516A4E /* xuxian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD81E5ED70000DAF3C2 /* xuxian@2x.png */; };
+		FFE89BBD1E63D4AA00516A4E /* xuxian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAAD91E5ED70000DAF3C2 /* xuxian@3x.png */; };
+		FFE89BBE1E63D4AA00516A4E /* Page 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAADB1E5ED70000DAF3C2 /* Page 1@2x.png */; };
+		FFE89BBF1E63D4AA00516A4E /* Page 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57AFAADC1E5ED70000DAF3C2 /* Page 1@3x.png */; };
+		FFE89BC01E63D4AA00516A4E /* AipOcrSdk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57B275641E5C0E0E002F1DDC /* AipOcrSdk.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3DB2F265ED75DC46227D342E /* AipOcrService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipOcrService.m; sourceTree = "<group>"; };
+		3DB2FD2F71D95B1E1878143E /* AipOcrService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipOcrService.h; sourceTree = "<group>"; };
+		574115A11EE7E4ED009FDD80 /* AipDisplayLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipDisplayLink.h; sourceTree = "<group>"; };
+		574115A21EE7E4ED009FDD80 /* AipDisplayLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipDisplayLink.m; sourceTree = "<group>"; };
+		574115A31EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSpeScaleLayoutButton.h; sourceTree = "<group>"; };
+		574115A41EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSpeScaleLayoutButton.m; sourceTree = "<group>"; };
+		574115A51EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSpeScaleLayoutConstraint.h; sourceTree = "<group>"; };
+		574115A61EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSpeScaleLayoutConstraint.m; sourceTree = "<group>"; };
+		574115A71EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSpeScaleLayoutLabel.h; sourceTree = "<group>"; };
+		574115A81EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSpeScaleLayoutLabel.m; sourceTree = "<group>"; };
+		574115A91EE7E4ED009FDD80 /* UIImage+AipCameraAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AipCameraAddition.h"; sourceTree = "<group>"; };
+		574115AA1EE7E4ED009FDD80 /* UIImage+AipCameraAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AipCameraAddition.m"; sourceTree = "<group>"; };
+		574115B51EE7EE9A009FDD80 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		57AFAAC31E5ED70000DAF3C2 /* guan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guan@2x.png"; sourceTree = "<group>"; };
+		57AFAAC41E5ED70000DAF3C2 /* guan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guan@3x.png"; sourceTree = "<group>"; };
+		57AFAAC51E5ED70000DAF3C2 /* queding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "queding@2x.png"; sourceTree = "<group>"; };
+		57AFAAC61E5ED70000DAF3C2 /* queding@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "queding@3x.png"; sourceTree = "<group>"; };
+		57AFAAC71E5ED70000DAF3C2 /* xuanzhuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xuanzhuan@2x.png"; sourceTree = "<group>"; };
+		57AFAAC81E5ED70000DAF3C2 /* xuanzhuan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xuanzhuan@3x.png"; sourceTree = "<group>"; };
+		57AFAACA1E5ED70000DAF3C2 /* dengpao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dengpao@2x.png"; sourceTree = "<group>"; };
+		57AFAACB1E5ED70000DAF3C2 /* dengpao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dengpao@3x.png"; sourceTree = "<group>"; };
+		57AFAACC1E5ED70000DAF3C2 /* dengpao_dianjihou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dengpao_dianjihou@2x.png"; sourceTree = "<group>"; };
+		57AFAACE1E5ED70000DAF3C2 /* dengpao_dianjihou@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dengpao_dianjihou@3x.png"; sourceTree = "<group>"; };
+		57AFAAD01E5ED70000DAF3C2 /* guanbi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@2x.png"; sourceTree = "<group>"; };
+		57AFAAD11E5ED70000DAF3C2 /* guanbi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@3x.png"; sourceTree = "<group>"; };
+		57AFAAD21E5ED70000DAF3C2 /* paizhaoanniu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paizhaoanniu@2x.png"; sourceTree = "<group>"; };
+		57AFAAD31E5ED70000DAF3C2 /* paizhaoanniu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paizhaoanniu@3x.png"; sourceTree = "<group>"; };
+		57AFAAD61E5ED70000DAF3C2 /* tuku@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuku@2x.png"; sourceTree = "<group>"; };
+		57AFAAD71E5ED70000DAF3C2 /* tuku@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuku@3x.png"; sourceTree = "<group>"; };
+		57AFAAD81E5ED70000DAF3C2 /* xuxian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xuxian@2x.png"; sourceTree = "<group>"; };
+		57AFAAD91E5ED70000DAF3C2 /* xuxian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xuxian@3x.png"; sourceTree = "<group>"; };
+		57AFAADB1E5ED70000DAF3C2 /* Page 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Page 1@2x.png"; sourceTree = "<group>"; };
+		57AFAADC1E5ED70000DAF3C2 /* Page 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Page 1@3x.png"; sourceTree = "<group>"; };
+		57AFAAF51E5ED83900DAF3C2 /* paizhaoanniu_dianjihou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paizhaoanniu_dianjihou@2x.png"; sourceTree = "<group>"; };
+		57AFAAF61E5ED83900DAF3C2 /* paizhaoanniu_dianjihou@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paizhaoanniu_dianjihou@3x.png"; sourceTree = "<group>"; };
+		57B2751B1E5C0D30002F1DDC /* AipCameraPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipCameraPreviewView.h; sourceTree = "<group>"; };
+		57B2751C1E5C0D30002F1DDC /* AipCameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipCameraPreviewView.m; sourceTree = "<group>"; };
+		57B2751D1E5C0D30002F1DDC /* AipCutImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipCutImageView.h; sourceTree = "<group>"; };
+		57B2751E1E5C0D30002F1DDC /* AipCutImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipCutImageView.m; sourceTree = "<group>"; };
+		57B2751F1E5C0D30002F1DDC /* AipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipImageView.h; sourceTree = "<group>"; };
+		57B275201E5C0D30002F1DDC /* AipImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipImageView.m; sourceTree = "<group>"; };
+		57B275221E5C0D30002F1DDC /* AipCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipCameraController.h; sourceTree = "<group>"; };
+		57B275231E5C0D30002F1DDC /* AipCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipCameraController.m; sourceTree = "<group>"; };
+		57B275241E5C0D30002F1DDC /* AipCaptureCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipCaptureCardVC.h; sourceTree = "<group>"; };
+		57B275251E5C0D30002F1DDC /* AipCaptureCardVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AipCaptureCardVC.mm; sourceTree = "<group>"; };
+		57B275261E5C0D30002F1DDC /* AipGeneralVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipGeneralVC.h; sourceTree = "<group>"; };
+		57B275271E5C0D30002F1DDC /* AipGeneralVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipGeneralVC.m; sourceTree = "<group>"; };
+		57B275461E5C0DA7002F1DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57B275641E5C0E0E002F1DDC /* AipOcrSdk.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AipOcrSdk.storyboard; sourceTree = "<group>"; };
+		57D78F791EE92EE0003127D5 /* AipNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AipNavigationController.h; sourceTree = "<group>"; };
+		57D78F7A1EE92EE0003127D5 /* AipNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipNavigationController.m; sourceTree = "<group>"; };
+		FF9336D41FBDF18C005F65D2 /* AipBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AipBase.framework; path = ../lib/AipBase.framework; sourceTree = "<group>"; };
+		FF9336D61FBDF19B005F65D2 /* IdcardQuality.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IdcardQuality.framework; path = ../lib/IdcardQuality.framework; sourceTree = "<group>"; };
+		FFDAF4381E49C9EF00AB65B7 /* AipOcrSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AipOcrSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFDAF43B1E49C9EF00AB65B7 /* AipOcrSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AipOcrSdk.h; sourceTree = "<group>"; };
+		FFDAF43C1E49C9EF00AB65B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFDAF4341E49C9EF00AB65B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9336D71FBDF19B005F65D2 /* IdcardQuality.framework in Frameworks */,
+				FF9336D51FBDF18C005F65D2 /* AipBase.framework in Frameworks */,
+				574115B61EE7EE9A009FDD80 /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		574115A01EE7E4ED009FDD80 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				574115A11EE7E4ED009FDD80 /* AipDisplayLink.h */,
+				574115A21EE7E4ED009FDD80 /* AipDisplayLink.m */,
+				574115A31EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.h */,
+				574115A41EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.m */,
+				574115A51EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.h */,
+				574115A61EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.m */,
+				574115A71EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.h */,
+				574115A81EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.m */,
+				574115A91EE7E4ED009FDD80 /* UIImage+AipCameraAddition.h */,
+				574115AA1EE7E4ED009FDD80 /* UIImage+AipCameraAddition.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		57AFAAC11E5ED70000DAF3C2 /* 切图 */ = {
+			isa = PBXGroup;
+			children = (
+				57AFAAC21E5ED70000DAF3C2 /* 裁剪页 */,
+				57AFAAC91E5ED70000DAF3C2 /* 身份证-正面 */,
+				57AFAADA1E5ED70000DAF3C2 /* 身份证-背面 */,
+			);
+			path = "切图";
+			sourceTree = "<group>";
+		};
+		57AFAAC21E5ED70000DAF3C2 /* 裁剪页 */ = {
+			isa = PBXGroup;
+			children = (
+				57AFAAC31E5ED70000DAF3C2 /* guan@2x.png */,
+				57AFAAC41E5ED70000DAF3C2 /* guan@3x.png */,
+				57AFAAC51E5ED70000DAF3C2 /* queding@2x.png */,
+				57AFAAC61E5ED70000DAF3C2 /* queding@3x.png */,
+				57AFAAC71E5ED70000DAF3C2 /* xuanzhuan@2x.png */,
+				57AFAAC81E5ED70000DAF3C2 /* xuanzhuan@3x.png */,
+			);
+			path = "裁剪页";
+			sourceTree = "<group>";
+		};
+		57AFAAC91E5ED70000DAF3C2 /* 身份证-正面 */ = {
+			isa = PBXGroup;
+			children = (
+				57AFAACA1E5ED70000DAF3C2 /* dengpao@2x.png */,
+				57AFAACB1E5ED70000DAF3C2 /* dengpao@3x.png */,
+				57AFAACC1E5ED70000DAF3C2 /* dengpao_dianjihou@2x.png */,
+				57AFAACE1E5ED70000DAF3C2 /* dengpao_dianjihou@3x.png */,
+				57AFAAD01E5ED70000DAF3C2 /* guanbi@2x.png */,
+				57AFAAD11E5ED70000DAF3C2 /* guanbi@3x.png */,
+				57AFAAD21E5ED70000DAF3C2 /* paizhaoanniu@2x.png */,
+				57AFAAD31E5ED70000DAF3C2 /* paizhaoanniu@3x.png */,
+				57AFAAF51E5ED83900DAF3C2 /* paizhaoanniu_dianjihou@2x.png */,
+				57AFAAF61E5ED83900DAF3C2 /* paizhaoanniu_dianjihou@3x.png */,
+				57AFAAD61E5ED70000DAF3C2 /* tuku@2x.png */,
+				57AFAAD71E5ED70000DAF3C2 /* tuku@3x.png */,
+				57AFAAD81E5ED70000DAF3C2 /* xuxian@2x.png */,
+				57AFAAD91E5ED70000DAF3C2 /* xuxian@3x.png */,
+			);
+			path = "身份证-正面";
+			sourceTree = "<group>";
+		};
+		57AFAADA1E5ED70000DAF3C2 /* 身份证-背面 */ = {
+			isa = PBXGroup;
+			children = (
+				57AFAADB1E5ED70000DAF3C2 /* Page 1@2x.png */,
+				57AFAADC1E5ED70000DAF3C2 /* Page 1@3x.png */,
+			);
+			path = "身份证-背面";
+			sourceTree = "<group>";
+		};
+		57B2751A1E5C0D30002F1DDC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57B2751B1E5C0D30002F1DDC /* AipCameraPreviewView.h */,
+				57B2751C1E5C0D30002F1DDC /* AipCameraPreviewView.m */,
+				57B2751D1E5C0D30002F1DDC /* AipCutImageView.h */,
+				57B2751E1E5C0D30002F1DDC /* AipCutImageView.m */,
+				57B2751F1E5C0D30002F1DDC /* AipImageView.h */,
+				57B275201E5C0D30002F1DDC /* AipImageView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57B275211E5C0D30002F1DDC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				57B275221E5C0D30002F1DDC /* AipCameraController.h */,
+				57B275231E5C0D30002F1DDC /* AipCameraController.m */,
+				57B275241E5C0D30002F1DDC /* AipCaptureCardVC.h */,
+				57B275251E5C0D30002F1DDC /* AipCaptureCardVC.mm */,
+				57B275261E5C0D30002F1DDC /* AipGeneralVC.h */,
+				57B275271E5C0D30002F1DDC /* AipGeneralVC.m */,
+				57D78F791EE92EE0003127D5 /* AipNavigationController.h */,
+				57D78F7A1EE92EE0003127D5 /* AipNavigationController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		57B275451E5C0DA7002F1DDC /* AipOcrBundle */ = {
+			isa = PBXGroup;
+			children = (
+				57AFAAC11E5ED70000DAF3C2 /* 切图 */,
+				57B275641E5C0E0E002F1DDC /* AipOcrSdk.storyboard */,
+				57B275461E5C0DA7002F1DDC /* Info.plist */,
+			);
+			path = AipOcrBundle;
+			sourceTree = "<group>";
+		};
+		FF877BE91E5699A300A62EED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF9336D61FBDF19B005F65D2 /* IdcardQuality.framework */,
+				FF9336D41FBDF18C005F65D2 /* AipBase.framework */,
+				574115B51EE7EE9A009FDD80 /* CoreMotion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFDAF42E1E49C9EF00AB65B7 = {
+			isa = PBXGroup;
+			children = (
+				FFDAF43A1E49C9EF00AB65B7 /* AipOcrSdk */,
+				57B275451E5C0DA7002F1DDC /* AipOcrBundle */,
+				FFDAF4391E49C9EF00AB65B7 /* Products */,
+				FF877BE91E5699A300A62EED /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FFDAF4391E49C9EF00AB65B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFDAF4381E49C9EF00AB65B7 /* AipOcrSdk.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFDAF43A1E49C9EF00AB65B7 /* AipOcrSdk */ = {
+			isa = PBXGroup;
+			children = (
+				3DB2FD2F71D95B1E1878143E /* AipOcrService.h */,
+				3DB2F265ED75DC46227D342E /* AipOcrService.m */,
+				574115A01EE7E4ED009FDD80 /* Category */,
+				57B2751A1E5C0D30002F1DDC /* View */,
+				57B275211E5C0D30002F1DDC /* ViewController */,
+				FFDAF43B1E49C9EF00AB65B7 /* AipOcrSdk.h */,
+				FFDAF43C1E49C9EF00AB65B7 /* Info.plist */,
+			);
+			path = AipOcrSdk;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FFDAF4351E49C9EF00AB65B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				574115B31EE7E4ED009FDD80 /* UIImage+AipCameraAddition.h in Headers */,
+				574115B11EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.h in Headers */,
+				57B2753A1E5C0D30002F1DDC /* AipCaptureCardVC.h in Headers */,
+				57B2753C1E5C0D30002F1DDC /* AipGeneralVC.h in Headers */,
+				574115AB1EE7E4ED009FDD80 /* AipDisplayLink.h in Headers */,
+				574115AF1EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.h in Headers */,
+				3DB2F81DC7593DC4BBF23DED /* AipOcrService.h in Headers */,
+				57B275321E5C0D30002F1DDC /* AipCameraPreviewView.h in Headers */,
+				57B275361E5C0D30002F1DDC /* AipImageView.h in Headers */,
+				57B275341E5C0D30002F1DDC /* AipCutImageView.h in Headers */,
+				57B275381E5C0D30002F1DDC /* AipCameraController.h in Headers */,
+				57D78F7B1EE92EE0003127D5 /* AipNavigationController.h in Headers */,
+				FFDAF43D1E49C9EF00AB65B7 /* AipOcrSdk.h in Headers */,
+				574115AD1EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FFDAF4371E49C9EF00AB65B7 /* AipOcrSdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFDAF4401E49C9EF00AB65B7 /* Build configuration list for PBXNativeTarget "AipOcrSdk" */;
+			buildPhases = (
+				FFDAF4331E49C9EF00AB65B7 /* Sources */,
+				FFDAF4341E49C9EF00AB65B7 /* Frameworks */,
+				FFDAF4351E49C9EF00AB65B7 /* Headers */,
+				FFDAF4361E49C9EF00AB65B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AipOcrSdk;
+			productName = AipOcrSdk;
+			productReference = FFDAF4381E49C9EF00AB65B7 /* AipOcrSdk.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFDAF42F1E49C9EF00AB65B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = baidu;
+				TargetAttributes = {
+					FF9336CA1FBDEEEC005F65D2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					FF9336CF1FBDEF97005F65D2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					FFDAF4371E49C9EF00AB65B7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FFDAF4321E49C9EF00AB65B7 /* Build configuration list for PBXProject "AipOcrSdk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+			);
+			mainGroup = FFDAF42E1E49C9EF00AB65B7;
+			productRefGroup = FFDAF4391E49C9EF00AB65B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFDAF4371E49C9EF00AB65B7 /* AipOcrSdk */,
+				FF9336CA1FBDEEEC005F65D2 /* Release-AipOcrSdk */,
+				FF9336CF1FBDEF97005F65D2 /* Release-All */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFDAF4361E49C9EF00AB65B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFE89BAA1E63D4AA00516A4E /* guan@2x.png in Resources */,
+				FFE89BAB1E63D4AA00516A4E /* guan@3x.png in Resources */,
+				FFE89BAC1E63D4AA00516A4E /* queding@2x.png in Resources */,
+				FFE89BAD1E63D4AA00516A4E /* queding@3x.png in Resources */,
+				FFE89BAE1E63D4AA00516A4E /* xuanzhuan@2x.png in Resources */,
+				FFE89BAF1E63D4AA00516A4E /* xuanzhuan@3x.png in Resources */,
+				FFE89BB01E63D4AA00516A4E /* dengpao@2x.png in Resources */,
+				FFE89BB11E63D4AA00516A4E /* dengpao@3x.png in Resources */,
+				FFE89BB21E63D4AA00516A4E /* dengpao_dianjihou@2x.png in Resources */,
+				FFE89BB31E63D4AA00516A4E /* dengpao_dianjihou@3x.png in Resources */,
+				FFE89BB41E63D4AA00516A4E /* guanbi@2x.png in Resources */,
+				FFE89BB51E63D4AA00516A4E /* guanbi@3x.png in Resources */,
+				FFE89BB61E63D4AA00516A4E /* paizhaoanniu@2x.png in Resources */,
+				FFE89BB71E63D4AA00516A4E /* paizhaoanniu@3x.png in Resources */,
+				FFE89BB81E63D4AA00516A4E /* paizhaoanniu_dianjihou@2x.png in Resources */,
+				FFE89BB91E63D4AA00516A4E /* paizhaoanniu_dianjihou@3x.png in Resources */,
+				FFE89BBA1E63D4AA00516A4E /* tuku@2x.png in Resources */,
+				FFE89BBB1E63D4AA00516A4E /* tuku@3x.png in Resources */,
+				FFE89BBC1E63D4AA00516A4E /* xuxian@2x.png in Resources */,
+				FFE89BBD1E63D4AA00516A4E /* xuxian@3x.png in Resources */,
+				FFE89BBE1E63D4AA00516A4E /* Page 1@2x.png in Resources */,
+				FFE89BBF1E63D4AA00516A4E /* Page 1@3x.png in Resources */,
+				FFE89BC01E63D4AA00516A4E /* AipOcrSdk.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FF9336CE1FBDEEF4005F65D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Sets the target folders and the final framework product.\n# 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME\n# 例如: FMK_NAME = \"MyFramework\"\nFMK_NAME=${PROJECT_NAME}\n\n\n# Install dir will be the final output to the framework.\n# The following line create it in the root folder of the current project.\n\nAIP_DIR=${SRCROOT}/..\nINSTALL_DIR=${AIP_DIR}/Products-Release/lib/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\nWRK_DIR=build\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework\n\nxcodebuild OTHER_CFLAGS=\"-fembed-bitcode\" -configuration \"Release\" ENABLE_BITCODE=YES -target \"${FMK_NAME}\" -sdk iphoneos BITCODE_GENERATION_MODE=bitcode clean build\nxcodebuild -configuration \"Release\" ENABLE_BITCODE=YES OTHER_CFLAGS=\"-fembed-bitcode\" -target \"${FMK_NAME}\" -sdk iphonesimulator clean build\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]; then\nrm -rf \"${INSTALL_DIR}\"\nfi\n\nmkdir -p \"${INSTALL_DIR}\"\n\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/\"  # 这里是拷贝所有文件，后面.a文件会被替代\n\n# 整合 到AipOcrSdk 目录，覆盖原有的 bin\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# 复制到上级lib目录\ncp -R \"${INSTALL_DIR}\" \"${AIP_DIR}/lib/\"\nrm -r \"${WRK_DIR}\"\n\n# open \"${INSTALL_DIR}\"\n\n\n";
+		};
+		FF9336D31FBDEFA3005F65D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# 配置输出目录\nAIP_DIR=${SRCROOT}/..\nINSTALL_DIR=${AIP_DIR}/Products-Release/\n\n\nVERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INSTALL_DIR}/lib/AipOcrSdk.framework/Info.plist\")\n\necho $VERSIONNUM\n\nOUTPUT_NAME=\"aip-ocr-ios-sdk-${VERSIONNUM}\"\n\nmkdir -p $OUTPUT\n\n\n# Clean and Building both architectures.\n#xcodebuild -configuration \"Release\" -project \"AipOcrDemo\" -target \"AipOcrDemo\" -sdk iphoneos clean\n#xcodebuild -configuration \"Release\" -project \"AipOcrDemo\" -target \"AipOcrDemo\" -sdk iphoneos build\n\ncp -r ${AIP_DIR}/lib/IdcardQuality.framework ${INSTALL_DIR}/lib/\ncp -r ${AIP_DIR}/AipOcrDemo ${INSTALL_DIR}/\ncp -r ${AIP_DIR}/AipOcrSdk ${INSTALL_DIR}/\n\n# 打包\ncd ${INSTALL_DIR}\nzip -r ./${OUTPUT_NAME}.zip ./*\n\nopen ${INSTALL_DIR}\n\nexit 0";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFDAF4331E49C9EF00AB65B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57B275371E5C0D30002F1DDC /* AipImageView.m in Sources */,
+				574115B01EE7E4ED009FDD80 /* IOSpeScaleLayoutConstraint.m in Sources */,
+				574115AC1EE7E4ED009FDD80 /* AipDisplayLink.m in Sources */,
+				57B275351E5C0D30002F1DDC /* AipCutImageView.m in Sources */,
+				57B275391E5C0D30002F1DDC /* AipCameraController.m in Sources */,
+				57D78F7C1EE92EE0003127D5 /* AipNavigationController.m in Sources */,
+				57B2753D1E5C0D30002F1DDC /* AipGeneralVC.m in Sources */,
+				574115AE1EE7E4ED009FDD80 /* IOSpeScaleLayoutButton.m in Sources */,
+				57B2753B1E5C0D30002F1DDC /* AipCaptureCardVC.mm in Sources */,
+				574115B21EE7E4ED009FDD80 /* IOSpeScaleLayoutLabel.m in Sources */,
+				574115B41EE7E4ED009FDD80 /* UIImage+AipCameraAddition.m in Sources */,
+				57B275331E5C0D30002F1DDC /* AipCameraPreviewView.m in Sources */,
+				3DB2F8F0E9B8B252DF661F6D /* AipOcrService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FF9336CC1FBDEEEC005F65D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF9336CD1FBDEEEC005F65D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FF9336D11FBDEF98005F65D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF9336D21FBDEF98005F65D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FFDAF43E1E49C9EF00AB65B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../lib";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FFDAF43F1E49C9EF00AB65B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../lib";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FFDAF4411E49C9EF00AB65B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../lib\"/**",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = AipOcrSdk/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.AipOcrSdk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FFDAF4421E49C9EF00AB65B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../lib\"/**",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = AipOcrSdk/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.AipOcrSdk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF9336CB1FBDEEEC005F65D2 /* Build configuration list for PBXAggregateTarget "Release-AipOcrSdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9336CC1FBDEEEC005F65D2 /* Debug */,
+				FF9336CD1FBDEEEC005F65D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF9336D01FBDEF98005F65D2 /* Build configuration list for PBXAggregateTarget "Release-All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9336D11FBDEF98005F65D2 /* Debug */,
+				FF9336D21FBDEF98005F65D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFDAF4321E49C9EF00AB65B7 /* Build configuration list for PBXProject "AipOcrSdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFDAF43E1E49C9EF00AB65B7 /* Debug */,
+				FFDAF43F1E49C9EF00AB65B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFDAF4401E49C9EF00AB65B7 /* Build configuration list for PBXNativeTarget "AipOcrSdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFDAF4411E49C9EF00AB65B7 /* Debug */,
+				FFDAF4421E49C9EF00AB65B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFDAF42F1E49C9EF00AB65B7 /* Project object */;
+}

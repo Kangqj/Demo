@@ -128,6 +128,7 @@
 
 - (void)openFile
 {
+    /*
     NSString *path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/test.png"];
     self.docCpntroller = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
     self.docCpntroller.delegate = self;
@@ -140,6 +141,21 @@
     
     //显示不包含预览菜单项
 //[docController presentOpenInMenuFromRect:navRect inView:self.view animated:YES];
+    */
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"zip"];
+    
+    NSData *data1 = [NSData dataWithContentsOfFile:path];
+    NSString *string1 = [data1 base64EncodedStringWithOptions:0];
+    
+    NSData *data2 = [[NSData alloc] initWithBase64EncodedString:string1 options:0];
+    
+    if ([data1 isEqual:data2])
+    {
+        NSLog(@"=");
+    }
+    
+    
 }
 
 - (void)openFile1

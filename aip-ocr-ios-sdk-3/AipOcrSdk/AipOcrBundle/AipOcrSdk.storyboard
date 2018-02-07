@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Aip Capture CardVC-->
+        <scene sceneID="9K6-7e-QbE">
+            <objects>
+                <viewController storyboardIdentifier="AipCaptureCardVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ANZ-N0-y67" customClass="AipCaptureCardVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QTP-sW-9Bs"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gx8-Xh-AEm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tv2-ge-o8Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHA-Yo-CKn" customClass="AipCameraPreviewView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ln-uE-q6f" customClass="AipCutImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnr-x3-POQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4n-C5-vGh">
+                                <rect key="frame" x="14" y="150" width="347" height="220"/>
+                                <subviews>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xuxian.png" translatesAutoresizingMaskIntoConstraints="NO" id="VHd-mv-9kG">
+                                        <rect key="frame" x="205" y="38" width="125" height="128"/>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Page 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="oMk-qV-FTG">
+                                        <rect key="frame" x="20" y="20" width="67" height="72"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i4n-C5-vGh" secondAttribute="height" multiplier="694:440" id="4U5-7h-z1k"/>
+                                    <constraint firstItem="oMk-qV-FTG" firstAttribute="leading" secondItem="i4n-C5-vGh" secondAttribute="leading" constant="20" id="Pta-8g-UQk" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="VHd-mv-9kG" firstAttribute="top" secondItem="i4n-C5-vGh" secondAttribute="top" constant="37.5" id="WBl-Iw-K8z" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstAttribute="trailing" secondItem="VHd-mv-9kG" secondAttribute="trailing" constant="17" id="aUq-fz-Vdz" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="oMk-qV-FTG" firstAttribute="top" secondItem="i4n-C5-vGh" secondAttribute="top" constant="20" id="ixz-DX-tw9" customClass="IOSpeScaleLayoutConstraint"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="对齐身份正面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLl-2e-2zy" customClass="IOSpeScaleLayoutLabel">
+                                <rect key="frame" x="88" y="421" width="200" height="26"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30185145549999998" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3b2-Ma-ceO" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstAttribute="height" constant="26" id="QdU-hd-vLs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                <color key="textColor" red="0.98143028850000003" green="0.98143028850000003" blue="0.98143028850000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygk-nn-aya">
+                                <rect key="frame" x="0.0" y="569" width="375" height="98"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-J8-dLk" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="158" y="19" width="60" height="60"/>
+                                        <state key="normal" image="paizhaoanniu.png"/>
+                                        <state key="highlighted" image="paizhaoanniu_dianjihou.png"/>
+                                        <connections>
+                                            <action selector="captureIDCard:" destination="ANZ-N0-y67" eventType="touchUpInside" id="QwT-Ki-nvs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQu-eT-OWS" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="29" y="38" width="25" height="22"/>
+                                        <state key="normal" image="tuku.png"/>
+                                        <connections>
+                                            <action selector="openPhotoAlbum:" destination="ANZ-N0-y67" eventType="touchUpInside" id="qOs-ka-aVw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY2-F2-021" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="325" y="31" width="26" height="28"/>
+                                        <state key="normal" image="dengpao.png"/>
+                                        <state key="selected" image="dengpao_dianjihou.png"/>
+                                        <connections>
+                                            <action selector="turnLight:" destination="ANZ-N0-y67" eventType="touchUpInside" id="DRq-Fc-ysR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30185145547945208" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fY2-F2-021" secondAttribute="trailing" constant="24" id="3h7-Ng-7LZ" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="bQu-eT-OWS" firstAttribute="leading" secondItem="Ygk-nn-aya" secondAttribute="leading" constant="29" id="DGY-cJ-lpz" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstAttribute="height" constant="98" id="FEs-FP-CRt" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="bXb-J8-dLk" firstAttribute="centerY" secondItem="Ygk-nn-aya" secondAttribute="centerY" id="KDH-K7-DZl"/>
+                                    <constraint firstItem="bQu-eT-OWS" firstAttribute="centerY" secondItem="Ygk-nn-aya" secondAttribute="centerY" id="hTP-vb-7x6"/>
+                                    <constraint firstItem="bXb-J8-dLk" firstAttribute="centerX" secondItem="Ygk-nn-aya" secondAttribute="centerX" id="m31-78-Tzo"/>
+                                    <constraint firstItem="fY2-F2-021" firstAttribute="centerY" secondItem="Ygk-nn-aya" secondAttribute="centerY" constant="-4" id="o5i-6L-ySG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYV-cb-AN3">
+                                <rect key="frame" x="0.0" y="667" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nc2-75-yTa" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="32" y="19" width="14" height="22"/>
+                                        <state key="normal" image="guan.png"/>
+                                        <connections>
+                                            <action selector="pressCheckBack:" destination="ANZ-N0-y67" eventType="touchUpInside" id="eJd-1H-XJI"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epi-JJ-qyF" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="177" y="19" width="21" height="22"/>
+                                        <state key="normal" image="xuanzhuan.png"/>
+                                        <connections>
+                                            <action selector="pressTransform:" destination="ANZ-N0-y67" eventType="touchUpInside" id="4eR-O3-xcw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-Qe-S7y" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="322" y="19" width="21" height="22"/>
+                                        <state key="normal" image="queding.png"/>
+                                        <connections>
+                                            <action selector="pressCheckChoose:" destination="ANZ-N0-y67" eventType="touchUpInside" id="Ngm-cU-mKo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2657052654" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Nc2-75-yTa" firstAttribute="centerY" secondItem="XYV-cb-AN3" secondAttribute="centerY" id="6PQ-Ul-I9L"/>
+                                    <constraint firstItem="epi-JJ-qyF" firstAttribute="centerX" secondItem="XYV-cb-AN3" secondAttribute="centerX" id="JBJ-4o-Nc7"/>
+                                    <constraint firstAttribute="height" constant="60" id="Mbg-LN-uCd" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstAttribute="trailing" secondItem="oaG-Qe-S7y" secondAttribute="trailing" constant="32" id="hbo-Ph-TF9"/>
+                                    <constraint firstItem="Nc2-75-yTa" firstAttribute="leading" secondItem="XYV-cb-AN3" secondAttribute="leading" constant="32" id="o6g-BH-Fci"/>
+                                    <constraint firstItem="oaG-Qe-S7y" firstAttribute="centerY" secondItem="XYV-cb-AN3" secondAttribute="centerY" id="xRW-cY-p7m"/>
+                                    <constraint firstItem="epi-JJ-qyF" firstAttribute="centerY" secondItem="XYV-cb-AN3" secondAttribute="centerY" id="xUf-gD-h0S"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4Y-8c-b2y" customClass="IOSpeScaleLayoutButton">
+                                <rect key="frame" x="14" y="14" width="31" height="31"/>
+                                <state key="normal" image="guanbi.png"/>
+                                <connections>
+                                    <action selector="pressBackButton:" destination="ANZ-N0-y67" eventType="touchUpInside" id="frI-za-Lf3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pnr-x3-POQ" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" id="0Cv-Je-jlu"/>
+                            <constraint firstItem="sLl-2e-2zy" firstAttribute="centerY" secondItem="Tv2-ge-o8Q" secondAttribute="centerY" constant="100" id="3pI-BT-uFl"/>
+                            <constraint firstAttribute="trailing" secondItem="XYV-cb-AN3" secondAttribute="trailing" id="3qy-E5-8qT"/>
+                            <constraint firstItem="i4n-C5-vGh" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" constant="14" id="4Pc-Oh-pvG" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstAttribute="bottom" secondItem="pnr-x3-POQ" secondAttribute="bottom" id="6P5-Qb-Xnt"/>
+                            <constraint firstAttribute="bottom" secondItem="Ygk-nn-aya" secondAttribute="bottom" id="7co-6I-0O6"/>
+                            <constraint firstItem="pnr-x3-POQ" firstAttribute="top" secondItem="Tv2-ge-o8Q" secondAttribute="top" id="Cdu-86-RML"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ln-uE-q6f" secondAttribute="bottom" id="HAj-kc-Lgb"/>
+                            <constraint firstAttribute="trailing" secondItem="VHA-Yo-CKn" secondAttribute="trailing" id="JKh-qh-QHF"/>
+                            <constraint firstItem="b4Y-8c-b2y" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" constant="14" id="KoF-vh-Ubo" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstItem="VHA-Yo-CKn" firstAttribute="top" secondItem="Tv2-ge-o8Q" secondAttribute="top" id="Me8-wW-rRD"/>
+                            <constraint firstItem="b4Y-8c-b2y" firstAttribute="top" secondItem="Tv2-ge-o8Q" secondAttribute="top" constant="14" id="Q4o-s5-cIu" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstItem="i4n-C5-vGh" firstAttribute="top" secondItem="Tv2-ge-o8Q" secondAttribute="top" constant="150" id="Rp6-1N-F23" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstAttribute="trailing" secondItem="Ygk-nn-aya" secondAttribute="trailing" id="TKh-od-cVE"/>
+                            <constraint firstItem="sLl-2e-2zy" firstAttribute="centerX" secondItem="Tv2-ge-o8Q" secondAttribute="centerX" id="V1t-p8-s19"/>
+                            <constraint firstItem="XYV-cb-AN3" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" id="W12-A1-whl"/>
+                            <constraint firstAttribute="trailing" secondItem="pnr-x3-POQ" secondAttribute="trailing" id="W1V-8r-khY"/>
+                            <constraint firstAttribute="bottom" secondItem="VHA-Yo-CKn" secondAttribute="bottom" id="bfa-4s-iWj"/>
+                            <constraint firstAttribute="bottom" secondItem="XYV-cb-AN3" secondAttribute="bottom" constant="-60" id="dUc-va-Cq2" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ln-uE-q6f" secondAttribute="trailing" id="owS-jo-fCh"/>
+                            <constraint firstItem="0Ln-uE-q6f" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" id="pTa-6K-xNe"/>
+                            <constraint firstItem="Ygk-nn-aya" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" id="vwR-qc-7Pi"/>
+                            <constraint firstItem="VHA-Yo-CKn" firstAttribute="leading" secondItem="Tv2-ge-o8Q" secondAttribute="leading" id="x0Y-mE-fWP"/>
+                            <constraint firstItem="0Ln-uE-q6f" firstAttribute="top" secondItem="Tv2-ge-o8Q" secondAttribute="top" id="xQK-OA-LTv"/>
+                            <constraint firstAttribute="trailing" secondItem="i4n-C5-vGh" secondAttribute="trailing" constant="14" id="xwW-sL-1df" customClass="IOSpeScaleLayoutConstraint"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="albumButton" destination="bQu-eT-OWS" id="YCG-oF-X4e"/>
+                        <outlet property="backgroundView" destination="pnr-x3-POQ" id="wfd-Uc-Gof"/>
+                        <outlet property="bankCardView" destination="i4n-C5-vGh" id="9xm-6B-Ad1"/>
+                        <outlet property="captureButton" destination="bXb-J8-dLk" id="0UY-mR-30W"/>
+                        <outlet property="checkChooseBtn" destination="oaG-Qe-S7y" id="78H-u4-uRr"/>
+                        <outlet property="checkCloseBtn" destination="Nc2-75-yTa" id="cNL-fj-DzX"/>
+                        <outlet property="checkView" destination="XYV-cb-AN3" id="nGq-kt-r5Q"/>
+                        <outlet property="checkViewBoom" destination="dUc-va-Cq2" id="UbM-hz-j60"/>
+                        <outlet property="closeButton" destination="b4Y-8c-b2y" id="yeK-T4-O9O"/>
+                        <outlet property="cutImageView" destination="0Ln-uE-q6f" id="RNb-3o-fCG"/>
+                        <outlet property="emblemImageView" destination="oMk-qV-FTG" id="zD9-mU-CUJ"/>
+                        <outlet property="lightButton" destination="fY2-F2-021" id="mom-ht-gVd"/>
+                        <outlet property="peopleImageView" destination="VHd-mv-9kG" id="wzU-f1-c5W"/>
+                        <outlet property="previewView" destination="VHA-Yo-CKn" id="lkA-Vn-EFG"/>
+                        <outlet property="tipsLabel" destination="sLl-2e-2zy" id="ves-ZO-7bP"/>
+                        <outlet property="tipsLabelCenterX" destination="V1t-p8-s19" id="kPg-Uq-SIR"/>
+                        <outlet property="tipsLabelCenterY" destination="3pI-BT-uFl" id="pz5-J1-bSW"/>
+                        <outlet property="toolViewBoom" destination="7co-6I-0O6" id="ObJ-CA-ilM"/>
+                        <outlet property="toolsView" destination="Ygk-nn-aya" id="kYz-22-wOb"/>
+                        <outlet property="transformButton" destination="epi-JJ-qyF" id="juZ-7m-xXk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBy-nu-BEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3620" y="314"/>
+        </scene>
+        <!--Aip GeneralVC-->
+        <scene sceneID="li4-3d-6aP">
+            <objects>
+                <viewController storyboardIdentifier="AipGeneralVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qVB-bS-VcD" customClass="AipGeneralVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mQS-vR-TOi"/>
+                        <viewControllerLayoutGuide type="bottom" id="pMF-lc-m1V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pEK-B6-uAC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K13-8J-9JA" customClass="AipCameraPreviewView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOa-jl-1X9" customClass="AipCutImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekk-cC-N2A" customClass="AipImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDl-3I-2O3">
+                                <rect key="frame" x="0.0" y="569" width="375" height="98"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4H-6Q-TiY" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="158" y="19" width="60" height="60"/>
+                                        <state key="normal" image="paizhaoanniu.png"/>
+                                        <state key="highlighted" image="paizhaoanniu_dianjihou.png"/>
+                                        <connections>
+                                            <action selector="captureIDCard:" destination="qVB-bS-VcD" eventType="touchUpInside" id="fWy-c4-e7z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAr-f2-xk3" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="29" y="38" width="25" height="22"/>
+                                        <state key="normal" image="tuku.png"/>
+                                        <connections>
+                                            <action selector="openPhotoAlbum:" destination="qVB-bS-VcD" eventType="touchUpInside" id="fTx-gb-WHM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYu-ia-exw" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="325" y="31" width="26" height="28"/>
+                                        <state key="normal" image="dengpao.png"/>
+                                        <state key="selected" image="dengpao_dianjihou.png"/>
+                                        <connections>
+                                            <action selector="turnLight:" destination="qVB-bS-VcD" eventType="touchUpInside" id="5Mf-mC-bsQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30185145549999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FYu-ia-exw" secondAttribute="trailing" constant="24" id="Fd2-qc-ISQ" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="x4H-6Q-TiY" firstAttribute="centerX" secondItem="JDl-3I-2O3" secondAttribute="centerX" id="M4D-ev-6TH"/>
+                                    <constraint firstAttribute="height" constant="98" id="Myt-OW-Gjl" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="FYu-ia-exw" firstAttribute="centerY" secondItem="JDl-3I-2O3" secondAttribute="centerY" constant="-4" id="S1a-oE-t1Z"/>
+                                    <constraint firstItem="OAr-f2-xk3" firstAttribute="centerY" secondItem="JDl-3I-2O3" secondAttribute="centerY" id="a8Y-ZP-ydm"/>
+                                    <constraint firstItem="OAr-f2-xk3" firstAttribute="leading" secondItem="JDl-3I-2O3" secondAttribute="leading" constant="29" id="gk7-Xy-lmK" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="x4H-6Q-TiY" firstAttribute="centerY" secondItem="JDl-3I-2O3" secondAttribute="centerY" id="y0Q-XQ-1yY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7U-eV-ZOX">
+                                <rect key="frame" x="0.0" y="667" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uc-vA-TtU" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="32" y="19" width="14" height="22"/>
+                                        <state key="normal" image="guan.png"/>
+                                        <connections>
+                                            <action selector="pressCheckBack:" destination="qVB-bS-VcD" eventType="touchUpInside" id="Z4T-eV-9cy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbB-zo-xcv" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="177" y="19" width="21" height="22"/>
+                                        <state key="normal" image="xuanzhuan.png"/>
+                                        <connections>
+                                            <action selector="pressTransform:" destination="qVB-bS-VcD" eventType="touchUpInside" id="rVX-fs-aAV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geO-4o-qUK" customClass="IOSpeScaleLayoutButton">
+                                        <rect key="frame" x="322" y="19" width="21" height="22"/>
+                                        <state key="normal" image="queding.png"/>
+                                        <connections>
+                                            <action selector="pressCheckChoose:" destination="qVB-bS-VcD" eventType="touchUpInside" id="7gx-DH-Tul"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2657052654" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="3uc-vA-TtU" firstAttribute="leading" secondItem="c7U-eV-ZOX" secondAttribute="leading" constant="32" id="edz-hH-zOJ"/>
+                                    <constraint firstItem="geO-4o-qUK" firstAttribute="centerY" secondItem="c7U-eV-ZOX" secondAttribute="centerY" id="h0y-gU-F79"/>
+                                    <constraint firstItem="TbB-zo-xcv" firstAttribute="centerX" secondItem="c7U-eV-ZOX" secondAttribute="centerX" id="iOQ-zq-TC8"/>
+                                    <constraint firstAttribute="height" constant="60" id="jdf-pz-OEQ" customClass="IOSpeScaleLayoutConstraint"/>
+                                    <constraint firstItem="TbB-zo-xcv" firstAttribute="centerY" secondItem="c7U-eV-ZOX" secondAttribute="centerY" id="sjc-8a-god"/>
+                                    <constraint firstAttribute="trailing" secondItem="geO-4o-qUK" secondAttribute="trailing" constant="32" id="xXa-pR-ZFS"/>
+                                    <constraint firstItem="3uc-vA-TtU" firstAttribute="centerY" secondItem="c7U-eV-ZOX" secondAttribute="centerY" id="ysX-OB-8oi"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eE-H5-UtU" customClass="IOSpeScaleLayoutButton">
+                                <rect key="frame" x="14" y="14" width="31" height="31"/>
+                                <state key="normal" image="guanbi.png"/>
+                                <connections>
+                                    <action selector="pressBackButton:" destination="qVB-bS-VcD" eventType="touchUpInside" id="1o5-d4-LPo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="K13-8J-9JA" secondAttribute="bottom" id="4LN-WC-B5D"/>
+                            <constraint firstItem="9eE-H5-UtU" firstAttribute="top" secondItem="pEK-B6-uAC" secondAttribute="top" constant="14" id="Bfo-3B-drP" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstItem="mOa-jl-1X9" firstAttribute="top" secondItem="pEK-B6-uAC" secondAttribute="top" id="C4B-RP-auY"/>
+                            <constraint firstItem="JDl-3I-2O3" firstAttribute="leading" secondItem="pEK-B6-uAC" secondAttribute="leading" id="Mdh-Zv-d2H"/>
+                            <constraint firstItem="9eE-H5-UtU" firstAttribute="leading" secondItem="pEK-B6-uAC" secondAttribute="leading" constant="14" id="N9l-8Q-045" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstItem="K13-8J-9JA" firstAttribute="leading" secondItem="pEK-B6-uAC" secondAttribute="leading" id="NVm-1B-5Se"/>
+                            <constraint firstAttribute="trailing" secondItem="mOa-jl-1X9" secondAttribute="trailing" id="O57-cY-FIc"/>
+                            <constraint firstAttribute="bottom" secondItem="Ekk-cC-N2A" secondAttribute="bottom" id="SV5-eq-imr"/>
+                            <constraint firstAttribute="trailing" secondItem="JDl-3I-2O3" secondAttribute="trailing" id="UyB-nj-d5G"/>
+                            <constraint firstAttribute="bottom" secondItem="JDl-3I-2O3" secondAttribute="bottom" id="VKK-aj-d68"/>
+                            <constraint firstItem="Ekk-cC-N2A" firstAttribute="top" secondItem="pEK-B6-uAC" secondAttribute="top" id="Zhv-lz-OA8"/>
+                            <constraint firstAttribute="bottom" secondItem="mOa-jl-1X9" secondAttribute="bottom" id="aXv-Ln-LcJ"/>
+                            <constraint firstItem="c7U-eV-ZOX" firstAttribute="leading" secondItem="pEK-B6-uAC" secondAttribute="leading" id="ase-wr-53q"/>
+                            <constraint firstItem="K13-8J-9JA" firstAttribute="top" secondItem="pEK-B6-uAC" secondAttribute="top" id="cCo-kH-vlv"/>
+                            <constraint firstAttribute="trailing" secondItem="K13-8J-9JA" secondAttribute="trailing" id="dJL-Wj-tBF"/>
+                            <constraint firstAttribute="bottom" secondItem="c7U-eV-ZOX" secondAttribute="bottom" constant="-60" id="mv5-Zr-QRy" customClass="IOSpeScaleLayoutConstraint"/>
+                            <constraint firstAttribute="trailing" secondItem="Ekk-cC-N2A" secondAttribute="trailing" id="nTC-Fh-oNs"/>
+                            <constraint firstItem="mOa-jl-1X9" firstAttribute="leading" secondItem="pEK-B6-uAC" secondAttribute="leading" id="ti3-AT-jD2"/>
+                            <constraint firstItem="Ekk-cC-N2A" firstAttribute="leading" secondItem="pEK-B6-uAC" secondAttribute="leading" id="vDG-8F-mSu"/>
+                            <constraint firstAttribute="trailing" secondItem="c7U-eV-ZOX" secondAttribute="trailing" id="yvP-X8-vRY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="albumButton" destination="OAr-f2-xk3" id="SGq-W6-mfF"/>
+                        <outlet property="captureButton" destination="x4H-6Q-TiY" id="SvB-l4-v6c"/>
+                        <outlet property="checkChooseBtn" destination="geO-4o-qUK" id="iDT-DQ-x2Z"/>
+                        <outlet property="checkCloseBtn" destination="3uc-vA-TtU" id="YJK-Uh-cyW"/>
+                        <outlet property="checkView" destination="c7U-eV-ZOX" id="Nrc-S4-5Ce"/>
+                        <outlet property="checkViewBoom" destination="mv5-Zr-QRy" id="FYE-q9-2Tk"/>
+                        <outlet property="closeButton" destination="9eE-H5-UtU" id="zeb-FW-bur"/>
+                        <outlet property="cutImageView" destination="mOa-jl-1X9" id="Z8Y-hT-83I"/>
+                        <outlet property="lightButton" destination="FYu-ia-exw" id="ueV-Cq-qKr"/>
+                        <outlet property="maskImageView" destination="Ekk-cC-N2A" id="Ijg-DP-j3Q"/>
+                        <outlet property="previewView" destination="K13-8J-9JA" id="cGI-44-LTg"/>
+                        <outlet property="toolViewBoom" destination="VKK-aj-d68" id="5nT-SD-XyB"/>
+                        <outlet property="toolsView" destination="JDl-3I-2O3" id="TPa-UB-RMH"/>
+                        <outlet property="transformButton" destination="TbB-zo-xcv" id="Xd0-zg-5Tk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W9C-60-9Ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4273" y="313"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Page 1.png" width="67" height="72"/>
+        <image name="dengpao.png" width="26" height="28"/>
+        <image name="dengpao_dianjihou.png" width="26" height="28"/>
+        <image name="guan.png" width="14" height="14"/>
+        <image name="guanbi.png" width="31" height="31"/>
+        <image name="paizhaoanniu.png" width="60" height="60"/>
+        <image name="paizhaoanniu_dianjihou.png" width="60" height="60"/>
+        <image name="queding.png" width="21" height="14"/>
+        <image name="tuku.png" width="25" height="22"/>
+        <image name="xuanzhuan.png" width="21" height="20"/>
+        <image name="xuxian.png" width="125" height="128"/>
+    </resources>
+</document>

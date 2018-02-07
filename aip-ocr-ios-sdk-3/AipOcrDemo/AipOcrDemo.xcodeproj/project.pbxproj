@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF9336DB1FBDF338005F65D2 /* IdcardQuality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */; };
+		FF9336DC1FBDF338005F65D2 /* IdcardQuality.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF9336DD1FBDF338005F65D2 /* AipBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D91FBDF338005F65D2 /* AipBase.framework */; };
+		FF9336DE1FBDF338005F65D2 /* AipBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D91FBDF338005F65D2 /* AipBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF9336DF1FBDF338005F65D2 /* AipOcrSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336DA1FBDF338005F65D2 /* AipOcrSdk.framework */; };
+		FF9336E01FBDF338005F65D2 /* AipOcrSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336DA1FBDF338005F65D2 /* AipOcrSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFDAF4191E49C99000AB65B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDAF4181E49C99000AB65B7 /* main.m */; };
+		FFDAF41C1E49C99000AB65B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDAF41B1E49C99000AB65B7 /* AppDelegate.m */; };
+		FFDAF41F1E49C99000AB65B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDAF41E1E49C99000AB65B7 /* ViewController.m */; };
+		FFDAF4221E49C99000AB65B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDAF4201E49C99000AB65B7 /* Main.storyboard */; };
+		FFDAF4241E49C99000AB65B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDAF4231E49C99000AB65B7 /* Assets.xcassets */; };
+		FFDAF4271E49C99000AB65B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDAF4251E49C99000AB65B7 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FFCEFA9F1EF91B160021A741 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF9336DE1FBDF338005F65D2 /* AipBase.framework in Embed Frameworks */,
+				FF9336DC1FBDF338005F65D2 /* IdcardQuality.framework in Embed Frameworks */,
+				FF9336E01FBDF338005F65D2 /* AipOcrSdk.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IdcardQuality.framework; path = ../lib/IdcardQuality.framework; sourceTree = "<group>"; };
+		FF9336D91FBDF338005F65D2 /* AipBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AipBase.framework; path = ../lib/AipBase.framework; sourceTree = "<group>"; };
+		FF9336DA1FBDF338005F65D2 /* AipOcrSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AipOcrSdk.framework; path = ../lib/AipOcrSdk.framework; sourceTree = "<group>"; };
+		FFDAF4141E49C99000AB65B7 /* AipOcrDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AipOcrDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFDAF4181E49C99000AB65B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FFDAF41A1E49C99000AB65B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FFDAF41B1E49C99000AB65B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FFDAF41D1E49C99000AB65B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FFDAF41E1E49C99000AB65B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FFDAF4211E49C99000AB65B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFDAF4231E49C99000AB65B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFDAF4261E49C99000AB65B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FFDAF4281E49C99000AB65B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFDAF4111E49C99000AB65B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9336DD1FBDF338005F65D2 /* AipBase.framework in Frameworks */,
+				FF9336DB1FBDF338005F65D2 /* IdcardQuality.framework in Frameworks */,
+				FF9336DF1FBDF338005F65D2 /* AipOcrSdk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFDAF40B1E49C99000AB65B7 = {
+			isa = PBXGroup;
+			children = (
+				FF9336D91FBDF338005F65D2 /* AipBase.framework */,
+				FF9336DA1FBDF338005F65D2 /* AipOcrSdk.framework */,
+				FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */,
+				FFDAF4161E49C99000AB65B7 /* AipOcrDemo */,
+				FFDAF4151E49C99000AB65B7 /* Products */,
+				FFDAF4431E519F2700AB65B7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FFDAF4151E49C99000AB65B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFDAF4141E49C99000AB65B7 /* AipOcrDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFDAF4161E49C99000AB65B7 /* AipOcrDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FFDAF41A1E49C99000AB65B7 /* AppDelegate.h */,
+				FFDAF41B1E49C99000AB65B7 /* AppDelegate.m */,
+				FFDAF41D1E49C99000AB65B7 /* ViewController.h */,
+				FFDAF41E1E49C99000AB65B7 /* ViewController.m */,
+				FFDAF4201E49C99000AB65B7 /* Main.storyboard */,
+				FFDAF4231E49C99000AB65B7 /* Assets.xcassets */,
+				FFDAF4251E49C99000AB65B7 /* LaunchScreen.storyboard */,
+				FFDAF4281E49C99000AB65B7 /* Info.plist */,
+				FFDAF4171E49C99000AB65B7 /* Supporting Files */,
+			);
+			path = AipOcrDemo;
+			sourceTree = "<group>";
+		};
+		FFDAF4171E49C99000AB65B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFDAF4181E49C99000AB65B7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFDAF4431E519F2700AB65B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFDAF4131E49C99000AB65B7 /* AipOcrDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFDAF42B1E49C99000AB65B7 /* Build configuration list for PBXNativeTarget "AipOcrDemo" */;
+			buildPhases = (
+				FFDAF4101E49C99000AB65B7 /* Sources */,
+				FFDAF4111E49C99000AB65B7 /* Frameworks */,
+				FFDAF4121E49C99000AB65B7 /* Resources */,
+				FFCEFA9F1EF91B160021A741 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AipOcrDemo;
+			productName = AipOcrDemo;
+			productReference = FFDAF4141E49C99000AB65B7 /* AipOcrDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFDAF40C1E49C99000AB65B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Baidu;
+				TargetAttributes = {
+					FFDAF4131E49C99000AB65B7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9U8J7M5J7U;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FFDAF40F1E49C99000AB65B7 /* Build configuration list for PBXProject "AipOcrDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FFDAF40B1E49C99000AB65B7;
+			productRefGroup = FFDAF4151E49C99000AB65B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFDAF4131E49C99000AB65B7 /* AipOcrDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFDAF4121E49C99000AB65B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFDAF4271E49C99000AB65B7 /* LaunchScreen.storyboard in Resources */,
+				FFDAF4241E49C99000AB65B7 /* Assets.xcassets in Resources */,
+				FFDAF4221E49C99000AB65B7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFDAF4101E49C99000AB65B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFDAF41F1E49C99000AB65B7 /* ViewController.m in Sources */,
+				FFDAF41C1E49C99000AB65B7 /* AppDelegate.m in Sources */,
+				FFDAF4191E49C99000AB65B7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FFDAF4201E49C99000AB65B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFDAF4211E49C99000AB65B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FFDAF4251E49C99000AB65B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFDAF4261E49C99000AB65B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FFDAF4291E49C99000AB65B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFDAF42A1E49C99000AB65B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFDAF42C1E49C99000AB65B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../lib",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = AipOcrDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.AipOcrDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		FFDAF42D1E49C99000AB65B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9U8J7M5J7U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../lib",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = AipOcrDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.AipOcrDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFDAF40F1E49C99000AB65B7 /* Build configuration list for PBXProject "AipOcrDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFDAF4291E49C99000AB65B7 /* Debug */,
+				FFDAF42A1E49C99000AB65B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFDAF42B1E49C99000AB65B7 /* Build configuration list for PBXNativeTarget "AipOcrDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFDAF42C1E49C99000AB65B7 /* Debug */,
+				FFDAF42D1E49C99000AB65B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFDAF40C1E49C99000AB65B7 /* Project object */;
+}
