@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3ACD2BC202B38E500576CDE /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD2BB202B38E500576CDE /* TextViewController.m */; };
 		FF9336DB1FBDF338005F65D2 /* IdcardQuality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */; };
 		FF9336DC1FBDF338005F65D2 /* IdcardQuality.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF9336DD1FBDF338005F65D2 /* AipBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9336D91FBDF338005F65D2 /* AipBase.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3ACD2BA202B38E500576CDE /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		C3ACD2BB202B38E500576CDE /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		FF9336D81FBDF338005F65D2 /* IdcardQuality.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IdcardQuality.framework; path = ../lib/IdcardQuality.framework; sourceTree = "<group>"; };
 		FF9336D91FBDF338005F65D2 /* AipBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AipBase.framework; path = ../lib/AipBase.framework; sourceTree = "<group>"; };
 		FF9336DA1FBDF338005F65D2 /* AipOcrSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AipOcrSdk.framework; path = ../lib/AipOcrSdk.framework; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				FFDAF41B1E49C99000AB65B7 /* AppDelegate.m */,
 				FFDAF41D1E49C99000AB65B7 /* ViewController.h */,
 				FFDAF41E1E49C99000AB65B7 /* ViewController.m */,
+				C3ACD2BA202B38E500576CDE /* TextViewController.h */,
+				C3ACD2BB202B38E500576CDE /* TextViewController.m */,
 				FFDAF4201E49C99000AB65B7 /* Main.storyboard */,
 				FFDAF4231E49C99000AB65B7 /* Assets.xcassets */,
 				FFDAF4251E49C99000AB65B7 /* LaunchScreen.storyboard */,
@@ -194,6 +199,7 @@
 				FFDAF41F1E49C99000AB65B7 /* ViewController.m in Sources */,
 				FFDAF41C1E49C99000AB65B7 /* AppDelegate.m in Sources */,
 				FFDAF4191E49C99000AB65B7 /* main.m in Sources */,
+				C3ACD2BC202B38E500576CDE /* TextViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,12 +9,15 @@
 #import "ViewController.h"
 #import <objc/runtime.h>
 #import <AipOcrSdk/AipOcrSdk.h>
+#import "TextViewController.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray<NSArray<NSString *> *> *actionList;
+
+@property (nonatomic, strong) UIViewController *curController;
 
 @end
 
@@ -24,6 +27,8 @@
     // 默认的识别失败的回调
     void (^_failHandler)(NSError *);
 }
+
+@synthesize curController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,8 +120,12 @@
         }
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alertView show];
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//            [alertView show];
+            
+            TextViewController *textViewController = [[TextViewController alloc] init];
+            textViewController.textString = message;
+            [weakSelf.curController presentViewController:textViewController animated:YES completion:NULL];
         }];
     };
     
@@ -147,6 +156,8 @@
         
     }];
     [self presentViewController:vc animated:YES completion:nil];
+    
+    self.curController = vc;
 }
 
 - (void)generalEnchancedOCR{
@@ -166,7 +177,7 @@
 - (void)generalBasicOCR{
     
     UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
-        NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true"};
+        NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true", @"detect_language": @"true", @"classify_dimension": @"lottery"};
         [[AipOcrService shardService] detectTextBasicFromImage:image
                                                    withOptions:options
                                                 successHandler:_successHandler
@@ -174,6 +185,8 @@
         
     }];
     [self presentViewController:vc animated:YES completion:nil];
+    
+    self.curController = vc;
 }
 
 - (void)generalAccurateOCR{
