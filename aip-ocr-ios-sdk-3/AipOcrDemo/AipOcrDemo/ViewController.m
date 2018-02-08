@@ -146,7 +146,7 @@
 #pragma mark - Action
 - (void)generalOCR{
     
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
         // 在这个block里，image即为切好的图片，可自行选择如何处理
         NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true", @"detect_language": @"true", @"classify_dimension": @"lottery"};
         [[AipOcrService shardService] detectTextFromImage:image
@@ -162,7 +162,7 @@
 
 - (void)generalEnchancedOCR{
     
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
         NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true"};
         [[AipOcrService shardService] detectTextEnhancedFromImage:image
                                                       withOptions:options
@@ -176,12 +176,64 @@
 
 - (void)generalBasicOCR{
     
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    __weak typeof(self) weakSelf = self;
+
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
         NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true", @"detect_language": @"true", @"classify_dimension": @"lottery"};
+//        [[AipOcrService shardService] detectTextBasicFromImage:image
+//                                                   withOptions:options
+//                                                successHandler:_successHandler
+//                                                   failHandler:_failHandler];
+        
         [[AipOcrService shardService] detectTextBasicFromImage:image
                                                    withOptions:options
-                                                successHandler:_successHandler
-                                                   failHandler:_failHandler];
+                                                successHandler:^(id result){
+                                                    NSLog(@"%@", result);
+                                                    NSMutableString *message = [NSMutableString string];
+                                                    
+                                                    if(result[@"words_result"]){
+                                                        if([result[@"words_result"] isKindOfClass:[NSDictionary class]]){
+                                                            [result[@"words_result"] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                                                                if([obj isKindOfClass:[NSDictionary class]] && [obj objectForKey:@"words"]){
+                                                                    [message appendFormat:@"%@: %@\n", key, obj[@"words"]];
+                                                                }else{
+                                                                    [message appendFormat:@"%@: %@\n", key, obj];
+                                                                }
+                                                                
+                                                            }];
+                                                        }else if([result[@"words_result"] isKindOfClass:[NSArray class]]){
+                                                            for(NSDictionary *obj in result[@"words_result"]){
+                                                                if([obj isKindOfClass:[NSDictionary class]] && [obj objectForKey:@"words"]){
+                                                                    [message appendFormat:@"%@\n", obj[@"words"]];
+                                                                }else{
+                                                                    [message appendFormat:@"%@\n", obj];
+                                                                }
+                                                            }
+                                                        }
+                                                        
+                                                    }else{
+                                                        [message appendFormat:@"%@", result];
+                                                    }
+                                                    
+                                                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                        
+                                                        [vc reset];
+
+                                                        TextViewController *textViewController = [[TextViewController alloc] init];
+                                                        textViewController.textString = message;
+                                                        [weakSelf.curController presentViewController:textViewController animated:YES completion:NULL];
+                                                    }];
+
+                                                }
+                                                   failHandler:^(NSError *error){
+                                                       NSLog(@"%@", error);
+                                                       NSString *msg = [NSString stringWithFormat:@"%li:%@", (long)[error code], [error localizedDescription]];
+                                                       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                                           [[[UIAlertView alloc] initWithTitle:@"识别失败，请重试" message:msg delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+                                                           
+                                                           [vc reset];
+                                                       }];
+                                                   }];
         
     }];
     [self presentViewController:vc animated:YES completion:nil];
@@ -191,7 +243,7 @@
 
 - (void)generalAccurateOCR{
     
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
         NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true"};
         [[AipOcrService shardService] detectTextAccurateFromImage:image
                                                       withOptions:options
@@ -205,7 +257,7 @@
 
 - (void)generalAccurateBasicOCR{
 
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
         NSDictionary *options = @{@"language_type": @"CHN_ENG", @"detect_direction": @"true"};
         [[AipOcrService shardService] detectTextAccurateBasicFromImage:image
                                                       withOptions:options
@@ -219,7 +271,7 @@
 
 - (void)webImageOCR{
 
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
 
         [[AipOcrService shardService] detectWebImageFromImage:image
                                                         withOptions:nil
@@ -318,7 +370,7 @@
 
 - (void)drivingLicenseOCR{
 
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
 
         [[AipOcrService shardService] detectDrivingLicenseFromImage:image
                                       withOptions:nil
@@ -331,7 +383,7 @@
 
 - (void)vehicleLicenseOCR{
 
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
 
         [[AipOcrService shardService] detectVehicleLicenseFromImage:image
                                       withOptions:nil
@@ -343,7 +395,7 @@
 
 - (void)plateLicenseOCR{
 
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
 
         [[AipOcrService shardService] detectPlateNumberFromImage:image
                                                      withOptions:nil
@@ -356,7 +408,7 @@
 
 - (void)receiptOCR{
 
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
 
         [[AipOcrService shardService] detectReceiptFromImage:image
                                       withOptions:nil
@@ -369,7 +421,7 @@
 
 - (void)businessLicenseOCR{
     
-    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image) {
+    UIViewController * vc = [AipGeneralVC ViewControllerWithHandler:^(UIImage *image, AipGeneralVC *vc) {
         
         [[AipOcrService shardService] detectBusinessLicenseFromImage:image
                                                  withOptions:nil

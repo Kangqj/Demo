@@ -11,8 +11,11 @@
 @interface AipGeneralVC : UIViewController
 
 
-@property (nonatomic, copy) void (^handler)(UIImage *);
+@property (nonatomic, copy) void (^handler)(UIImage *image, AipGeneralVC *vc);
 
-+(UIViewController *)ViewControllerWithHandler:(void (^)(UIImage *image))handler;
++(UIViewController *)ViewControllerWithHandler:(void (^)(UIImage *image, AipGeneralVC *vc))handler;
+
+//设置页面为初始页面
+- (void)reset;
 
 @end

@@ -132,6 +132,8 @@
     self.toolViewBoom.constant = 0;
     //关灯
     [self OffLight];
+    
+    NSLog(@"reset");
 }
 
 - (void)setupViews {
@@ -150,7 +152,7 @@
     self.maskImageView.cropAreaCornerWidth = 30;
     self.maskImageView.cropAreaCornerHeight = 30;
     self.maskImageView.minSpace = 30;
-    self.maskImageView.cropAreaCornerLineColor = [UIColor colorWithWhite:1 alpha:1];
+    self.maskImageView.cropAreaCornerLineColor = [UIColor yellowColor];//[UIColor colorWithWhite:1 alpha:1];
     self.maskImageView.cropAreaBorderLineColor = [UIColor colorWithWhite:1 alpha:0.7];
     self.maskImageView.cropAreaCornerLineWidth = 3;
     self.maskImageView.cropAreaBorderLineWidth = 1;
@@ -243,8 +245,10 @@
     
     UIImage *finalImage = [UIImage sapicamera_rotateImageEx:image.CGImage orientation:self.imageOrientation];
 
+    __weak __typeof (self) weakSelf = self;
+
     if (self.handler) {
-        self.handler(finalImage);
+        self.handler(finalImage, weakSelf);
     }
 
 }
@@ -290,6 +294,16 @@
     }
 }
 
++ (void)resetView
+{
+    NSLog(@"resetView");
+
+    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"AipOcrSdk" bundle:[NSBundle bundleForClass:[self class]]];
+    AipGeneralVC *vc = [mainSB instantiateViewControllerWithIdentifier:@"AipGeneralVC"];
+    
+    [vc reset];
+}
+
 #pragma mark - segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -306,7 +320,7 @@
     return (CGFloat) (([UIScreen mainScreen].bounds.size.width == 414) ? 1.1: ([UIScreen mainScreen].bounds.size.width == 320) ? 0.85 : 1);
 }
 
-+(UIViewController *)ViewControllerWithHandler:(void (^)(UIImage *image))handler {
++(UIViewController *)ViewControllerWithHandler:(void (^)(UIImage *image, AipGeneralVC *vc))handler {
 
     UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"AipOcrSdk" bundle:[NSBundle bundleForClass:[self class]]];
 
