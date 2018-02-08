@@ -368,7 +368,7 @@ static CGFloat const pinchMinscale = 0.5;
         [self.bgImageView removeFromSuperview];
         self.bgImageView = nil;
     }
-    self.bgImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 30, self.bounds.size.width-60, self.bounds.size.height-70)];
     [self.bgImageView setBackgroundColor:[UIColor blackColor]];
     self.bgImageView.userInteractionEnabled = YES;
     self.bgImageView.tag = TAG_IMAGEVIEW;

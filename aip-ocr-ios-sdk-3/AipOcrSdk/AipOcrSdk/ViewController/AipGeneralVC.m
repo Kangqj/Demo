@@ -266,7 +266,7 @@
     [self.cameraController captureStillImageWithHandler:^(NSData *imageData) {
         
         
-        [weakSelf setupCutImageView:[UIImage imageWithData:imageData]fromPhotoLib:NO];
+        [weakSelf setupCutImageView:[UIImage imageWithData:imageData]fromPhotoLib:YES];
     }];
 }
 

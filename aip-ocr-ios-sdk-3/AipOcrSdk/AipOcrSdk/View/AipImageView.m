@@ -683,6 +683,10 @@ typedef NS_ENUM(NSInteger, IOMidLineType) {
     [self addSubview: _bottomLeftCorner];
     [self addSubview: _bottomRightCorner];
     
+    NSLog(@"self frame: %@", NSStringFromCGRect(self.frame));
+    NSLog(@"topleft frame: %@", NSStringFromCGRect(_topLeftCorner.frame));
+    NSLog(@"_bottomRightCorner frame: %@", NSStringFromCGRect(_bottomRightCorner.frame));
+
 }
 - (void)createMidLines {
     
