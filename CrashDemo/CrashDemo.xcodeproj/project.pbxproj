@@ -45,6 +45,11 @@
 		C3AA9191200F200500913AB4 /* icon_44x58.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA918B200F200500913AB4 /* icon_44x58.png */; };
 		C3AA9192200F200500913AB4 /* icon_44x58.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA918B200F200500913AB4 /* icon_44x58.png */; };
 		C3AA9193200F200500913AB4 /* icon_44x58.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA918B200F200500913AB4 /* icon_44x58.png */; };
+		C3ACD2BF202D3CDB00576CDE /* NoteCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD2BE202D3CDB00576CDE /* NoteCollectViewController.m */; };
+		C3ACD2C2202D3CF300576CDE /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD2C1202D3CF300576CDE /* NoteListViewController.m */; };
+		C3ACD2C5202D3D2000576CDE /* NoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD2C4202D3D2000576CDE /* NoteDetailViewController.m */; };
+		C3ACD2C8202D3F7600576CDE /* NoteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD2C7202D3F7600576CDE /* NoteCollectionViewCell.m */; };
+		C3ACD2CB202D403F00576CDE /* NoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD2CA202D403F00576CDE /* NoteModel.m */; };
 		C3C10A5F1FFF5CD1004A9BE2 /* LockController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */; };
 		C3C10A601FFF5CD1004A9BE2 /* LockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5C1FFF5CD1004A9BE2 /* LockView.m */; };
 		C3C10A611FFF5CD1004A9BE2 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C10A5E1FFF5CD1004A9BE2 /* UIView+Extension.m */; };
@@ -101,6 +106,16 @@
 		C3699855201B1F9700727A20 /* Steve.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Steve.pdf; sourceTree = "<group>"; };
 		C3AA918A200F200500913AB4 /* icon_22x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_22x29.png; sourceTree = "<group>"; };
 		C3AA918B200F200500913AB4 /* icon_44x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_44x58.png; sourceTree = "<group>"; };
+		C3ACD2BD202D3CDB00576CDE /* NoteCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCollectViewController.h; sourceTree = "<group>"; };
+		C3ACD2BE202D3CDB00576CDE /* NoteCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectViewController.m; sourceTree = "<group>"; };
+		C3ACD2C0202D3CF300576CDE /* NoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListViewController.h; sourceTree = "<group>"; };
+		C3ACD2C1202D3CF300576CDE /* NoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListViewController.m; sourceTree = "<group>"; };
+		C3ACD2C3202D3D2000576CDE /* NoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDetailViewController.h; sourceTree = "<group>"; };
+		C3ACD2C4202D3D2000576CDE /* NoteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDetailViewController.m; sourceTree = "<group>"; };
+		C3ACD2C6202D3F7600576CDE /* NoteCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCollectionViewCell.h; sourceTree = "<group>"; };
+		C3ACD2C7202D3F7600576CDE /* NoteCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectionViewCell.m; sourceTree = "<group>"; };
+		C3ACD2C9202D403F00576CDE /* NoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteModel.h; sourceTree = "<group>"; };
+		C3ACD2CA202D403F00576CDE /* NoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteModel.m; sourceTree = "<group>"; };
 		C3C10A591FFF5CD1004A9BE2 /* LockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockController.h; sourceTree = "<group>"; };
 		C3C10A5A1FFF5CD1004A9BE2 /* LockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockController.m; sourceTree = "<group>"; };
 		C3C10A5B1FFF5CD1004A9BE2 /* LockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockView.h; sourceTree = "<group>"; };
@@ -188,6 +203,16 @@
 				C3C10A7C1FFF7487004A9BE2 /* NSString+QDTouchID.m */,
 				C3C10A781FFF7484004A9BE2 /* NSString+QDTouchID.h */,
 				C3C10A791FFF7484004A9BE2 /* NSString+QDTouchID.m */,
+				C3ACD2BD202D3CDB00576CDE /* NoteCollectViewController.h */,
+				C3ACD2BE202D3CDB00576CDE /* NoteCollectViewController.m */,
+				C3ACD2C6202D3F7600576CDE /* NoteCollectionViewCell.h */,
+				C3ACD2C7202D3F7600576CDE /* NoteCollectionViewCell.m */,
+				C3ACD2C9202D403F00576CDE /* NoteModel.h */,
+				C3ACD2CA202D403F00576CDE /* NoteModel.m */,
+				C3ACD2C0202D3CF300576CDE /* NoteListViewController.h */,
+				C3ACD2C1202D3CF300576CDE /* NoteListViewController.m */,
+				C3ACD2C3202D3D2000576CDE /* NoteDetailViewController.h */,
+				C3ACD2C4202D3D2000576CDE /* NoteDetailViewController.m */,
 				C3699855201B1F9700727A20 /* Steve.pdf */,
 				C3C10A631FFF5D27004A9BE2 /* resource */,
 				C3C10A581FFF5CD1004A9BE2 /* Gesture unlock */,
@@ -451,11 +476,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C10A611FFF5CD1004A9BE2 /* UIView+Extension.m in Sources */,
+				C3ACD2BF202D3CDB00576CDE /* NoteCollectViewController.m in Sources */,
 				C3C10A5F1FFF5CD1004A9BE2 /* LockController.m in Sources */,
+				C3ACD2CB202D403F00576CDE /* NoteModel.m in Sources */,
 				C3C10A601FFF5CD1004A9BE2 /* LockView.m in Sources */,
+				C3ACD2C8202D3F7600576CDE /* NoteCollectionViewCell.m in Sources */,
+				C3ACD2C2202D3CF300576CDE /* NoteListViewController.m in Sources */,
 				C3C10A7A1FFF7484004A9BE2 /* NSString+QDTouchID.m in Sources */,
 				049353E81CD0F8C20033792E /* ViewController.m in Sources */,
 				049353E51CD0F8C20033792E /* AppDelegate.m in Sources */,
+				C3ACD2C5202D3D2000576CDE /* NoteDetailViewController.m in Sources */,
 				049353E21CD0F8C20033792E /* main.m in Sources */,
 				C3C10A7D1FFF7487004A9BE2 /* NSString+QDTouchID.m in Sources */,
 			);

@@ -11,6 +11,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <LocalAuthentication/LAError.h>
 #import "NSString+QDTouchID.h"
+#import "NoteCollectViewController.h"
 
 #define key_shakeFlag    @"key_shakeFlag"
 
@@ -43,7 +44,9 @@
     
     self.navigationController.navigationBarHidden = NO;
     
-    
+    UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addnClick)];
+    self.navigationItem.rightBarButtonItems = @[item0];
+
     /*
     UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didNavOneBtnClick:)];
     self.navigationItem.leftBarButtonItems = @[item0];
@@ -124,6 +127,12 @@
     m_progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     m_progressView.frame = CGRectMake(20, 64+20+250, 225, 40);
     [self.view addSubview:m_progressView];
+}
+
+- (void)addnClick
+{
+    NoteCollectViewController *viewController = [[NoteCollectViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)openFile
