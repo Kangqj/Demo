@@ -35,22 +35,38 @@
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     btn1.frame = CGRectMake(50,240,50,40);
-    [btn1 addTarget:self action:@selector(startUploadServer) forControlEvents:UIControlEventTouchUpInside];
-    [btn1 setTitle:@"上传" forState:UIControlStateNormal];
-    [btn1 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(startServer1) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 setTitle:@"1" forState:UIControlStateNormal];
+    [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn1 setBackgroundColor:[UIColor grayColor]];
     [self.view addSubview:btn1];
     
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
     btn2.frame = CGRectMake(120,240,50,40);
-    [btn2 addTarget:self action:@selector(startDownLoadServer) forControlEvents:UIControlEventTouchUpInside];
-    [btn2 setTitle:@"下载" forState:UIControlStateNormal];
-    [btn2 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [btn2 addTarget:self action:@selector(startServer2) forControlEvents:UIControlEventTouchUpInside];
+    [btn2 setTitle:@"2" forState:UIControlStateNormal];
+    [btn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn2 setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:btn2];
+    
+    
+    UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn3.frame = CGRectMake(190,240,50,40);
+    [btn3 addTarget:self action:@selector(startServer3) forControlEvents:UIControlEventTouchUpInside];
+    [btn3 setTitle:@"3" forState:UIControlStateNormal];
+    [btn3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn3 setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:btn3];
 }
 
-- (void)startDownLoadServer
+- (void)startServer1
 {
+    if (_webServer)
+    {
+        [_webServer stop];
+    }
+    
     // Create server
     _webServer = [[GCDWebServer alloc] init];
     // Add a handler to respond to GET requests on any URL
@@ -67,8 +83,33 @@
     NSLog(@"Visit %@ in your web browser", _webServer.serverURL);
 }
 
-- (void)startUploadServer
+- (void)startServer2
 {
+    if (_webUploader)
+    {
+        [_webUploader stop];
+    }
+    
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
+    NSString *path = [NSString stringWithFormat:@"%@/%@", documentsPath, @"test.jpg"];
+    [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:path error:NULL];
+    
+    _webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath  isUploadToPC:YES];
+    _webUploader.allowHiddenItems = YES;
+    _webServer.delegate = self;
+    [_webUploader start];
+    NSLog(@"Visit %@ in your web browser", _webUploader.serverURL);
+}
+
+- (void)startServer3
+{
+    if (_webUploader)
+    {
+        [_webUploader stop];
+    }
+    
     NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
@@ -78,8 +119,8 @@
     filePath = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"jpg"];
     path = [NSString stringWithFormat:@"%@/%@", documentsPath, @"test1.jpg"];
     [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:path error:NULL];
-
-    _webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath  isUploadToPC:YES];
+    
+    _webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath  isUploadToPC:NO];
     _webUploader.allowHiddenItems = YES;
     _webServer.delegate = self;
     [_webUploader start];

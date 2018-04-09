@@ -48,6 +48,10 @@
 		<data>
 		AzUQivxc2MR9XTSFIE06XnCgJZs=
 		</data>
+		<key>GCDWebUploader.bundle/Contents/Resources/download.html</key>
+		<data>
+		7dkqdX5m+RsMnyTm0B183HmBNvs=
+		</data>
 		<key>GCDWebUploader.bundle/Contents/Resources/en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
@@ -72,10 +76,6 @@
 		<key>GCDWebUploader.bundle/Contents/Resources/fonts/glyphicons-halflings-regular.woff</key>
 		<data>
 		IgN6NFWRTlZi+lGllmd72zKeLFw=
-		</data>
-		<key>GCDWebUploader.bundle/Contents/Resources/index.html</key>
-		<data>
-		d/40tISp0m58uziuzAS8EjITbBQ=
 		</data>
 		<key>GCDWebUploader.bundle/Contents/Resources/js/bootstrap.min.js</key>
 		<data>
@@ -116,6 +116,10 @@
 		<key>GCDWebUploader.bundle/Contents/Resources/js/tmpl.min.js</key>
 		<data>
 		WNTm03roa7jsSwV6J2fQOZx158s=
+		</data>
+		<key>GCDWebUploader.bundle/Contents/Resources/upload.html</key>
+		<data>
+		JKmh6zzPgyiDHAxdUtu0D+/ouTc=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -261,6 +265,17 @@
 			jkkBnCkD16iL5NZ0itAVEc1wvevkWH6z7/edKNRSL2U=
 			</data>
 		</dict>
+		<key>GCDWebUploader.bundle/Contents/Resources/download.html</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7dkqdX5m+RsMnyTm0B183HmBNvs=
+			</data>
+			<key>hash2</key>
+			<data>
+			dbCGXitWXBJn8Biwz9TX2O/j9XAX64YeoOYR7TkMtIE=
+			</data>
+		</dict>
 		<key>GCDWebUploader.bundle/Contents/Resources/en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
@@ -316,17 +331,6 @@
 			<key>hash2</key>
 			<data>
 			/Jadwcb/Uxq882gIncuvV3UTOwYm/1a1IwGgWfwPnh4=
-			</data>
-		</dict>
-		<key>GCDWebUploader.bundle/Contents/Resources/index.html</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			d/40tISp0m58uziuzAS8EjITbBQ=
-			</data>
-			<key>hash2</key>
-			<data>
-			7PhImr1Ivh1ivKKA0IPo9IW63nAOwsRGMv5y8syNSq0=
 			</data>
 		</dict>
 		<key>GCDWebUploader.bundle/Contents/Resources/js/bootstrap.min.js</key>
@@ -437,6 +441,17 @@
 			<key>hash2</key>
 			<data>
 			jogq01E9p5Dq2LdRYfA3gKE0oN3ly7rn3tgHkVvCOqk=
+			</data>
+		</dict>
+		<key>GCDWebUploader.bundle/Contents/Resources/upload.html</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JKmh6zzPgyiDHAxdUtu0D+/ouTc=
+			</data>
+			<key>hash2</key>
+			<data>
+			pcQwh2eWVHnfGxwNIfUMepFkIDYOd4tJVIlhg4RfmVw=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
