@@ -13,7 +13,7 @@
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self
 
-@interface ViewController () <GCDWebUploaderDelegate>
+@interface ViewController () <GCDWebUploaderDelegate, GCDWebServerDelegate>
 {
     UIImageView *bgImageView;
     GCDWebServer* _webServer;
@@ -69,12 +69,22 @@
     
     // Create server
     _webServer = [[GCDWebServer alloc] init];
+    _webServer.delegate = self;
     // Add a handler to respond to GET requests on any URL
     [_webServer addDefaultHandlerForMethod:@"GET"
                               requestClass:[GCDWebServerRequest class]
                               processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
                                   
-                                  return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Hello World</p></body></html>"];
+//                                  return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Hello World</p></body></html>"];
+                                  NSString* html = @" \
+                                  <html><body> \
+                                  <form name=\"input\" action=\"/\" method=\"post\" enctype=\"application/x-www-form-urlencoded\"> \
+                                  Value: <input type=\"text\" name=\"value\"> \
+                                  <input type=\"submit\" value=\"Submit\"> \
+                                  </form> \
+                                  </body></html> \
+                                  ";
+                                  return [GCDWebServerDataResponse responseWithHTML:html];
                                   
                               }];
     
