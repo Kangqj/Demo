@@ -1,10 +1,20 @@
 PODS:
+  - GCDWebServer (3.4.2):
+    - GCDWebServer/Core (= 3.4.2)
+  - GCDWebServer/Core (3.4.2)
+  - GCDWebServer/WebUploader (3.4.2):
+    - GCDWebServer/Core
   - Masonry (0.6.3)
 
 DEPENDENCIES:
-  - Masonry (~> 0.6.3)
+  - GCDWebServer (~> 3.0)
+  - GCDWebServer/WebUploader (~> 3.0)
+  - Masonry
 
 SPEC CHECKSUMS:
+  GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 0791817323e2c1b020ee8601db6fff552d06f235
+
+COCOAPODS: 1.4.0
