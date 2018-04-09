@@ -143,7 +143,6 @@
       <tr class="row-file">
         <td class="column-icon">
           {% if (o.size != null) { %}
-            <button type="button" class="btn btn-default btn-xs button-ok">
               <span class="glyphicon glyphicon-ok"></span>
             </button>
           {% } else { %}
@@ -152,7 +151,7 @@
             </button>
           {% } %}
         </td>
-        <td class="column-name"><p class="edit">{%=o.name%}</p></td>
+        <td class="column-name"><p>{%=o.name%}</p></td>
         <td class="column-size">
           {% if (o.size != null) { %}
             <p>{%=formatFileSize(o.size)%}</p>
