@@ -156,7 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  This method is the designated initializer for the class.
  */
-- (instancetype)initWithUploadDirectory:(NSString*)path;
+- (instancetype)initWithUploadDirectory:(NSString*)path  isUploadToPC:(BOOL)toPC;
 
 @end
 

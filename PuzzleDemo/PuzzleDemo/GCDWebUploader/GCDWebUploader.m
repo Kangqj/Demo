@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_END
 
 @dynamic delegate;
 
-- (instancetype)initWithUploadDirectory:(NSString*)path {
+- (instancetype)initWithUploadDirectory:(NSString*)path isUploadToPC:(BOOL)isUpload {
   if ((self = [super init])) {
     NSString* bundlePath = [[NSBundle bundleForClass:[GCDWebUploader class]] pathForResource:@"GCDWebUploader" ofType:@"bundle"];
     if (bundlePath == nil) {
@@ -127,21 +127,23 @@ NS_ASSUME_NONNULL_END
                      footer = [NSString stringWithFormat:[siteBundle localizedStringForKey:@"FOOTER_FORMAT" value:@"" table:nil], name, version];
                    }
                      
-                     NSString *webpagePath;
-                     NSString *languagePath = nil;
+                     NSString *name = @"download";
+                     if (isUpload)
+                     {
+                         name = @"upload";
+                     }
+                     
                      NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
                      if ([language hasPrefix:@"zh-Hant"] || [language hasPrefix:@"zh-Hans"])
                      {
-                         languagePath = @"ch";
-                         webpagePath= @"downloadindexcn";
+                         
                      }
                      else
                      {
-                         languagePath = @"en";
-                         webpagePath= @"downloadindex";
+                         
                      }
-
-                   return [GCDWebServerDataResponse responseWithHTMLTemplate:(NSString*)[siteBundle pathForResource:webpagePath ofType:@"html"]
+                     
+                   return [GCDWebServerDataResponse responseWithHTMLTemplate:(NSString*)[siteBundle pathForResource:name ofType:@"html"]
                                                                    variables:@{
                                                                      @"device" : device,
                                                                      @"title" : title,

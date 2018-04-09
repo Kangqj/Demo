@@ -18,6 +18,8 @@
 		77F02A881C2E7EA8005825A8 /* PuzzleDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F02A871C2E7EA8005825A8 /* PuzzleDemoUITests.m */; };
 		C325A095207B0CF6000666C7 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C325A094207B0CF6000666C7 /* test.jpg */; };
 		C325A097207B14FC000666C7 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C325A096207B14FC000666C7 /* test1.jpg */; };
+		C325A09C207B4CE6000666C7 /* GCDWebUploader.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C325A099207B4CE6000666C7 /* GCDWebUploader.bundle */; };
+		C325A09D207B4CE6000666C7 /* GCDWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = C325A09B207B4CE6000666C7 /* GCDWebUploader.m */; };
 		CFC0EA9715A01405EBCFA1AF /* libPods-PuzzleDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A80832C309E6A55DE769AC /* libPods-PuzzleDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,9 @@
 		77F02A961C2E8467005825A8 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C325A094207B0CF6000666C7 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		C325A096207B14FC000666C7 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
+		C325A099207B4CE6000666C7 /* GCDWebUploader.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GCDWebUploader.bundle; sourceTree = "<group>"; };
+		C325A09A207B4CE6000666C7 /* GCDWebUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebUploader.h; sourceTree = "<group>"; };
+		C325A09B207B4CE6000666C7 /* GCDWebUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebUploader.m; sourceTree = "<group>"; };
 		F990D95359E76A9829CB0355 /* Pods-PuzzleDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PuzzleDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PuzzleDemo/Pods-PuzzleDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +136,7 @@
 				77F02A691C2E7EA8005825A8 /* ViewController.m */,
 				7772AC9A1C44D4F800ABF7FD /* UIImage+Modifications.h */,
 				7772AC9B1C44D4F800ABF7FD /* UIImage+Modifications.m */,
+				C325A098207B4CE6000666C7 /* GCDWebUploader */,
 				C325A094207B0CF6000666C7 /* test.jpg */,
 				C325A096207B14FC000666C7 /* test1.jpg */,
 				77F02A6B1C2E7EA8005825A8 /* Main.storyboard */,
@@ -167,6 +173,16 @@
 				77F02A891C2E7EA8005825A8 /* Info.plist */,
 			);
 			path = PuzzleDemoUITests;
+			sourceTree = "<group>";
+		};
+		C325A098207B4CE6000666C7 /* GCDWebUploader */ = {
+			isa = PBXGroup;
+			children = (
+				C325A099207B4CE6000666C7 /* GCDWebUploader.bundle */,
+				C325A09A207B4CE6000666C7 /* GCDWebUploader.h */,
+				C325A09B207B4CE6000666C7 /* GCDWebUploader.m */,
+			);
+			path = GCDWebUploader;
 			sourceTree = "<group>";
 		};
 		E819A79409F9BEA8EF8FBCB1 /* Frameworks */ = {
@@ -287,6 +303,7 @@
 				77F02A721C2E7EA8005825A8 /* LaunchScreen.storyboard in Resources */,
 				77F02A6F1C2E7EA8005825A8 /* Assets.xcassets in Resources */,
 				77F02A6D1C2E7EA8005825A8 /* Main.storyboard in Resources */,
+				C325A09C207B4CE6000666C7 /* GCDWebUploader.bundle in Resources */,
 				C325A097207B14FC000666C7 /* test1.jpg in Resources */,
 				C325A095207B0CF6000666C7 /* test.jpg in Resources */,
 			);
@@ -371,6 +388,7 @@
 				77F02A671C2E7EA8005825A8 /* AppDelegate.m in Sources */,
 				77F02A641C2E7EA8005825A8 /* main.m in Sources */,
 				7772AC9C1C44D4F800ABF7FD /* UIImage+Modifications.m in Sources */,
+				C325A09D207B4CE6000666C7 /* GCDWebUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

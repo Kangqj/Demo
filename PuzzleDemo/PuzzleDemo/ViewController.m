@@ -79,7 +79,7 @@
     path = [NSString stringWithFormat:@"%@/%@", documentsPath, @"test1.jpg"];
     [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:path error:NULL];
 
-    _webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath];
+    _webUploader = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath  isUploadToPC:YES];
     _webUploader.allowHiddenItems = YES;
     _webServer.delegate = self;
     [_webUploader start];
